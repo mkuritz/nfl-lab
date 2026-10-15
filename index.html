@@ -6,17 +6,18 @@
 <div class="card"><h2>🎙️ Sports Analyst · this week's storylines</h2><div class="mut sm" style="margin-bottom:8px">Each game: records, the market line, Power Index ranks, starters on the injury report and the biggest matchup edge. <span id="exupd"></span></div><div class="grid" id="games"></div></div>
 <div class="two"><div class="card"><h2>📊 Power Index</h2><div class="mut sm">One 0–100 rating per team that blends offense, defense and schedule strength, 2026 games only.</div><div class="wrap" id="tpi"></div></div>
 <div class="card"><h2>📰 Headlines</h2><div id="news"></div></div></div>
-<div class="card" id="betting-trends" style="scroll-margin-top:70px"><h2>📈 Betting Trends</h2><div class="mut sm" id="trmeta"></div><div id="trends">Loading…</div></div>
+<div class="card" id="betting-trends" style="scroll-margin-top:70px"><h2>📈 Betting Trends <a href="trends.html" style="font-size:14px;margin-left:8px">Open the full trends page (SU, ATS, O/U, splits, this week's matchups) →</a></h2><div class="mut sm" id="trmeta"></div><div id="trends">Loading…</div></div>
 <div class="card"><h2>🏆 Standings</h2><div id="stand"></div></div>
 <footer>Sources: ESPN public scores, standings, news and DraftKings lines via ESPN; nflverse public play-by-play and box scores; injury reports via Bet Lab's public feeds. Estimates are labeled. Not betting advice. 21+ only; if you or someone you know has a gambling problem, call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://mkuritz.github.io/sports-labs/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
 <script>
+if(location.hash=="#betting-trends")location.replace("trends.html");
 window.HUB={short:"NFL",recSport:["nfl"],leagues:[["nfl","NFL"]],
 cols:[["overall","W-L"],["winPercent","Pct"],["pointsFor","PF"],["pointsAgainst","PA"],["pointDifferential","Diff"],["streak","Strk"],["playoffSeed","Seed"]],
 loadExtra:async()=>{const [a,t]=await Promise.all([j(BL+"data/analyst_nfl.json",{}),j("data/trends.json",null)]);return {a,t}},
 extra:(g,X)=>{const A=X.a||{},o=[],rk={};(A.tpi||[]).forEach(r=>rk[r.team]=r);const al=x=>({WSH:"WAS",LAR:"LA"}[x]||x);
  const ra=rk[g.away.abbr]||rk[al(g.away.abbr)],rh=rk[g.home.abbr]||rk[al(g.home.abbr)];
  if(ra&&rh)o.push(`Power Index: ${g.away.abbr} #${ra.rank} vs ${g.home.abbr} #${rh.rank}${Math.abs(ra.rank-rh.rank)>=12?" — a lopsided matchup on paper":""}.`);
- [g.away.abbr,g.home.abbr].forEach(t=>{const I=((A.injuries||{})[t]||[]).filter(p=>p.starter&&/Out|Doubtful|Questionable|IR/.test(p.status||""));if(I.length)o.push(`<b>${t} injuries:</b> ${I.slice(0,4).map(p=>`${esc(p.name)} (${esc(p.pos)}, ${esc(p.status)})`).join(", ")}${I.length>4?` +${I.length-4} more`:""}.`)const C=(A.inj_by_team||[]).find(x=>x.team==t);if(C&&C.top){const c=C.top,a=(c.affected||[]).slice(0,2);o.push(`<b>${t} cascade:</b> ${esc(c.player)} (${esc(c.status)}) → ${a.map(x=>`${esc(x.player)} ${x.d_ca?(x.d_ca>0?"+":"")+x.d_ca+" car":""}${x.d_tg?" "+(x.d_tg>0?"+":"")+x.d_tg+" tgt":""}`).join(", ")||"no teammate shift"}/g.`)}});
+ [g.away.abbr,g.home.abbr].forEach(t=>{const I=((A.injuries||{})[t]||[]).filter(p=>p.starter&&/Out|Doubtful|Questionable|IR/.test(p.status||""));if(I.length)o.push(`<b>${t} injuries:</b> ${I.slice(0,4).map(p=>`${esc(p.name)} (${esc(p.pos)}, ${esc(p.status)})`).join(", ")}${I.length>4?` +${I.length-4} more`:""}.`);const C=(A.inj_by_team||[]).find(x=>x.team==t);if(C&&C.top){const c=C.top,a=(c.affected||[]).slice(0,2);o.push(`<b>${t} cascade:</b> ${esc(c.player)} (${esc(c.status)}) → ${a.map(x=>`${esc(x.player)} ${x.d_ca?(x.d_ca>0?"+":"")+x.d_ca+" car":""}${x.d_tg?" "+(x.d_tg>0?"+":"")+x.d_tg+" tgt":""}`).join(", ")||"no teammate shift"}/g.`)}});
  (A.mismatches||[]).filter(m=>m.game==g.id).slice(0,2).forEach(m=>o.push(`<b>Matchup edge:</b> ${esc(m.text)}`));
  const T=(X.t||{}).teams||{};[g.away.abbr,g.home.abbr].forEach(t=>{const r=T[t]&&T[t]["2026"];if(r&&r.g>=3){const q=r.q;const best=["1Q","2Q","3Q","4Q"].sort((x,y)=>q[y].m-q[x].m)[0];if(q[best].m>=3)o.push(`${t} trend: strongest in the ${best} (${q[best].m>0?"+":""}${q[best].m.toFixed(1)} pts/g, ${r.g} games).`)}});
  return o},

@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0b1220">
+<title>NFL Betting Trends · Sports Labs</title><link rel="stylesheet" href="style.css">
+<style>
+.tb{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tb button,.tb select,.tb input{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:8px 14px;font-weight:700;font-size:15px;min-height:42px;cursor:pointer}
+.tb button.on{border-color:var(--acc);color:var(--acc)}.tb input{border-radius:10px;cursor:text;min-width:120px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+table.t{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}table.t th,table.t td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right}
+table.t th:first-child,table.t td:first-child{text-align:left;position:sticky;left:0;background:var(--panel);z-index:1}
+table.t th{color:var(--mut);cursor:pointer;user-select:none;position:sticky;top:0;background:var(--panel)}table.t th.s{color:var(--acc)}
+.up{color:var(--acc2);font-weight:700}.dn{color:var(--bad);font-weight:700}.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px}
+.m{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px}.m li{margin:3px 0}.m ul{padding-left:18px;margin:6px 0}.chip{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 7px;margin-left:4px}
+</style></head><body><div class="w">
+<header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Betting trends</span><nav><a href="./">NFL Hub</a><a href="https://mkuritz.github.io/bet-lab/">Bet Lab</a><a href="https://mkuritz.github.io/bet-lab/sharp.html">Sharp Picks</a><a href="https://mkuritz.github.io/sports-labs/">Sports Labs</a></nav></header>
+<div class="card"><h2>📈 NFL Betting Trends</h2><div class="mut sm" id="meta">Loading…</div>
+<div class="tb" id="tabs"></div><div class="tb" id="ctl"></div><div id="out"></div></div>
+<footer class="mut sm">Sources: nflverse public schedules (final scores, closing spread and total, rest days, division games) and play-by-play (score by quarter, deficits); injuries via Bet Lab's public feed (ESPN injury report). Trends describe the past and are not predictions. Small samples swing a lot. Not betting advice. 21+ only; gambling problem? Call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://mkuritz.github.io/sports-labs/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
+<script>
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const j=(u,d)=>fetch(u+(u.includes("?")?"&":"?")+"t="+Date.now()).then(r=>r.ok?r.json():d).catch(()=>d);
+const ago=t=>{const m=Math.round((Date.now()-new Date(t))/60000);return m<60?m+" min ago":m<1440?Math.round(m/60)+" h ago":Math.round(m/1440)+" d ago"};
+const TABS=[["week","This week's games"],["rec","SU · ATS · O/U"],["cb","Comebacks"],["q","Quarters & halves"]];
+const SPN={all:"All games",home:"Home",away:"Away",fav:"As favorite",dog:"As underdog",div:"Division",nondiv:"Non-division",after_loss:"After a loss",after_win:"After a win",rest_adv:"Rest advantage",rest_dis:"Rest disadvantage",short_rest:"Short rest (≤5 days)",off_bye:"Off a bye"};
+let T=null,AN={},S={tab:(location.hash.match(/tab=(\w+)/)||[])[1]||"week",season:null,split:"all",q:"",sort:null,dir:-1};
+const pct=(a,b)=>a+b?a/(a+b):null,rec=x=>`${x[0]}-${x[1]}${x[2]?"-"+x[2]:""}`,pc=v=>v==null?"—":Math.round(v*100)+"%";
+const col=(v,mid=.5)=>v==null?"":v>=mid+.15?"up":v<=mid-.15?"dn":"";
+function sortRows(R,cols){if(S.sort==null)return R;const c=cols.find(c=>c[0]==S.sort);if(!c)return R;return R.slice().sort((a,b)=>{const x=c[2](a),y=c[2](b);return((x??-1e9)-(y??-1e9))*S.dir})}
+function table(R,cols){R=sortRows(R,cols);return `<div class="tw"><table class="t"><thead><tr>${cols.map(c=>`<th data-k="${c[0]}" class="${S.sort==c[0]?"s":""}">${c[1]}${S.sort==c[0]?(S.dir<0?" ▼":" ▲"):""}</th>`).join("")}</tr></thead><tbody>${R.map(r=>`<tr>${cols.map(c=>`<td>${c[3]?c[3](r):esc(c[2](r))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`}
+const teams=()=>Object.keys(T.records).filter(t=>!S.q||t.includes(S.q.toUpperCase())).sort();
+function vRec(){const R=teams().map(t=>({t,x:((T.records[t]||{})[S.season]||{})[S.split]})).filter(r=>r.x&&r.x.n);
+ const C=[["t","Team",r=>r.t,r=>`<b>${r.t}</b>`],["n","G",r=>r.x.n],
+ ["su","SU",r=>pct(r.x.su[0],r.x.su[1]),r=>`${rec(r.x.su)} <span class="${col(pct(r.x.su[0],r.x.su[1]))}">${pc(pct(r.x.su[0],r.x.su[1]))}</span>`],
+ ["ats","ATS",r=>pct(r.x.ats[0],r.x.ats[1]),r=>`${rec(r.x.ats)} <span class="${col(pct(r.x.ats[0],r.x.ats[1]))}">${pc(pct(r.x.ats[0],r.x.ats[1]))}</span>`],
+ ["ou","Over-Under",r=>pct(r.x.ou[0],r.x.ou[1]),r=>`${rec(r.x.ou)} <span class="${col(pct(r.x.ou[0],r.x.ou[1]))}">${pc(pct(r.x.ou[0],r.x.ou[1]))} over</span>`],
+ ["mov","Avg margin",r=>r.x.mov,r=>`<span class="${r.x.mov>0?"up":r.x.mov<0?"dn":""}">${r.x.mov>0?"+":""}${r.x.mov}</span>`]];
+ return `<div class="tb">${Object.entries(SPN).map(([k,n])=>`<button data-sp="${k}" class="${S.split==k?"on":""}">${n}</button>`).join("")}</div>${R.length?table(R,C):'<div class="mut">No games in this split yet this season.</div>'}
+ <div class="mut sm" style="margin-top:6px">ATS and O/U use the nflverse closing line. Record format W-L-push. Favorite/underdog excludes pick'em games. Rest advantage = more days since last game than the opponent.</div>`}
+function vCb(){const R=teams().map(t=>({t,x:(T.teams[t]||{})[S.season]})).filter(r=>r.x&&r.x.g);const lw=a=>a&&a[0]?a[1]/a[0]:null;
+ const C=[["t","Team",r=>r.t,r=>`<b>${r.t}</b>`],["g","G",r=>r.x.g],["cb","Comeback W (any deficit)",r=>r.x.cb],["cb7","Down 7+",r=>r.x.cb7??null,r=>r.x.cb7??"—"],["cb10","Down 10+",r=>r.x.cb10??null,r=>r.x.cb10??"—"],["cb4","Trailed in 4Q, won",r=>r.x.cb4],["big","Biggest deficit overcome",r=>r.x.big,r=>r.x.big||"—"],["blown","Lost after leading by 7+",r=>r.x.blown]];
+ return table(R,C)+`<div class="mut sm" style="margin-top:6px">From play-by-play scores; includes playoffs for past seasons.</div>`}
+function vQ(){const R=teams().map(t=>({t,x:(T.teams[t]||{})[S.season]})).filter(r=>r.x&&r.x.g);const P=["1Q","2Q","3Q","4Q","1H","2H"],lw=a=>a&&a[0]?a[1]/a[0]:null;
+ const C=[["t","Team",r=>r.t,r=>`<b>${r.t}</b>`],["g","G",r=>r.x.g],...P.map(p=>[p,p+" margin",r=>r.x.q[p].m,r=>{const x=r.x.q[p];return `<span class="${x.m>0?"up":x.m<0?"dn":""}">${x.m>0?"+":""}${x.m.toFixed(1)}</span> <span class="mut sm">${x.f.toFixed(1)}–${x.a.toFixed(1)} · won ${pc(x.w)}</span>`}]),
+ ["l1q","Led after 1Q → won",r=>lw(r.x.l1q),r=>r.x.l1q?`${r.x.l1q[1]}/${r.x.l1q[0]}`:"—"],["lht","Led at half → won",r=>lw(r.x.lht),r=>r.x.lht?`${r.x.lht[1]}/${r.x.lht[0]}`:"—"],["t3q","Led after 3Q → won",r=>lw(r.x.t3q),r=>r.x.t3q?`${r.x.t3q[1]}/${r.x.t3q[0]}`:"—"]];
+ return table(R,C)+`<div class="mut sm" style="margin-top:6px">Margin = points scored minus allowed in that period, per game. "Won" = share of games the team outscored its opponent in that period.</div>`}
+function trendLines(t,opp,g,home){const cur=T.seasons[T.seasons.length-1],R=(T.records[t]||{})[cur]||{},Q=((T.teams[t]||{})[cur]||{}),out=[];
+ const line=g.spread_home==null?null:(home?g.spread_home:-g.spread_home),add=(k,lab)=>{const x=R[k];if(!x||x.n<2)return;const a=pct(x.ats[0],x.ats[1]),o=pct(x.ou[0],x.ou[1]);
+  if(a!=null&&(a>=.7||a<=.3))out.push(`${lab}: <b>${rec(x.ats)} ATS</b>`);if(o!=null&&(o>=.75||o<=.25))out.push(`${lab}: <b>${rec(x.ou)} O/U</b> (${o>=.5?"overs":"unders"})`);if(x.n>=2&&(x.su[0]==x.n||x.su[1]==x.n))out.push(`${lab}: ${rec(x.su)} straight up`)};
+ add("all","Season");add(home?"home":"away",home?"At home":"On the road");if(line)add(line>0?"fav":"dog",line>0?"As favorite":"As underdog");if(g.div)add("div","Division games");
+ const rec6=(T.recent[t]||[]);if(rec6.length&&rec6[rec6.length-1].pf<rec6[rec6.length-1].pa)add("after_loss","After a loss");
+ const rs=home?g.home_rest:g.away_rest,ors=home?g.away_rest:g.home_rest;if(rs>ors)add("rest_adv","With a rest edge");if(rs<ors)add("rest_dis","Short on rest vs opp");
+ if(Q.q){const b=["1Q","2Q","3Q","4Q"].sort((x,y)=>Q.q[y].m-Q.q[x].m)[0],w=["1Q","2Q","3Q","4Q"].sort((x,y)=>Q.q[x].m-Q.q[y].m)[0];if(Q.q[b].m>=3)out.push(`Strongest quarter: <b>${b}</b> (${Q.q[b].m>0?"+":""}${Q.q[b].m.toFixed(1)}/g)`);if(Q.q[w].m<=-3)out.push(`Weakest quarter: <b>${w}</b> (${Q.q[w].m.toFixed(1)}/g)`);if(Q.cb7)out.push(`${Q.cb7} comeback win${Q.cb7>1?"s":""} from 7+ down`);if(Q.blown)out.push(`${Q.blown} loss${Q.blown>1?"es":""} after leading by 7+`)}
+ const L=rec6.slice(-5).map(x=>x.ats).filter(Boolean).join("");if(L)out.push(`Last ${L.length} ATS: ${L}`);return out}
+function injNote(t){const al={LAR:"LAR",WSH:"WSH"};const I=(AN.inj_by_team||[]).find(x=>x.team==t);const C=(AN.inj_cascades||[]).filter(c=>c.team==t&&/Out|Injured Reserve|Doubtful/.test(c.status));
+ if(!C.length)return"";const qb=C.find(c=>c.pos=="QB");return `<div class="sm" style="margin-top:4px">🩹 <b>Injury context:</b> ${C.slice(0,3).map(c=>`${esc(c.player)} (${esc(c.pos)}, ${esc(c.status)})`).join(", ")}.${qb?` <span class="dn">Season trends were built with ${esc(qb.player)} at QB; weigh them less with ${esc((qb.backups||[])[0]||"the backup")} starting.</span>`:" Trends were built mostly with these players active."}</div>`}
+function vWeek(){const U=T.upcoming||[];if(!U.length)return '<div class="mut">No games in the next 7 days.</div>';
+ return `<div class="mg">${U.map(g=>{const ha=trendLines(g.away,g.home,g,false),hh=trendLines(g.home,g.away,g,true);const fav=g.spread_home==null?"":g.spread_home>0?`${g.home} -${g.spread_home}`:g.spread_home<0?`${g.away} ${g.spread_home}`:"Pick'em";
+  const d=new Date(g.day+"T12:00:00");return `<div class="m"><b>${g.away} @ ${g.home}</b> <span class="mut sm">${d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})} ${g.time} ET</span>${g.div?'<span class="chip">Division</span>':""}
+  <div class="mut sm">Line: ${fav||"—"} · Total ${g.total??"—"} · Rest ${g.away} ${g.away_rest}d / ${g.home} ${g.home_rest}d</div>
+  ${[[g.away,ha],[g.home,hh]].map(([t,L])=>`<div style="margin-top:6px"><b>${t}</b><ul>${L.length?L.map(x=>`<li>${x}</li>`).join(""):'<li class="mut">No strong trend this season.</li>'}</ul>${injNote(t)}</div>`).join("")}</div>`}).join("")}</div>
+ <div class="mut sm" style="margin-top:6px">Only notable trends shown (ATS or O/U 70%+ either way with 2+ games, or perfect straight-up records). Current season only.</div>`}
+function draw(){if(!S.season)S.season=T.seasons[T.seasons.length-1];
+ $("tabs").innerHTML=TABS.map(([k,n])=>`<button data-tab="${k}" class="${S.tab==k?"on":""}">${n}</button>`).join("");
+ $("ctl").innerHTML=S.tab=="week"?"":`<select id="se">${T.seasons.slice().reverse().map((s,i)=>`<option ${s==S.season?"selected":""}>${s}</option>`).join("")}</select><input id="qq" placeholder="Filter team (e.g. PHI)" value="${esc(S.q)}" autocapitalize="characters">`;
+ $("out").innerHTML={week:vWeek,rec:vRec,cb:vCb,q:vQ}[S.tab]();
+ const se=$("se");if(se)se.onchange=()=>{S.season=se.value;draw()};const qq=$("qq");if(qq)qq.oninput=()=>{S.q=qq.value;const p=qq.selectionStart;draw();const n=$("qq");n.focus();n.setSelectionRange(p,p)}}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){S.tab=b.dataset.tab;S.sort=null;history.replaceState(null,"","#tab="+S.tab);draw();return}
+ const s=e.target.closest("[data-sp]");if(s){S.split=s.dataset.sp;draw();return}const h=e.target.closest("th[data-k]");if(h){if(S.sort==h.dataset.k)S.dir*=-1;else{S.sort=h.dataset.k;S.dir=h.dataset.k=="t"?1:-1}draw()}});
+(async()=>{[T,AN]=await Promise.all([j("data/trends.json",null),j("https://mkuritz.github.io/bet-lab/data/analyst_nfl.json",{})]);
+ if(!T||!T.records){$("meta").textContent="Trends data is rebuilding; check back after the next refresh.";return}
+ $("meta").innerHTML=`All 32 teams · seasons ${T.seasons.join(", ")} (pick one; current season is the default) · updated ${ago(T.updated)}, refreshed after every game day. Tap a column header to sort.`;draw()})();
+</script></body></html>
