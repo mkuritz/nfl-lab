@@ -10,10 +10,10 @@ table.t th{color:var(--mut);cursor:pointer;user-select:none;position:sticky;top:
 .up{color:var(--acc2);font-weight:700}.dn{color:var(--bad);font-weight:700}.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:10px}
 .m{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px}.m li{margin:3px 0}.m ul{padding-left:18px;margin:6px 0}.chip{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:999px;padding:1px 7px;margin-left:4px}
 </style></head><body><div class="w">
-<header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Betting trends</span><nav><a href="./">NFL Hub</a><a href="https://mkuritz.github.io/bet-lab/">Bet Lab</a><a href="https://mkuritz.github.io/bet-lab/sharp.html">Sharp Picks</a><a href="https://mkuritz.github.io/sports-labs/">Sports Labs</a></nav></header>
+<header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Betting trends</span><nav><a href="./">NFL Hub</a><a href="https://betlab.sportslabshq.com/">Bet Lab</a><a href="https://betlab.sportslabshq.com/sharp.html">Sharp Picks</a><a href="https://sportslabshq.com/">Sports Labs</a></nav></header>
 <div class="card"><h2>📈 NFL Betting Trends</h2><div class="mut sm" id="meta">Loading…</div>
 <div class="tb" id="tabs"></div><div class="tb" id="ctl"></div><div id="out"></div></div>
-<footer class="mut sm">Sources: nflverse public schedules (final scores, closing spread and total, rest days, division games) and play-by-play (score by quarter, deficits); injuries via Bet Lab's public feed (ESPN injury report). Trends describe the past and are not predictions. Small samples swing a lot. Not betting advice. 21+ only; gambling problem? Call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://mkuritz.github.io/sports-labs/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
+<footer class="mut sm">Sources: nflverse public schedules (final scores, closing spread and total, rest days, division games) and play-by-play (score by quarter, deficits); injuries via Bet Lab's public feed (ESPN injury report). Trends describe the past and are not predictions. Small samples swing a lot. Not betting advice. 21+ only; gambling problem? Call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://sportslabshq.com/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
 <script>
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const j=(u,d)=>fetch(u+(u.includes("?")?"&":"?")+"t="+Date.now()).then(r=>r.ok?r.json():d).catch(()=>d);
@@ -64,7 +64,7 @@ function draw(){if(!S.season)S.season=T.seasons[T.seasons.length-1];
  const se=$("se");if(se)se.onchange=()=>{S.season=se.value;draw()};const qq=$("qq");if(qq)qq.oninput=()=>{S.q=qq.value;const p=qq.selectionStart;draw();const n=$("qq");n.focus();n.setSelectionRange(p,p)}}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b){S.tab=b.dataset.tab;S.sort=null;history.replaceState(null,"","#tab="+S.tab);draw();return}
  const s=e.target.closest("[data-sp]");if(s){S.split=s.dataset.sp;draw();return}const h=e.target.closest("th[data-k]");if(h){if(S.sort==h.dataset.k)S.dir*=-1;else{S.sort=h.dataset.k;S.dir=h.dataset.k=="t"?1:-1}draw()}});
-(async()=>{[T,AN]=await Promise.all([j("data/trends.json",null),j("https://mkuritz.github.io/bet-lab/data/analyst_nfl.json",{})]);
+(async()=>{[T,AN]=await Promise.all([j("data/trends.json",null),j("https://betlab.sportslabshq.com/data/analyst_nfl.json",{})]);
  if(!T||!T.records){$("meta").textContent="Trends data is rebuilding; check back after the next refresh.";return}
  $("meta").innerHTML=`All 32 teams · seasons ${T.seasons.join(", ")} (pick one; current season is the default) · updated ${ago(T.updated)}, refreshed after every game day. Tap a column header to sort.`;draw()})();
 </script></body></html>
