@@ -14,7 +14,7 @@ table.t th{color:var(--mut);cursor:pointer;user-select:none;position:sticky;top:
 <header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Betting trends</span><nav><a href="./">NFL Hub</a><a href="https://betlab.sportslabshq.com/">Bet Lab</a><a href="https://betlab.sportslabshq.com/sharp.html">Sharp Picks</a><a href="https://sportslabshq.com/">Sports Labs</a></nav></header>
 <div class="card"><h2>📈 NFL Betting Trends</h2><div class="mut sm" id="meta">Loading…</div>
 <div class="tb" id="tabs"></div><div class="tb" id="ctl"></div><div id="out"></div></div>
-<footer class="mut sm">Sources: nflverse public schedules (final scores, closing spread and total, rest days, division games) and play-by-play (score by quarter, deficits); injuries via Bet Lab's public feed (ESPN injury report). Trends describe the past and are not predictions. Small samples swing a lot. Not betting advice. 21+ only; gambling problem? Call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://sportslabshq.com/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
+<footer class="mut sm">Betting trends from this season's results. Trends describe the past, not a guarantee.</a> Product · Property of Michael Kuritz</footer></div>
 <script>
 const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const j=(u,d)=>fetch(u+(u.includes("?")?"&":"?")+"t="+Date.now()).then(r=>r.ok?r.json():d).catch(()=>d);
@@ -57,7 +57,7 @@ function vWeek(){const U=T.upcoming||[];if(!U.length)return '<div class="mut">No
   const d=new Date(g.day+"T12:00:00");return `<div class="m"><b>${g.away} @ ${g.home}</b> <span class="mut sm">${d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})} ${g.time} ET</span>${g.div?'<span class="chip">Division</span>':""}
   <div class="mut sm">Line: ${fav||"—"} · Total ${g.total??"—"} · Rest ${g.away} ${g.away_rest}d / ${g.home} ${g.home_rest}d</div>
   ${[[g.away,ha],[g.home,hh]].map(([t,L])=>`<div style="margin-top:6px"><b>${t}</b><ul>${L.length?L.map(x=>`<li>${x}</li>`).join(""):'<li class="mut">No strong trend this season.</li>'}</ul>${injNote(t)}</div>`).join("")}</div>`}).join("")}</div>
- <div class="mut sm" style="margin-top:6px">Only notable trends shown (ATS or O/U 70%+ either way with 2+ games, or perfect straight-up records). Current season only.</div>`}
+ <div class="mut sm" style="margin-top:6px">Only the most notable trends this season.</div>`}
 function draw(){if(!S.season)S.season=T.seasons[T.seasons.length-1];
  $("tabs").innerHTML=TABS.map(([k,n])=>`<button data-tab="${k}" class="${S.tab==k?"on":""}">${n}</button>`).join("");
  $("ctl").innerHTML=S.tab=="week"?"":`<select id="se">${T.seasons.slice().reverse().map((s,i)=>`<option ${s==S.season?"selected":""}>${s}</option>`).join("")}</select><input id="qq" placeholder="Filter team (e.g. PHI)" value="${esc(S.q)}" autocapitalize="characters">`;
