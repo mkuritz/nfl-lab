@@ -1,6 +1,6 @@
 """Public-text source-name scrubber (standing rule: no data-source names on public pages).
 Rewrites display strings in public JSON; leaves URLs, ids, sportsbook/price-venue names, TV broadcasters and
-third-party news text (journalist attributions) alone. Usage: python3 srcscrub.py <file-or-dir> [...]  or  import scrub_obj."""
+third-party news text (journalist attributions) and required data credits (MoneyPuck.com: their terms require credit) alone. Usage: python3 srcscrub.py <file-or-dir> [...]  or  import scrub_obj."""
 import json, os, re, sys
 SKIP_KEYS = {"url", "src_url", "link", "href", "book", "best_book", "ref_book", "books_list", "bc", "broadcast", "t", "title_news", "headline", "desc", "description", "story", "news_text", "img", "logo", "id", "aid", "espn_id"}
 R = [
@@ -25,8 +25,6 @@ R = [
     (r"\(nflverse[^)]*\)", "(weekly player stats)"),
     (r"nflverse\s*", ""),
     (r"Graded from official final scores|Graded from ESPN final scores", "Graded from official final scores"),
-    (r"Data credit: MoneyPuck\.com\.?", ""),
-    (r"MoneyPuck", "expected-goals model"),
     (r"ESPN report", "injury report"),
     (r"ESPN pickcenter\s*", ""),
     (r"\bESPN(?!\s?BET|\s?Bet|\+|2|U\b| Deportes|\.com)\s*", ""),
@@ -34,7 +32,7 @@ R = [
 R = [(re.compile(a), b) for a, b in R]
 NEWSY = re.compile(r"\b(?:of|told|to|per) ESPN(?:\.com)?\b|ESPN(?:\.com)? reports")
 def s_(v):
-    if "ESPN" not in v and "nflverse" not in v and "Odds API" not in v and "Open-Meteo" not in v and "statsapi" not in v and "Stats API" not in v and "NHL API" not in v and "NHL stats feed" not in v and "MoneyPuck" not in v: return v
+    if "ESPN" not in v and "nflverse" not in v and "Odds API" not in v and "Open-Meteo" not in v and "statsapi" not in v and "Stats API" not in v and "NHL API" not in v and "NHL stats feed" not in v: return v
     if NEWSY.search(v) or v.startswith("http"): return v
     for a, b in R: v = a.sub(b, v)
     return re.sub(r"\s{2,}", " ", v).replace(" .", ".").replace("..", ".").replace("market data, )", "market data)")
