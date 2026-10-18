@@ -10,7 +10,7 @@ function tabs(){$("lgs").innerHTML=CFG.leagues.length>1?CFG.leagues.map(([k,n])=
 async function load(){tabs();D=await j(`data/${LG}.json`,{games:[],news:[],standings:[]});render()}
 function story(g){const h=g.home,a=g.away,out=[];const fav=g.line&&g.line!="EVEN"?g.line.split(" ")[0]:null;
  out.push(`${esc(a.name)} (${esc(a.record||"—")}) at ${esc(h.name)} (${esc(h.record||"—")}).`);
- if(g.line)out.push(`Market: ${esc(g.line)}${g.total?`, total ${g.total}`:""} (${esc(g.odds_src||"sportsbook")} via ESPN).`);
+ if(g.line)out.push(`Market: ${esc(g.line)}${g.total?`, total ${g.total}`:""} (${esc(g.odds_src||"sportsbook")}).`);
  const x=CFG.extra?CFG.extra(g,EX):[];return out.concat(x)}
 function render(){const G=(D.games||[]).slice().sort((x,y)=>x.date<y.date?-1:1);
  $("upd").innerHTML=`Data updated ${ago(D.updated)} (${et(D.updated)}) · ${esc(D.league||"")}${D.week?" · Week "+D.week:""} ${D.season||""}`;
