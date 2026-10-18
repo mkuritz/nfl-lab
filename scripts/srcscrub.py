@@ -1,0 +1,65 @@
+"""Public-text source-name scrubber (standing rule: no data-source names on public pages).
+Rewrites display strings in public JSON; leaves URLs, ids, sportsbook/price-venue names, TV broadcasters and
+third-party news text (journalist attributions) alone. Usage: python3 srcscrub.py <file-or-dir> [...]  or  import scrub_obj."""
+import json, os, re, sys
+SKIP_KEYS = {"url", "src_url", "link", "href", "book", "best_book", "ref_book", "books_list", "bc", "broadcast", "t", "title_news", "headline", "desc", "description", "story", "news_text", "img", "logo", "id", "aid", "espn_id"}
+R = [
+    (r"\s*\((?:via )?ESPN(?:'s)? (?:public|free)?\s*(?:odds )?feed\)", ""),
+    (r"\s*via ESPN(?:'s)?(?: public| free)?(?: odds)?(?: feed| scoreboard| pickcenter)?", ""),
+    (r"\s*\(ESPN\)", ""),
+    (r"Kickoff forecast \(Open-Meteo\)", "Kickoff forecast"),
+    (r"\s*\(Open-Meteo[^)]*\)", ""),
+    (r"Open-Meteo forecast", "Forecast"),
+    (r"Open-Meteo", "forecast"),
+    (r"ESPN (FPI|BPI)", r"power index"),
+    (r"(?:from )?ESPN(?:'s)? (injury report|injury reports|injuries|game logs?|match logs?|match data|box scores?|boxscores?|depth charts?|standings|schedule|rosters?|leaders|coach-season records|coach records?|scoreboard|summary|final scores)", lambda m: ("from " if m.group(0).lower().startswith("from") else "") + m.group(1)),
+    (r"ESPN NFL standings", "NFL standings"),
+    (r"\s*from ESPN\.?$", "."),
+    (r"ESPN fantasy public player list", "public fantasy ownership"),
+    (r"(?:The )?Odds API \(([^,)]+),\s*(as of [^)]*)\)", r"\1 (\2)"),
+    (r"(?:The )?Odds API \(([^)]*)\)(?: via Bet Lab market snapshots)?", r"\1"),
+    (r"(?:The )?Odds API (prices|books|lines|props?|prop pulls)", r"market \1"),
+    (r"(?:The )?Odds API,?\s*", "market data, "),
+    (r"MLB (?:Stats API|statsapi)", "official MLB data"),
+    (r"NHL (?:API|stats feed)", "official NHL data"),
+    (r"\(nflverse[^)]*\)", "(weekly player stats)"),
+    (r"nflverse\s*", ""),
+    (r"Graded from official final scores|Graded from ESPN final scores", "Graded from official final scores"),
+    (r"Data credit: MoneyPuck\.com\.?", ""),
+    (r"MoneyPuck", "expected-goals model"),
+    (r"ESPN report", "injury report"),
+    (r"ESPN pickcenter\s*", ""),
+    (r"\bESPN(?!\s?BET|\s?Bet|\+|2|U\b| Deportes|\.com)\s*", ""),
+]
+R = [(re.compile(a), b) for a, b in R]
+NEWSY = re.compile(r"\b(?:of|told|to|per) ESPN(?:\.com)?\b|ESPN(?:\.com)? reports")
+def s_(v):
+    if "ESPN" not in v and "nflverse" not in v and "Odds API" not in v and "Open-Meteo" not in v and "statsapi" not in v and "Stats API" not in v and "NHL API" not in v and "NHL stats feed" not in v and "MoneyPuck" not in v: return v
+    if NEWSY.search(v) or v.startswith("http"): return v
+    for a, b in R: v = a.sub(b, v)
+    return re.sub(r"\s{2,}", " ", v).replace(" .", ".").replace("..", ".").replace("market data, )", "market data)")
+def scrub_obj(d, k=None):
+    if isinstance(d, dict): return {kk: (vv if kk in SKIP_KEYS else scrub_obj(vv, kk)) for kk, vv in d.items()}
+    if isinstance(d, list): return [scrub_obj(x, k) for x in d]
+    if isinstance(d, str): return s_(d)
+    return d
+def scrub_file(p):
+    try:
+        if p.endswith(".jsonl"):
+            raw = [l for l in open(p) if l.strip()]; O = [json.loads(l) for l in raw]; N = [scrub_obj(x) for x in O]
+            if N != O: open(p, "w").write("\n".join(r.rstrip("\n") if o == n else json.dumps(n, separators=(",", ":")) for r, o, n in zip(raw, O, N)) + "\n")
+        else:
+            O = json.load(open(p)); N = scrub_obj(O)
+            if N != O: open(p, "w").write(json.dumps(N, separators=(",", ":"), ensure_ascii=False))
+    except Exception as e: print("srcscrub skip", p, e)
+def scrub_dir(a):
+    for root, _, fs in os.walk(a):
+        for f in fs:
+            if f.endswith((".json", ".jsonl")): scrub_file(os.path.join(root, f))
+if __name__ == "__main__":
+    for a in sys.argv[1:]:
+        if os.path.isdir(a):
+            for root, _, fs in os.walk(a):
+                for f in fs:
+                    if f.endswith((".json", ".jsonl")): scrub_file(os.path.join(root, f))
+        else: scrub_file(a)
