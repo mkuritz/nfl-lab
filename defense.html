@@ -6,7 +6,7 @@
 <div class="card"><h2>🛡️ Defense vs Position <span class="mut sm" id="meta"></span></h2>
 <div class="mut sm" style="margin-bottom:8px">League rank for what each defense allows per game to each position: <b style="color:#4ade80">1 = best</b>, <b style="color:#f87171">32 = worst</b>. Tap a rank for yards, catches and TDs per game. Tap a column to sort. Red outline = a top-3 weakness.</div>
 <div class="wrap"><table class="dv" id="t"></table></div></div>
-<footer>Source: nflverse public weekly player stats (regular season). Rank combines yards, receptions and TDs allowed (yds/10 + 6 per TD + 0.5 per catch). Not betting advice. 21+.</footer></div>
+<footer>Sports Labs model, regular-season player stats. Rank combines yards, receptions and TDs allowed (yds/10 + 6 per TD + 0.5 per catch). Not betting advice. 21+.</footer></div>
 <script>
 const P=["QB","RB","WR","TE"];let D=null,S={k:"WR",d:-1};
 const col=r=>{const x=(r-1)/31;return `hsl(${Math.round(130-130*x)} 60% ${22+6*Math.abs(x-.5)}%)`};

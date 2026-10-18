@@ -9,7 +9,7 @@
 <div class="card"><h2>📰 Headlines</h2><div id="news"></div></div></div>
 <div class="card" id="betting-trends" style="scroll-margin-top:70px"><h2>📈 Betting Trends <a href="trends.html" style="font-size:14px;margin-left:8px">Open the full trends page (SU, ATS, O/U, splits, this week's matchups) →</a></h2><div class="mut sm" id="trmeta"></div><div id="trends">Loading…</div></div>
 <div class="card"><h2>🏆 Standings</h2><div id="stand"></div></div>
-<footer>Sources: ESPN public scores, standings, news and DraftKings lines via ESPN; nflverse public play-by-play and box scores; injury reports via Bet Lab's public feeds. Estimates are labeled. Not betting advice. 21+ only; if you or someone you know has a gambling problem, call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://sportslabshq.com/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
+<footer>Sports Labs model and public game data. Estimates are labeled. Not betting advice. 21+ only; if you or someone you know has a gambling problem, call 1-800-GAMBLER.<br>NFL Hub · A <a href="https://sportslabshq.com/">Sports Labs</a> Product · Property of Michael Kuritz</footer></div>
 <script>
 if(location.hash=="#betting-trends")location.replace("trends.html");
 window.HUB={short:"NFL",recSport:["nfl"],leagues:[["nfl","NFL"]],
@@ -25,7 +25,7 @@ extra:(g,X)=>{const A=X.a||{},o=[],rk={};(A.tpi||[]).forEach(r=>rk[r.team]=r);co
 renderExtra:X=>{const A=X.a||{};$("exupd").textContent=A.updated?`Injuries & Power Index updated ${ago(A.updated)}.`:"";
  $("tpi").innerHTML=(A.tpi||[]).length?`<table><tr><th>#</th><th>Team</th><th>Rating</th><th>W-L</th><th>PF/g</th><th>PA/g</th></tr>${A.tpi.map(r=>`<tr><td>${r.rank}</td><td>${r.team}</td><td>${r.tpi}</td><td>${r.w}-${r.l}</td><td>${r.pf_g}</td><td>${r.pa_g}</td></tr>`).join("")}</table>`:'<div class="mut">Unavailable.</div>';
  const T=X.t;if(!T){$("trends").innerHTML='<div class="mut">Trends are building; check back after the next data refresh.</div>';return}
- $("trmeta").innerHTML=`From nflverse public play-by-play scoring. Seasons: ${T.seasons.join(", ")} (regular season + playoffs). Updated ${ago(T.updated)}. Choose a season:`;
+ $("trmeta").innerHTML=`From public play-by-play scoring. Seasons: ${T.seasons.join(", ")} (regular season + playoffs). Updated ${ago(T.updated)}. Choose a season:`;
  const ss=T.seasons.slice().reverse();let cur=ss[0];
  const draw=()=>{const rows=Object.entries(T.teams).map(([t,v])=>[t,v[cur]]).filter(x=>x[1]&&x[1].g);
   const qc=["1Q","2Q","3Q","4Q","1H","2H"];

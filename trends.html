@@ -34,7 +34,7 @@ function vRec(){const R=teams().map(t=>({t,x:((T.records[t]||{})[S.season]||{})[
  ["ou","Over-Under",r=>pct(r.x.ou[0],r.x.ou[1]),r=>`${rec(r.x.ou)} <span class="${col(pct(r.x.ou[0],r.x.ou[1]))}">${pc(pct(r.x.ou[0],r.x.ou[1]))} over</span>`],
  ["mov","Avg margin",r=>r.x.mov,r=>`<span class="${r.x.mov>0?"up":r.x.mov<0?"dn":""}">${r.x.mov>0?"+":""}${r.x.mov}</span>`]];
  return `<div class="tb">${Object.entries(SPN).map(([k,n])=>`<button data-sp="${k}" class="${S.split==k?"on":""}">${n}</button>`).join("")}</div>${R.length?table(R,C):'<div class="mut">No games in this split yet this season.</div>'}
- <div class="mut sm" style="margin-top:6px">ATS and O/U use the nflverse closing line. Record format W-L-push. Favorite/underdog excludes pick'em games. Rest advantage = more days since last game than the opponent.</div>`}
+ <div class="mut sm" style="margin-top:6px">ATS and O/U use the closing line. Record format W-L-push. Favorite/underdog excludes pick'em games. Rest advantage = more days since last game than the opponent.</div>`}
 function vCb(){const R=teams().map(t=>({t,x:(T.teams[t]||{})[S.season]})).filter(r=>r.x&&r.x.g);const lw=a=>a&&a[0]?a[1]/a[0]:null;
  const C=[["t","Team",r=>r.t,r=>`<b>${r.t}</b>`],["g","G",r=>r.x.g],["cb","Comeback W (any deficit)",r=>r.x.cb],["cb7","Down 7+",r=>r.x.cb7??null,r=>r.x.cb7??"—"],["cb10","Down 10+",r=>r.x.cb10??null,r=>r.x.cb10??"—"],["cb4","Trailed in 4Q, won",r=>r.x.cb4],["big","Biggest deficit overcome",r=>r.x.big,r=>r.x.big||"—"],["blown","Lost after leading by 7+",r=>r.x.blown]];
  return table(R,C)+`<div class="mut sm" style="margin-top:6px">From play-by-play scores; includes playoffs for past seasons.</div>`}
