@@ -31,9 +31,8 @@ function render(){const G=(D.games||[]).slice().sort((x,y)=>x.date<y.date?-1:1);
   let ch=false;(D.games||[]).forEach(g=>{const n=m[g.id];if(!n)return;if(n.state!=g.state||n.status!=g.status||n.home.score!=g.home.score||n.away.score!=g.away.score){Object.assign(g,{state:n.state,status:n.status});g.home.score=n.home.score;g.away.score=n.away.score;g.home.record=n.home.record||g.home.record;g.away.record=n.away.record||g.away.record;ch=true}});
   D.live=new Date().toISOString();return ch}
  function slim(j){return (j.events||[]).map(e=>{const c=e.competitions[0],t={};c.competitors.forEach(x=>t[x.homeAway]=x);const s=x=>({score:x.score,record:((x.records||[])[0]||{}).summary});return t.home?{id:e.id,state:c.status.type.state,status:c.status.type.shortDetail,home:s(t.home),away:s(t.away)}:null}).filter(Boolean)}
- async function news(){const n=await fresh("news");if(!n||!n.articles)return false;const seen=new Set((D.news||[]).map(x=>x.u||x.t));let add=0;
-  n.articles.forEach(a=>{const u=((a.links||{}).web||{}).href,k=u||a.headline;if(!k||seen.has(k))return;seen.add(k);(D.news=D.news||[]).push({t:a.headline,d:a.published,u,desc:a.description});add++});
-  if(add){D.news.sort((x,y)=>new Date(y.d)-new Date(x.d));D.news=D.news.slice(0,25)}return add>0}
+ async function news(){const n=await fetch("https://sl-scheduler.kuritzmike.workers.dev/nfl/news?_="+Math.floor(Date.now()/60000)).then(r=>r.ok?r.json():null).catch(()=>null);if(!n||!n.items||!n.items.length)return false;
+  const before=(D.news||[]).map(x=>x.u).join("|");D.news=n.items.slice(0,25);return D.news.map(x=>x.u).join("|")!=before}
  async function loop(){if(busy||document.hidden)return;busy=true;try{const now=Date.now();let ch=false;
   if(now-lastS>=(hot()?60e3:600e3)){lastS=now;ch=(await scores())||ch}
   if(now-lastN>=300e3){lastN=now;ch=(await news())||ch}
