@@ -11,9 +11,11 @@ on:
     - cron: "20 9 * * 1,2,5"     # ~5:20 AM ET after games: trends refresh
   workflow_dispatch:
 concurrency: { group: nfl-hub-data, cancel-in-progress: false }
-permissions: { contents: write }
+permissions: {}   # least privilege by default; write scope granted per job below
 jobs:
   pull:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
