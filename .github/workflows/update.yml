@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python scripts/fetch.py nfl
+        env:
+          SL_BACKUP_KEY: ${{ secrets.SL_BACKUP_KEY }}
       - name: Trends (after-game and daily runs only)
         if: github.event.schedule == '20 9 * * 1,2,5' || github.event.schedule == '15 11 * * *' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
