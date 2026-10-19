@@ -23,3 +23,21 @@ function render(){const G=(D.games||[]).slice().sort((x,y)=>x.date<y.date?-1:1);
  if(CFG.renderExtra)CFG.renderExtra(EX)}
 (async()=>{const [ex,tiers,txt]=await Promise.all([CFG.loadExtra?CFG.loadExtra():{},j(BL+"data/edge_tiers.json",{}),fetch(BL+"data/edge_log.jsonl?t="+Date.now()).then(r=>r.ok?r.text():"").catch(()=>"")]);EX=ex||{};
  const now=Date.now();REC=txt.split("\n").filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(p=>p&&(tiers[p.id]||{}).tier==="recommended"&&new Date(p.start||0)>now-24*3600e3);load()})();
+/* Live layer: scores re-checked every 60s while any game is live or about to start (else every 10 min); headlines every 5 min, de-duplicated, ET times. Public score/news feeds only; no pick is ever rewritten here. */
+(function(){const P="https://site.api.espn.com/apis/site/v2/sports/football/nfl/";let lastS=0,lastN=0,busy=false;
+ const fresh=u=>fetch(P+u+(u.includes("?")?"&":"?")+"_="+Math.floor(Date.now()/30000)).then(r=>r.ok?r.json():null).catch(()=>null);
+ const hot=()=>(D.games||[]).some(g=>g.state=="in"||(g.state=="pre"&&new Date(g.date)-Date.now()<30*60e3&&new Date(g.date)-Date.now()>-6*3600e3));
+ async function scores(){const b=await fresh("scoreboard");if(!b||!b.events)return;const m={};slim(b).forEach(g=>m[g.id]=g);
+  let ch=false;(D.games||[]).forEach(g=>{const n=m[g.id];if(!n)return;if(n.state!=g.state||n.status!=g.status||n.home.score!=g.home.score||n.away.score!=g.away.score){Object.assign(g,{state:n.state,status:n.status});g.home.score=n.home.score;g.away.score=n.away.score;g.home.record=n.home.record||g.home.record;g.away.record=n.away.record||g.away.record;ch=true}});
+  D.live=new Date().toISOString();return ch}
+ function slim(j){return (j.events||[]).map(e=>{const c=e.competitions[0],t={};c.competitors.forEach(x=>t[x.homeAway]=x);const s=x=>({score:x.score,record:((x.records||[])[0]||{}).summary});return t.home?{id:e.id,state:c.status.type.state,status:c.status.type.shortDetail,home:s(t.home),away:s(t.away)}:null}).filter(Boolean)}
+ async function news(){const n=await fresh("news?limit=30");if(!n||!n.articles)return false;const seen=new Set((D.news||[]).map(x=>x.u||x.t));let add=0;
+  n.articles.forEach(a=>{const u=((a.links||{}).web||{}).href,k=u||a.headline;if(!k||seen.has(k))return;seen.add(k);(D.news=D.news||[]).push({t:a.headline,d:a.published,u,desc:a.description});add++});
+  if(add){D.news.sort((x,y)=>new Date(y.d)-new Date(x.d));D.news=D.news.slice(0,25)}return add>0}
+ async function loop(){if(busy||document.hidden)return;busy=true;try{const now=Date.now();let ch=false;
+  if(now-lastS>=(hot()?60e3:600e3)){lastS=now;ch=(await scores())||ch}
+  if(now-lastN>=300e3){lastN=now;ch=(await news())||ch}
+  if(ch&&D.games)render();liveStamp()}finally{busy=false}}
+ function liveStamp(){const u=$("upd");if(!u||!D.live)return;let s=$("lvupd");if(!s){s=document.createElement("div");s.id="lvupd";s.className="mut sm";u.after(s)}
+  const L=(D.games||[]).filter(g=>g.state=="in").length;s.innerHTML=`${L?`<b style="color:#facc15">● ${L} game${L>1?"s":""} live</b> · `:""}Scores checked ${et(D.live)} · ${hot()?"live: every minute":"every 10 min until kickoff nears"} · headlines every 5 min`}
+ setTimeout(loop,4000);setInterval(loop,15e3);document.addEventListener("visibilitychange",()=>{if(!document.hidden){lastS=0;loop()}})})();

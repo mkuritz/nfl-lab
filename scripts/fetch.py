@@ -18,7 +18,7 @@ def slim_board(j):
             "odds_src":(o.get("provider") or {}).get("name"),"bc":[(b.get("names") or [None])[0] for b in c.get("broadcasts",[])][:2]})
     return out
 def slim_news(j):
-    return [{"t":a.get("headline"),"d":a.get("published"),"u":((a.get("links") or {}).get("web") or {}).get("href"),"desc":a.get("description")} for a in (j or {}).get("articles",[])][:15]
+    return [{"t":a.get("headline"),"d":a.get("published"),"u":((a.get("links") or {}).get("web") or {}).get("href"),"desc":a.get("description")} for a in (j or {}).get("articles",[])][:25]
 def slim_stand(j):
     rows=[]
     def walk(n,grp):
@@ -43,7 +43,7 @@ def main(sport):
                 dd=(datetime.date.today()+datetime.timedelta(days=i)).strftime("%Y%m%d")
                 x=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/scoreboard?dates={dd}") or {}
                 b["events"]+=x.get("events",[]); b.setdefault("leagues",x.get("leagues")); b.setdefault("season",x.get("season"))
-        n=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/news")
+        n=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/news?limit=30")
         s=get(f"https://site.api.espn.com/apis/v2/sports/{p}/standings")
         d={"updated":now,"games":slim_board(b),"news":slim_news(n),"standings":slim_stand(s),
            "season":((b or {}).get("season") or {}).get("year"),"week":((b or {}).get("week") or {}).get("number"),
