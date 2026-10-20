@@ -36,6 +36,33 @@ def s_(v):
     if NEWSY.search(v) or v.startswith("http"): return v
     for a, b in R: v = a.sub(b, v)
     return re.sub(r"\s{2,}", " ", v).replace(" .", ".").replace("..", ".").replace("market data, )", "market data)")
+
+# ---- sportsbook / exchange names -> fixed public letters (standing rule, Oct 19 2026). Real names stay only in private engine files.
+# Case-sensitive proper names only: lowercase API keys (e.g. "draftkings") are lookup ids the pages map to letters themselves.
+BOOK_L = [("DraftKings Sportsbook", "Book A"), ("DraftKings", "Book A"), ("FanDuel Sportsbook", "Book B"), ("FanDuel", "Book B"), ("BetMGM", "Book C"),
+          ("Caesars Sportsbook", "Book D"), ("William Hill", "Book D"), ("Caesars", "Book D"), ("Fanatics Sportsbook", "Book E"), ("Fanatics", "Book E"), ("BetRivers", "Book F"),
+          ("theScore Bet", "Book G"), ("theScore / ESPN Bet", "Book G"), ("ESPN BET", "Book G"), ("ESPN Bet", "Book G"), ("ESPNBet", "Book G"), ("bet365", "Book H"), ("Hard Rock Bet", "Book I"), ("Hard Rock", "Book I"),
+          ("PointsBet", "Book J"), ("Fliff", "Book K"), ("Bovada", "Book L"), ("BetOnline.ag", "Book M"), ("BetOnline", "Book M"), ("PrizePicks", "Book N"), ("Underdog Fantasy", "Book O"), ("Underdog", "Book O"),
+          ("Unibet", "Book Q"), ("WynnBET", "Book R"), ("Borgata", "Book S"), ("BetPARX", "Book V"), ("betPARX", "Book V"), ("MyBookie", "Book W"), ("LowVig", "Book X"), ("Bally Bet", "Book Y"),
+          ("Kalshi", "Exchange A"), ("Polymarket", "Exchange B"), ("Novig", "Exchange C"), ("ProphetX", "Exchange D"), ("Sporttrade", "Exchange E"), ("Betfair", "Exchange F"), ("BetOpenly", "Exchange H"),
+          ("Pinnacle", "sharp book")]
+_BRE = re.compile(r"(?<![A-Za-z])(" + "|".join(re.escape(a) for a, _ in BOOK_L) + r")(?:'s)?(?![A-Za-z])")
+_BMAP = dict(BOOK_L)
+_ABR = re.compile(r"\b(DK|FD|MGM|CZR)(?= [+-]?\d)|^(DK|FD|MGM|CZR|PIN)$")
+_AMAP = {"DK": "Book A", "FD": "Book B", "MGM": "Book C", "CZR": "Book D", "PIN": "sharp book"}
+BOOK_SKIP_KEYS = {"url", "src_url", "link", "href", "img", "logo", "id", "aid", "espn_id", "ticker", "event_ticker", "slug"}
+def books_s(v):
+    if not v or v.startswith(("http://", "https://")): return v
+    v = _BRE.sub(lambda m: _BMAP[m.group(1)], v)
+    return _ABR.sub(lambda m: _AMAP[m.group(1) or m.group(2)], v)
+def books_obj(d, k=None):
+    if isinstance(d, dict): return {(books_s(kk) if kk in _BMAP else kk): (vv if kk in BOOK_SKIP_KEYS else books_obj(vv, kk)) for kk, vv in d.items()}
+    if isinstance(d, list): return [books_obj(x, k) for x in d]
+    if isinstance(d, str): return books_s(d)
+    return d
+def _is_log(p):
+    b = os.path.basename(p).lower()
+    return b.endswith(".jsonl") or any(t in b for t in ("log", "ledger", "grades", "history", "tracker", "clv"))
 def scrub_obj(d, k=None):
     if isinstance(d, dict): return {kk: (vv if kk in SKIP_KEYS else scrub_obj(vv, kk)) for kk, vv in d.items()}
     if isinstance(d, list): return [scrub_obj(x, k) for x in d]
@@ -48,6 +75,7 @@ def scrub_file(p):
             if N != O: open(p, "w").write("\n".join(r.rstrip("\n") if o == n else json.dumps(n, separators=(",", ":")) for r, o, n in zip(raw, O, N)) + "\n")
         else:
             O = json.load(open(p)); N = scrub_obj(O)
+            if not _is_log(p): N = books_obj(N)   # logged picks/history are never rewritten
             if N != O: open(p, "w").write(json.dumps(N, separators=(",", ":"), ensure_ascii=False))
     except Exception as e: print("srcscrub skip", p, e)
 def scrub_dir(a):
