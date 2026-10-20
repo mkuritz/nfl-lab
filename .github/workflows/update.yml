@@ -27,6 +27,10 @@ jobs:
         if: github.event.schedule == '20 9 * * 1,2,5' || github.event.schedule == '15 11 * * *' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
         run: python scripts/trends.py
+      - name: Player profiles (stats, snaps, depth chart, injuries, news)
+        continue-on-error: true
+        timeout-minutes: 8
+        run: python scripts/profiles.py
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet || (git commit -m "NFL Hub data $(date -u +%FT%TZ)" && git pull --rebase && git push)

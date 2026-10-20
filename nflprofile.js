@@ -1,0 +1,71 @@
+/* NFL Hub player profiles: every player name opens a stats & trends profile (no betting numbers). Deep link #player=<id>. */
+(function(){"use strict";if(window.__nflp)return;window.__nflp=1;
+var IDX=null,BYN={},P=null;function E(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function N(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").replace(/\s+/g," ").trim()}
+function J(u){return fetch(u).then(function(r){if(!r.ok)throw 0;return r.json()})}
+function load(){if(P)return P;P=J("data/pindex.json?v="+Math.floor(Date.now()/6e5)).then(function(d){IDX=d.p;IDX.forEach(function(r){var n=N(r[1]);(BYN[n]=BYN[n]||[]).push(r)});sched()}).catch(function(){P=null});return P}
+var css=document.createElement("style");css.textContent=".nfp{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}.nfp:hover{color:#53e3a6}.nfp:focus-visible{outline:2px solid #53e3a6;outline-offset:2px}"+
+"#nfpo{position:fixed;inset:0;background:#000a;z-index:2147483000;display:flex;justify-content:flex-end}#nfpd{background:#0f1522;color:#e6e9ef;width:min(620px,100%);height:100%;overflow:auto;padding:18px 18px 40px;box-sizing:border-box;font:14px/1.45 system-ui,sans-serif}"+
+"#nfpd h2{margin:0;font-size:22px}#nfpd h3{margin:18px 0 6px;font-size:15px}#nfpd .m{color:#8b97b0}#nfpd .s{font-size:12px}#nfpd .x{float:right;background:none;border:0;color:#e6e9ef;font-size:28px;cursor:pointer;min-width:44px;min-height:44px}"+
+"#nfpd .hd{display:flex;gap:12px;align-items:center}#nfpd .hd img{width:96px;height:70px;object-fit:cover;border-radius:10px;background:#182033}#nfpd .kv{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px}#nfpd .kv div{background:#182033;border-radius:8px;padding:7px 8px;font-size:11px;color:#8b97b0}#nfpd .kv b{display:block;font-size:16px;color:#e6e9ef}"+
+"#nfpd .tw{overflow-x:auto}#nfpd table{border-collapse:collapse;width:100%;font-size:12.5px}#nfpd td,#nfpd th{padding:6px 5px;border-top:1px solid #2a2f3a;text-align:right;white-space:nowrap}#nfpd td:first-child,#nfpd th:first-child{text-align:left}#nfpd th{font-size:11px;color:#8b97b0;font-weight:600}"+
+"#nfpd .up{color:#53e3a6}#nfpd .dn{color:#ff5d6c}#nfpd .pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;background:#3a0f18;color:#ff8a98}#nfpd .card{background:#121a2a;border:1px solid #232b3b;border-radius:12px;padding:10px 12px;margin-top:10px}";
+document.head.appendChild(css);
+// ---- linker ----
+var SKIP="a,button,input,select,option,textarea,script,style,.nfp,nav,header,th,#nfpo,.sl-locked,[inert],label";
+var WRD=/^[\s#\d.]*?((?:[A-Za-zÀ-ÿ][\wÀ-ÿ.'’\-]*\.?)(?:\s+(?:[A-Za-zÀ-ÿ][\wÀ-ÿ.'’\-]*\.?)){1,4})/;
+function linkText(tn){var t=tn.nodeValue;if(!t||t.length<4)return;var m=WRD.exec(t);if(!m)return;var start=m.index+m[0].length-m[1].length,w=m[1].split(/\s+/);
+ for(var k=Math.min(w.length,5);k>=2;k--){var raw=w.slice(0,k).join(" "),c=BYN[N(raw)];if(!c)continue;var pi=t.indexOf(raw,start),af=t.charAt(pi+raw.length);if(pi<0||(af&&/[A-Za-z]/.test(af)))continue;
+  if(c.length>1){var tx=(tn.parentElement.closest("tr,li,div")||tn.parentElement).textContent;c=c.filter(function(r){return tx.indexOf(r[2])>=0});if(c.length!=1)return}
+  var sp=document.createElement("span");sp.className="nfp";sp.setAttribute("data-nfp",c[0][0]);sp.tabIndex=0;sp.setAttribute("role","link");sp.title="Open "+c[0][1]+" profile";sp.textContent=t.substr(pi,raw.length);var r=tn.splitText(pi);r.nodeValue=r.nodeValue.slice(raw.length);r.parentNode.insertBefore(sp,r);return}}
+function scan(){if(!IDX)return;document.querySelectorAll('a[href*="espn.com/nfl/player/"]:not(.nfp)').forEach(function(a){var m=/\/id\/(\d+)/.exec(a.href);if(m&&IDX.some(function(r){return r[0]==m[1]})){a.classList.add("nfp");a.setAttribute("data-nfp",m[1])}});
+ var tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentElement;return!p||!/\S/.test(n.nodeValue)||p.closest(SKIP)?2:1}}),L=[],n;while(n=tw.nextNode())L.push(n);L.forEach(linkText)}
+var T=null,mo=new MutationObserver(sched);function sched(){if(T)return;T=setTimeout(function(){T=null;mo.disconnect();try{scan()}catch(e){}mo.observe(document.body,{childList:true,subtree:true,characterData:true})},200)}
+function hit(e){var el=e.target.closest&&e.target.closest("[data-nfp]");if(!el||el.closest("[inert],.sl-locked"))return;if(e.type=="keydown"&&e.key!="Enter"&&e.key!=" ")return;e.preventDefault();e.stopPropagation();open(el.getAttribute("data-nfp"))}
+document.addEventListener("click",hit,true);document.addEventListener("keydown",hit,true);
+// ---- profile ----
+function f(v,d){return v==null||isNaN(v)?"–":(+v).toFixed(d==null?1:d)}
+function sum(L,k){return L.reduce(function(t,g){return t+(g[k]||0)},0)}
+function avg(L,k){return L.length?sum(L,k)/L.length:null}
+function arr(r,b,tol){if(r==null||b==null)return "";var d=r-b,t=tol!=null?tol:Math.max(.5,Math.abs(b)*.15);return d>t?' <span class="up" title="above season average">▲</span>':d<-t?' <span class="dn" title="below season average">▼</span>':' <span class="m">▬</span>'}
+function spark(a,col){if(a.length<2)return "";var w=120,h=28,mx=Math.max.apply(null,a.concat([1])),st=w/(a.length-1);return '<svg width="'+w+'" height="'+h+'" aria-hidden="true" style="vertical-align:middle"><polyline fill="none" stroke="'+(col||"#53e3a6")+'" stroke-width="2" points="'+a.map(function(v,i){return(i*st).toFixed(1)+","+(h-2-(v/mx)*(h-4)).toFixed(1)}).join(" ")+'"/></svg>'}
+var COLS={QB:[["Cmp%",function(g){return g.attempts?g.completions/g.attempts*100:null},1],["Pass yds","passing_yards",0],["TD","passing_tds",1],["INT","passing_interceptions",1],["EPA","passing_epa",1],["Rush yds","rushing_yards",0],["Snap %","snap",0]],
+ RB:[["Carries","carries",1],["Rush yds","rushing_yards",0],["Rush TD","rushing_tds",1],["Targets","targets",1],["Rec","receptions",1],["Rec yds","receiving_yards",0],["RZ touches","rz",1],["Snap %","snap",0]],
+ WR:[["Targets","targets",1],["Tgt share",function(g){return g.target_share!=null?g.target_share*100:null},0],["Rec","receptions",1],["Rec yds","receiving_yards",0],["Air yds","receiving_air_yards",0],["YAC","receiving_yards_after_catch",0],["Catch %",function(g){return g.targets?(g.receptions||0)/g.targets*100:null},0],["TD","receiving_tds",1],["Snap %","snap",0]],
+ K:[["FG","fg_made",1],["FGA","fg_att",1],["Long","fg_long",0],["XP","pat_made",1]],
+ DEF:[["Tackles",function(g){return(g.def_tackles_solo||0)+(g.def_tackle_assists||0)},1],["Solo","def_tackles_solo",1],["TFL","def_tackles_for_loss",1],["Sacks","def_sacks",1],["QB hits","def_qb_hits",1],["INT","def_interceptions",1],["PD","def_pass_defended",1],["Snap %","snap",0]]};
+COLS.TE=COLS.WR;
+function val(g,c){var v=typeof c[1]=="function"?c[1](g):g[c[1]];return v==null?(typeof c[1]=="function"?null:0):v}
+function mavg(L,c){var a=L.map(function(g){return val(g,c)}).filter(function(v){return v!=null});return a.length?a.reduce(function(t,v){return t+v},0)/a.length:null}
+function render(p){var G=p.grp,cols=COLS[G]||COLS.DEF,cur=p.log.filter(function(g){return g.s==p.season}),prev=p.log.filter(function(g){return g.s!=p.season}),base=cur.length>=3?cur:p.log,bl=cur.length>=3?"Season":"Last 2 seasons";
+ var inj=p.inj&&p.inj.status&&p.inj.status!="Active"?p.inj:null;
+ var h='<button class="x" aria-label="Close" id="nfpx">×</button><div class="hd"><img alt="" src="'+E(p.head)+'" onerror="this.style.visibility=\'hidden\'"><div><h2>'+E(p.name)+(p.num?' <span class="m" style="font-size:15px">#'+E(p.num)+'</span>':"")+'</h2><div class="m">'+E(p.team||"")+" · "+E(p.pos||"")+(p.age?" · "+p.age+" yrs":"")+(p.exp!=null&&p.exp!==""?" · "+(p.exp=="0"?"Rookie":"Year "+(+p.exp+1)):"")+'</div>'+
+  (p.depth?'<div class="s">Depth chart: <b>'+E(p.depth.pos)+(p.depth.rank==1?" starter":" #"+p.depth.rank)+'</b></div>':"")+
+  (inj?'<div style="margin-top:4px"><span class="pill">'+E(inj.status)+'</span></div>':'<div class="s m" style="margin-top:4px">No injury designation listed</div>')+'</div></div>';
+ if(p.inj&&p.inj.note)h+='<div class="card s"><b>'+(inj?"Injury / practice note":"Latest note")+'</b> <span class="m">'+(p.inj.date?new Date(p.inj.date).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"")+'</span><div style="margin-top:4px">'+E(p.inj.note)+'</div></div>';
+ if(!p.log.length)return h+'<div class="card m">Not enough data yet: no regular-season NFL games logged for '+E(p.name)+' this season or last.</div>';
+ var L5=p.log.slice(0,5);
+ h+='<h3>Last 5 vs '+bl.toLowerCase()+'</h3><p class="s m" style="margin:0 0 6px">Per-game averages. ▲/▼ = last 5 clearly above/below '+bl.toLowerCase()+'.</p><div class="tw"><table><thead><tr><th>Span</th><th>GP</th>'+cols.map(function(c){return"<th>"+c[0]+"</th>"}).join("")+'</tr></thead><tbody>'+
+  '<tr><td><b>Last 5</b></td><td>'+L5.length+'</td>'+cols.map(function(c){var a=mavg(L5,c),b=mavg(base,c);return"<td>"+f(a,c[2])+arr(a,b,c[0]=="Snap %"?5:null)+"</td>"}).join("")+'</tr>'+
+  '<tr><td><b>'+bl+'</b></td><td>'+base.length+'</td>'+cols.map(function(c){return"<td>"+f(mavg(base,c),c[2])+"</td>"}).join("")+'</tr>'+(prev.length&&cur.length>=3?'<tr><td>Last season</td><td>'+prev.length+'</td>'+cols.map(function(c){return"<td>"+f(mavg(prev,c),c[2])+"</td>"}).join("")+'</tr>':"")+'</tbody></table></div>';
+ var sn=p.log.slice(0,8).reverse(),key=G=="QB"?cols[1]:G=="DEF"?cols[0]:G=="K"?cols[0]:G=="RB"?cols[1]:cols[3];
+ h+='<div class="kv" style="margin-top:8px"><div>Snap % trend '+spark(sn.map(function(g){return g.snap||0}))+'</div><div>'+key[0]+' trend '+spark(sn.map(function(g){return val(g,key)||0}),"#a78bfa")+'</div>'+(G=="WR"||G=="TE"||G=="RB"?'<div>Targets trend '+spark(sn.map(function(g){return g.targets||0}),"#facc15")+'</div>':"")+'</div>';
+ if(G=="QB"||G=="RB"||G=="WR"||G=="TE"){var a5=avg(L5,"snap"),aS=avg(base,"snap"),t5=avg(L5,"targets"),tS=avg(base,"targets"),c5=avg(L5,"carries"),cS=avg(base,"carries");
+  h+='<h3>Usage</h3><div class="kv"><div>Snap % L5<b>'+f(a5,0)+arr(a5,aS,5)+'</b>'+bl+' '+f(aS,0)+'</div>'+(G!="QB"?'<div>Targets L5<b>'+f(t5,1)+arr(t5,tS)+'</b>'+bl+' '+f(tS,1)+'</div>':"")+(G=="RB"||G=="QB"?'<div>Carries L5<b>'+f(c5,1)+arr(c5,cS)+'</b>'+bl+' '+f(cS,1)+'</div>':"")+'<div>Red-zone touches<b>'+sum(cur,"rz")+'</b>this season</div>'+(G=="WR"||G=="TE"?'<div>Air-yards share L5<b>'+f(avg(L5,"air_yards_share")*100,0)+'%</b></div>':"")+'</div><p class="s m">Routes run aren\'t in our free data, so they\'re omitted rather than estimated.</p>'}
+ if(p.next){h+='<h3>This week</h3><div class="card">'+(p.next.home?"vs ":"@ ")+'<b>'+E(p.next.opp)+'</b> · '+new Date(p.next.date).toLocaleString("en-US",{timeZone:"America/New_York",weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})+' ET'+
+  (p.dvp?'<div class="s" style="margin-top:4px">'+E(p.next.opp)+' allows <b>'+f(p.dvp.yds,1)+'</b> yds'+(p.dvp.rec!=null?', <b>'+f(p.dvp.rec,1)+'</b> rec':"")+', <b>'+f(p.dvp.td,2)+'</b> TD per game to '+E(G)+'s · rank <b>'+p.dvp.r+' of '+p.dvp.n+'</b> (1 = toughest)'+(p.dvp.g?' over '+p.dvp.g+' games':'')+'</div>':"")+
+  (function(){var vs=p.log.filter(function(g){return g.o==p.next.opp});return vs.length?'<div class="s m" style="margin-top:4px">'+vs.length+' game'+(vs.length>1?"s":"")+' vs '+E(p.next.opp)+' in the last 2 seasons: '+vs.map(function(g){return E(key[0])+" "+f(val(g,key),key[2])}).join(", ")+'</div>':""})()+'</div>'}
+ else h+='<h3>This week</h3><div class="card m s">No game in the next 10 days (bye week or off the schedule).</div>';
+ h+='<h3>Weekly game log</h3><div class="tw"><table><thead><tr><th>Wk</th><th>Opp</th>'+cols.map(function(c){return"<th>"+c[0]+"</th>"}).join("")+'</tr></thead><tbody>'+p.log.slice(0,17).map(function(g){return'<tr><td>'+(g.s!=p.season?"'"+String(g.s).slice(2)+" ":"")+g.w+'</td><td>'+(g.home?"vs ":"@ ")+E(g.o)+'</td>'+cols.map(function(c){var v=val(g,c);return"<td>"+(v==null?"–":f(v,c[2]==1&&v%1==0?0:c[2]))+"</td>"}).join("")+'</tr>'}).join("")+'</tbody></table></div>';
+ var hm=p.log.filter(function(g){return g.home}),aw=p.log.filter(function(g){return!g.home});h+='<h3>Splits <span class="m s">(last 2 seasons)</span></h3><div class="tw"><table><thead><tr><th>Split</th><th>GP</th>'+cols.slice(0,5).map(function(c){return"<th>"+c[0]+"</th>"}).join("")+'</tr></thead><tbody>'+[["Home",hm],["Away",aw]].map(function(x){return'<tr><td>'+x[0]+'</td><td>'+x[1].length+'</td>'+cols.slice(0,5).map(function(c){return"<td>"+f(mavg(x[1],c),c[2])+"</td>"}).join("")+'</tr>'}).join("")+'</tbody></table></div>';
+ h+='<h3>Recent news</h3>'+(p.news&&p.news.length?p.news.map(function(a){return'<div class="card s"><b>'+E(a.h)+'</b><div class="m">'+E(a.d||"")+'</div></div>'}).join(""):'<div class="m s">No recent news mentioning '+E(p.name)+'.</div>');
+ return h}
+var OV=null,LAST=null;function close(){if(OV){OV.remove();OV=null}try{if(/#player=/.test(location.hash))history.replaceState(null,"",location.pathname+location.search)}catch(e){}if(LAST&&LAST.focus)LAST.focus()}
+function open(id){LAST=document.activeElement;if(OV)OV.remove();OV=document.createElement("div");OV.id="nfpo";OV.innerHTML='<div id="nfpd" role="dialog" aria-modal="true" aria-label="Player profile"><button class="x" aria-label="Close" id="nfpx">×</button><p class="m">Loading profile…</p></div>';document.body.appendChild(OV);
+ OV.onclick=function(e){if(e.target==OV)close()};var d=OV.firstChild;d.querySelector("#nfpx").onclick=close;d.querySelector("#nfpx").focus();
+ try{history.replaceState(null,"",location.pathname+location.search+"#player="+id)}catch(e){}
+ J("data/players/"+id+".json?v="+Math.floor(Date.now()/6e5)).then(function(p){d.innerHTML=render(p);d.querySelector("#nfpx").onclick=close;d.querySelector("#nfpx").focus()}).catch(function(){d.innerHTML='<button class="x" aria-label="Close" id="nfpx">×</button><p class="m">Not enough data yet: no NFL games logged for this player.</p>';d.querySelector("#nfpx").onclick=close})}
+document.addEventListener("keydown",function(e){if(e.key=="Escape"&&OV)close()});
+window.NFLProfile=open;load();mo.observe(document.body,{childList:true,subtree:true,characterData:true});
+var hm=/#player=(\d+)/.exec(location.hash);if(hm)open(hm[1]);
+})();

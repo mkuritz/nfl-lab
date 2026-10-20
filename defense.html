@@ -17,4 +17,4 @@ function draw(){const T=D.teams,ks=Object.keys(T).sort((a,b)=>S.k=="team"?a.loca
  document.querySelectorAll("#t th").forEach(th=>th.onclick=()=>{const k=th.dataset.k;S.d=S.k==k?-S.d:-1;S.k=k;draw()});
  document.querySelectorAll("#t .rk").forEach(e=>e.onclick=()=>e.parentElement.classList.toggle("op"))}
 fetch("https://betlab.sportslabshq.com/data/nfl_dvp.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;document.getElementById("meta").textContent=`· ${d.season} season · updated ${new Date(d.updated).toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"America/New_York"})}`;draw()}).catch(()=>{document.getElementById("t").innerHTML='<tr><td class="mut">Unavailable right now.</td></tr>'});
-</script><script src="navcfg.js"></script><script src="side.js"></script></body></html>
+</script><script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=1" defer></script></body></html>
