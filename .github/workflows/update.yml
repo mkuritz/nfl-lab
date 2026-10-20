@@ -31,6 +31,9 @@ jobs:
         continue-on-error: true
         timeout-minutes: 8
         run: python scripts/profiles.py
+      - name: Defense vs position pop-up data
+        continue-on-error: true
+        run: python scripts/dvpviz.py
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet || (git commit -m "NFL Hub data $(date -u +%FT%TZ)" && git pull --rebase && git push)

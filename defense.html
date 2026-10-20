@@ -1,20 +1,68 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0b1220">
 <title>Defense vs Position · NFL Hub · Sports Labs</title><link rel="stylesheet" href="style.css"><script src="https://sportslabshq.com/sl/sl.js" defer></script>
-<style>.dv{width:100%;border-collapse:collapse;font-size:14px}.dv th,.dv td{padding:7px 6px;text-align:center;border-bottom:1px solid #ffffff12}.dv th{cursor:pointer;user-select:none;color:#9aa4c7;font-size:12px;text-transform:uppercase;letter-spacing:.05em}.dv th.on{color:#fff}.dv td:first-child,.dv th:first-child{text-align:left}.rk{display:inline-block;min-width:34px;padding:3px 6px;border-radius:7px;font-weight:800;cursor:pointer}.dt{display:none;font-size:11px;color:#c9cfe6;font-weight:500;margin-top:3px;white-space:nowrap}td.op .dt{display:block}.wk{outline:2px solid #f87171}</style>
+<style>.dv{width:100%;border-collapse:collapse;font-size:14px}.dv th,.dv td{padding:7px 6px;text-align:center;border-bottom:1px solid #ffffff12}.dv th{cursor:pointer;user-select:none;color:#9aa4c7;font-size:12px;text-transform:uppercase;letter-spacing:.05em}.dv th.on{color:#fff}.dv td:first-child,.dv th:first-child{text-align:left}.rk{display:inline-block;min-width:34px;padding:3px 6px;border-radius:7px;font-weight:800;cursor:pointer}.dt{display:none;font-size:11px;color:#c9cfe6;font-weight:500;margin-top:3px;white-space:nowrap}td.op .dt{display:block}.wk{outline:2px solid #f87171}
+.tn{background:none;border:0;color:var(--acc);font:800 14px system-ui;cursor:pointer;padding:0;text-decoration:underline dotted #22d3ee88;text-underline-offset:3px}
+.tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}.tabs button,.seg button{background:var(--panel2);border:1px solid var(--line);color:var(--mut);border-radius:999px;padding:6px 13px;font-weight:700;cursor:pointer}.tabs button.on,.seg button.on{border-color:var(--acc);color:var(--acc)}.seg{display:flex;gap:5px;margin:0 0 10px}
+#ov{position:fixed;inset:0;background:#000a;display:none;z-index:50}#ov.on{display:block}
+#sh{position:fixed;left:0;right:0;bottom:0;max-height:88vh;overflow:auto;background:var(--panel);border-top:1px solid var(--line);border-radius:18px 18px 0 0;padding:14px 14px 24px;z-index:51;transform:translateY(105%);transition:transform .25s}#sh.on{transform:none}
+@media(min-width:900px){#sh{left:50%;top:50%;bottom:auto;right:auto;width:760px;max-height:86vh;border-radius:16px;border:1px solid var(--line);transform:translate(-50%,-46%) scale(.97);opacity:0;pointer-events:none;transition:.2s}#sh.on{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}}
+.grab{width:42px;height:4px;background:#ffffff30;border-radius:4px;margin:-4px auto 10px}.x{float:right;background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:999px;width:32px;height:32px;cursor:pointer;font-size:16px}
+.shh{display:flex;align-items:center;gap:10px}.shh img{width:44px;height:44px}.shh h2{margin:0}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}@media(min-width:900px){.pg{grid-template-columns:repeat(4,1fr)}}
+.pc{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:9px}.pc.weak{border-color:#f87171;box-shadow:0 0 0 1px #f8717155 inset}.pc .hd{display:flex;justify-content:space-between;align-items:center;font-weight:800}.big{font-size:22px;font-weight:900;padding:1px 8px;border-radius:8px}
+.br{margin-top:6px;font-size:11px}.br .l{display:flex;justify-content:space-between;color:var(--mut)}.bt{position:relative;height:7px;background:#ffffff10;border-radius:4px;margin-top:2px}.bf{position:absolute;left:0;top:0;bottom:0;border-radius:4px}.avg{position:absolute;top:-3px;bottom:-3px;width:2px;background:#e6ebf5}
+.tag{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;background:#f8717122;color:#fca5a5}
+.pl{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}.pl a{font-weight:700;text-decoration:none}.chip{font-size:11px;font-weight:800;padding:2px 7px;border-radius:7px}
+.hm{display:grid;grid-template-columns:52px repeat(4,1fr);gap:3px;font-size:12px}.hm div{padding:7px 2px;text-align:center;border-radius:5px;font-weight:800}.hm .h{color:var(--mut);background:none;cursor:pointer}.hm .h.on{color:#fff}.hm .t{text-align:left;background:none}
+</style>
 <script src="/sl-neutral.js" defer></script></head><body><div class="w">
 <header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Defense vs position</span></header>
 <div class="card"><h2>🛡️ Defense vs Position <span class="mut sm" id="meta"></span></h2>
-<div class="mut sm" style="margin-bottom:8px">League rank for what each defense allows per game to each position: <b style="color:#4ade80">1 = best</b>, <b style="color:#f87171">32 = worst</b>. Tap a rank for yards, catches and TDs per game. Tap a column to sort. Red outline = a top-3 weakness.</div>
-<div class="wrap"><table class="dv" id="t"></table></div></div>
+<div class="mut sm" style="margin-bottom:8px">League rank for what each defense allows per game to each position: <b style="color:#4ade80">1 = best</b>, <b style="color:#f87171">32 = worst</b>. Tap a rank for yards, catches and TDs per game. Tap a column to sort. Red outline = a top-3 weakness. Tap a team for its full breakdown.</div>
+<div class="tabs" id="tabs"><button data-v="table" class="on">Table</button><button data-v="heat">Heat map</button></div>
+<div id="v-table"><div class="wrap"><table class="dv" id="t"></table></div></div>
+<div id="v-heat" hidden><div class="mut sm" style="margin-bottom:8px">Yards allowed per game, colored green (stingy) to red (generous). Tap a position to sort, tap a team to open it.</div><div class="hm" id="hm"></div></div></div>
+<div id="ov"></div><div id="sh"></div>
 <footer>Sports Labs model, regular-season player stats. Rank combines yards, receptions and TDs allowed (yds/10 + 6 per TD + 0.5 per catch). Not betting advice. 21+.</footer></div>
 <script>
-const P=["QB","RB","WR","TE"];let D=null,S={k:"WR",d:-1};
+const P=["QB","RB","WR","TE"];let D=null,X={trend:{},players:[],next:{}},HP="WR",S={k:"WR",d:-1};
 const col=r=>{const x=(r-1)/31;return `hsl(${Math.round(130-130*x)} 60% ${22+6*Math.abs(x-.5)}%)`};
 const det=(p,v)=>p=="QB"?`${v.yds} yds · ${v.td} TD`:`${v.yds} yds · ${v.rec} rec${v.tgt!=null?` · ${v.tgt} tgt`:""} · ${v.td} TD`;
+const LG=t=>`https://a.espncdn.com/i/teamlogos/nfl/500/${t.toLowerCase()}.png`;
+const avg=(p,k)=>{const a=Object.values(D.teams).map(t=>t[p][k]).filter(v=>v!=null);return a.reduce((s,v)=>s+v,0)/a.length};
+const ord=n=>n+(["th","st","nd","rd"][(n%100>10&&n%100<14)?0:n%10]||"th");
+const tb=t=>`<button class="tn" data-t="${t}">${t}</button>`;
+function bind(){document.querySelectorAll(".tn,[data-open]").forEach(b=>b.onclick=()=>openT(b.dataset.t||b.dataset.open))}
+const oppOf=t=>{const n=X.next[t];return n?n.opp:null};
+function spark(t,p){const w=(X.trend[t]||{})[p]||[];if(w.length<2)return "";const W=150,H=34,mx=Math.max(...w.map(x=>x[1]),avg(p,"yds"))*1.1,a=avg(p,"yds");
+ const xs=i=>6+i*(W-12)/(w.length-1),ys=v=>H-3-(H-6)*v/mx;
+ return `<svg viewBox="0 0 ${W} ${H+12}" width="100%" height="46"><line x1="0" x2="${W}" y1="${ys(a)}" y2="${ys(a)}" stroke="#ffffff40" stroke-dasharray="3 3"/><polyline fill="none" stroke="#22d3ee" stroke-width="2" points="${w.map((x,i)=>xs(i)+","+ys(x[1])).join(" ")}"/>${w.map((x,i)=>`<circle cx="${xs(i)}" cy="${ys(x[1])}" r="2.4" fill="${x[1]>a?"#f87171":"#4ade80"}"><title>Wk ${x[0]}: ${x[1]} yds</title></circle><text x="${xs(i)}" y="${H+10}" font-size="8" fill="#8b97b0" text-anchor="middle">W${x[0]}</text>`).join("")}</svg>`}
+function bar(lbl,v,a,mx,bad){if(v==null)return "";const pct=Math.min(100,100*v/mx),ap=Math.min(100,100*a/mx);
+ return `<div class="br"><div class="l"><span>${lbl}</span><span><b style="color:${v>a?"#fca5a5":"#86efac"}">${v}</b> / avg ${a.toFixed(1)}</span></div><div class="bt"><div class="bf" style="width:${pct}%;background:${v>a?"#f87171":"#4ade80"}"></div><div class="avg" style="left:${ap}%"></div></div></div>`}
+function openT(t){const T=D.teams[t];const mx=k=>p=>Math.max(...Object.values(D.teams).map(x=>x[p][k]||0));
+ const worst=[...P].sort((a,b)=>T[b].r-T[a].r);const o=oppOf(t),on=o&&X.next[t];
+ const ben=o?X.players.filter(x=>x.t==o&&x.opp==t&&x.ypg>=10&&!/Out|Injured|Reserve|Suspend/i.test(x.inj||"")).sort((a,b)=>T[b.g].r-T[a.g].r||b.ypg-a.ypg).slice(0,8):[];
+ document.getElementById("sh").innerHTML=`<div class="grab"></div><button class="x" onclick="closeT()">✕</button>
+ <div class="shh"><img src="${LG(t)}" alt=""><div><h2>${t} defense</h2><div class="mut sm">${T.g} games · ${D.season} per-game allowed · rank 1 = best</div></div></div>
+ <div class="sm" style="margin-top:10px">Most vulnerable to: ${worst.slice(0,2).map(p=>`<span class="tag">${p} · ${ord(T[p].r)}</span>`).join(" ")} &nbsp;Toughest vs: <span class="chip" style="background:#4ade8022;color:#86efac">${worst[3]} · ${ord(T[worst[3]].r)}</span></div>
+ <div class="pg">${P.map(p=>{const v=T[p];return `<div class="pc${v.r>=30?" weak":""}"><div class="hd"><span>vs ${p}${v.r>=30?' <span class="tag">TOP-3 WEAK</span>':""}</span><span class="big" style="background:${col(v.r)}">${v.r}</span></div>
+  ${bar("Yds/g",v.yds,avg(p,"yds"),mx("yds")(p))}${p!="QB"?bar("Rec/g",v.rec,avg(p,"rec"),mx("rec")(p)):""}${bar("TD/g",v.td,avg(p,"td"),mx("td")(p))}
+  <div class="mut" style="font-size:10px;margin-top:6px">Yards allowed by week (dashed = league avg)</div>${spark(t,p)}</div>`}).join("")}</div>
+ <h3>This week ${o?`· ${on.home?"vs":"@"} ${o} · ${new Date(on.date).toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit",timeZone:"America/New_York"})} ET`:""}</h3>
+ ${o?(ben.length?`<div class="mut sm">${o} skill players, sorted by how soft ${t} is at their position:</div>`+ben.map(x=>{const r=T[x.g].r;return `<div class="pl"><span><a href="./#player=${x.id}" data-nfp="${x.id}">${x.n}</a> <span class="mut sm">${x.g} · ${x.ypg} yds/g${x.inj&&x.inj!="Active"?` · <span style="color:#fca5a5">${x.inj}</span>`:""}</span></span><span class="chip" style="background:${col(r)}">${t} vs ${x.g}: ${r}</span></div>`}).join(""):'<div class="mut sm">No skill players listed.</div>'):'<div class="mut sm">Bye week.</div>'}
+ <div class="mut" style="font-size:10px;margin-top:10px">Weekly trend uses yards from player game logs (QB passing, RB rush+rec, WR/TE receiving).</div>`;
+ document.getElementById("sh").classList.add("on");document.getElementById("ov").classList.add("on")}
+function closeT(){document.getElementById("sh").classList.remove("on");document.getElementById("ov").classList.remove("on")}
+document.getElementById("ov").onclick=closeT;
+function heat(){const T=D.teams,ks=Object.keys(T).sort((a,b)=>T[b][HP].yds-T[a][HP].yds);const rng=p=>{const a=ks.map(t=>T[t][p].yds);return [Math.min(...a),Math.max(...a)]};
+ const c=(p,v)=>{const [lo,hi]=rng(p),x=(v-lo)/(hi-lo);return `hsl(${Math.round(130-130*x)} 62% ${24+8*Math.abs(x-.5)}%)`};
+ document.getElementById("hm").innerHTML=`<div class="h t">DEF</div>${P.map(p=>`<div class="h${p==HP?" on":""}" data-p="${p}">${p}${p==HP?" ▼":""}</div>`).join("")}`+ks.map(t=>`<div class="t" data-open="${t}" style="cursor:pointer"><img src="${LG(t)}" width="16" style="vertical-align:-3px"> ${t}</div>${P.map(p=>`<div data-open="${t}" style="cursor:pointer;background:${c(p,T[t][p].yds)}">${Math.round(T[t][p].yds)}</div>`).join("")}`).join("");
+ document.querySelectorAll("#hm .h[data-p]").forEach(h=>h.onclick=()=>{HP=h.dataset.p;heat()});bind()}
+document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x==b));["table","heat"].forEach(v=>document.getElementById("v-"+v).hidden=v!=b.dataset.v)});
 function draw(){const T=D.teams,ks=Object.keys(T).sort((a,b)=>S.k=="team"?a.localeCompare(b)*-S.d:(T[a][S.k].r-T[b][S.k].r)*S.d||a.localeCompare(b));
  document.getElementById("t").innerHTML=`<tr><th data-k="team" class="${S.k=="team"?"on":""}">Defense</th>${P.map(p=>`<th data-k="${p}" class="${S.k==p?"on":""}">vs ${p}${S.k==p?(S.d<0?" ▼":" ▲"):""}</th>`).join("")}</tr>`+
- ks.map(t=>`<tr><td><b>${t}</b> <span class="mut sm">${T[t].g}g</span></td>${P.map(p=>{const v=T[t][p];return `<td title="${det(p,v)} per game"><span class="rk${v.r>=30?" wk":""}" style="background:${col(v.r)}">${v.r}</span><div class="dt">${det(p,v)}</div></td>`}).join("")}</tr>`).join("");
+ ks.map(t=>`<tr><td>${tb(t)} <span class="mut sm">${T[t].g}g</span></td>${P.map(p=>{const v=T[t][p];return `<td title="${det(p,v)} per game"><span class="rk${v.r>=30?" wk":""}" style="background:${col(v.r)}">${v.r}</span><div class="dt">${det(p,v)}</div></td>`}).join("")}</tr>`).join("");
  document.querySelectorAll("#t th").forEach(th=>th.onclick=()=>{const k=th.dataset.k;S.d=S.k==k?-S.d:-1;S.k=k;draw()});
- document.querySelectorAll("#t .rk").forEach(e=>e.onclick=()=>e.parentElement.classList.toggle("op"))}
-fetch("https://betlab.sportslabshq.com/data/nfl_dvp.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;document.getElementById("meta").textContent=`· ${d.season} season · updated ${new Date(d.updated).toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"America/New_York"})}`;draw()}).catch(()=>{document.getElementById("t").innerHTML='<tr><td class="mut">Unavailable right now.</td></tr>'});
+ document.querySelectorAll("#t .rk").forEach(e=>e.onclick=()=>e.parentElement.classList.toggle("op"));bind()}
+fetch("https://betlab.sportslabshq.com/data/nfl_dvp.json?v="+Date.now()).then(r=>r.json()).then(d=>{D=d;document.getElementById("meta").textContent=`· ${d.season} season · updated ${new Date(d.updated).toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"America/New_York"})}`;draw();heat();fetch("data/dvp_viz.json?v="+Date.now()).then(r=>r.json()).then(x=>{X=x}).catch(()=>{})}).catch(()=>{document.getElementById("t").innerHTML='<tr><td class="mut">Unavailable right now.</td></tr>'});
 </script><script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=2" defer></script></body></html>
