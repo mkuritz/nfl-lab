@@ -34,6 +34,10 @@ jobs:
       - name: Defense vs position pop-up data
         continue-on-error: true
         run: python scripts/dvpviz.py
+      - name: NFL Hub v2 (props board, power, season sim, TD v2 - TD never Highlighted)
+        continue-on-error: true
+        timeout-minutes: 10
+        run: pip install -q pandas pyarrow numpy && bash scripts/v2/run.sh
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet || (git commit -m "NFL Hub data $(date -u +%FT%TZ)" && git pull --rebase && git push)
