@@ -18,7 +18,7 @@ for r in d['rows']:
   q=Q2.get((nm(r['name']),r['market'],'' if atd else fl(r['line']))) or (Q2.get((nm(r['name']),r['market'],fl(0.5))) if atd else None)
   if not atd: r.update(fair=None,nb=None,best=None,bbook=None,edge=None,fsrc=None)
   if not q or (q.get('start') or '')[:10]!=(r.get('time') or '')[:10]: 
-    if not atd: r['hl']=bool(r['prob'] and r['prob']>=.6 and r['hit'][1]>=5 and r['hit'][0]/r['hit'][1]>=.6)
+    if not atd: r['hl']=False   # no market price yet -> never Highlighted (accuracy first)
     continue
   n+=1
   if q.get('best') is not None: r['best']=q['best']; r['bbook']=q.get('book')
@@ -27,6 +27,6 @@ for r in d['rows']:
   if r['fair'] is not None and not atd and r['hit'][1]>=5:
     r['prob']=round((r['hit'][0]+20*r['fair'])/(r['hit'][1]+20),4); r['src']='hit rate shrunk to market (K=20)'
   if r['fair'] is not None and r['prob'] is not None: r['edge']=round(r['prob']-r['fair'],3); nb+=1
-  if not atd: r['hl']=bool(r['edge'] is not None and r['edge']>=.03) or bool(r['prob'] and r['prob']>=.6 and r['hit'][1]>=5 and r['hit'][0]/r['hit'][1]>=.6)
+  if not atd: r['hl']=bool(r['edge'] is not None and (r['edge']>=.03 or (r['prob']>=.6 and r['hit'][1]>=5 and r['hit'][0]/r['hit'][1]>=.6 and r['edge']>=0)))
 d['odds_t']=P.get('as_of'); json.dump(d,open('data/v2.json','w'))
 print('rows',len(d['rows']),'priced',n,'with edge',nb)
