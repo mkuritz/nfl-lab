@@ -205,7 +205,7 @@
    ]
   }
  },
- "updated_et": "2026-10-23 11:57 AM ET",
+ "updated_et": "2026-10-23 12:00 PM ET",
  "players": {
   "3929630": {
    "name": "Saquon Barkley",
@@ -420,14 +420,14 @@
    "pos": "WR",
    "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
    "type": "injury",
-   "note": "Hamstring; a report says the Rams will be without him. His targets go to other LAR pass catchers.",
+   "note": "Hamstring; out for the season. His targets go to other LAR pass catchers.",
    "markets": [
     "rec yds",
     "receptions"
    ],
    "dir": "down",
    "conf": "Confirmed",
-   "conf_note": "official designation not reviewed",
+   "conf_note": "out for the season",
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
