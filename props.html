@@ -25,4 +25,4 @@ NFLV2.data(function(D){var E=NFLV2.E,mks=["Anytime TD","Receiving Yards","Recept
   out.querySelectorAll("th.s").forEach(function(t){t.onclick=function(){S.dir=S.sort==t.dataset.k?-S.dir:-1;S.sort=t.dataset.k;draw()}})}
  document.addEventListener("click",function(e){var c=e.target.closest("[data-aid]");if(c)NFLV2.open(c.dataset.aid,null,c.dataset.mk);var p=e.target.closest("[data-p]");if(p){S.pos=p.dataset.p;draw()}var v=e.target.closest("#vt button");if(v){S.v=v.dataset.v;draw()}var l=e.target.closest("[data-l]");if(l){S.lay=l.dataset.l;draw()}});
  fb.onclick=function(){filt.classList.toggle("on")};[mk,src,fmin,fg,fgm].forEach(function(s){s.onchange=function(){S.mk=mk.value;S.src=src.value;draw()}});draw()});
-</script><script src="propintel.js?v=1" defer></script></body></html>
+</script><script src="propintel.js?v=2" defer></script></body></html>

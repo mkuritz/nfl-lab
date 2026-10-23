@@ -68,4 +68,4 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(
 (async()=>{[T,AN]=await Promise.all([j("data/trends.json",null),j("https://betlab.sportslabshq.com/data/analyst_nfl.json",{})]);
  if(!T||!T.records){$("meta").textContent="Trends data is rebuilding; check back after the next refresh.";return}
  $("meta").innerHTML=`All 32 teams · seasons ${T.seasons.join(", ")} (pick one; current season is the default) · updated ${ago(T.updated)}, refreshed after every game day. Tap a column header to sort.`;draw()})();
-</script><script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=1" defer></script></body></html>
+</script><script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=2" defer></script></body></html>

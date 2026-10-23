@@ -1,6 +1,211 @@
 {
  "week": "2026 Week 7",
- "updated_et": "2026-10-23 11:46 AM ET",
+ "games": {
+  "DAL@PHI": {
+   "away": "DAL",
+   "home": "PHI",
+   "kick": "Mon Oct 26 8:15 PM ET",
+   "spread": {
+    "fav": "DAL",
+    "line": [
+     -4.0,
+     -4.5
+    ]
+   },
+   "total": 44.5,
+   "moves": [],
+   "players": [
+    "3929630",
+    "4360238",
+    "4241478",
+    "3121023",
+    "4428850",
+    "4241372",
+    "4685201",
+    "2577417"
+   ]
+  },
+  "CIN@BAL": {
+   "away": "CIN",
+   "home": "BAL",
+   "kick": "Sun Oct 25 1:00 PM ET",
+   "spread": {
+    "fav": "BAL",
+    "line": [
+     -1.5
+    ]
+   },
+   "total": 48.5,
+   "moves": [
+    {
+     "mkt": "spread",
+     "from": {
+      "fav": "BAL",
+      "line": -3.5
+     },
+     "to": {
+      "fav": "BAL",
+      "line": -1.5
+     }
+    },
+    {
+     "mkt": "total",
+     "from": 51.0,
+     "to": 48.5
+    }
+   ],
+   "players": [
+    "3916387"
+   ]
+  },
+  "LAR@LV": {
+   "away": "LAR",
+   "home": "LV",
+   "kick": "Sun Oct 25 4:25 PM ET",
+   "spread": {
+    "fav": "LAR",
+    "line": [
+     -3.5
+    ]
+   },
+   "total": 48.5,
+   "moves": [
+    {
+     "mkt": "spread",
+     "from": {
+      "fav": "LAR",
+      "line": -8.0
+     },
+     "to": {
+      "fav": "LAR",
+      "line": -3.5
+     }
+    }
+   ],
+   "players": [
+    "4426515",
+    "16800"
+   ]
+  },
+  "SF@ATL": {
+   "away": "SF",
+   "home": "ATL",
+   "kick": "Sun Oct 25 1:00 PM ET",
+   "spread": {
+    "fav": "SF",
+    "line": [
+     -2.5
+    ]
+   },
+   "total": 50.0,
+   "moves": [],
+   "players": [
+    "16737"
+   ]
+  },
+  "MIA@NYJ": {
+   "away": "MIA",
+   "home": "NYJ",
+   "kick": "Sun Oct 25 1:00 PM ET",
+   "spread": {
+    "fav": "NYJ",
+    "line": [
+     -4.5
+    ]
+   },
+   "total": 39.5,
+   "moves": [],
+   "players": [
+    "4427366"
+   ]
+  },
+  "DEN@ARI": {
+   "away": "DEN",
+   "home": "ARI",
+   "kick": "Sun Oct 25 4:05 PM ET",
+   "spread": {
+    "fav": "DEN",
+    "line": [
+     -4.5
+    ]
+   },
+   "total": 43.5,
+   "moves": [],
+   "players": [
+    "4870808"
+   ]
+  },
+  "TB@CAR": {
+   "away": "TB",
+   "home": "CAR",
+   "kick": "Sun Oct 25 1:00 PM ET",
+   "spread": {
+    "fav": "CAR",
+    "line": [
+     -3.0
+    ]
+   },
+   "total": 44.5,
+   "moves": [
+    {
+     "mkt": "spread",
+     "from": {
+      "fav": "TB",
+      "line": -1.0
+     },
+     "to": {
+      "fav": "CAR",
+      "line": -3.0
+     }
+    }
+   ],
+   "players": [
+    "3052587",
+    "4567750"
+   ]
+  },
+  "NYG@HOU": {
+   "away": "NYG",
+   "home": "HOU",
+   "kick": "Sun Oct 25 1:00 PM ET",
+   "spread": {
+    "fav": "HOU",
+    "line": [
+     -10.5
+    ]
+   },
+   "total": 42.5,
+   "moves": [],
+   "players": [
+    "4035538",
+    "4366031"
+   ]
+  },
+  "PIT@NO": {
+   "away": "PIT",
+   "home": "NO",
+   "kick": "Sun Oct 25 9:30 AM ET",
+   "spread": {
+    "fav": "PIT",
+    "line": [
+     -3.0
+    ]
+   },
+   "total": 44.5,
+   "moves": [
+    {
+     "mkt": "total",
+     "from": 40.5,
+     "to": 44.5
+    }
+   ],
+   "players": [
+    "3054850",
+    "4038815"
+   ]
+  }
+ },
+ "updated_et": "2026-10-23 11:57 AM ET",
  "players": {
   "3929630": {
    "name": "Saquon Barkley",
@@ -21,7 +226,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "DAL@PHI"
   },
   "4360238": {
    "name": "Dameon Pierce",
@@ -40,7 +246,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Active"
+   "listed": "Active",
+   "gk": "DAL@PHI"
   },
   "4241478": {
    "name": "DeVonta Smith",
@@ -60,7 +267,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "DAL@PHI"
   },
   "3121023": {
    "name": "Dallas Goedert",
@@ -80,7 +288,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 22, 2026 9:06 PM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "DAL@PHI"
   },
   "4428850": {
    "name": "Dontayvion Wicks",
@@ -99,7 +308,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "DAL@PHI"
   },
   "4241372": {
    "name": "Marquise Brown",
@@ -118,7 +328,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Active"
+   "listed": "Active",
+   "gk": "DAL@PHI"
   },
   "4685201": {
    "name": "Tanner McKee",
@@ -138,7 +349,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Active"
+   "listed": "Active",
+   "gk": "DAL@PHI"
   },
   "2577417": {
    "name": "Dak Prescott",
@@ -157,7 +369,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Active"
+   "listed": "Active",
+   "gk": "DAL@PHI"
   },
   "3916387": {
    "name": "Lamar Jackson",
@@ -177,7 +390,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "CIN@BAL"
   },
   "4426515": {
    "name": "Puka Nacua",
@@ -197,7 +411,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "LAR@LV"
   },
   "16800": {
    "name": "Davante Adams",
@@ -216,7 +431,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Injured Reserve"
+   "listed": "Injured Reserve",
+   "gk": "LAR@LV"
   },
   "16737": {
    "name": "Mike Evans",
@@ -236,7 +452,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "SF@ATL"
   },
   "4427366": {
    "name": "Breece Hall",
@@ -256,7 +473,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "MIA@NYJ"
   },
   "4870808": {
    "name": "Jeremiyah Love",
@@ -275,7 +493,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "DEN@ARI"
   },
   "3052587": {
    "name": "Baker Mayfield",
@@ -295,7 +514,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "TB@CAR"
   },
   "4567750": {
    "name": "Emeka Egbuka",
@@ -314,7 +534,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "TB@CAR"
   },
   "4035538": {
    "name": "David Montgomery",
@@ -334,7 +555,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Doubtful"
+   "listed": "Doubtful",
+   "gk": "NYG@HOU"
   },
   "4366031": {
    "name": "Tank Dell",
@@ -353,7 +575,8 @@
    "unconfirmed": true,
    "src": "Report",
    "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Injured Reserve"
+   "listed": "Injured Reserve",
+   "gk": "NYG@HOU"
   },
   "3054850": {
    "name": "Alvin Kamara",
@@ -372,7 +595,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026",
-   "listed": "Active"
+   "listed": "Active",
+   "gk": "PIT@NO"
   },
   "4038815": {
    "name": "Rico Dowdle",
@@ -392,7 +616,8 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 23, 2026",
-   "listed": "Questionable"
+   "listed": "Questionable",
+   "gk": "PIT@NO"
   },
   "4258595": {
    "name": "Cole Kmet",
