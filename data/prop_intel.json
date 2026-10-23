@@ -1,0 +1,417 @@
+{
+ "week": "2026 Week 7",
+ "updated_et": "2026-10-23 11:46 AM ET",
+ "players": {
+  "3929630": {
+   "name": "Saquon Barkley",
+   "team": "PHI",
+   "pos": "RB",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "injury return",
+   "note": "Hamstring; limited Thursday after missing 2 games, a report says he's in line to play. Only Barkley and Dameon Pierce are active RBs. Eagles run game ranks 28th; DAL defense 31st in EPA/play. Possible snap limit in first game back is not reported.",
+   "markets": [
+    "rush yds",
+    "rush att",
+    "anytime TD",
+    "rec yds"
+   ],
+   "dir": "up",
+   "conf": "Unconfirmed",
+   "conf_note": "practice status confirmed; game status pending Sat report",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026",
+   "listed": "Questionable"
+  },
+  "4360238": {
+   "name": "Dameon Pierce",
+   "team": "PHI",
+   "pos": "RB",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "role change",
+   "note": "Backup to Barkley; carries shrink if Barkley plays a full workload.",
+   "markets": [
+    "rush yds",
+    "rush att"
+   ],
+   "dir": "down",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 22, 2026",
+   "listed": "Active"
+  },
+  "4241478": {
+   "name": "DeVonta Smith",
+   "team": "PHI",
+   "pos": "WR",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "injury",
+   "note": "Hamstring; DNP Thursday. A report suspects a maintenance day and expects him to play; was held out of some drives in Week 6.",
+   "markets": [
+    "rec yds",
+    "receptions",
+    "longest reception"
+   ],
+   "dir": "uncertain",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 22, 2026",
+   "listed": "Questionable"
+  },
+  "3121023": {
+   "name": "Dallas Goedert",
+   "team": "PHI",
+   "pos": "TE",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "injury",
+   "note": "Knee; DNP Thursday. 6-61 on 8 targets in Week 6.",
+   "markets": [
+    "rec yds",
+    "receptions",
+    "anytime TD"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "DNP Thursday",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 22, 2026 9:06 PM ET",
+   "listed": "Questionable"
+  },
+  "4428850": {
+   "name": "Dontayvion Wicks",
+   "team": "PHI",
+   "pos": "WR",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "injury",
+   "note": "Ankle; DNP Thursday.",
+   "markets": [
+    "rec yds",
+    "receptions"
+   ],
+   "dir": "down",
+   "conf": "Confirmed",
+   "conf_note": "DNP Thursday",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 22, 2026",
+   "listed": "Questionable"
+  },
+  "4241372": {
+   "name": "Marquise Brown",
+   "team": "PHI",
+   "pos": "WR",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "role change",
+   "note": "Full practice (ankle). If Smith, Wicks or Goedert sit, he gets more targets. Also a trade candidate before the Nov 10 deadline.",
+   "markets": [
+    "receptions",
+    "rec yds"
+   ],
+   "dir": "up",
+   "conf": "Unconfirmed",
+   "conf_note": "depends on teammates' status",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 22, 2026",
+   "listed": "Active"
+  },
+  "4685201": {
+   "name": "Tanner McKee",
+   "team": "PHI",
+   "pos": "QB",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "QB change",
+   "note": "Starting again with Hurts out for the season. Faces DAL's 31st-ranked defense by EPA/play, but his top pass catchers are banged up.",
+   "markets": [
+    "pass yds",
+    "pass att",
+    "pass TD"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "starter",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 22, 2026",
+   "listed": "Active"
+  },
+  "2577417": {
+   "name": "Dak Prescott",
+   "team": "DAL",
+   "pos": "QB",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "matchup",
+   "note": "4 INTs in his last 2 games; Jalen Carter (wrist) practiced fully. Eagles edge rushers Nolan Smith (concussion, DNP) and Greenard (limited) are banged up.",
+   "markets": [
+    "interceptions",
+    "pass yds"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "practice reports",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 22, 2026",
+   "listed": "Active"
+  },
+  "3916387": {
+   "name": "Lamar Jackson",
+   "team": "BAL",
+   "pos": "QB",
+   "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
+   "type": "injury return",
+   "note": "Ankle; limited Wed and Thu after missing 2 games. Line moved from BAL -3.5 to -1.5 and the total from 51 to 48.5. Even if he plays, his rushing may be capped.",
+   "markets": [
+    "rush yds",
+    "pass yds",
+    "pass TD"
+   ],
+   "dir": "uncertain",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Questionable"
+  },
+  "4426515": {
+   "name": "Puka Nacua",
+   "team": "LAR",
+   "pos": "WR",
+   "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
+   "type": "injury",
+   "note": "Left Thursday's practice with a calf injury and was listed limited. Davante Adams (hamstring) is already out. Line moved from LAR -8 to -3.5.",
+   "markets": [
+    "rec yds",
+    "receptions",
+    "anytime TD"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "limited Thursday",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Questionable"
+  },
+  "16800": {
+   "name": "Davante Adams",
+   "team": "LAR",
+   "pos": "WR",
+   "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
+   "type": "injury",
+   "note": "Hamstring; a report says the Rams will be without him. His targets go to other LAR pass catchers.",
+   "markets": [
+    "rec yds",
+    "receptions"
+   ],
+   "dir": "down",
+   "conf": "Confirmed",
+   "conf_note": "official designation not reviewed",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Injured Reserve"
+  },
+  "16737": {
+   "name": "Mike Evans",
+   "team": "SF",
+   "pos": "WR",
+   "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
+   "type": "injury",
+   "note": "Ribs/Achilles; DNP Thursday.",
+   "markets": [
+    "rec yds",
+    "receptions",
+    "anytime TD"
+   ],
+   "dir": "down",
+   "conf": "Confirmed",
+   "conf_note": "DNP Thursday",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Questionable"
+  },
+  "4427366": {
+   "name": "Breece Hall",
+   "team": "NYJ",
+   "pos": "RB",
+   "game": "MIA at NYJ, Sun Oct 25 1:00 PM ET",
+   "type": "injury return",
+   "note": "Quad; limited Thu and Fri and questionable after missing 3 games.",
+   "markets": [
+    "rush yds",
+    "rush att",
+    "anytime TD"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "questionable",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 23, 2026",
+   "listed": "Questionable"
+  },
+  "4870808": {
+   "name": "Jeremiyah Love",
+   "team": "ARI",
+   "pos": "RB",
+   "game": "DEN at ARI, Sun Oct 25 4:05 PM ET",
+   "type": "injury",
+   "note": "Ankle; reportedly expected to miss a 2nd straight game. Arizona's other RBs gain carries.",
+   "markets": [
+    "rush yds",
+    "rush att"
+   ],
+   "dir": "down",
+   "conf": "Unconfirmed",
+   "conf_note": "reported, not official",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Questionable"
+  },
+  "3052587": {
+   "name": "Baker Mayfield",
+   "team": "TB",
+   "pos": "QB",
+   "game": "TB at CAR, Sun Oct 25 1:00 PM ET",
+   "type": "injury return",
+   "note": "Thumb; has been out since Week 3. Returned to practice Wednesday, and Bowles will decide after Friday's practice. Line flipped from TB -1 to CAR -3.",
+   "markets": [
+    "pass yds",
+    "pass TD",
+    "pass att"
+   ],
+   "dir": "uncertain",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Questionable"
+  },
+  "4567750": {
+   "name": "Emeka Egbuka",
+   "team": "TB",
+   "pos": "WR",
+   "game": "TB at CAR, Sun Oct 25 1:00 PM ET",
+   "type": "injury",
+   "note": "In concussion protocol and may not play.",
+   "markets": [
+    "rec yds",
+    "receptions"
+   ],
+   "dir": "down",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Questionable"
+  },
+  "4035538": {
+   "name": "David Montgomery",
+   "team": "HOU",
+   "pos": "RB",
+   "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
+   "type": "injury",
+   "note": "Groin; Texans likely won't have him. HOU is a 10.5-point favorite, so a game script with lots of running helps whoever replaces him.",
+   "markets": [
+    "rush yds",
+    "rush att",
+    "anytime TD"
+   ],
+   "dir": "down",
+   "conf": "Unconfirmed",
+   "conf_note": "likely out",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Doubtful"
+  },
+  "4366031": {
+   "name": "Tank Dell",
+   "team": "HOU",
+   "pos": "WR",
+   "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
+   "type": "injury return",
+   "note": "Expected to make his first game appearance since his Dec 2024 knee injury. Snap count unknown.",
+   "markets": [
+    "receptions",
+    "rec yds"
+   ],
+   "dir": "uncertain",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026 11:39 AM ET",
+   "listed": "Injured Reserve"
+  },
+  "3054850": {
+   "name": "Alvin Kamara",
+   "team": "NO",
+   "pos": "RB",
+   "game": "PIT at NO, Sun Oct 25 9:30 AM ET",
+   "type": "injury",
+   "note": "Back; limited but no designation and will play.",
+   "markets": [
+    "rush yds",
+    "rec yds"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "will play",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 23, 2026",
+   "listed": "Active"
+  },
+  "4038815": {
+   "name": "Rico Dowdle",
+   "team": "PIT",
+   "pos": "RB",
+   "game": "PIT at NO, Sun Oct 25 9:30 AM ET",
+   "type": "injury",
+   "note": "Knee; limited and questionable. Total moved from 40.5 to 44.5.",
+   "markets": [
+    "rush yds",
+    "rush att",
+    "anytime TD"
+   ],
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "questionable",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 23, 2026",
+   "listed": "Questionable"
+  },
+  "4258595": {
+   "name": "Cole Kmet",
+   "team": "CHI",
+   "pos": "TE",
+   "game": "Played Thu; next game TBD",
+   "type": "injury",
+   "note": "Non-contact knee injury Thursday; tests pending. Affects next week's markets.",
+   "markets": [
+    "rec yds",
+    "receptions"
+   ],
+   "dir": "down",
+   "conf": "Unconfirmed",
+   "conf_note": "",
+   "unconfirmed": true,
+   "src": "Report",
+   "time": "Oct 23, 2026",
+   "listed": "Questionable"
+  }
+ }
+}

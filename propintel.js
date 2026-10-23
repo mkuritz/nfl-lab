@@ -1,0 +1,18 @@
+/* Player prop intel on NFL Hub player profiles. Data: data/prop_intel.json (built by props/tools/prop_intel.py). Fits both the v2 sheet (#v2s) and the classic profile (#nfpd). */
+(function(){if(window.__pi)return;window.__pi=1;
+var D=null,AID=null,E=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+fetch("data/prop_intel.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.ok?r.json():null}).then(function(j){D=j;tick()}).catch(function(){});
+var DIR={up:["▲ Up","up"],down:["▼ Down","down"],uncertain:["◆ Uncertain",""]};
+function card(p){var d=DIR[p.dir]||DIR.uncertain;
+ return '<div class="in '+d[1]+'" style="margin:0"><b>Prop impact · '+E(d[0])+(p.unconfirmed?' <span class="pi-u">Unconfirmed</span>':'')+'</b>'+
+ '<p>'+E(p.note)+'</p><div class="chips" style="margin-top:6px">'+p.markets.map(function(m){return '<span class="chip" style="cursor:default;padding:3px 9px;font-size:11px">'+E(m)+'</span>'}).join("")+'</div>'+
+ '<div class="ctx">CONFIDENCE: '+E(p.conf.toUpperCase())+(p.conf_note?' ('+E(p.conf_note)+')':'')+' · '+E(p.game)+'</div><div class="ctx" style="margin-top:2px">'+E(p.src)+' · '+E(p.time)+' · '+E(D.week)+'</div></div>'}
+function css(){if(document.getElementById("pi-css"))return;var s=document.createElement("style");s.id="pi-css";s.textContent='.pi-box{padding:12px 16px;border-bottom:1px solid var(--line,#232b3b)}.pi-box .in{background:var(--panel2,#121a2a);border:1px solid var(--line,#232b3b);border-left:3px solid var(--mut,#8b97b0);border-radius:12px;padding:10px 12px}.pi-box .in.up{border-left-color:var(--acc2,#53e3a6)}.pi-box .in.down{border-left-color:var(--bad,#ff5d6c)}.pi-box .in p{margin:6px 0 0;font-size:13px}.pi-box .ctx{font-size:10.5px;color:var(--mut,#8b97b0);font-weight:700;margin-top:7px;letter-spacing:.03em}.pi-box .chips{display:flex;gap:6px;flex-wrap:wrap}.pi-box .chip{background:transparent;border:1px solid var(--line,#232b3b);color:var(--mut,#8b97b0);border-radius:999px;font-weight:800}.pi-u{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.04em;background:#facc1522;color:#facc15;border:1px solid #facc1555;vertical-align:1px}';document.head.appendChild(s)}
+function tick(){if(!D)return;var p,box;
+ var sh=document.querySelector("#v2s .sh");if(sh&&AID&&(p=D.players[AID])&&!sh.querySelector(".pi-box")){css();box=document.createElement("div");box.className="pi-box";box.innerHTML=card(p);var t=sh.querySelector(".tabs");t?sh.insertBefore(box,t):sh.appendChild(box)}
+ var nf=document.getElementById("nfpd"),m=/#player=(\d+)/.exec(location.hash),id=m?m[1]:AID;if(nf&&id&&(p=D.players[id])&&nf.querySelector(".hd")&&!nf.querySelector(".pi-box")){css();box=document.createElement("div");box.className="pi-box";box.style.padding="10px 0 0";box.style.borderBottom="0";box.innerHTML=card(p);nf.querySelector(".hd").insertAdjacentElement("afterend",box)}}
+function wrap(){if(window.NFLV2&&!NFLV2.__pi){var o=NFLV2.open;NFLV2.open=function(a){AID=String(a);return o.apply(this,arguments)};NFLV2.__pi=1}
+ if(window.NFLProfile&&!window.NFLProfile.__pi){var o2=window.NFLProfile;window.NFLProfile=function(a){AID=String(a);return o2.apply(this,arguments)};window.NFLProfile.__pi=1}}
+wrap();document.addEventListener("click",function(e){var el=e.target.closest&&e.target.closest("[data-nfp],[data-aid]");if(el)AID=el.getAttribute("data-nfp")||el.getAttribute("data-aid")},true);
+var T=null;new MutationObserver(function(){wrap();if(!T)T=setTimeout(function(){T=null;tick()},60)}).observe(document.documentElement,{childList:true,subtree:true});
+})();
