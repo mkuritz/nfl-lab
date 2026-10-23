@@ -65,3 +65,4 @@ header#v2bar .in{border:0;border-radius:0;background:none}
 #v2bar .brand b{display:inline!important}#v2bar .brand{line-height:1}@media(min-width:1200px){#v2ask{flex:0 1 230px}#v2drop .by a{padding:7px 7px}}
 /* nav-connect: 7 sports fit on phones; if still too narrow the bar scrolls sideways */
 @media(max-width:480px){#v2bar .sp{flex:0 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:1px}#v2bar .sp::-webkit-scrollbar{display:none}#v2bar .sp a{padding:6px 5px;flex:none}}
+@media(max-width:420px){#v2bar .sp a{padding:6px 3px}}
