@@ -93,3 +93,6 @@ header#v2bar .in{border:0;border-radius:0;background:none}
 .nfl-viz-meter .nvm-bar i{display:block;height:100%}
 .nfl-viz-meter .nvm-bar i.a{background:linear-gradient(90deg,#0284c7,#38d0f0);border-radius:999px 0 0 999px}
 .nfl-viz-meter .nvm-bar i.h{background:linear-gradient(90deg,#65a30d,#8ee04a);border-radius:0 999px 999px 0}
+
+.nfl-viz-meter .nvm-row[data-fcat]{cursor:pointer;padding:3px 5px;border-radius:6px;transition:background .12s,transform .1s}
+.nfl-viz-meter .nvm-row[data-fcat]:hover{background:rgba(56,208,240,.12);outline:1px solid rgba(56,208,240,.4)}
