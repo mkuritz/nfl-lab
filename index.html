@@ -15,6 +15,31 @@ if(location.hash=="#betting-trends")location.replace("trends.html");
 window.HUB={short:"NFL",recSport:["nfl"],leagues:[["nfl","NFL"]],
 cols:[["overall","W-L"],["winPercent","Pct"],["pointsFor","PF"],["pointsAgainst","PA"],["pointDifferential","Diff"],["streak","Strk"],["playoffSeed","Seed"]],
 loadExtra:async()=>{const [a,t,dvp,tv2]=await Promise.all([j(BL+"data/analyst_nfl.json",{}),j("data/trends.json",null),j("data/nfl_dvp.json",null),j("data/teams_v2.json",null)]);return {a,t,dvp,tv2}},
+gameViz:(g,X)=>{
+ const DV=(X.dvp||{}).teams||{},TV=X.tv2||{},U=TV.units||{},OL={};
+ (TV.ol||[]).forEach(x=>OL[x.t]=x);
+ const al=x=>({WSH:"WAS",LAR:"LA"}[x]||x);
+ const aw=g.away.abbr,hm=g.home.abbr,awK=al(aw),hmK=al(hm);
+ const u=(k,t,d)=>U[k]&&(U[k][t]??U[k][al(t)])!=null?(U[k][t]??U[k][al(t)]):d;
+ const dAw=DV[aw]||DV[awK]||{},dHm=DV[hm]||DV[hmK]||{};
+ const olAw=OL[aw]||OL[awK]||{},olHm=OL[hm]||OL[hmK]||{};
+ const aPass=Math.round((u("Pass",aw,50)+(100-u("Coverage",hm,50)))/2);
+ const hPass=Math.round((u("Pass",hm,50)+(100-u("Coverage",aw,50)))/2);
+ const aRun=Math.round((u("Rush",aw,50)+(100-u("Run defense",hm,50)))/2);
+ const hRun=Math.round((u("Rush",hm,50)+(100-u("Run defense",aw,50)))/2);
+ const aTr=Math.round((((olAw.pb||50)+(olAw.rb||50))/2+(100-u("Pass rush",hm,50)))/2);
+ const hTr=Math.round((((olHm.pb||50)+(olHm.rb||50))/2+(100-u("Pass rush",aw,50)))/2);
+ const row=(lbl,aV,hV,aSub,hSub)=>{
+  const tot=Math.max(1,aV+hV),aW=Math.round(aV/tot*100),hW=100-aW;
+  const aWin=aV>=hV;
+  return `<div class="nvm-row"><div class="nvm-top"><span class="nvm-side ${aWin?'win':''}"><b>${esc(aw)} ${aV}</b> <small>${esc(aSub)}</small></span><span class="nvm-lbl">${lbl}</span><span class="nvm-side r ${!aWin?'win':''}"><small>${esc(hSub)}</small> <b>${hV} ${esc(hm)}</b></span></div><div class="nvm-bar"><i class="a" style="width:${aW}%"></i><i class="h" style="width:${hW}%"></i></div></div>`;
+ };
+ return `<div class="nfl-viz-meter"><div class="nvm-hd"><span>📊 Matchup Visual</span><span class="mut sm">${esc(aw)} Offense/OL vs ${esc(hm)} · 0–100 Edge Index</span></div>`
+  +row("🎯 Pass Funnel",aPass,hPass,dHm.QB?`vs #${dHm.QB.r} Pass D`:"Pass edge",dAw.QB?`vs #${dAw.QB.r} Pass D`:"Pass edge")
+  +row("🏃 Run Funnel",aRun,hRun,dHm.RB?`vs #${dHm.RB.r} Run D`:"Run edge",dAw.RB?`vs #${dAw.RB.r} Run D`:"Run edge")
+  +row("🛡️ Trenches (OL/DL)",aTr,hTr,olAw.pb?`PB ${olAw.pb}th`:`OL`,olHm.pb?`PB ${olHm.pb}th`:`OL`)
+  +`</div>`;
+},
 extra:(g,X)=>{const A=X.a||{},o=[],rk={};(A.tpi||[]).forEach(r=>rk[r.team]=r);const al=x=>({WSH:"WAS",LAR:"LA"}[x]||x);
  const ra=rk[g.away.abbr]||rk[al(g.away.abbr)],rh=rk[g.home.abbr]||rk[al(g.home.abbr)];
  if(ra&&rh)o.push(`Power Index: ${g.away.abbr} #${ra.rank} vs ${g.home.abbr} #${rh.rank}${Math.abs(ra.rank-rh.rank)>=12?" — a lopsided matchup on paper":""}.`);
@@ -32,7 +57,7 @@ extra:(g,X)=>{const A=X.a||{},o=[],rk={};(A.tpi||[]).forEach(r=>rk[r.team]=r);co
   if(ol&&pr!=null&&ol.pb-pr>=14)pills.push(`<span class="fn-badge trench_up" title="${esc(off)} OL Pass Block ${ol.pb}th pct vs ${esc(def_)} Pass Rush ${pr}th pct">🛡️ ${esc(off)} Clean Pocket (+${ol.pb-pr} PB vs PR)</span>`);
   else if(ol&&rd!=null&&ol.rb-rd>=14)pills.push(`<span class="fn-badge trench_up" title="${esc(off)} OL Run Block ${ol.rb}th pct (${ol.aly} ALY) vs ${esc(def_)} Run D ${rd}th pct">🛡️ ${esc(off)} OL Run Push (${ol.aly} ALY)</span>`);
  });
- if(pills.length)o.push(`<div class="fn-strip">${pills.slice(0,5).join("")}</div>`);
+ if(pills.length)o.push(`<div class="fn-strip">${pills.slice(0,2).join("")}</div>`);
  return o},
 renderExtra:X=>{const A=X.a||{};$("exupd").textContent=A.updated?`Injuries & Power Index updated ${ago(A.updated)}.`:"";
  $("tpi").innerHTML=(A.tpi||[]).length?`<table><tr><th>#</th><th>Team</th><th>Rating</th><th>W-L</th><th>PF/g</th><th>PA/g</th></tr>${A.tpi.map(r=>`<tr><td>${r.rank}</td><td>${r.team}</td><td>${r.tpi}</td><td>${r.w}-${r.l}</td><td>${r.pf_g}</td><td>${r.pa_g}</td></tr>`).join("")}</table>`:'<div class="mut">Unavailable.</div>';
