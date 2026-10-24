@@ -2,8 +2,16 @@
 Rewrites display strings in public JSON; leaves URLs, ids, sportsbook/price-venue names, TV broadcasters and
 third-party news text (journalist attributions) and required data credits (MoneyPuck.com: their terms require credit) alone. Usage: python3 srcscrub.py <file-or-dir> [...]  or  import scrub_obj."""
 import json, os, re, sys
-SKIP_KEYS = {"url", "src_url", "link", "href", "book", "best_book", "ref_book", "books_list", "bc", "broadcast", "t", "title_news", "headline", "desc", "description", "story", "news_text", "img", "logo", "id", "aid", "espn_id"}
+SKIP_KEYS = {"url", "src_url", "link", "href", "book", "best_book", "ref_book", "books_list", "bc", "broadcast", "t", "title_news", "headline", "description", "story", "news_text", "img", "logo", "id", "aid", "espn_id"}
 R = [
+    (r"(?:^|(?<=\.\s))(?:Per|According to)\s+[A-Z][\w'. -]{1,40}?\s+of\s+ESPN(?:\.com|\s+\d+\s+[A-Za-z]+)?,\s*", ""),
+    (r",?(\"?)\s*(?:per|according to)\s+(?:[A-Z][\w'. -]{1,40}?\s+of\s+)?ESPN(?:\.com|\s+\d+\s+[A-Za-z]+)?(?:'s\s+[A-Z][\w'.-]+(?:\s+[A-Z]\w*)?)?(?=[.)\"'\s]|$)", r"\1"),
+    (r",(\"?)\s*[A-Z][\w'. -]{1,40}?\s+of\s+ESPN(?:\.com|\s+\d+\s+[A-Za-z]+)?\s+re(?:ports?)?(?=[.)\"'\s]|$)", r"\1"),
+    (r",(\"?)\s*(?:a\s+(?:team\s+|league\s+)?source|sources|his\s+agent)\s+told\s+ESPN(?:\.com)?(?:'s\s+[A-Z][\w'.-]+(?:\s+[A-Z]\w*)?)?(?=[.)\"'\s]|$)", r"\1"),
+    (r"\b(?:A\s+(?:team\s+|league\s+)?source|Sources)\s+told\s+ESPN(?:\.com)?\s+that\s+", ""),
+    (r"\btells\s+ESPN(?:\.com)?\s+about\b", "discusses"),
+    (r"\s+of\s+ESPN(?:\.com|\s+\d+\s+[A-Za-z]+)?\b", ""),
+    (r"\bESPN\.com\b", ""),
     (r"\s*\((?:via )?ESPN(?:'s)? (?:public|free)?\s*(?:odds )?feed\)", ""),
     (r"\s*via ESPN(?:'s)?(?: public| free)?(?: odds)?(?: feed| scoreboard| pickcenter)?", ""),
     (r"\s*\(ESPN\)", ""),
@@ -30,12 +38,12 @@ R = [
     (r"\bESPN(?!\s?BET|\s?Bet|\+|2|U\b| Deportes|\.com)\s*", ""),
 ]
 R = [(re.compile(a), b) for a, b in R]
-NEWSY = re.compile(r"\b(?:of|told|to|per) ESPN(?:\.com)?\b|ESPN(?:\.com)? reports")
 def s_(v):
     if "ESPN" not in v and "nflverse" not in v and "Odds API" not in v and "Open-Meteo" not in v and "statsapi" not in v and "Stats API" not in v and "NHL API" not in v and "NHL stats feed" not in v: return v
-    if NEWSY.search(v) or v.startswith("http"): return v
+    if v.startswith("http"): return v
     for a, b in R: v = a.sub(b, v)
-    return re.sub(r"\s{2,}", " ", v).replace(" .", ".").replace("..", ".").replace("market data, )", "market data)")
+    v = re.sub(r"(?:^|(?<=\.\s))([a-z])", lambda m: m.group(1).upper(), v)
+    return re.sub(r"\s{2,}", " ", v).replace(" .", ".").replace("..", ".").replace(",.", ".").replace('".', '."').replace("market data, )", "market data)").strip()
 
 # ---- sportsbook / exchange names -> fixed public letters (standing rule, Oct 19 2026). Real names stay only in private engine files.
 # Case-sensitive proper names only: lowercase API keys (e.g. "draftkings") are lookup ids the pages map to letters themselves.
