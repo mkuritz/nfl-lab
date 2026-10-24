@@ -1,6 +1,6 @@
 {
  "slate": "2026 Week 7",
- "updated_et": "2026-10-23 06:04 PM ET",
+ "updated_et": "2026-10-24 06:57 PM ET",
  "games": [
   {
    "key": "PIT@NO",
@@ -272,12 +272,12 @@
      "player": "Lamar Jackson",
      "team": "BAL",
      "pos": "QB",
-     "status": "Questionable (ankle)",
+     "status": "Out (ankle)",
      "conf": "Confirmed",
-     "conf_note": "questionable",
+     "conf_note": "out",
      "unconfirmed": false,
-     "time": "Oct 23, 2026 3:33 PM ET",
-     "note": "Missed 2 games; Tyler Huntley is the backup",
+     "time": "Oct 24, 2026 3:30 PM ET",
+     "note": "Downgraded to Out on Saturday; Tyler Huntley starts.",
      "point_value": "no published estimate",
      "intel_aid": "3916387"
     }
@@ -362,7 +362,6 @@
     }
    ],
    "pending": [
-    "Lamar Jackson (biggest swing on the board)",
     "Cam Jurgens"
    ],
    "flag": "",
@@ -370,11 +369,23 @@
     {
      "aid": "3916387",
      "name": "Lamar Jackson",
-     "dir": "uncertain",
+     "dir": "down",
      "markets": [
       "rush yds",
       "pass yds",
       "pass TD"
+     ],
+     "conf": "Confirmed",
+     "unconfirmed": false
+    },
+    {
+     "aid": "4035671",
+     "name": "Tyler Huntley",
+     "dir": "up",
+     "markets": [
+      "pass yds",
+      "pass TDs",
+      "rush yds"
      ],
      "conf": "Confirmed",
      "unconfirmed": false
@@ -420,18 +431,6 @@
    "move_tied": "No source ties a move to an injury.",
    "injuries": [
     {
-     "player": "Tank Dell",
-     "team": "HOU",
-     "pos": "WR",
-     "status": "Will play (Ryans)",
-     "conf": "Confirmed",
-     "conf_note": "",
-     "unconfirmed": false,
-     "time": "Oct 2026",
-     "point_value": "no published estimate",
-     "intel_aid": "4366031"
-    },
-    {
      "player": "Dalton Schultz",
      "team": "HOU",
      "pos": "TE",
@@ -476,6 +475,41 @@
      "unconfirmed": false,
      "time": "Oct 23, 2026 4:16 PM ET",
      "point_value": "no published estimate"
+    },
+    {
+     "player": "Tank Dell",
+     "team": "HOU",
+     "pos": "WR",
+     "status": "Activated; set to play vs NYG",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:03 PM ET",
+     "point_value": "no published estimate",
+     "intel_aid": "4366031"
+    },
+    {
+     "player": "Jevon Holland",
+     "team": "NYG",
+     "pos": "S",
+     "status": "Out (concussion)",
+     "conf": "Confirmed",
+     "conf_note": "out",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 12:59 PM ET",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "Theo Johnson",
+     "team": "NYG",
+     "pos": "TE",
+     "status": "Out (neck)",
+     "conf": "Confirmed",
+     "conf_note": "out",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 12:59 PM ET",
+     "point_value": "no published estimate",
+     "intel_aid": "4429148"
     }
    ],
    "ol": [
@@ -575,13 +609,24 @@
     {
      "aid": "4366031",
      "name": "Tank Dell",
-     "dir": "uncertain",
+     "dir": "up",
      "markets": [
-      "receptions",
-      "rec yds"
+      "rec yds",
+      "receptions"
      ],
-     "conf": "Unconfirmed",
-     "unconfirmed": true
+     "conf": "Confirmed",
+     "unconfirmed": false
+    },
+    {
+     "aid": "4429148",
+     "name": "Theo Johnson",
+     "dir": "down",
+     "markets": [
+      "rec yds",
+      "receptions"
+     ],
+     "conf": "Confirmed",
+     "unconfirmed": false
     }
    ]
   },
@@ -1040,18 +1085,6 @@
      "intel_aid": "16737"
     },
     {
-     "player": "A.J. Terrell Jr.",
-     "team": "ATL",
-     "pos": "CB",
-     "status": "Questionable",
-     "conf": "Confirmed",
-     "conf_note": "",
-     "unconfirmed": false,
-     "time": "Oct 23, 2026 4:04 PM ET",
-     "note": "Team roster still lists him on IR; status conflict.",
-     "point_value": "no published estimate"
-    },
-    {
      "player": "Avieon Terrell",
      "team": "ATL",
      "pos": "CB",
@@ -1060,6 +1093,30 @@
      "conf_note": "",
      "unconfirmed": false,
      "time": "Oct 23, 2026 4:04 PM ET",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "Christian Kirk",
+     "team": "SF",
+     "pos": "WR",
+     "status": "Activated from IR; debuts vs ATL",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:34 PM ET",
+     "note": "Adds WR depth with Evans and Samuel out.",
+     "point_value": "no published estimate",
+     "intel_aid": "3895856"
+    },
+    {
+     "player": "A.J. Terrell Jr.",
+     "team": "ATL",
+     "pos": "CB",
+     "status": "Activated from IR; set to play",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:02 PM ET",
      "point_value": "no published estimate"
     }
    ],
@@ -1145,7 +1202,6 @@
     }
    ],
    "pending": [
-    "A.J. Terrell Jr.",
     "Avieon Terrell"
    ],
    "flag": "",
@@ -1182,6 +1238,17 @@
       "rec yds",
       "receptions",
       "anytime TD"
+     ],
+     "conf": "Confirmed",
+     "unconfirmed": false
+    },
+    {
+     "aid": "3895856",
+     "name": "Christian Kirk",
+     "dir": "up",
+     "markets": [
+      "rec yds",
+      "receptions"
      ],
      "conf": "Confirmed",
      "unconfirmed": false
@@ -1286,6 +1353,28 @@
      "unconfirmed": false,
      "time": "Oct 23, 2026 3:51 PM ET",
      "point_value": "no published estimate"
+    },
+    {
+     "player": "Dylan Sampson",
+     "team": "CLE",
+     "pos": "RB",
+     "status": "Activated from IR (knee); expected to play",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 12:30 PM ET",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "Grant Delpit",
+     "team": "CLE",
+     "pos": "S",
+     "status": "Cleared concussion protocol (no designation)",
+     "conf": "Confirmed",
+     "conf_note": "cleared",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 12:30 PM ET",
+     "point_value": "no published estimate"
     }
    ],
    "ol": [
@@ -1317,11 +1406,11 @@
      "player": "Teven Jenkins",
      "team": "CLE",
      "pos": "G",
-     "status": "Questionable (back, DNP)",
+     "status": "Placed on IR (back)",
      "conf": "Confirmed",
      "conf_note": "",
      "unconfirmed": false,
-     "time": "Oct 23, 2026 11:57 AM ET",
+     "time": "Oct 24, 2026 12:30 PM ET",
      "replacement": "replacement not reported",
      "reported_impact": "no published impact stat"
     }
@@ -1535,12 +1624,11 @@
      "player": "Jordan Mason",
      "team": "MIN",
      "pos": "RB",
-     "status": "Questionable",
+     "status": "Activated from IR (thumb); expected to play alongside Aaron Jones Sr.",
      "conf": "Confirmed",
-     "conf_note": "",
+     "conf_note": "active",
      "unconfirmed": false,
-     "time": "Oct 23, 2026 2:53 PM ET",
-     "note": "Team roster still lists him on IR; status conflict.",
+     "time": "Oct 24, 2026 4:31 PM ET",
      "point_value": "no published estimate",
      "intel_aid": "4360569"
     }
@@ -1589,9 +1677,7 @@
      "props": "no reported DL injuries; no adjustment"
     }
    ],
-   "pending": [
-    "Jordan Mason"
-   ],
+   "pending": [],
    "flag": "",
    "intel": [
     {
@@ -1620,7 +1706,7 @@
     {
      "aid": "4360569",
      "name": "Jordan Mason",
-     "dir": "uncertain",
+     "dir": "up",
      "markets": [
       "rush yds",
       "rush att"
@@ -1706,6 +1792,39 @@
      "note": "Confirmed by the head coach.",
      "point_value": "no published estimate",
      "intel_aid": "4870808"
+    },
+    {
+     "player": "Jonah Coleman",
+     "team": "DEN",
+     "pos": "RB",
+     "status": "Activated from IR; set to play",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:38 PM ET",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "Tyler Badie",
+     "team": "DEN",
+     "pos": "RB",
+     "status": "Placed on IR",
+     "conf": "Confirmed",
+     "conf_note": "IR",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:38 PM ET",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "Patrick Surtain II",
+     "team": "DEN",
+     "pos": "CB",
+     "status": "Questionable",
+     "conf": "Confirmed",
+     "conf_note": "questionable",
+     "unconfirmed": false,
+     "time": "Oct 23, 2026 6:01 PM ET",
+     "point_value": "no published estimate"
     }
    ],
    "ol": [
@@ -1750,15 +1869,28 @@
      "stat": "none published"
     },
     {
-     "player": "Jonah Elliss",
+     "player": "Jonathon Cooper",
      "team": "DEN",
-     "pos": "edge/LB",
-     "status": "Doubtful (ankle)",
+     "pos": "OLB",
+     "status": "Activated from exempt list; set to play",
      "conf": "Confirmed",
      "conf_note": "",
      "unconfirmed": false,
-     "time": "Oct 23, 2026 11:57 AM ET",
-     "replacement": "Dondrea Tillman",
+     "time": "Oct 24, 2026 4:38 PM ET",
+     "replacement": "active starter",
+     "impact_tag": "pass rush",
+     "stat": "none published"
+    },
+    {
+     "player": "Jonah Elliss",
+     "team": "DEN",
+     "pos": "OLB",
+     "status": "Placed on IR",
+     "conf": "Confirmed",
+     "conf_note": "",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:38 PM ET",
+     "replacement": "Jonathon Cooper",
      "impact_tag": "pass rush",
      "stat": "none published"
     }
@@ -1808,7 +1940,8 @@
    ],
    "pending": [
     "Jaylen Waddle",
-    "Pat Surtain II"
+    "Pat Surtain II",
+    "Patrick Surtain II"
    ],
    "flag": "",
    "intel": [
@@ -1881,17 +2014,6 @@
      "point_value": "no published estimate"
     },
     {
-     "player": "Josh Jacobs",
-     "team": "GB",
-     "pos": "RB",
-     "status": "Availability TBD per LaFleur",
-     "conf": "Unconfirmed",
-     "conf_note": "",
-     "unconfirmed": true,
-     "time": "Oct 2026",
-     "point_value": "no published estimate"
-    },
-    {
      "player": "Zaire Franklin",
      "team": "GB",
      "pos": "LB",
@@ -1901,6 +2023,29 @@
      "unconfirmed": false,
      "time": "Oct 23, 2026 12:21 PM ET",
      "note": "Team verified against the current roster.",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "Josh Jacobs",
+     "team": "GB",
+     "pos": "RB",
+     "status": "Activated; expected to start",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:00 PM ET",
+     "point_value": "no published estimate",
+     "intel_aid": "4047365"
+    },
+    {
+     "player": "Brian Branch",
+     "team": "DET",
+     "pos": "S",
+     "status": "Activated; set for season debut",
+     "conf": "Confirmed",
+     "conf_note": "active",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:09 PM ET",
      "point_value": "no published estimate"
     }
    ],
@@ -1927,6 +2072,18 @@
      "unconfirmed": false,
      "time": "Oct 23, 2026 11:57 AM ET",
      "replacement": "replacement not reported",
+     "reported_impact": "no published impact stat"
+    },
+    {
+     "player": "Cade Mays",
+     "team": "DET",
+     "pos": "C",
+     "status": "Activated (wrist); set to play",
+     "conf": "Confirmed",
+     "conf_note": "",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:12 PM ET",
+     "replacement": "active starter",
      "reported_impact": "no published impact stat"
     }
    ],
@@ -1989,11 +2146,23 @@
    ],
    "pending": [
     "Christian Watson",
-    "Josh Jacobs",
     "Aaron Banks"
    ],
    "flag": "",
-   "intel": []
+   "intel": [
+    {
+     "aid": "4047365",
+     "name": "Josh Jacobs",
+     "dir": "up",
+     "markets": [
+      "rush yds",
+      "rush att",
+      "anytime TD"
+     ],
+     "conf": "Confirmed",
+     "unconfirmed": false
+    }
+   ]
   },
   {
    "key": "LAR@LV",
@@ -2286,6 +2455,17 @@
      "note": "Ruled out one day after PUP activation. Next man up not reported.",
      "point_value": "no published estimate",
      "intel_aid": "4426385"
+    },
+    {
+     "player": "Brashard Smith",
+     "team": "KC",
+     "pos": "RB",
+     "status": "Placed on IR",
+     "conf": "Confirmed",
+     "conf_note": "IR",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 2:58 PM ET",
+     "point_value": "no published estimate"
     }
    ],
    "ol": [
@@ -2460,30 +2640,6 @@
      "point_value": "no published estimate"
     },
     {
-     "player": "Saquon Barkley",
-     "team": "PHI",
-     "pos": "RB",
-     "status": "Limited Thu; in line to play",
-     "conf": "Unconfirmed",
-     "conf_note": "",
-     "unconfirmed": true,
-     "time": "Oct 22, 2026",
-     "point_value": "no published estimate",
-     "intel_aid": "3929630"
-    },
-    {
-     "player": "DeVonta Smith",
-     "team": "PHI",
-     "pos": "WR",
-     "status": "DNP Thu (hamstring)",
-     "conf": "Confirmed",
-     "conf_note": "DNP",
-     "unconfirmed": false,
-     "time": "Oct 22, 2026",
-     "point_value": "no published estimate",
-     "intel_aid": "4241478"
-    },
-    {
      "player": "Dallas Goedert",
      "team": "PHI",
      "pos": "TE",
@@ -2496,29 +2652,6 @@
      "intel_aid": "3121023"
     },
     {
-     "player": "Dontayvion Wicks",
-     "team": "PHI",
-     "pos": "WR",
-     "status": "DNP Thu (ankle)",
-     "conf": "Confirmed",
-     "conf_note": "DNP",
-     "unconfirmed": false,
-     "time": "Oct 22, 2026",
-     "point_value": "no published estimate",
-     "intel_aid": "4428850"
-    },
-    {
-     "player": "George Pickens",
-     "team": "DAL",
-     "pos": "WR",
-     "status": "Limited (shoulder)",
-     "conf": "Unconfirmed",
-     "conf_note": "aggregator",
-     "unconfirmed": true,
-     "time": "Oct 23, 2026 11:57 AM ET",
-     "point_value": "no published estimate"
-    },
-    {
      "player": "P.J. Locke",
      "team": "DAL",
      "pos": "S",
@@ -2527,6 +2660,66 @@
      "conf_note": "",
      "unconfirmed": false,
      "time": "Oct 23, 2026 2:37 PM ET",
+     "point_value": "no published estimate"
+    },
+    {
+     "player": "DeVonta Smith",
+     "team": "PHI",
+     "pos": "WR",
+     "status": "Out vs DAL",
+     "conf": "Confirmed",
+     "conf_note": "out",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 3:48 PM ET",
+     "note": "Ruled out for MNF. Depth-chart replacement at WR not reported.",
+     "point_value": "no published estimate",
+     "intel_aid": "4241478"
+    },
+    {
+     "player": "Dontayvion Wicks",
+     "team": "PHI",
+     "pos": "WR",
+     "status": "Out vs DAL",
+     "conf": "Confirmed",
+     "conf_note": "out",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 3:48 PM ET",
+     "point_value": "no published estimate",
+     "intel_aid": "4428850"
+    },
+    {
+     "player": "Saquon Barkley",
+     "team": "PHI",
+     "pos": "RB",
+     "status": "Questionable (expected to play)",
+     "conf": "Confirmed",
+     "conf_note": "questionable",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:09 PM ET",
+     "point_value": "no published estimate",
+     "intel_aid": "3929630"
+    },
+    {
+     "player": "George Pickens",
+     "team": "DAL",
+     "pos": "WR",
+     "status": "Cleared (no designation)",
+     "conf": "Confirmed",
+     "conf_note": "cleared",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:00 PM ET",
+     "point_value": "no published estimate",
+     "intel_aid": "4426354"
+    },
+    {
+     "player": "Joey Porter Jr.",
+     "team": "DAL",
+     "pos": "CB",
+     "status": "Cleared (no designation)",
+     "conf": "Confirmed",
+     "conf_note": "cleared",
+     "unconfirmed": false,
+     "time": "Oct 24, 2026 4:00 PM ET",
      "point_value": "no published estimate"
     }
    ],
@@ -2752,14 +2945,12 @@
    ],
    "pending": [
     "Saquon Barkley",
-    "DeVonta Smith",
     "Dallas Goedert",
     "Dontayvion Wicks",
     "Nolan Smith",
     "Greenard",
     "Lampkin",
     "Dickerson",
-    "George Pickens",
     "Tyler Guyton"
    ],
    "flag": "PHI: 4 interior OL on the report (Lampkin DNP; Dickerson, Steen and Kendall limited), plus an unverified Lane Johnson listing. PHI's edge group is also depleted.",
@@ -2767,15 +2958,14 @@
     {
      "aid": "3929630",
      "name": "Saquon Barkley",
-     "dir": "up",
+     "dir": "uncertain",
      "markets": [
       "rush yds",
       "rush att",
-      "anytime TD",
-      "rec yds"
+      "anytime TD"
      ],
-     "conf": "Unconfirmed",
-     "unconfirmed": true
+     "conf": "Confirmed",
+     "unconfirmed": false
     },
     {
      "aid": "4360238",
@@ -2791,14 +2981,14 @@
     {
      "aid": "4241478",
      "name": "DeVonta Smith",
-     "dir": "uncertain",
+     "dir": "down",
      "markets": [
       "rec yds",
       "receptions",
-      "longest reception"
+      "anytime TD"
      ],
-     "conf": "Unconfirmed",
-     "unconfirmed": true
+     "conf": "Confirmed",
+     "unconfirmed": false
     },
     {
      "aid": "3121023",
@@ -2853,6 +3043,18 @@
      "markets": [
       "interceptions",
       "pass yds"
+     ],
+     "conf": "Confirmed",
+     "unconfirmed": false
+    },
+    {
+     "aid": "4426354",
+     "name": "George Pickens",
+     "dir": "up",
+     "markets": [
+      "rec yds",
+      "receptions",
+      "anytime TD"
      ],
      "conf": "Confirmed",
      "unconfirmed": false

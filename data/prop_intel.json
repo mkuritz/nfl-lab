@@ -12,7 +12,7 @@
      -4.5
     ]
    },
-   "total": 44.5,
+   "total": 47.5,
    "moves": [],
    "players": [
     "3929630",
@@ -22,7 +22,8 @@
     "4428850",
     "4241372",
     "4685201",
-    "2577417"
+    "2577417",
+    "4426354"
    ]
   },
   "CIN@BAL": {
@@ -55,7 +56,8 @@
     }
    ],
    "players": [
-    "3916387"
+    "3916387",
+    "4035671"
    ]
   },
   "LAR@LV": {
@@ -102,7 +104,8 @@
    "players": [
     "16737",
     "3126486",
-    "3040151"
+    "3040151",
+    "3895856"
    ]
   },
   "MIA@NYJ": {
@@ -181,7 +184,8 @@
    "moves": [],
    "players": [
     "4035538",
-    "4366031"
+    "4366031",
+    "4429148"
    ]
   },
   "PIT@NO": {
@@ -257,29 +261,44 @@
     "3925357",
     "4428557"
    ]
+  },
+  "GB@DET": {
+   "away": "GB",
+   "home": "DET",
+   "kick": "Sun Oct 25 4:25 PM ET",
+   "spread": {
+    "fav": "DET",
+    "line": [
+     -3.0
+    ]
+   },
+   "total": 49.5,
+   "moves": [],
+   "players": [
+    "4047365"
+   ]
   }
  },
- "updated_et": "2026-10-23 06:04 PM ET",
+ "updated_et": "2026-10-24 06:57 PM ET",
  "players": {
   "3929630": {
    "name": "Saquon Barkley",
    "team": "PHI",
    "pos": "RB",
    "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "injury return",
-   "note": "Hamstring; limited Thursday after missing 2 games, a report says he's in line to play. Only Barkley and Dameon Pierce are active RBs. Eagles run game ranks 28th; DAL defense 31st in EPA/play. Possible snap limit in first game back is not reported.",
+   "type": "injury",
+   "note": "Listed Questionable for MNF vs DAL but expected to play.",
    "markets": [
     "rush yds",
     "rush att",
-    "anytime TD",
-    "rec yds"
+    "anytime TD"
    ],
-   "dir": "up",
-   "conf": "Unconfirmed",
-   "conf_note": "practice status confirmed; game status pending Sat report",
-   "unconfirmed": true,
+   "dir": "uncertain",
+   "conf": "Confirmed",
+   "conf_note": "questionable, expected to play",
+   "unconfirmed": false,
    "src": "Report",
-   "time": "Oct 23, 2026",
+   "time": "Oct 24, 2026 4:09 PM ET",
    "listed": "Questionable",
    "gk": "DAL@PHI"
   },
@@ -309,19 +328,19 @@
    "pos": "WR",
    "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
    "type": "injury",
-   "note": "Hamstring; DNP Thursday. A report suspects a maintenance day and expects him to play; was held out of some drives in Week 6.",
+   "note": "Ruled out for MNF vs DAL. Depth-chart replacement at WR not officially reported.",
    "markets": [
     "rec yds",
     "receptions",
-    "longest reception"
+    "anytime TD"
    ],
-   "dir": "uncertain",
-   "conf": "Unconfirmed",
-   "conf_note": "",
-   "unconfirmed": true,
+   "dir": "down",
+   "conf": "Confirmed",
+   "conf_note": "out",
+   "unconfirmed": false,
    "src": "Report",
-   "time": "Oct 22, 2026",
-   "listed": "Questionable",
+   "time": "Oct 24, 2026 3:48 PM ET",
+   "listed": "Out",
    "gk": "DAL@PHI"
   },
   "3121023": {
@@ -342,7 +361,7 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 22, 2026 9:06 PM ET",
-   "listed": "Questionable",
+   "listed": "Active",
    "gk": "DAL@PHI"
   },
   "4428850": {
@@ -362,7 +381,7 @@
    "unconfirmed": false,
    "src": "Report",
    "time": "Oct 22, 2026",
-   "listed": "Questionable",
+   "listed": "Out",
    "gk": "DAL@PHI"
   },
   "4241372": {
@@ -432,19 +451,19 @@
    "pos": "QB",
    "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
    "type": "injury",
-   "note": "Ankle; questionable after limited Wed and Thu practices and 2 missed games. Line moved from BAL -3.5 to -1.5 and the total from 51 to 48.5. Even if he plays, his rushing may be capped.",
+   "note": "Ankle; downgraded to Out on Saturday. Tyler Huntley starts vs CIN. Line moved from BAL -3.5 to -1.5 and total from 51 to 48.5.",
    "markets": [
     "rush yds",
     "pass yds",
     "pass TD"
    ],
-   "dir": "uncertain",
+   "dir": "down",
    "conf": "Confirmed",
-   "conf_note": "questionable",
+   "conf_note": "out",
    "unconfirmed": false,
    "src": "Report",
-   "time": "Oct 23, 2026 3:33 PM ET",
-   "listed": "Questionable",
+   "time": "Oct 24, 2026 3:30 PM ET",
+   "listed": "Out",
    "gk": "CIN@BAL"
   },
   "4426515": {
@@ -618,18 +637,18 @@
    "pos": "WR",
    "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
    "type": "injury return",
-   "note": "Expected to make his first game appearance since his Dec 2024 knee injury. Snap count unknown.",
+   "note": "Activated and set to play vs NYG in his first game back.",
    "markets": [
-    "receptions",
-    "rec yds"
+    "rec yds",
+    "receptions"
    ],
-   "dir": "uncertain",
-   "conf": "Unconfirmed",
-   "conf_note": "",
-   "unconfirmed": true,
+   "dir": "up",
+   "conf": "Confirmed",
+   "conf_note": "active",
+   "unconfirmed": false,
    "src": "Report",
-   "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Injured Reserve",
+   "time": "Oct 24, 2026 4:03 PM ET",
+   "listed": "Active",
    "gk": "NYG@HOU"
   },
   "3054850": {
@@ -801,19 +820,19 @@
    "team": "MIN",
    "pos": "RB",
    "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Questionable. The team roster still lists him on IR, so his status is in conflict.",
+   "type": "injury return",
+   "note": "Activated from IR (thumb) and expected to play vs IND alongside Aaron Jones Sr.",
    "markets": [
     "rush yds",
     "rush att"
    ],
-   "dir": "uncertain",
+   "dir": "up",
    "conf": "Confirmed",
-   "conf_note": "questionable",
+   "conf_note": "active",
    "unconfirmed": false,
    "src": "Report",
-   "time": "Oct 23, 2026 2:53 PM ET",
-   "listed": "Injured Reserve",
+   "time": "Oct 24, 2026 4:31 PM ET",
+   "listed": "Active",
    "gk": "IND@MIN"
   },
   "3925357": {
@@ -894,6 +913,109 @@
    "src": "Report",
    "time": "Oct 23, 2026 7:21 AM ET",
    "listed": "Injured Reserve"
+  },
+  "4035671": {
+   "name": "Tyler Huntley",
+   "team": "BAL",
+   "pos": "QB",
+   "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
+   "type": "role change",
+   "note": "Starts at QB for Baltimore with Lamar Jackson ruled out (ankle).",
+   "markets": [
+    "pass yds",
+    "pass TDs",
+    "rush yds"
+   ],
+   "dir": "up",
+   "conf": "Confirmed",
+   "conf_note": "starter",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 24, 2026 4:17 PM ET",
+   "listed": "Active",
+   "gk": "CIN@BAL"
+  },
+  "4426354": {
+   "name": "George Pickens",
+   "team": "DAL",
+   "pos": "WR",
+   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+   "type": "injury return",
+   "note": "Cleared with no injury designation for MNF at PHI.",
+   "markets": [
+    "rec yds",
+    "receptions",
+    "anytime TD"
+   ],
+   "dir": "up",
+   "conf": "Confirmed",
+   "conf_note": "cleared",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 24, 2026 4:00 PM ET",
+   "listed": "Active",
+   "gk": "DAL@PHI"
+  },
+  "4047365": {
+   "name": "Josh Jacobs",
+   "team": "GB",
+   "pos": "RB",
+   "game": "GB at DET, Sun Oct 25 4:25 PM ET",
+   "type": "injury return",
+   "note": "Activated from the exempt list and expected to start at Detroit.",
+   "markets": [
+    "rush yds",
+    "rush att",
+    "anytime TD"
+   ],
+   "dir": "up",
+   "conf": "Confirmed",
+   "conf_note": "active",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 24, 2026 4:00 PM ET",
+   "listed": "Active",
+   "gk": "GB@DET"
+  },
+  "4429148": {
+   "name": "Theo Johnson",
+   "team": "NYG",
+   "pos": "TE",
+   "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
+   "type": "injury",
+   "note": "Downgraded to Out (neck) for Sunday at HOU.",
+   "markets": [
+    "rec yds",
+    "receptions"
+   ],
+   "dir": "down",
+   "conf": "Confirmed",
+   "conf_note": "out",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 24, 2026 12:59 PM ET",
+   "listed": "Out",
+   "gk": "NYG@HOU"
+  },
+  "3895856": {
+   "name": "Christian Kirk",
+   "team": "SF",
+   "pos": "WR",
+   "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
+   "type": "injury return",
+   "note": "Activated from IR and debuts at ATL, adding WR depth with Mike Evans and Deebo Samuel Sr. out.",
+   "markets": [
+    "rec yds",
+    "receptions"
+   ],
+   "dir": "up",
+   "conf": "Confirmed",
+   "conf_note": "active",
+   "unconfirmed": false,
+   "src": "Report",
+   "time": "Oct 24, 2026 4:34 PM ET",
+   "listed": "Active",
+   "gk": "SF@ATL"
   }
  }
 }
