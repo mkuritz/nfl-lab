@@ -105,4 +105,58 @@ for r in out:
   for k in ST[pos]:
     vs=sorted((v[k] for v in tot[pos].values()),reverse=True); tiles.append({'k':k,'v':me[k],'rk':vs.index(me[k])+1,'of':len(vs)})
   p=player(r['aid']); hero[r['aid']]={'tiles':tiles,'age':p.get('age'),'exp':p.get('exp'),'college':p.get('college'),'draft':p.get('draft'),'depth':p.get('depth'),'news':p.get('news',[])[:3]}
+# Compute PFF-style Defensive Funnel Tags & Trench Advantage Badges from nfl_dvp.json + teams_v2.json
+try:
+  _dvp_full = L(BL+'/nfl_dvp.json')
+  _tv2 = L('data/teams_v2.json')
+  _u = _tv2.get('units', {}); _ol_map = {x['t']: x for x in _tv2.get('ol', [])}
+  _nt = lambda t: {'LAR': 'LA', 'WSH': 'WAS'}.get(t, t)
+  _tf = {}
+  for _tm, _d in _dvp_full.get('teams', {}).items():
+    _ut = _nt(_tm); _cov = _u.get('Coverage', {}).get(_ut, 50); _rund = _u.get('Run defense', {}).get(_ut, 50); _pr = _u.get('Pass rush', {}).get(_ut, 50)
+    _qb, _rb, _wr, _te = _d.get('QB', {}), _d.get('RB', {}), _d.get('WR', {}), _d.get('TE', {})
+    _tgs = []
+    if (_cov <= 42 or _qb.get('r', 16) >= 22 or _wr.get('r', 16) >= 22) and (_rund - _cov >= 14 or _qb.get('r', 16) - _rb.get('r', 16) >= 6):
+      _tgs.append({'tag': 'Pass Funnel', 'kind': 'pass', 'detail': f"Pass D #{_qb.get('r',24)} vs Run D #{_rb.get('r',10)}"})
+    elif (_rund <= 42 or _rb.get('r', 16) >= 22) and (_cov - _rund >= 14 or _rb.get('r', 16) - _qb.get('r', 16) >= 6):
+      _tgs.append({'tag': 'Run Funnel', 'kind': 'run', 'detail': f"Run D #{_rb.get('r',24)} ({_rb.get('yds',125):.0f} yds/g) vs Pass D #{_qb.get('r',12)}"})
+    if _te.get('r', 16) >= 23 or _te.get('yds', 0) >= 60 or _te.get('rec', 0) >= 6.0:
+      _tgs.append({'tag': 'TE Funnel', 'kind': 'te', 'detail': f"#{_te.get('r',25)} vs TE ({_te.get('yds',0):.0f} yds, {_te.get('rec',0):.1f} rec/g)"})
+    _wrec, _wyds = _wr.get('rec', 0) or 0, _wr.get('yds', 0) or 0
+    _ypr = _wyds / max(1.0, _wrec)
+    if _wrec >= 8.6 and (_wr.get('r', 16) >= 19 or _ypr <= 15.2):
+      _tgs.append({'tag': 'Slot WR Vulnerable', 'kind': 'slot', 'detail': f"{_wrec:.1f} WR catches/g allowed (#{_wr.get('r',22)})"})
+    if (_ypr >= 15.3 and _wyds >= 142) or (_qb.get('yds', 0) >= 252 and _wr.get('r', 16) >= 21):
+      _tgs.append({'tag': 'Deep Ball Vulnerable', 'kind': 'deep', 'detail': f"{_ypr:.1f} yds/rec to WRs · {_qb.get('yds',0):.0f} pass yds/g"})
+    _ttd = (_qb.get('td', 0) or 0) + (_rb.get('td', 0) or 0)
+    if _ttd >= 2.55 or _qb.get('td', 0) >= 2.0 or _rb.get('td', 0) >= 1.15:
+      _tgs.append({'tag': 'Red-Zone TD Sieve', 'kind': 'rz', 'detail': f"{_ttd:.1f} off TDs/g allowed"})
+    if _pr <= 32: _tgs.append({'tag': 'Clean Pocket Def', 'kind': 'trench', 'detail': f"Pass rush {_pr}th pct"})
+    _d['funnels'] = _tgs
+    _tf[_tm] = {'tags': _tgs, 'cov_pct': _cov, 'rund_pct': _rund, 'pr_pct': _pr}
+  for _k in list(_tf.keys()):
+    if _k == 'LAR': _tf['LA'] = _tf[_k]
+    if _k == 'LA': _tf['LAR'] = _tf[_k]
+    if _k == 'WSH': _tf['WAS'] = _tf[_k]
+    if _k == 'WAS': _tf['WSH'] = _tf[_k]
+  json.dump(_dvp_full, open('data/nfl_dvp.json', 'w'), separators=(',', ':'))
+except Exception as _e:
+  print('funnel build warn:', _e); _tf = {}; _ol_map = {}
 d=json.load(open('data/v2.json')); d['hero']=hero; json.dump(d,open('data/v2.json','w')); print('hero',len(hero))
+try:
+  d=json.load(open('data/v2.json'))
+  _nt = lambda t: {'LAR': 'LA', 'WSH': 'WAS'}.get(t, t)
+  for _r in d.get('rows', []):
+    _pos, _tm, _opp = _r.get('pos'), _nt(_r.get('team')), _r.get('oa')
+    _fobj = _tf.get(_opp) or _tf.get(_nt(_opp)) or {'tags': [], 'cov_pct': 50, 'rund_pct': 50, 'pr_pct': 50}
+    _ol = _ol_map.get(_tm) or {}; _pb, _rb, _aly = _ol.get('pb', 50), _ol.get('rb', 50), _ol.get('aly', 4.0)
+    _pr, _rund = _fobj['pr_pct'], _fobj['rund_pct']
+    _b = [t for t in _fobj['tags'] if (_pos=='QB' and t['tag'] in ('Pass Funnel','Deep Ball Vulnerable','Slot WR Vulnerable','Red-Zone TD Sieve','TE Funnel')) or (_pos=='WR' and t['tag'] in ('Pass Funnel','Slot WR Vulnerable','Deep Ball Vulnerable','Red-Zone TD Sieve')) or (_pos=='TE' and t['tag'] in ('TE Funnel','Pass Funnel','Slot WR Vulnerable','Red-Zone TD Sieve')) or (_pos=='RB' and t['tag'] in ('Run Funnel','Red-Zone TD Sieve','Pass Funnel'))]
+    if _pos in ('QB','WR','TE') and (_pb - _pr >= 12 or _pr <= 30):
+      _b.append({'tag': f"Trench: Clean Pocket (+{max(8,_pb-_pr)} PB vs PR)", 'kind': 'trench_up', 'detail': f"{_r.get('team')} OL Pass Block {_pb}th pct vs {_opp} Pass Rush {_pr}th pct"})
+    elif _pos == 'RB' and (_rb - _rund >= 10 or _rund <= 32):
+      _b.append({'tag': f"Trench: OL Run Push ({_aly:.1f} ALY)", 'kind': 'trench_up', 'detail': f"{_r.get('team')} OL Run Block {_rb}th pct ({_aly:.2f} ALY) vs {_opp} Run D {_rund}th pct"})
+    _r['funnels'] = _b[:3]
+  d['team_funnels'] = _tf
+  json.dump(d, open('data/v2.json', 'w'), separators=(',', ':'))
+except Exception as _e: print('v2 funnel attach warn:', _e)

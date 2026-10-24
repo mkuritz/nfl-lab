@@ -14,7 +14,7 @@
 if(location.hash=="#betting-trends")location.replace("trends.html");
 window.HUB={short:"NFL",recSport:["nfl"],leagues:[["nfl","NFL"]],
 cols:[["overall","W-L"],["winPercent","Pct"],["pointsFor","PF"],["pointsAgainst","PA"],["pointDifferential","Diff"],["streak","Strk"],["playoffSeed","Seed"]],
-loadExtra:async()=>{const [a,t]=await Promise.all([j(BL+"data/analyst_nfl.json",{}),j("data/trends.json",null)]);return {a,t}},
+loadExtra:async()=>{const [a,t,dvp,tv2]=await Promise.all([j(BL+"data/analyst_nfl.json",{}),j("data/trends.json",null),j("data/nfl_dvp.json",null),j("data/teams_v2.json",null)]);return {a,t,dvp,tv2}},
 extra:(g,X)=>{const A=X.a||{},o=[],rk={};(A.tpi||[]).forEach(r=>rk[r.team]=r);const al=x=>({WSH:"WAS",LAR:"LA"}[x]||x);
  const ra=rk[g.away.abbr]||rk[al(g.away.abbr)],rh=rk[g.home.abbr]||rk[al(g.home.abbr)];
  if(ra&&rh)o.push(`Power Index: ${g.away.abbr} #${ra.rank} vs ${g.home.abbr} #${rh.rank}${Math.abs(ra.rank-rh.rank)>=12?" — a lopsided matchup on paper":""}.`);
@@ -23,6 +23,16 @@ extra:(g,X)=>{const A=X.a||{},o=[],rk={};(A.tpi||[]).forEach(r=>rk[r.team]=r);co
  if(FI){const N=NFLINJ.notes(t).filter(x=>!I.some(p=>x.startsWith(esc(p.name)+" (")&&/IR|Out/.test(p.status)));if(N.length)o.push(`<b class="injn">${t} latest injury report</b> (checked ${et(FI.updated)}): ${N.join("; ")}.`)}if(I.length)o.push(`<b>${t} injuries:</b> ${I.slice(0,4).map(p=>`${esc(p.name)} (${esc(p.pos)}, ${esc(p.status)})`).join(", ")}${I.length>4?` +${I.length-4} more`:""}.`);const C=(A.inj_by_team||[]).find(x=>x.team==t);if(C&&C.top){const c=C.top,a=(c.affected||[]).slice(0,2);o.push(`<b>${t} cascade:</b> ${esc(c.player)} (${esc(c.status)}) → ${a.map(x=>`${esc(x.player)} ${x.d_ca?(x.d_ca>0?"+":"")+x.d_ca+" car":""}${x.d_tg?" "+(x.d_tg>0?"+":"")+x.d_tg+" tgt":""}`).join(", ")||"no teammate shift"}/g.`)}});
  if(!KO)(A.mismatches||[]).filter(m=>m.game==g.id).slice(0,2).forEach(m=>o.push(`<b>Matchup edge:</b> ${esc(String(m.text||"").replace(/\b(DraftKings|FanDuel|BetMGM|Caesars|ESPN ?Bet|Fanatics|BetRivers|Novig|ProphetX) has (\S+?) team total at/g,"$2 team total is").replace(/\b(DraftKings|FanDuel|BetMGM|Caesars) (lists|has|shows) /g,"the market $2 "))}`));
  const T=(X.t||{}).teams||{};[g.away.abbr,g.home.abbr].forEach(t=>{const r=T[t]&&T[t]["2026"];if(r&&r.g>=3){const q=r.q;const best=["1Q","2Q","3Q","4Q"].sort((x,y)=>q[y].m-q[x].m)[0];if(q[best].m>=3)o.push(`${t} trend: strongest in the ${best} (${q[best].m>0?"+":""}${q[best].m.toFixed(1)} pts/g, ${r.g} games).`)}});
+ const DV=(X.dvp||{}).teams||{},TV=X.tv2||{},OL={};(TV.ol||[]).forEach(x=>OL[x.t]=x);const PR=(TV.units||{}).Pass_rush||(TV.units||{})["Pass rush"]||{},RD=(TV.units||{})["Run defense"]||{};
+ const pills=[];
+ [[g.away.abbr,g.home.abbr],[g.home.abbr,g.away.abbr]].forEach(([off,def_])=>{
+  const dObj=DV[def_]||DV[al(def_)]||{};const fns=(dObj.funnels||[]).slice(0,2);
+  fns.forEach(f=>pills.push(`<span class="fn-badge ${esc(f.kind||'')}" title="${esc(def_+' Defense: '+(f.detail||''))}">${esc(off)} vs ${esc(def_)}: ${esc(f.tag)}</span>`));
+  const ol=OL[off]||OL[al(off)],pr=PR[def_]??PR[al(def_)],rd=RD[def_]??RD[al(def_)];
+  if(ol&&pr!=null&&ol.pb-pr>=14)pills.push(`<span class="fn-badge trench_up" title="${esc(off)} OL Pass Block ${ol.pb}th pct vs ${esc(def_)} Pass Rush ${pr}th pct">🛡️ ${esc(off)} Clean Pocket (+${ol.pb-pr} PB vs PR)</span>`);
+  else if(ol&&rd!=null&&ol.rb-rd>=14)pills.push(`<span class="fn-badge trench_up" title="${esc(off)} OL Run Block ${ol.rb}th pct (${ol.aly} ALY) vs ${esc(def_)} Run D ${rd}th pct">🛡️ ${esc(off)} OL Run Push (${ol.aly} ALY)</span>`);
+ });
+ if(pills.length)o.push(`<div class="fn-strip">${pills.slice(0,5).join("")}</div>`);
  return o},
 renderExtra:X=>{const A=X.a||{};$("exupd").textContent=A.updated?`Injuries & Power Index updated ${ago(A.updated)}.`:"";
  $("tpi").innerHTML=(A.tpi||[]).length?`<table><tr><th>#</th><th>Team</th><th>Rating</th><th>W-L</th><th>PF/g</th><th>PA/g</th></tr>${A.tpi.map(r=>`<tr><td>${r.rank}</td><td>${r.team}</td><td>${r.tpi}</td><td>${r.w}-${r.l}</td><td>${r.pf_g}</td><td>${r.pa_g}</td></tr>`).join("")}</table>`:'<div class="mut">Unavailable.</div>';

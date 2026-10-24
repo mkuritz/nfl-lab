@@ -66,3 +66,15 @@ header#v2bar .in{border:0;border-radius:0;background:none}
 /* nav-connect: 7 sports fit on phones; if still too narrow the bar scrolls sideways */
 @media(max-width:480px){#v2bar .sp{flex:0 1 auto;min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:1px}#v2bar .sp::-webkit-scrollbar{display:none}#v2bar .sp a{padding:6px 5px;flex:none}}
 @media(max-width:420px){#v2bar .sp a{padding:6px 3px}}
+
+/* PFF-Style Coverage Funnel & Trench Advantage Badges */
+.fn-strip{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 4px}
+.fn-badge{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:800;letter-spacing:.02em;padding:2.5px 8px;border-radius:999px;border:1px solid var(--line);background:#121f3a;color:#c9d8f4;white-space:nowrap}
+.fn-badge.pass{background:#38d0f018;border-color:#38d0f055;color:var(--acc)}
+.fn-badge.run{background:#8ee04a1c;border-color:#8ee04a55;color:var(--acc2)}
+.fn-badge.te{background:#a78bfa22;border-color:#a78bfa66;color:#c4b5fd}
+.fn-badge.slot{background:#f5b83d20;border-color:#f5b83d55;color:var(--warn)}
+.fn-badge.deep{background:#38bdf820;border-color:#38bdf855;color:#7dd3fc}
+.fn-badge.rz{background:#ff5d6c20;border-color:#ff5d6c55;color:#fca5a5}
+.fn-badge.trench_up,.fn-badge.trench{background:#10b98120;border-color:#10b98155;color:#6ee7b7}
+.fn-badge.trench_dn{background:#f43f5e20;border-color:#f43f5e55;color:#fda4af}
