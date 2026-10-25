@@ -1,1021 +1,1021 @@
 {
- "week": "2026 Week 7",
- "games": {
-  "DAL@PHI": {
-   "away": "DAL",
-   "home": "PHI",
-   "kick": "Mon Oct 26 8:15 PM ET",
-   "spread": {
-    "fav": "DAL",
-    "line": [
-     -4.0,
-     -4.5
-    ]
-   },
-   "total": 47.5,
-   "moves": [],
-   "players": [
-    "3929630",
-    "4360238",
-    "4241478",
-    "3121023",
-    "4428850",
-    "4241372",
-    "4685201",
-    "2577417",
-    "4426354"
-   ]
-  },
-  "CIN@BAL": {
-   "away": "CIN",
-   "home": "BAL",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "BAL",
-    "line": [
-     -1.5
-    ]
-   },
-   "total": 48.5,
-   "moves": [
-    {
-     "mkt": "spread",
-     "from": {
-      "fav": "BAL",
-      "line": -3.5
-     },
-     "to": {
-      "fav": "BAL",
-      "line": -1.5
-     }
+  "week": "2026 Week 7",
+  "games": {
+    "DAL@PHI": {
+      "away": "DAL",
+      "home": "PHI",
+      "kick": "Mon Oct 26 8:15 PM ET",
+      "spread": {
+        "fav": "DAL",
+        "line": [
+          -4.0,
+          -4.5
+        ]
+      },
+      "total": 47.5,
+      "moves": [],
+      "players": [
+        "3929630",
+        "4360238",
+        "4241478",
+        "3121023",
+        "4428850",
+        "4241372",
+        "4685201",
+        "2577417",
+        "4426354"
+      ]
     },
-    {
-     "mkt": "total",
-     "from": 51.0,
-     "to": 48.5
+    "CIN@BAL": {
+      "away": "CIN",
+      "home": "BAL",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "BAL",
+        "line": [
+          -1.5
+        ]
+      },
+      "total": 48.5,
+      "moves": [
+        {
+          "mkt": "spread",
+          "from": {
+            "fav": "BAL",
+            "line": -3.5
+          },
+          "to": {
+            "fav": "BAL",
+            "line": -1.5
+          }
+        },
+        {
+          "mkt": "total",
+          "from": 51.0,
+          "to": 48.5
+        }
+      ],
+      "players": [
+        "3916387",
+        "4035671"
+      ]
+    },
+    "LAR@LV": {
+      "away": "LAR",
+      "home": "LV",
+      "kick": "Sun Oct 25 4:25 PM ET",
+      "spread": {
+        "fav": "LAR",
+        "line": [
+          -3.5
+        ]
+      },
+      "total": 48.5,
+      "moves": [
+        {
+          "mkt": "spread",
+          "from": {
+            "fav": "LAR",
+            "line": -8.0
+          },
+          "to": {
+            "fav": "LAR",
+            "line": -3.5
+          }
+        }
+      ],
+      "players": [
+        "4426515",
+        "16800"
+      ]
+    },
+    "SF@ATL": {
+      "away": "SF",
+      "home": "ATL",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "SF",
+        "line": [
+          -2.5
+        ]
+      },
+      "total": 50.0,
+      "moves": [],
+      "players": [
+        "16737",
+        "3126486",
+        "3040151",
+        "3895856"
+      ]
+    },
+    "MIA@NYJ": {
+      "away": "MIA",
+      "home": "NYJ",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "NYJ",
+        "line": [
+          -4.5
+        ]
+      },
+      "total": 39.5,
+      "moves": [],
+      "players": [
+        "4427366",
+        "4597500"
+      ]
+    },
+    "DEN@ARI": {
+      "away": "DEN",
+      "home": "ARI",
+      "kick": "Sun Oct 25 4:05 PM ET",
+      "spread": {
+        "fav": "DEN",
+        "line": [
+          -4.5
+        ]
+      },
+      "total": 43.5,
+      "moves": [],
+      "players": [
+        "4870808"
+      ]
+    },
+    "TB@CAR": {
+      "away": "TB",
+      "home": "CAR",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "CAR",
+        "line": [
+          -3.0
+        ]
+      },
+      "total": 44.5,
+      "moves": [
+        {
+          "mkt": "spread",
+          "from": {
+            "fav": "TB",
+            "line": -1.0
+          },
+          "to": {
+            "fav": "CAR",
+            "line": -3.0
+          }
+        }
+      ],
+      "players": [
+        "3052587",
+        "4567750"
+      ]
+    },
+    "NYG@HOU": {
+      "away": "NYG",
+      "home": "HOU",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "HOU",
+        "line": [
+          -10.5
+        ]
+      },
+      "total": 42.5,
+      "moves": [],
+      "players": [
+        "4035538",
+        "4366031",
+        "4429148"
+      ]
+    },
+    "PIT@NO": {
+      "away": "PIT",
+      "home": "NO",
+      "kick": "Sun Oct 25 9:30 AM ET",
+      "spread": {
+        "fav": "PIT",
+        "line": [
+          -3.0
+        ]
+      },
+      "total": 44.5,
+      "moves": [
+        {
+          "mkt": "total",
+          "from": 40.5,
+          "to": 44.5
+        }
+      ],
+      "players": [
+        "3054850",
+        "4038815"
+      ]
+    },
+    "KC@SEA": {
+      "away": "KC",
+      "home": "SEA",
+      "kick": "Sun Oct 25 8:20 PM ET",
+      "spread": {
+        "fav": "SEA",
+        "line": [
+          -2.5
+        ]
+      },
+      "total": 42.5,
+      "moves": [],
+      "players": [
+        "4426385"
+      ]
+    },
+    "IND@MIN": {
+      "away": "IND",
+      "home": "MIN",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "MIN",
+        "line": [
+          -6.5
+        ]
+      },
+      "total": 41.5,
+      "moves": [],
+      "players": [
+        "4431459",
+        "4429684",
+        "4360569"
+      ]
+    },
+    "CLE@TEN": {
+      "away": "CLE",
+      "home": "TEN",
+      "kick": "Sun Oct 25 1:00 PM ET",
+      "spread": {
+        "fav": "CLE",
+        "line": [
+          -1.5
+        ]
+      },
+      "total": 37.5,
+      "moves": [],
+      "players": [
+        "3925357",
+        "4428557"
+      ]
+    },
+    "GB@DET": {
+      "away": "GB",
+      "home": "DET",
+      "kick": "Sun Oct 25 4:25 PM ET",
+      "spread": {
+        "fav": "DET",
+        "line": [
+          -3.0
+        ]
+      },
+      "total": 49.5,
+      "moves": [],
+      "players": [
+        "4047365"
+      ]
     }
-   ],
-   "players": [
-    "3916387",
-    "4035671"
-   ]
   },
-  "LAR@LV": {
-   "away": "LAR",
-   "home": "LV",
-   "kick": "Sun Oct 25 4:25 PM ET",
-   "spread": {
-    "fav": "LAR",
-    "line": [
-     -3.5
-    ]
-   },
-   "total": 48.5,
-   "moves": [
-    {
-     "mkt": "spread",
-     "from": {
-      "fav": "LAR",
-      "line": -8.0
-     },
-     "to": {
-      "fav": "LAR",
-      "line": -3.5
-     }
+  "updated_et": "Sun Oct 25, 2026 11:42 AM ET",
+  "players": {
+    "3929630": {
+      "name": "Saquon Barkley",
+      "team": "PHI",
+      "pos": "RB",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Listed Questionable for MNF vs DAL but expected to play.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "questionable, expected to play",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 24, 2026 4:09 PM ET",
+      "listed": "Questionable",
+      "gk": "DAL@PHI"
+    },
+    "4360238": {
+      "name": "Dameon Pierce",
+      "team": "PHI",
+      "pos": "RB",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "role change",
+      "note": "Backup to Barkley; carries shrink if Barkley plays a full workload.",
+      "markets": [
+        "rush yds",
+        "rush att"
+      ],
+      "dir": "down",
+      "conf": "Unconfirmed",
+      "conf_note": "",
+      "unconfirmed": true,
+      "src": "Report",
+      "time": "Oct 22, 2026",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4241478": {
+      "name": "DeVonta Smith",
+      "team": "PHI",
+      "pos": "WR",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Ruled out for MNF vs DAL. Depth-chart replacement at WR not officially reported.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 24, 2026 3:48 PM ET",
+      "listed": "Out",
+      "gk": "DAL@PHI"
+    },
+    "3121023": {
+      "name": "Dallas Goedert",
+      "team": "PHI",
+      "pos": "TE",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Knee; DNP Thursday. 6-61 on 8 targets in Week 6.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "DNP Thursday",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 22, 2026 9:06 PM ET",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4428850": {
+      "name": "Dontayvion Wicks",
+      "team": "PHI",
+      "pos": "WR",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Ankle; DNP Thursday.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "DNP Thursday",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 22, 2026",
+      "listed": "Out",
+      "gk": "DAL@PHI"
+    },
+    "4241372": {
+      "name": "Marquise Brown",
+      "team": "PHI",
+      "pos": "WR",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "role change",
+      "note": "Full practice (ankle). If Smith, Wicks or Goedert sit, he gets more targets. Also a trade candidate before the Nov 10 deadline.",
+      "markets": [
+        "receptions",
+        "rec yds"
+      ],
+      "dir": "up",
+      "conf": "Unconfirmed",
+      "conf_note": "depends on teammates' status",
+      "unconfirmed": true,
+      "src": "Report",
+      "time": "Oct 22, 2026",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4685201": {
+      "name": "Tanner McKee",
+      "team": "PHI",
+      "pos": "QB",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "QB change",
+      "note": "Starting again with Hurts out for the season. Faces DAL's 31st-ranked defense by EPA/play, but his top pass catchers are banged up.",
+      "markets": [
+        "pass yds",
+        "pass att",
+        "pass TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "starter",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 22, 2026",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "2577417": {
+      "name": "Dak Prescott",
+      "team": "DAL",
+      "pos": "QB",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "matchup",
+      "note": "4 INTs in his last 2 games; Jalen Carter (wrist) practiced fully. Eagles edge rushers Nolan Smith (concussion, DNP) and Greenard (limited) are banged up.",
+      "markets": [
+        "interceptions",
+        "pass yds"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "practice reports",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 22, 2026",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "3916387": {
+      "name": "Lamar Jackson",
+      "team": "BAL",
+      "pos": "QB",
+      "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (high ankle, 3rd straight missed game); Tyler Huntley starts vs CIN.",
+      "markets": [
+        "rush yds",
+        "pass yds",
+        "pass TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:32 AM ET",
+      "listed": "Out",
+      "gk": "CIN@BAL"
+    },
+    "4426515": {
+      "name": "Puka Nacua",
+      "team": "LAR",
+      "pos": "WR",
+      "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
+      "type": "injury",
+      "note": "Calf; questionable and will work out pregame. Davante Adams is already out. Line moved from LAR -8 to -3.5.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "questionable",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 2:51 PM ET",
+      "listed": "Questionable",
+      "gk": "LAR@LV"
+    },
+    "16800": {
+      "name": "Davante Adams",
+      "team": "LAR",
+      "pos": "WR",
+      "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
+      "type": "injury",
+      "note": "Hamstring; out for the season. His targets go to other LAR pass catchers.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out for the season",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 11:39 AM ET",
+      "listed": "Injured Reserve",
+      "gk": "LAR@LV"
+    },
+    "16737": {
+      "name": "Mike Evans",
+      "team": "SF",
+      "pos": "WR",
+      "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (ribs/Achilles) at ATL.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:35 AM ET",
+      "listed": "Out",
+      "gk": "SF@ATL"
+    },
+    "4427366": {
+      "name": "Breece Hall",
+      "team": "NYJ",
+      "pos": "RB",
+      "game": "MIA at NYJ, Sun Oct 25 1:00 PM ET",
+      "type": "injury return",
+      "note": "Officially inactive (quad) for 4th straight game vs MIA.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:30 AM ET",
+      "listed": "Out",
+      "gk": "MIA@NYJ"
+    },
+    "4870808": {
+      "name": "Jeremiyah Love",
+      "team": "ARI",
+      "pos": "RB",
+      "game": "DEN at ARI, Sun Oct 25 4:05 PM ET",
+      "type": "injury",
+      "note": "High-ankle sprain; ruled out, confirmed by the head coach. Arizona's other RBs gain carries.",
+      "markets": [
+        "rush yds",
+        "rush att"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 1:38 PM ET",
+      "listed": "Out",
+      "gk": "DEN@ARI"
+    },
+    "3052587": {
+      "name": "Baker Mayfield",
+      "team": "TB",
+      "pos": "QB",
+      "game": "TB at CAR, Sun Oct 25 1:00 PM ET",
+      "type": "injury return",
+      "note": "Officially active vs CAR, wearing a protective glove on his dislocated thumb.",
+      "markets": [
+        "pass yds",
+        "pass TD",
+        "pass att"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "active",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:30 AM ET",
+      "listed": "Active",
+      "gk": "TB@CAR"
+    },
+    "4567750": {
+      "name": "Emeka Egbuka",
+      "team": "TB",
+      "pos": "WR",
+      "game": "TB at CAR, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive vs CAR.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:35 AM ET",
+      "listed": "Out",
+      "gk": "TB@CAR"
+    },
+    "4035538": {
+      "name": "David Montgomery",
+      "team": "HOU",
+      "pos": "RB",
+      "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (groin) vs NYG.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:31 AM ET",
+      "listed": "Out",
+      "gk": "NYG@HOU"
+    },
+    "4366031": {
+      "name": "Tank Dell",
+      "team": "HOU",
+      "pos": "WR",
+      "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
+      "type": "injury return",
+      "note": "Officially active vs NYG in his first game back.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "active",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:31 AM ET",
+      "listed": "Active",
+      "gk": "NYG@HOU"
+    },
+    "3054850": {
+      "name": "Alvin Kamara",
+      "team": "NO",
+      "pos": "RB",
+      "game": "PIT at NO, Sun Oct 25 9:30 AM ET",
+      "type": "injury",
+      "note": "Back; limited but no designation and will play.",
+      "markets": [
+        "rush yds",
+        "rec yds"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "will play",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026",
+      "listed": "Active",
+      "gk": "PIT@NO"
+    },
+    "4038815": {
+      "name": "Rico Dowdle",
+      "team": "PIT",
+      "pos": "RB",
+      "game": "PIT at NO, Sun Oct 25 9:30 AM ET",
+      "type": "injury",
+      "note": "Questionable. Total moved from 40.5 to 44.5.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "questionable",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 9:01 AM ET",
+      "listed": "Questionable",
+      "gk": "PIT@NO"
+    },
+    "4258595": {
+      "name": "Cole Kmet",
+      "team": "CHI",
+      "pos": "TE",
+      "game": "Played Thu; next game TBD",
+      "type": "injury",
+      "note": "Knee injury from Thursday; placed on IR, season-ending. Next man up not reported.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "IR, season-ending",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 2:06 PM ET",
+      "listed": "Injured Reserve"
+    },
+    "3126486": {
+      "name": "Deebo Samuel Sr.",
+      "team": "SF",
+      "pos": "WR",
+      "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (hamstring) at ATL.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:35 AM ET",
+      "listed": "Out",
+      "gk": "SF@ATL"
+    },
+    "3040151": {
+      "name": "George Kittle",
+      "team": "SF",
+      "pos": "TE",
+      "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
+      "type": "role change",
+      "note": "With Evans and Samuel both out (Aiyuk also out), Kittle is the top healthy pass catcher; more targets expected. Both ATL starting cornerbacks, A.J. Terrell Jr. and Avieon Terrell, are questionable.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "teammates ruled out",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 4:45 PM ET",
+      "listed": "Active",
+      "gk": "SF@ATL"
+    },
+    "4426385": {
+      "name": "Zach Charbonnet",
+      "team": "SEA",
+      "pos": "RB",
+      "game": "KC at SEA, Sun Oct 25 8:20 PM ET",
+      "type": "injury",
+      "note": "Ruled out one day after PUP activation. Next man up not reported.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 4:42 PM ET",
+      "listed": "Out",
+      "gk": "KC@SEA"
+    },
+    "4431459": {
+      "name": "Tyler Warren",
+      "team": "IND",
+      "pos": "TE",
+      "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (groin) at MIN.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:37 AM ET",
+      "listed": "Out",
+      "gk": "IND@MIN"
+    },
+    "4429684": {
+      "name": "Anthony Gould",
+      "team": "IND",
+      "pos": "WR",
+      "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (concussion) at MIN.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:37 AM ET",
+      "listed": "Out",
+      "gk": "IND@MIN"
+    },
+    "4360569": {
+      "name": "Jordan Mason",
+      "team": "MIN",
+      "pos": "RB",
+      "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
+      "type": "injury return",
+      "note": "Officially active vs IND alongside Aaron Jones Sr. and DeeJay Dallas (Demond Claiborne inactive).",
+      "markets": [
+        "rush yds",
+        "rush att"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "active",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:37 AM ET",
+      "listed": "Active",
+      "gk": "IND@MIN"
+    },
+    "3925357": {
+      "name": "Calvin Ridley",
+      "team": "TEN",
+      "pos": "WR",
+      "game": "CLE at TEN, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (hip) vs CLE; Carnell Tate and Wan'Dale Robinson lead TEN WR targets.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:30 AM ET",
+      "listed": "Out",
+      "gk": "CLE@TEN"
+    },
+    "4428557": {
+      "name": "Tyjae Spears",
+      "team": "TEN",
+      "pos": "RB",
+      "game": "CLE at TEN, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive vs CLE (alongside Nick Singleton); Tony Pollard leads TEN backfield.",
+      "markets": [
+        "rush yds",
+        "rec yds"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:30 AM ET",
+      "listed": "Out",
+      "gk": "CLE@TEN"
+    },
+    "4597500": {
+      "name": "Adonai Mitchell",
+      "team": "NYJ",
+      "pos": "WR",
+      "game": "MIA at NYJ, Sun Oct 25 1:00 PM ET",
+      "type": "injury return",
+      "note": "Set to play.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "set to play",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 11:01 AM ET",
+      "listed": "Active",
+      "gk": "MIA@NYJ"
+    },
+    "4692525": {
+      "name": "Anton Harrison",
+      "team": "JAX",
+      "pos": "OT",
+      "game": "Not on the Week 7 slate; next game TBD",
+      "type": "injury",
+      "note": "Already on IR; torn ACL found in surgery, out for the season.",
+      "markets": [
+        "team rush yds",
+        "QB sacks taken"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out for season",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 23, 2026 7:21 AM ET",
+      "listed": "Injured Reserve"
+    },
+    "4035671": {
+      "name": "Tyler Huntley",
+      "team": "BAL",
+      "pos": "QB",
+      "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
+      "type": "role change",
+      "note": "Starts at QB for Baltimore with Lamar Jackson ruled out (ankle).",
+      "markets": [
+        "pass yds",
+        "pass TDs",
+        "rush yds"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "starter",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 24, 2026 4:17 PM ET",
+      "listed": "Active",
+      "gk": "CIN@BAL"
+    },
+    "4426354": {
+      "name": "George Pickens",
+      "team": "DAL",
+      "pos": "WR",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury return",
+      "note": "Cleared with no injury designation for MNF at PHI.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "cleared",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 24, 2026 4:00 PM ET",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4047365": {
+      "name": "Josh Jacobs",
+      "team": "GB",
+      "pos": "RB",
+      "game": "GB at DET, Sun Oct 25 4:25 PM ET",
+      "type": "injury return",
+      "note": "Activated from the exempt list and expected to start at Detroit.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "active",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 24, 2026 4:00 PM ET",
+      "listed": "Active",
+      "gk": "GB@DET"
+    },
+    "4429148": {
+      "name": "Theo Johnson",
+      "team": "NYG",
+      "pos": "TE",
+      "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
+      "type": "injury",
+      "note": "Officially inactive (neck) at HOU.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "inactive",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 25, 2026 11:32 AM ET",
+      "listed": "Out",
+      "gk": "NYG@HOU"
+    },
+    "3895856": {
+      "name": "Christian Kirk",
+      "team": "SF",
+      "pos": "WR",
+      "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
+      "type": "injury return",
+      "note": "Activated from IR and debuts at ATL, adding WR depth with Mike Evans and Deebo Samuel Sr. out.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "active",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 24, 2026 4:34 PM ET",
+      "listed": "Active",
+      "gk": "SF@ATL"
     }
-   ],
-   "players": [
-    "4426515",
-    "16800"
-   ]
-  },
-  "SF@ATL": {
-   "away": "SF",
-   "home": "ATL",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "SF",
-    "line": [
-     -2.5
-    ]
-   },
-   "total": 50.0,
-   "moves": [],
-   "players": [
-    "16737",
-    "3126486",
-    "3040151",
-    "3895856"
-   ]
-  },
-  "MIA@NYJ": {
-   "away": "MIA",
-   "home": "NYJ",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "NYJ",
-    "line": [
-     -4.5
-    ]
-   },
-   "total": 39.5,
-   "moves": [],
-   "players": [
-    "4427366",
-    "4597500"
-   ]
-  },
-  "DEN@ARI": {
-   "away": "DEN",
-   "home": "ARI",
-   "kick": "Sun Oct 25 4:05 PM ET",
-   "spread": {
-    "fav": "DEN",
-    "line": [
-     -4.5
-    ]
-   },
-   "total": 43.5,
-   "moves": [],
-   "players": [
-    "4870808"
-   ]
-  },
-  "TB@CAR": {
-   "away": "TB",
-   "home": "CAR",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "CAR",
-    "line": [
-     -3.0
-    ]
-   },
-   "total": 44.5,
-   "moves": [
-    {
-     "mkt": "spread",
-     "from": {
-      "fav": "TB",
-      "line": -1.0
-     },
-     "to": {
-      "fav": "CAR",
-      "line": -3.0
-     }
-    }
-   ],
-   "players": [
-    "3052587",
-    "4567750"
-   ]
-  },
-  "NYG@HOU": {
-   "away": "NYG",
-   "home": "HOU",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "HOU",
-    "line": [
-     -10.5
-    ]
-   },
-   "total": 42.5,
-   "moves": [],
-   "players": [
-    "4035538",
-    "4366031",
-    "4429148"
-   ]
-  },
-  "PIT@NO": {
-   "away": "PIT",
-   "home": "NO",
-   "kick": "Sun Oct 25 9:30 AM ET",
-   "spread": {
-    "fav": "PIT",
-    "line": [
-     -3.0
-    ]
-   },
-   "total": 44.5,
-   "moves": [
-    {
-     "mkt": "total",
-     "from": 40.5,
-     "to": 44.5
-    }
-   ],
-   "players": [
-    "3054850",
-    "4038815"
-   ]
-  },
-  "KC@SEA": {
-   "away": "KC",
-   "home": "SEA",
-   "kick": "Sun Oct 25 8:20 PM ET",
-   "spread": {
-    "fav": "SEA",
-    "line": [
-     -2.5
-    ]
-   },
-   "total": 42.5,
-   "moves": [],
-   "players": [
-    "4426385"
-   ]
-  },
-  "IND@MIN": {
-   "away": "IND",
-   "home": "MIN",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "MIN",
-    "line": [
-     -6.5
-    ]
-   },
-   "total": 41.5,
-   "moves": [],
-   "players": [
-    "4431459",
-    "4429684",
-    "4360569"
-   ]
-  },
-  "CLE@TEN": {
-   "away": "CLE",
-   "home": "TEN",
-   "kick": "Sun Oct 25 1:00 PM ET",
-   "spread": {
-    "fav": "CLE",
-    "line": [
-     -1.5
-    ]
-   },
-   "total": 37.5,
-   "moves": [],
-   "players": [
-    "3925357",
-    "4428557"
-   ]
-  },
-  "GB@DET": {
-   "away": "GB",
-   "home": "DET",
-   "kick": "Sun Oct 25 4:25 PM ET",
-   "spread": {
-    "fav": "DET",
-    "line": [
-     -3.0
-    ]
-   },
-   "total": 49.5,
-   "moves": [],
-   "players": [
-    "4047365"
-   ]
   }
- },
- "updated_et": "2026-10-24 06:57 PM ET",
- "players": {
-  "3929630": {
-   "name": "Saquon Barkley",
-   "team": "PHI",
-   "pos": "RB",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "injury",
-   "note": "Listed Questionable for MNF vs DAL but expected to play.",
-   "markets": [
-    "rush yds",
-    "rush att",
-    "anytime TD"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "questionable, expected to play",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:09 PM ET",
-   "listed": "Questionable",
-   "gk": "DAL@PHI"
-  },
-  "4360238": {
-   "name": "Dameon Pierce",
-   "team": "PHI",
-   "pos": "RB",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "role change",
-   "note": "Backup to Barkley; carries shrink if Barkley plays a full workload.",
-   "markets": [
-    "rush yds",
-    "rush att"
-   ],
-   "dir": "down",
-   "conf": "Unconfirmed",
-   "conf_note": "",
-   "unconfirmed": true,
-   "src": "Report",
-   "time": "Oct 22, 2026",
-   "listed": "Active",
-   "gk": "DAL@PHI"
-  },
-  "4241478": {
-   "name": "DeVonta Smith",
-   "team": "PHI",
-   "pos": "WR",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "injury",
-   "note": "Ruled out for MNF vs DAL. Depth-chart replacement at WR not officially reported.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 3:48 PM ET",
-   "listed": "Out",
-   "gk": "DAL@PHI"
-  },
-  "3121023": {
-   "name": "Dallas Goedert",
-   "team": "PHI",
-   "pos": "TE",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "injury",
-   "note": "Knee; DNP Thursday. 6-61 on 8 targets in Week 6.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "DNP Thursday",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 22, 2026 9:06 PM ET",
-   "listed": "Active",
-   "gk": "DAL@PHI"
-  },
-  "4428850": {
-   "name": "Dontayvion Wicks",
-   "team": "PHI",
-   "pos": "WR",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "injury",
-   "note": "Ankle; DNP Thursday.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "DNP Thursday",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 22, 2026",
-   "listed": "Out",
-   "gk": "DAL@PHI"
-  },
-  "4241372": {
-   "name": "Marquise Brown",
-   "team": "PHI",
-   "pos": "WR",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "role change",
-   "note": "Full practice (ankle). If Smith, Wicks or Goedert sit, he gets more targets. Also a trade candidate before the Nov 10 deadline.",
-   "markets": [
-    "receptions",
-    "rec yds"
-   ],
-   "dir": "up",
-   "conf": "Unconfirmed",
-   "conf_note": "depends on teammates' status",
-   "unconfirmed": true,
-   "src": "Report",
-   "time": "Oct 22, 2026",
-   "listed": "Active",
-   "gk": "DAL@PHI"
-  },
-  "4685201": {
-   "name": "Tanner McKee",
-   "team": "PHI",
-   "pos": "QB",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "QB change",
-   "note": "Starting again with Hurts out for the season. Faces DAL's 31st-ranked defense by EPA/play, but his top pass catchers are banged up.",
-   "markets": [
-    "pass yds",
-    "pass att",
-    "pass TD"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "starter",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 22, 2026",
-   "listed": "Active",
-   "gk": "DAL@PHI"
-  },
-  "2577417": {
-   "name": "Dak Prescott",
-   "team": "DAL",
-   "pos": "QB",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "matchup",
-   "note": "4 INTs in his last 2 games; Jalen Carter (wrist) practiced fully. Eagles edge rushers Nolan Smith (concussion, DNP) and Greenard (limited) are banged up.",
-   "markets": [
-    "interceptions",
-    "pass yds"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "practice reports",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 22, 2026",
-   "listed": "Active",
-   "gk": "DAL@PHI"
-  },
-  "3916387": {
-   "name": "Lamar Jackson",
-   "team": "BAL",
-   "pos": "QB",
-   "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Ankle; downgraded to Out on Saturday. Tyler Huntley starts vs CIN. Line moved from BAL -3.5 to -1.5 and total from 51 to 48.5.",
-   "markets": [
-    "rush yds",
-    "pass yds",
-    "pass TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 3:30 PM ET",
-   "listed": "Out",
-   "gk": "CIN@BAL"
-  },
-  "4426515": {
-   "name": "Puka Nacua",
-   "team": "LAR",
-   "pos": "WR",
-   "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
-   "type": "injury",
-   "note": "Calf; questionable and will work out pregame. Davante Adams is already out. Line moved from LAR -8 to -3.5.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "questionable",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 2:51 PM ET",
-   "listed": "Questionable",
-   "gk": "LAR@LV"
-  },
-  "16800": {
-   "name": "Davante Adams",
-   "team": "LAR",
-   "pos": "WR",
-   "game": "LAR at LV, Sun Oct 25 4:25 PM ET",
-   "type": "injury",
-   "note": "Hamstring; out for the season. His targets go to other LAR pass catchers.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out for the season",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 11:39 AM ET",
-   "listed": "Injured Reserve",
-   "gk": "LAR@LV"
-  },
-  "16737": {
-   "name": "Mike Evans",
-   "team": "SF",
-   "pos": "WR",
-   "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Achilles; ruled out vs ATL. Next man up not reported.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 4:45 PM ET",
-   "listed": "Out",
-   "gk": "SF@ATL"
-  },
-  "4427366": {
-   "name": "Breece Hall",
-   "team": "NYJ",
-   "pos": "RB",
-   "game": "MIA at NYJ, Sun Oct 25 1:00 PM ET",
-   "type": "injury return",
-   "note": "Quad; questionable after missing 3 games.",
-   "markets": [
-    "rush yds",
-    "rush att",
-    "anytime TD"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "questionable",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 11:01 AM ET",
-   "listed": "Questionable",
-   "gk": "MIA@NYJ"
-  },
-  "4870808": {
-   "name": "Jeremiyah Love",
-   "team": "ARI",
-   "pos": "RB",
-   "game": "DEN at ARI, Sun Oct 25 4:05 PM ET",
-   "type": "injury",
-   "note": "High-ankle sprain; ruled out, confirmed by the head coach. Arizona's other RBs gain carries.",
-   "markets": [
-    "rush yds",
-    "rush att"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 1:38 PM ET",
-   "listed": "Out",
-   "gk": "DEN@ARI"
-  },
-  "3052587": {
-   "name": "Baker Mayfield",
-   "team": "TB",
-   "pos": "QB",
-   "game": "TB at CAR, Sun Oct 25 1:00 PM ET",
-   "type": "injury return",
-   "note": "Thumb; ready to go after being out since Week 3. Line flipped from TB -1 to CAR -3.",
-   "markets": [
-    "pass yds",
-    "pass TD",
-    "pass att"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "ready to go",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 12:38 PM ET",
-   "listed": "Questionable",
-   "gk": "TB@CAR"
-  },
-  "4567750": {
-   "name": "Emeka Egbuka",
-   "team": "TB",
-   "pos": "WR",
-   "game": "TB at CAR, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Doubtful.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "doubtful",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 12:38 PM ET",
-   "listed": "Out",
-   "gk": "TB@CAR"
-  },
-  "4035538": {
-   "name": "David Montgomery",
-   "team": "HOU",
-   "pos": "RB",
-   "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Groin; ruled out. HOU is a 10.5-point favorite, so a game script with lots of running helps whoever replaces him.",
-   "markets": [
-    "rush yds",
-    "rush att",
-    "anytime TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 5:06 PM ET",
-   "listed": "Out",
-   "gk": "NYG@HOU"
-  },
-  "4366031": {
-   "name": "Tank Dell",
-   "team": "HOU",
-   "pos": "WR",
-   "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
-   "type": "injury return",
-   "note": "Activated and set to play vs NYG in his first game back.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "active",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:03 PM ET",
-   "listed": "Active",
-   "gk": "NYG@HOU"
-  },
-  "3054850": {
-   "name": "Alvin Kamara",
-   "team": "NO",
-   "pos": "RB",
-   "game": "PIT at NO, Sun Oct 25 9:30 AM ET",
-   "type": "injury",
-   "note": "Back; limited but no designation and will play.",
-   "markets": [
-    "rush yds",
-    "rec yds"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "will play",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026",
-   "listed": "Active",
-   "gk": "PIT@NO"
-  },
-  "4038815": {
-   "name": "Rico Dowdle",
-   "team": "PIT",
-   "pos": "RB",
-   "game": "PIT at NO, Sun Oct 25 9:30 AM ET",
-   "type": "injury",
-   "note": "Questionable. Total moved from 40.5 to 44.5.",
-   "markets": [
-    "rush yds",
-    "rush att",
-    "anytime TD"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "questionable",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 9:01 AM ET",
-   "listed": "Questionable",
-   "gk": "PIT@NO"
-  },
-  "4258595": {
-   "name": "Cole Kmet",
-   "team": "CHI",
-   "pos": "TE",
-   "game": "Played Thu; next game TBD",
-   "type": "injury",
-   "note": "Knee injury from Thursday; placed on IR, season-ending. Next man up not reported.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "IR, season-ending",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 2:06 PM ET",
-   "listed": "Injured Reserve"
-  },
-  "3126486": {
-   "name": "Deebo Samuel Sr.",
-   "team": "SF",
-   "pos": "WR",
-   "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Ruled out vs ATL.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 4:28 PM ET",
-   "listed": "Out",
-   "gk": "SF@ATL"
-  },
-  "3040151": {
-   "name": "George Kittle",
-   "team": "SF",
-   "pos": "TE",
-   "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
-   "type": "role change",
-   "note": "With Evans and Samuel both out (Aiyuk also out), Kittle is the top healthy pass catcher; more targets expected. Both ATL starting cornerbacks, A.J. Terrell Jr. and Avieon Terrell, are questionable.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "teammates ruled out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 4:45 PM ET",
-   "listed": "Active",
-   "gk": "SF@ATL"
-  },
-  "4426385": {
-   "name": "Zach Charbonnet",
-   "team": "SEA",
-   "pos": "RB",
-   "game": "KC at SEA, Sun Oct 25 8:20 PM ET",
-   "type": "injury",
-   "note": "Ruled out one day after PUP activation. Next man up not reported.",
-   "markets": [
-    "rush yds",
-    "rush att",
-    "anytime TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 4:42 PM ET",
-   "listed": "Out",
-   "gk": "KC@SEA"
-  },
-  "4431459": {
-   "name": "Tyler Warren",
-   "team": "IND",
-   "pos": "TE",
-   "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Groin; ruled out vs MIN.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 12:46 PM ET",
-   "listed": "Out",
-   "gk": "IND@MIN"
-  },
-  "4429684": {
-   "name": "Anthony Gould",
-   "team": "IND",
-   "pos": "WR",
-   "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Concussion; ruled out vs MIN.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 12:46 PM ET",
-   "listed": "Out",
-   "gk": "IND@MIN"
-  },
-  "4360569": {
-   "name": "Jordan Mason",
-   "team": "MIN",
-   "pos": "RB",
-   "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
-   "type": "injury return",
-   "note": "Activated from IR (thumb) and expected to play vs IND alongside Aaron Jones Sr.",
-   "markets": [
-    "rush yds",
-    "rush att"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "active",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:31 PM ET",
-   "listed": "Active",
-   "gk": "IND@MIN"
-  },
-  "3925357": {
-   "name": "Calvin Ridley",
-   "team": "TEN",
-   "pos": "WR",
-   "game": "CLE at TEN, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Questionable.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "questionable",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 3:58 PM ET",
-   "listed": "Questionable",
-   "gk": "CLE@TEN"
-  },
-  "4428557": {
-   "name": "Tyjae Spears",
-   "team": "TEN",
-   "pos": "RB",
-   "game": "CLE at TEN, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Questionable.",
-   "markets": [
-    "rush yds",
-    "rec yds"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "questionable",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 3:58 PM ET",
-   "listed": "Questionable",
-   "gk": "CLE@TEN"
-  },
-  "4597500": {
-   "name": "Adonai Mitchell",
-   "team": "NYJ",
-   "pos": "WR",
-   "game": "MIA at NYJ, Sun Oct 25 1:00 PM ET",
-   "type": "injury return",
-   "note": "Set to play.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "uncertain",
-   "conf": "Confirmed",
-   "conf_note": "set to play",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 11:01 AM ET",
-   "listed": "Active",
-   "gk": "MIA@NYJ"
-  },
-  "4692525": {
-   "name": "Anton Harrison",
-   "team": "JAX",
-   "pos": "OT",
-   "game": "Not on the Week 7 slate; next game TBD",
-   "type": "injury",
-   "note": "Already on IR; torn ACL found in surgery, out for the season.",
-   "markets": [
-    "team rush yds",
-    "QB sacks taken"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out for season",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 23, 2026 7:21 AM ET",
-   "listed": "Injured Reserve"
-  },
-  "4035671": {
-   "name": "Tyler Huntley",
-   "team": "BAL",
-   "pos": "QB",
-   "game": "CIN at BAL, Sun Oct 25 1:00 PM ET",
-   "type": "role change",
-   "note": "Starts at QB for Baltimore with Lamar Jackson ruled out (ankle).",
-   "markets": [
-    "pass yds",
-    "pass TDs",
-    "rush yds"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "starter",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:17 PM ET",
-   "listed": "Active",
-   "gk": "CIN@BAL"
-  },
-  "4426354": {
-   "name": "George Pickens",
-   "team": "DAL",
-   "pos": "WR",
-   "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
-   "type": "injury return",
-   "note": "Cleared with no injury designation for MNF at PHI.",
-   "markets": [
-    "rec yds",
-    "receptions",
-    "anytime TD"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "cleared",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:00 PM ET",
-   "listed": "Active",
-   "gk": "DAL@PHI"
-  },
-  "4047365": {
-   "name": "Josh Jacobs",
-   "team": "GB",
-   "pos": "RB",
-   "game": "GB at DET, Sun Oct 25 4:25 PM ET",
-   "type": "injury return",
-   "note": "Activated from the exempt list and expected to start at Detroit.",
-   "markets": [
-    "rush yds",
-    "rush att",
-    "anytime TD"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "active",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:00 PM ET",
-   "listed": "Active",
-   "gk": "GB@DET"
-  },
-  "4429148": {
-   "name": "Theo Johnson",
-   "team": "NYG",
-   "pos": "TE",
-   "game": "NYG at HOU, Sun Oct 25 1:00 PM ET",
-   "type": "injury",
-   "note": "Downgraded to Out (neck) for Sunday at HOU.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "down",
-   "conf": "Confirmed",
-   "conf_note": "out",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 12:59 PM ET",
-   "listed": "Out",
-   "gk": "NYG@HOU"
-  },
-  "3895856": {
-   "name": "Christian Kirk",
-   "team": "SF",
-   "pos": "WR",
-   "game": "SF at ATL, Sun Oct 25 1:00 PM ET",
-   "type": "injury return",
-   "note": "Activated from IR and debuts at ATL, adding WR depth with Mike Evans and Deebo Samuel Sr. out.",
-   "markets": [
-    "rec yds",
-    "receptions"
-   ],
-   "dir": "up",
-   "conf": "Confirmed",
-   "conf_note": "active",
-   "unconfirmed": false,
-   "src": "Report",
-   "time": "Oct 24, 2026 4:34 PM ET",
-   "listed": "Active",
-   "gk": "SF@ATL"
-  }
- }
 }

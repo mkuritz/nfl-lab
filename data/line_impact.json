@@ -1,6 +1,6 @@
 {
   "slate": "2026 Week 7",
-  "updated_et": "Sun Oct 25, 2026 11:02 AM ET",
+  "updated_et": "Sun Oct 25, 2026 11:52 AM ET",
   "games": [
     {
       "key": "PIT@NO",
@@ -378,14 +378,47 @@
           "player": "Lamar Jackson",
           "team": "BAL",
           "pos": "QB",
-          "status": "Out (ankle)",
+          "status": "Inactive (high ankle, 3rd straight missed game)",
           "conf": "Confirmed",
           "conf_note": "out",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 3:30 PM ET",
-          "note": "Downgraded to Out on Saturday; Tyler Huntley starts.",
+          "time": "Oct 25, 2026 11:32 AM ET",
+          "note": "Tyler Huntley starts at QB vs CIN.",
           "point_value": "no published estimate",
           "intel_aid": "3916387"
+        },
+        {
+          "player": "Jaylinn Hawkins",
+          "team": "BAL",
+          "pos": "S",
+          "status": "Inactive (knee)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:31 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Elijah Sarratt",
+          "team": "BAL",
+          "pos": "WR",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:31 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Russ Yeast",
+          "team": "CIN",
+          "pos": "S",
+          "status": "Inactive (healthy scratch)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:31 AM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -400,6 +433,19 @@
           "time": "Oct 23, 2026 11:57 AM ET",
           "replacement": "Not reported",
           "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Andrew Vorhees",
+          "team": "BAL",
+          "pos": "G",
+          "status": "Inactive (foot)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:31 AM ET",
+          "replacement": "Hergel active",
+          "impact_tag": "interior OL",
+          "stat": "none published"
         }
       ],
       "dl": [
@@ -427,6 +473,19 @@
           "time": "Oct 23, 2026 11:57 AM ET",
           "replacement": "replacement not reported",
           "impact_tag": "pass rush",
+          "stat": "none published"
+        },
+        {
+          "player": "Broderick Washington",
+          "team": "BAL",
+          "pos": "DT",
+          "status": "Inactive (ankle)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:31 AM ET",
+          "replacement": "Aeneas Peebles active",
+          "impact_tag": "run defense",
           "stat": "none published"
         }
       ],
@@ -467,9 +526,7 @@
           }
         }
       ],
-      "pending": [
-        "Cam Jurgens"
-      ],
+      "pending": [],
       "flag": "",
       "intel": [
         {
@@ -551,11 +608,11 @@
           "player": "David Montgomery",
           "team": "HOU",
           "pos": "RB",
-          "status": "Out (groin)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 5:06 PM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "note": "Next up Woody Marks.",
           "point_value": "no published estimate",
           "intel_aid": "4035538"
@@ -564,11 +621,11 @@
           "player": "Jalen Pitre",
           "team": "HOU",
           "pos": "S",
-          "status": "Out",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 5:06 PM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "point_value": "no published estimate"
         },
         {
@@ -586,11 +643,11 @@
           "player": "Tank Dell",
           "team": "HOU",
           "pos": "WR",
-          "status": "Activated; set to play vs NYG",
+          "status": "Active (first game back)",
           "conf": "Confirmed",
           "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 4:03 PM ET",
+          "time": "Oct 25, 2026 11:31 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4366031"
         },
@@ -598,24 +655,57 @@
           "player": "Jevon Holland",
           "team": "NYG",
           "pos": "S",
-          "status": "Out (concussion)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "out",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 12:59 PM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Theo Johnson",
           "team": "NYG",
           "pos": "TE",
-          "status": "Out (neck)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "out",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 12:59 PM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4429148"
+        },
+        {
+          "player": "Reed Blankenship",
+          "team": "HOU",
+          "pos": "S",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:31 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Greg Newsome II",
+          "team": "NYG",
+          "pos": "CB",
+          "status": "Inactive (concussion)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:32 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Tyler Nubin",
+          "team": "NYG",
+          "pos": "S",
+          "status": "Active",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:32 AM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -623,11 +713,11 @@
           "player": "Andrew Thomas",
           "team": "NYG",
           "pos": "LT",
-          "status": "Questionable (groin, limited)",
+          "status": "Active",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         },
@@ -635,11 +725,11 @@
           "player": "Jermaine Eluemunor",
           "team": "NYG",
           "pos": "RT",
-          "status": "Questionable (calf, limited)",
+          "status": "Active",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "replacement": "Marcus Mbow (RT2) is also questionable (knee)",
           "reported_impact": "no published impact stat"
         },
@@ -647,11 +737,11 @@
           "player": "Blake Fisher",
           "team": "HOU",
           "pos": "T",
-          "status": "Questionable (thumb, DNP)",
+          "status": "Inactive (Braden Smith active for HOU)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 11:31 AM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
@@ -694,10 +784,7 @@
           "props": "no reported DL injuries; no adjustment"
         }
       ],
-      "pending": [
-        "Andrew Thomas",
-        "Jermaine Eluemunor"
-      ],
+      "pending": [],
       "flag": "NYG: both starting tackles AND the backup RT are questionable",
       "intel": [
         {
@@ -793,13 +880,14 @@
           "player": "Breece Hall",
           "team": "NYJ",
           "pos": "RB",
-          "status": "Questionable (quad)",
+          "status": "Inactive (quad, 4th straight missed game)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:01 AM ET",
+          "time": "Oct 25, 2026 11:30 AM ET",
           "point_value": "no published estimate",
-          "intel_aid": "4427366"
+          "intel_aid": "4427366",
+          "note": "Officially inactive vs MIA; Jets RB rotation continues as in last 3 games."
         },
         {
           "player": "Adonai Mitchell",
@@ -812,6 +900,50 @@
           "time": "Oct 23, 2026 11:01 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4597500"
+        },
+        {
+          "player": "Jalen Tolbert",
+          "team": "MIA",
+          "pos": "WR",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:34 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Willie Gay Jr.",
+          "team": "MIA",
+          "pos": "LB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:34 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Marcellas Dial Jr.",
+          "team": "MIA",
+          "pos": "CB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:34 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Reese Taylor",
+          "team": "MIA",
+          "pos": "CB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:34 AM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -831,11 +963,11 @@
           "player": "Dylan Parham",
           "team": "NYJ",
           "pos": "G",
-          "status": "Questionable (knee, limited)",
-          "conf": "Confirmed",
-          "conf_note": "",
-          "unconfirmed": false,
-          "time": "Oct 23, 2026",
+          "status": "Inactive (verify against team sheet)",
+          "conf": "Unconfirmed",
+          "conf_note": "verify",
+          "unconfirmed": true,
+          "time": "Oct 25, 2026 11:39 AM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
@@ -910,10 +1042,7 @@
           }
         }
       ],
-      "pending": [
-        "Breece Hall",
-        "Dylan Parham"
-      ],
+      "pending": [],
       "flag": "",
       "intel": [
         {
@@ -985,22 +1114,22 @@
           "player": "Bucky Irving",
           "team": "TB",
           "pos": "RB",
-          "status": "Questionable (illness)",
+          "status": "Active",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 11:35 AM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Baker Mayfield",
           "team": "TB",
           "pos": "QB",
-          "status": "Ready to go (thumb)",
+          "status": "Active (dislocated thumb; wearing protective glove)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 12:38 PM ET",
+          "time": "Oct 25, 2026 11:30 AM ET",
           "note": "Out since Week 3; Jalon Daniels has started 3 games.",
           "point_value": "no published estimate",
           "intel_aid": "3052587"
@@ -1009,13 +1138,46 @@
           "player": "Emeka Egbuka",
           "team": "TB",
           "pos": "WR",
-          "status": "Doubtful",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 12:38 PM ET",
+          "time": "Oct 25, 2026 11:35 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4567750"
+        },
+        {
+          "player": "Antoine Winfield Jr.",
+          "team": "TB",
+          "pos": "S",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:35 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Ja'Tavion Sanders",
+          "team": "CAR",
+          "pos": "TE",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:37 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "AJ Dillon",
+          "team": "CAR",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:37 AM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -1023,11 +1185,11 @@
           "player": "Luke Goedeke",
           "team": "TB",
           "pos": "RT",
-          "status": "Questionable (calf, DNP)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 11:35 AM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
@@ -1082,10 +1244,7 @@
           }
         }
       ],
-      "pending": [
-        "Luke Goedeke",
-        "Bucky Irving"
-      ],
+      "pending": [],
       "flag": "",
       "intel": [
         {
@@ -1169,11 +1328,11 @@
           "player": "Deebo Samuel Sr.",
           "team": "SF",
           "pos": "WR",
-          "status": "Out vs ATL",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 4:28 PM ET",
+          "time": "Oct 25, 2026 11:35 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "3126486"
         },
@@ -1181,11 +1340,11 @@
           "player": "Mike Evans",
           "team": "SF",
           "pos": "WR",
-          "status": "Out vs ATL (Achilles)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 4:45 PM ET",
+          "time": "Oct 25, 2026 11:35 AM ET",
           "note": "Ruled out by the head coach. Next man up not reported.",
           "point_value": "no published estimate",
           "intel_aid": "16737"
@@ -1194,11 +1353,11 @@
           "player": "Avieon Terrell",
           "team": "ATL",
           "pos": "CB",
-          "status": "Questionable",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 4:04 PM ET",
+          "time": "Oct 25, 2026 11:30 AM ET",
           "point_value": "no published estimate"
         },
         {
@@ -1223,6 +1382,83 @@
           "conf_note": "active",
           "unconfirmed": false,
           "time": "Oct 24, 2026 4:02 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Olamide Zaccheaus",
+          "team": "ATL",
+          "pos": "WR",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Brian Robinson Jr.",
+          "team": "ATL",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Divine Deablo",
+          "team": "ATL",
+          "pos": "LB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Billy Bowman Jr.",
+          "team": "ATL",
+          "pos": "DB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Luke Gifford",
+          "team": "SF",
+          "pos": "LB",
+          "status": "Inactive (groin)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:35 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Marques Sigle",
+          "team": "SF",
+          "pos": "S",
+          "status": "Inactive (ankle)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:35 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Garret Wallow",
+          "team": "SF",
+          "pos": "LB",
+          "status": "Inactive (hamstring)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:35 AM ET",
           "point_value": "no published estimate"
         }
       ],
@@ -1258,11 +1494,11 @@
           "player": "Nick Bosa",
           "team": "SF",
           "pos": "edge",
-          "status": "Out Week 7",
+          "status": "Inactive (knee/calf)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 4:49 PM ET",
+          "time": "Oct 25, 2026 11:35 AM ET",
           "replacement": "not reported",
           "impact_tag": "pass rush",
           "stat": "none published"
@@ -1307,9 +1543,7 @@
           }
         }
       ],
-      "pending": [
-        "Avieon Terrell"
-      ],
+      "pending": [],
       "flag": "",
       "intel": [
         {
@@ -1429,46 +1663,48 @@
           "player": "Calvin Ridley",
           "team": "TEN",
           "pos": "WR",
-          "status": "Questionable",
+          "status": "Inactive (hip)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 3:58 PM ET",
+          "time": "Oct 25, 2026 11:30 AM ET",
           "point_value": "no published estimate",
-          "intel_aid": "3925357"
+          "intel_aid": "3925357",
+          "note": "Officially inactive vs CLE; Carnell Tate and Wan'Dale Robinson lead WR targets."
         },
         {
           "player": "Tyjae Spears",
           "team": "TEN",
           "pos": "RB",
-          "status": "Questionable",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 3:58 PM ET",
+          "time": "Oct 25, 2026 11:30 AM ET",
           "point_value": "no published estimate",
-          "intel_aid": "4428557"
+          "intel_aid": "4428557",
+          "note": "Officially inactive alongside Nick Singleton; Tony Pollard leads TEN backfield."
         },
         {
           "player": "Denzel Ward",
           "team": "CLE",
           "pos": "CB",
-          "status": "Questionable (hand)",
+          "status": "Active (hand)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 3:51 PM ET",
+          "time": "Oct 25, 2026 11:32 AM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Dylan Sampson",
           "team": "CLE",
           "pos": "RB",
-          "status": "Activated from IR (knee); expected to play",
+          "status": "Active (activated from IR)",
           "conf": "Confirmed",
           "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 12:30 PM ET",
+          "time": "Oct 25, 2026 11:30 AM ET",
           "point_value": "no published estimate"
         },
         {
@@ -1480,6 +1716,62 @@
           "conf_note": "cleared",
           "unconfirmed": false,
           "time": "Oct 24, 2026 12:30 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Nick Singleton",
+          "team": "TEN",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "note": "Tony Pollard leads TEN backfield.",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Kylen Granson",
+          "team": "TEN",
+          "pos": "TE",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jaylon Jones",
+          "team": "TEN",
+          "pos": "CB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:30 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Audric Estime",
+          "team": "CLE",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:32 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Noah Igbinoghene",
+          "team": "CLE",
+          "pos": "CB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:32 AM ET",
           "point_value": "no published estimate"
         }
       ],
@@ -1602,15 +1894,7 @@
           "props": "no reported DL injuries; no adjustment"
         }
       ],
-      "pending": [
-        "Tytus Howard",
-        "Elgton Jenkins",
-        "Mason Graham",
-        "Quinshon Judkins",
-        "Calvin Ridley",
-        "Tyjae Spears",
-        "Denzel Ward"
-      ],
+      "pending": [],
       "flag": "CLE: 2 starting OL (RT, C) and an OL backup questionable; CLE's DL is also banged up",
       "intel": [
         {
@@ -1694,11 +1978,11 @@
           "player": "Sauce Gardner",
           "team": "IND",
           "pos": "CB",
-          "status": "Out (calf)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 12:46 PM ET",
+          "time": "Oct 25, 2026 11:37 AM ET",
           "note": "Next up Cameron Mitchell",
           "point_value": "no published estimate"
         },
@@ -1706,11 +1990,11 @@
           "player": "Tyler Warren",
           "team": "IND",
           "pos": "TE",
-          "status": "Out (groin)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 12:46 PM ET",
+          "time": "Oct 25, 2026 11:37 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4431459"
         },
@@ -1718,11 +2002,11 @@
           "player": "Anthony Gould",
           "team": "IND",
           "pos": "WR",
-          "status": "Out (concussion)",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 12:46 PM ET",
+          "time": "Oct 25, 2026 11:37 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4429684"
         },
@@ -1730,13 +2014,46 @@
           "player": "Jordan Mason",
           "team": "MIN",
           "pos": "RB",
-          "status": "Activated from IR (thumb); expected to play alongside Aaron Jones Sr.",
+          "status": "Active (RB rotation with Aaron Jones Sr. & DeeJay Dallas; Demond Claiborne inactive)",
           "conf": "Confirmed",
           "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 4:31 PM ET",
+          "time": "Oct 25, 2026 11:37 AM ET",
           "point_value": "no published estimate",
           "intel_aid": "4360569"
+        },
+        {
+          "player": "Bryce Boettcher",
+          "team": "IND",
+          "pos": "LB",
+          "status": "Inactive (groin)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:37 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "CJ Allen",
+          "team": "IND",
+          "pos": "LB",
+          "status": "Inactive (ankle; Jaylon Carlies active, Germaine Pratt elevated)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:37 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Demond Claiborne",
+          "team": "MIN",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 11:37 AM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
