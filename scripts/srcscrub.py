@@ -49,9 +49,9 @@ def s_(v):
 # Case-sensitive proper names only: lowercase API keys (e.g. "draftkings") are lookup ids the pages map to letters themselves.
 BOOK_L = [("DraftKings Sportsbook", "Book A"), ("DraftKings", "Book A"), ("FanDuel Sportsbook", "Book B"), ("FanDuel", "Book B"), ("BetMGM", "Book C"),
           ("Caesars Sportsbook", "Book D"), ("William Hill", "Book D"), ("Caesars", "Book D"), ("Fanatics Sportsbook", "Book E"), ("Fanatics", "Book E"), ("BetRivers", "Book F"),
-          ("theScore Bet", "Book P"), ("theScore / ESPN Bet", "Book G"), ("ESPN BET", "Book G"), ("ESPN Bet", "Book G"), ("ESPNBet", "Book G"), ("bet365", "Book H"), ("Hard Rock Bet", "Book I"), ("Hard Rock", "Book I"),
+          ("theScore Bet", "Book P"), ("theScore / ESPN Bet", "Book G"), ("theScore", "Book P"), ("ESPN BET", "Book G"), ("ESPN Bet", "Book G"), ("ESPNBet", "Book G"), ("bet365", "Book H"), ("Hard Rock Bet", "Book I"), ("Hard Rock", "Book I"),
           ("PointsBet", "Book J"), ("Fliff", "Book K"), ("Bovada", "Book L"), ("BetOnline.ag", "Book M"), ("BetOnline", "Book M"), ("PrizePicks", "Book N"), ("Underdog Fantasy", "Book O"), ("Underdog", "Book O"),
-          ("Unibet", "Book Q"), ("WynnBET", "Book R"), ("Borgata", "Book S"), ("BetPARX", "Book V"), ("betPARX", "Book V"), ("Bally Bet", "Book W"), ("MyBookie", "Book Z"), ("LowVig", "Book X"), ("Circa Sports", "Book Y"), ("Circa", "Book Y"),
+          ("Unibet", "Book Q"), ("WynnBET", "Book R"), ("Borgata", "Book S"), ("BetPARX", "Book V"), ("betPARX", "Book V"), ("Bally Bet", "Book W"), ("Bally", "Book W"), ("MyBookie", "Book Z"), ("LowVig", "Book X"), ("Circa Sports", "Book Y"), ("Circa", "Book Y"),
           ("Kalshi", "Exchange A"), ("Polymarket", "Exchange B"), ("Novig", "Exchange C"), ("ProphetX", "Exchange D"), ("Sporttrade", "Exchange E"), ("Betfair", "Exchange F"), ("BetOpenly", "Exchange H"),
           ("Pinnacle", "sharp book")]
 _BRE = re.compile(r"(?<![A-Za-z])(" + "|".join(re.escape(a) for a, _ in BOOK_L) + r")(?:'s)?(?![A-Za-z])")
