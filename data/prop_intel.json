@@ -279,7 +279,7 @@
       ]
     }
   },
-  "updated_et": "Sun Oct 25, 2026 11:42 AM ET",
+  "updated_et": "Sun Oct 25, 2026 9:00 PM ET",
   "players": {
     "3929630": {
       "name": "Saquon Barkley",
@@ -1017,5 +1017,109 @@
       "listed": "Active",
       "gk": "SF@ATL"
     }
-  }
+  },
+  "injury_cascades": [
+    {
+      "injured_player": "Rashee Rice",
+      "team": "KC",
+      "pos": "WR",
+      "status": "Inactive (SNF Official - Hamstring)",
+      "game": "KC @ SEA",
+      "beneficiaries": [
+        {
+          "player": "Xavier Worthy",
+          "pos": "WR",
+          "boost": "+18% Target Share",
+          "note": "Leads Kansas City WR target share with Rashee Rice officially Inactive."
+        },
+        {
+          "player": "Travis Kelce",
+          "pos": "TE",
+          "boost": "+15% Middle-of-Field / RZ Share",
+          "note": "Primary chain-mover against a Seattle linebacker corps missing Drake Thomas and Chazz Surratt."
+        }
+      ],
+      "summary": "Rashee Rice (hamstring) is officially Inactive for SNF at SEA; Xavier Worthy and Travis Kelce lead Kansas City's pass-catching volume against a thinned Seattle LB unit."
+    },
+    {
+      "injured_player": "Zach Charbonnet",
+      "team": "SEA",
+      "pos": "RB",
+      "status": "Inactive (SNF Official)",
+      "game": "KC @ SEA",
+      "beneficiaries": [
+        {
+          "player": "Kenneth Walker III",
+          "pos": "RB",
+          "boost": "+22% Carry & Target Share",
+          "note": "Commands three-down workhorse volume with both Zach Charbonnet and Robert Henry Jr. officially Inactive for SNF."
+        }
+      ],
+      "summary": "Zach Charbonnet and Robert Henry Jr. are officially Inactive for SNF vs. KC, consolidating Seattle's rushing and passing-down backfield snaps onto Kenneth Walker III."
+    },
+    {
+      "injured_player": "Aaron Jones Sr.",
+      "team": "MIN",
+      "pos": "RB",
+      "status": "Re-Injured Knee (Postgame MRI Pending)",
+      "game": "IND @ MIN",
+      "beneficiaries": [
+        {
+          "player": "Jordan Mason",
+          "pos": "RB",
+          "boost": "+Lead RB Snaps (Live)",
+          "note": "Taking over Minnesota backfield snaps while Aaron Jones Sr. is Questionable to return with a knee injury."
+        }
+      ],
+      "summary": "Aaron Jones Sr. re-injured the same knee he hurt earlier this season (postgame update); Jordan Mason takes over as Minnesota's lead back."
+    },
+    {
+      "injured_player": "Kenny Gainwell",
+      "team": "TB",
+      "pos": "RB",
+      "status": "Questionable (In-Game - Hip)",
+      "game": "TB @ CAR",
+      "beneficiaries": [
+        {
+          "player": "Bucky Irving",
+          "pos": "RB",
+          "boost": "+Workhorse RB Share (Live)",
+          "note": "Absorbs extra carries and passing-down snaps while Gainwell is Questionable to return with a hip injury."
+        }
+      ],
+      "summary": "Kenny Gainwell (hip) is Questionable to return at CAR, consolidating extra Buccaneers backfield touches onto Bucky Irving."
+    },
+    {
+      "injured_player": "Drake London",
+      "team": "ATL",
+      "pos": "WR",
+      "status": "Active (Cleared - Concussion Eval)",
+      "game": "SF @ ATL",
+      "beneficiaries": [
+        {
+          "player": "Drake London",
+          "pos": "WR",
+          "boost": "Cleared & Returned",
+          "note": "Cleared his second-half concussion evaluation and returned to the game vs. SF."
+        }
+      ],
+      "summary": "Drake London cleared his second-half concussion evaluation and returned to the game vs. SF."
+    },
+    {
+      "injured_player": "Christian McCaffrey",
+      "team": "SF",
+      "pos": "RB",
+      "status": "Active (Returned - Thigh)",
+      "game": "SF @ ATL",
+      "beneficiaries": [
+        {
+          "player": "Christian McCaffrey",
+          "pos": "RB",
+          "boost": "Returned to Lead Role",
+          "note": "Returned in the 2nd half after a 1st-half thigh evaluation; Kaelon Black returns to RB2 duties."
+        }
+      ],
+      "summary": "Christian McCaffrey (thigh) returned to the game in the second half at ATL, reclaiming lead-back snaps with Kaelon Black back in the RB2 role."
+    }
+  ]
 }

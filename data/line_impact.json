@@ -1,6 +1,6 @@
 {
   "slate": "2026 Week 7",
-  "updated_et": "Sun Oct 25, 2026 11:52 AM ET",
+  "updated_et": "Sun Oct 25, 2026 9:00 PM ET",
   "games": [
     {
       "key": "PIT@NO",
@@ -419,6 +419,17 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:31 AM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Roquan Smith",
+          "team": "BAL",
+          "pos": "LB",
+          "status": "Active (returned after 1H knee evaluation)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -446,6 +457,18 @@
           "replacement": "Hergel active",
           "impact_tag": "interior OL",
           "stat": "none published"
+        },
+        {
+          "player": "Vega Ioane",
+          "team": "BAL",
+          "pos": "RG",
+          "status": "Out (in-game knee injury)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:12 PM ET",
+          "replacement": "Corey Bullock",
+          "reported_impact": "no published impact stat"
         }
       ],
       "dl": [
@@ -705,6 +728,17 @@
           "conf_note": "",
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:32 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Woody Marks",
+          "team": "HOU",
+          "pos": "RB",
+          "status": "Active (returned after ankle evaluation)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:10 PM ET",
           "point_value": "no published estimate"
         }
       ],
@@ -998,6 +1032,19 @@
           "replacement": "replacement not reported",
           "impact_tag": "pass rush",
           "stat": "none published"
+        },
+        {
+          "player": "T'Vondre Sweat",
+          "team": "NYJ",
+          "pos": "DT",
+          "status": "Out (in-game hip injury)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:15 PM ET",
+          "replacement": "interior DL rotation",
+          "impact_tag": "run defense",
+          "stat": "none published"
         }
       ],
       "trench": [
@@ -1178,6 +1225,17 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:37 AM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Kenny Gainwell",
+          "team": "TB",
+          "pos": "RB",
+          "status": "Questionable (in-game hip injury; Bucky Irving lead back)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:25 PM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -1191,6 +1249,18 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:35 AM ET",
           "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Taylor Moton",
+          "team": "CAR",
+          "pos": "RT",
+          "status": "Out indefinitely (fractured fibula)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 5:45 PM ET",
+          "replacement": "Monroe Freeling",
           "reported_impact": "no published impact stat"
         }
       ],
@@ -1459,6 +1529,28 @@
           "conf_note": "",
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:35 AM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Christian McCaffrey",
+          "team": "SF",
+          "pos": "RB",
+          "status": "Active (returned in 2H after thigh evaluation)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:40 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Drake London",
+          "team": "ATL",
+          "pos": "WR",
+          "status": "Active (cleared 2H concussion evaluation and returned)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:45 PM ET",
           "point_value": "no published estimate"
         }
       ],
@@ -2054,6 +2146,28 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:37 AM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Aaron Jones Sr.",
+          "team": "MIN",
+          "pos": "RB",
+          "status": "Exited (re-injured knee; Monday MRI scheduled; Jordan Mason lead RB)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 5:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jordan Addison",
+          "team": "MIN",
+          "pos": "WR",
+          "status": "Active (cleared concussion evaluation and returned)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 3:35 PM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -2174,44 +2288,44 @@
           "player": "Jaylen Waddle",
           "team": "DEN",
           "pos": "WR",
-          "status": "Questionable (chest)",
+          "status": "Exited (in-game chest/shoulder injury on reverse; did not return)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 7:45 PM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Pat Surtain II",
           "team": "DEN",
           "pos": "CB",
-          "status": "Questionable (ankle); probable",
+          "status": "Inactive (ankle)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 2:35 PM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Talanoa Hufanga",
           "team": "DEN",
           "pos": "S",
-          "status": "Doubtful",
+          "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 2:35 PM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Jeremiyah Love",
           "team": "ARI",
           "pos": "RB",
-          "status": "Out (high-ankle sprain)",
+          "status": "Inactive (high-ankle sprain)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 1:38 PM ET",
+          "time": "Oct 25, 2026 2:35 PM ET",
           "note": "Confirmed by the head coach.",
           "point_value": "no published estimate",
           "intel_aid": "4870808"
@@ -2220,11 +2334,11 @@
           "player": "Jonah Coleman",
           "team": "DEN",
           "pos": "RB",
-          "status": "Activated from IR; set to play",
+          "status": "Active (activated from IR)",
           "conf": "Confirmed",
           "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 4:38 PM ET",
+          "time": "Oct 25, 2026 2:35 PM ET",
           "point_value": "no published estimate"
         },
         {
@@ -2239,14 +2353,36 @@
           "point_value": "no published estimate"
         },
         {
-          "player": "Patrick Surtain II",
-          "team": "DEN",
+          "player": "Max Melton",
+          "team": "ARI",
           "pos": "CB",
-          "status": "Questionable",
+          "status": "Inactive",
           "conf": "Confirmed",
-          "conf_note": "questionable",
+          "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 6:01 PM ET",
+          "time": "Oct 25, 2026 2:35 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Andrew Wingard",
+          "team": "ARI",
+          "pos": "S",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:35 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Carson Beck",
+          "team": "ARI",
+          "pos": "QB",
+          "status": "Inactive (3rd QB)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:35 PM ET",
           "point_value": "no published estimate"
         }
       ],
@@ -2260,6 +2396,18 @@
           "conf_note": "",
           "unconfirmed": false,
           "time": "Oct 23, 2026 11:57 AM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Albert Reese IV",
+          "team": "ARI",
+          "pos": "OL",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:35 PM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
@@ -2315,6 +2463,19 @@
           "time": "Oct 24, 2026 4:38 PM ET",
           "replacement": "Jonathon Cooper",
           "impact_tag": "pass rush",
+          "stat": "none published"
+        },
+        {
+          "player": "Zach Allen",
+          "team": "DEN",
+          "pos": "DL",
+          "status": "Questionable (in-game hamstring; expects to be fine postgame)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 7:50 PM ET",
+          "replacement": "DL rotation",
+          "impact_tag": "both",
           "stat": "none published"
         }
       ],
@@ -2429,22 +2590,22 @@
           "player": "Matthew Golden",
           "team": "GB",
           "pos": "WR",
-          "status": "Questionable (shoulder); probable",
+          "status": "Active (returned after brief evaluation)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 6:20 PM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Zaire Franklin",
           "team": "GB",
           "pos": "LB",
-          "status": "Out Week 7 (shin, hurt in practice)",
+          "status": "Inactive (shin)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 12:21 PM ET",
+          "time": "Oct 25, 2026 2:55 PM ET",
           "note": "Team verified against the current roster.",
           "point_value": "no published estimate"
         },
@@ -2452,11 +2613,11 @@
           "player": "Josh Jacobs",
           "team": "GB",
           "pos": "RB",
-          "status": "Activated; expected to start",
+          "status": "Active (starting)",
           "conf": "Confirmed",
           "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 24, 2026 4:00 PM ET",
+          "time": "Oct 25, 2026 2:55 PM ET",
           "point_value": "no published estimate",
           "intel_aid": "4047365"
         },
@@ -2470,6 +2631,72 @@
           "unconfirmed": false,
           "time": "Oct 24, 2026 4:09 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Kaleb Johnson",
+          "team": "GB",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Benjamin St-Juste",
+          "team": "GB",
+          "pos": "CB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Tucker Kraft",
+          "team": "GB",
+          "pos": "TE",
+          "status": "Active (returned after brief evaluation)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:25 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jackson Meeks",
+          "team": "DET",
+          "pos": "WR",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Bishop Fitzgerald",
+          "team": "DET",
+          "pos": "S",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Ennis Rakestraw Jr.",
+          "team": "DET",
+          "pos": "CB",
+          "status": "Questionable (in-game ankle injury)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:40 PM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -2477,12 +2704,12 @@
           "player": "Aaron Banks",
           "team": "GB",
           "pos": "LG",
-          "status": "Questionable (knee, limited)",
+          "status": "Active (starting at LG)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
-          "replacement": "replacement not reported",
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "active starter",
           "reported_impact": "no published impact stat"
         },
         {
@@ -2508,6 +2735,66 @@
           "time": "Oct 24, 2026 4:12 PM ET",
           "replacement": "active starter",
           "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Kevin Zeitler",
+          "team": "GB",
+          "pos": "RG",
+          "status": "Inactive (Aaron Banks active & starting at LG)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "Aaron Banks",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Sean Rhyan",
+          "team": "GB",
+          "pos": "C",
+          "status": "Out (in-game ankle injury; expected to miss Thursday vs. CAR)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 7:55 PM ET",
+          "replacement": "John Williams (3rd-string C)",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Jacob Monk",
+          "team": "GB",
+          "pos": "C/G",
+          "status": "Out (in-game quad injury; also expected to miss Thursday vs. CAR)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 8:55 PM ET",
+          "replacement": "John Williams (7th-rd rookie G/C in line to start at C)",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Donovan Jennings",
+          "team": "GB",
+          "pos": "OL",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Seth McLaughlin",
+          "team": "DET",
+          "pos": "C",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
         }
       ],
       "dl": [
@@ -2522,6 +2809,45 @@
           "time": "Oct 23, 2026 11:57 AM ET",
           "replacement": "replacement not reported",
           "impact_tag": "pass rush",
+          "stat": "none published"
+        },
+        {
+          "player": "Devonte Wyatt",
+          "team": "GB",
+          "pos": "DT",
+          "status": "Questionable (in-game ankle injury)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:30 PM ET",
+          "replacement": "DL rotation",
+          "impact_tag": "both",
+          "stat": "none published"
+        },
+        {
+          "player": "Mekhi Wingo",
+          "team": "DET",
+          "pos": "DT",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "impact_tag": "both",
+          "stat": "none published"
+        },
+        {
+          "player": "Ahmed Hassanein",
+          "team": "DET",
+          "pos": "DE",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "impact_tag": "both",
           "stat": "none published"
         }
       ],
@@ -2645,11 +2971,11 @@
           "player": "Puka Nacua",
           "team": "LAR",
           "pos": "WR",
-          "status": "Questionable (calf); will work out pregame",
+          "status": "Active (calf; starting)",
           "conf": "Confirmed",
-          "conf_note": "questionable",
+          "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 2:51 PM ET",
+          "time": "Oct 25, 2026 2:55 PM ET",
           "point_value": "no published estimate",
           "intel_aid": "4426515"
         },
@@ -2657,11 +2983,11 @@
           "player": "Trent McDuffie",
           "team": "LAR",
           "pos": "CB",
-          "status": "Questionable (groin)",
+          "status": "Inactive (groin)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 2:51 PM ET",
+          "time": "Oct 25, 2026 2:55 PM ET",
           "point_value": "no published estimate"
         },
         {
@@ -2674,9 +3000,111 @@
           "unconfirmed": false,
           "time": "Oct 23, 2026 2:51 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Max Klare",
+          "team": "LAR",
+          "pos": "TE",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Ty Simpson",
+          "team": "LAR",
+          "pos": "QB",
+          "status": "Inactive (3rd QB)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jaylen Watson",
+          "team": "LAR",
+          "pos": "CB",
+          "status": "Questionable (in-game cramps)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:45 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Aidan O'Connell",
+          "team": "LV",
+          "pos": "QB",
+          "status": "Inactive (3rd QB)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Dalton Johnson",
+          "team": "LV",
+          "pos": "DB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Tristin McCollum",
+          "team": "LV",
+          "pos": "S",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Ian Thomas",
+          "team": "LV",
+          "pos": "TE",
+          "status": "Questionable (in-game shoulder injury)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
         }
       ],
-      "ol": [],
+      "ol": [
+        {
+          "player": "Keagen Trost",
+          "team": "LAR",
+          "pos": "OL",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Bill Murray",
+          "team": "LAR",
+          "pos": "OL",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        }
+      ],
       "dl": [
         {
           "player": "Poona Ford",
@@ -2728,6 +3156,32 @@
           "time": "Oct 23, 2026 12:42 PM ET",
           "replacement": "not reported",
           "impact_tag": "pass rush",
+          "stat": "none published"
+        },
+        {
+          "player": "Cian Slone",
+          "team": "LV",
+          "pos": "DE",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "impact_tag": "both",
+          "stat": "none published"
+        },
+        {
+          "player": "Jonah Laulu",
+          "team": "LV",
+          "pos": "DT",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "impact_tag": "both",
           "stat": "none published"
         }
       ],
@@ -2837,44 +3291,45 @@
           "player": "Rashee Rice",
           "team": "KC",
           "pos": "WR",
-          "status": "Questionable (hamstring, DNP)",
+          "status": "Inactive (hamstring)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
-          "point_value": "no published estimate"
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate",
+          "note": "Xavier Worthy and Travis Kelce lead KC target share."
         },
         {
           "player": "Travis Kelce",
           "team": "KC",
           "pos": "TE",
-          "status": "Questionable (ankle, limited)",
+          "status": "Active (ankle)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "active",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 6:50 PM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Drew Lock",
           "team": "SEA",
           "pos": "QB2",
-          "status": "Questionable (elbow)",
+          "status": "Inactive (elbow)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
+          "time": "Oct 25, 2026 6:50 PM ET",
           "point_value": "no published estimate"
         },
         {
           "player": "Zach Charbonnet",
           "team": "SEA",
           "pos": "RB",
-          "status": "Out vs KC",
+          "status": "Inactive (Kenneth Walker III workhorse back)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 23, 2026 4:42 PM ET",
+          "time": "Oct 25, 2026 6:50 PM ET",
           "note": "Ruled out one day after PUP activation. Next man up not reported.",
           "point_value": "no published estimate",
           "intel_aid": "4426385"
@@ -2888,6 +3343,105 @@
           "conf_note": "IR",
           "unconfirmed": false,
           "time": "Oct 24, 2026 2:58 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Garrett Nussmeier",
+          "team": "KC",
+          "pos": "QB",
+          "status": "Inactive (emergency 3rd QB)",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jadon Canady",
+          "team": "KC",
+          "pos": "CB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Ben VanSumeren",
+          "team": "KC",
+          "pos": "LB/FB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Cooper McDonald",
+          "team": "KC",
+          "pos": "LB",
+          "status": "Activated from IR; active vs SEA",
+          "conf": "Confirmed",
+          "conf_note": "active",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jadyn Ott",
+          "team": "KC",
+          "pos": "RB",
+          "status": "Signed to 53-man roster; active vs SEA",
+          "conf": "Confirmed",
+          "conf_note": "active",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Robert Henry Jr.",
+          "team": "SEA",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Drake Thomas",
+          "team": "SEA",
+          "pos": "LB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Chazz Surratt",
+          "team": "SEA",
+          "pos": "LB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Connor O'Toole",
+          "team": "SEA",
+          "pos": "LB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
           "point_value": "no published estimate"
         }
       ],
@@ -2908,12 +3462,24 @@
           "player": "Jaylon Moore",
           "team": "KC",
           "pos": "RT",
-          "status": "Questionable (concussion protocol, DNP)",
+          "status": "Inactive (concussion protocol)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 22, 2026 2:36 PM ET",
-          "replacement": "Joshua Ezeudu expected to start",
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "replacement": "Joshua Ezeudu starting",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Beau Stephens",
+          "team": "SEA",
+          "pos": "G",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
       ],
@@ -2942,6 +3508,19 @@
           "time": "Oct 23, 2026 11:57 AM ET",
           "replacement": "replacement not reported",
           "impact_tag": "pass rush",
+          "stat": "none published"
+        },
+        {
+          "player": "Jack Pyburn",
+          "team": "KC",
+          "pos": "DE",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "",
+          "unconfirmed": false,
+          "time": "Oct 25, 2026 6:50 PM ET",
+          "replacement": "replacement not reported",
+          "impact_tag": "both",
           "stat": "none published"
         }
       ],
