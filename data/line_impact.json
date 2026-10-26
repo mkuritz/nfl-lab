@@ -1,6 +1,6 @@
 {
   "slate": "2026 Week 7",
-  "updated_et": "Sun Oct 25, 2026 9:00 PM ET",
+  "updated_et": "Mon Oct 26, 2026 10:08 AM ET",
   "games": [
     {
       "key": "PIT@NO",
@@ -740,6 +740,19 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 3:10 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Cam Skattebo",
+          "team": "NYG",
+          "pos": "RB",
+          "status": "Questionable (felt hamstring tightness on 42-yd OT run; indications are he is OK entering Week 8 bye, no IR expected)",
+          "conf": "Confirmed",
+          "conf_note": "expected OK entering Week 8 bye",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 9:59 AM ET",
+          "note": "No depth-chart change; NYG on bye in Week 8 before Week 9 at PHI.",
+          "point_value": "no published estimate",
+          "intel_aid": "4696981"
         }
       ],
       "ol": [
@@ -2151,12 +2164,14 @@
           "player": "Aaron Jones Sr.",
           "team": "MIN",
           "pos": "RB",
-          "status": "Exited (re-injured knee; Monday MRI scheduled; Jordan Mason lead RB)",
+          "status": "Questionable (aggravated sprained left MCL; Monday MRI pending, Jordan Mason next up after 15 carries Sunday)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "Monday MRI pending",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 5:50 PM ET",
-          "point_value": "no published estimate"
+          "time": "Oct 26, 2026 8:22 AM ET",
+          "point_value": "no published estimate",
+          "note": "Jordan Mason logged 15 carries for 68 yards Sunday and is next in line.",
+          "intel_aid": "3042519"
         },
         {
           "player": "Jordan Addison",
@@ -2601,13 +2616,14 @@
           "player": "Zaire Franklin",
           "team": "GB",
           "pos": "LB",
-          "status": "Inactive (shin)",
+          "status": "Doubtful for TNF vs. CAR (hairline leg fracture from practice kick; missed Week 7, no IR planned, expected to miss minimal games)",
           "conf": "Confirmed",
-          "conf_note": "",
-          "unconfirmed": false,
-          "time": "Oct 25, 2026 2:55 PM ET",
-          "note": "Team verified against the current roster.",
-          "point_value": "no published estimate"
+          "conf_note": "hairline fracture; TNF status unconfirmed",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 9:30 AM ET",
+          "note": "No IR expected; no depth-chart replacement officially reported.",
+          "point_value": "no published estimate",
+          "intel_aid": "3124005"
         },
         {
           "player": "Josh Jacobs",
@@ -2752,24 +2768,24 @@
           "player": "Sean Rhyan",
           "team": "GB",
           "pos": "C",
-          "status": "Out (in-game ankle injury; expected to miss Thursday vs. CAR)",
+          "status": "Doubtful for TNF vs. CAR (believed to be high-ankle sprain; X-rays negative, Monday MRI; multi-week absence possible)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "X-rays negative, MRI Monday",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 7:55 PM ET",
-          "replacement": "John Williams (3rd-string C)",
+          "time": "Oct 26, 2026 9:47 AM ET",
+          "replacement": "John Williams (in line at C with Jacob Monk [quad] also expected out)",
           "reported_impact": "no published impact stat"
         },
         {
           "player": "Jacob Monk",
           "team": "GB",
           "pos": "C/G",
-          "status": "Out (in-game quad injury; also expected to miss Thursday vs. CAR)",
+          "status": "Doubtful for TNF vs. CAR (in-game quad injury; expected to miss Thursday vs. CAR)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "quad",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 8:55 PM ET",
-          "replacement": "John Williams (7th-rd rookie G/C in line to start at C)",
+          "time": "Oct 26, 2026 9:47 AM ET",
+          "replacement": "John Williams (in line at C)",
           "reported_impact": "no published impact stat"
         },
         {
@@ -3443,6 +3459,32 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 6:50 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Rashid Shaheed",
+          "team": "SEA",
+          "pos": "WR",
+          "status": "Out (ruled out of SNF 2H with knee injury; Week 8 vs. CHI TBD, MRI pending)",
+          "conf": "Confirmed",
+          "conf_note": "out of SNF; Week 8 TBD",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 10:00 AM ET",
+          "note": "Remaining SEA WRs absorb extra snaps; no specific replacement reported.",
+          "point_value": "no published estimate",
+          "intel_aid": "4032473"
+        },
+        {
+          "player": "Velus Jones Jr.",
+          "team": "SEA",
+          "pos": "RB",
+          "status": "Out (ruled out of SNF 2H with hamstring injury; Charbonnet already inactive)",
+          "conf": "Confirmed",
+          "conf_note": "out of SNF",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 10:00 AM ET",
+          "note": "No depth-chart move reported; Kenneth Walker III and George Holani lead SEA backfield.",
+          "point_value": "no published estimate",
+          "intel_aid": "4035693"
         }
       ],
       "ol": [
@@ -3578,6 +3620,29 @@
             "rush yds",
             "rush att",
             "anytime TD"
+          ],
+          "conf": "Confirmed",
+          "unconfirmed": false
+        },
+        {
+          "aid": "4032473",
+          "name": "Rashid Shaheed",
+          "dir": "down",
+          "markets": [
+            "rec yds",
+            "receptions",
+            "anytime TD"
+          ],
+          "conf": "Confirmed",
+          "unconfirmed": false
+        },
+        {
+          "aid": "4035693",
+          "name": "Velus Jones Jr.",
+          "dir": "down",
+          "markets": [
+            "rush yds",
+            "rush att"
           ],
           "conf": "Confirmed",
           "unconfirmed": false

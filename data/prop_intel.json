@@ -279,7 +279,7 @@
       ]
     }
   },
-  "updated_et": "Sun Oct 25, 2026 9:00 PM ET",
+  "updated_et": "Mon Oct 26, 2026 10:08 AM ET",
   "players": {
     "3929630": {
       "name": "Saquon Barkley",
@@ -819,19 +819,20 @@
       "name": "Jordan Mason",
       "team": "MIN",
       "pos": "RB",
-      "game": "IND at MIN, Sun Oct 25 1:00 PM ET",
-      "type": "injury return",
-      "note": "Officially active vs IND alongside Aaron Jones Sr. and DeeJay Dallas (Demond Claiborne inactive).",
+      "game": "IND at MIN, Sun Oct 25 (Week 8 at DET)",
+      "type": "role change",
+      "note": "Next up in Minnesota's backfield (15 carries for 68 yards Sunday) while Aaron Jones Sr. undergoes a Monday MRI on an aggravated sprained left MCL.",
       "markets": [
         "rush yds",
-        "rush att"
+        "rush att",
+        "anytime TD"
       ],
       "dir": "up",
       "conf": "Confirmed",
-      "conf_note": "active",
+      "conf_note": "next up while Aaron Jones MRI pending",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 25, 2026 11:37 AM ET",
+      "time": "Oct 26, 2026 8:22 AM ET",
       "listed": "Active",
       "gk": "IND@MIN"
     },
@@ -1016,6 +1017,129 @@
       "time": "Oct 24, 2026 4:34 PM ET",
       "listed": "Active",
       "gk": "SF@ATL"
+    },
+    "4032473": {
+      "name": "Rashid Shaheed",
+      "team": "SEA",
+      "pos": "WR",
+      "game": "KC at SEA, Sun Oct 25 8:20 PM ET (Week 8 vs. CHI MNF)",
+      "type": "injury",
+      "note": "Ruled out in the second half of SNF vs. KC with a knee injury. Week 8 status vs. CHI is TBD with MRI results pending; remaining SEA WRs take on additional snaps.",
+      "markets": [
+        "rec yds",
+        "receptions",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out of SNF; Week 8 TBD",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 10:00 AM ET",
+      "listed": "Questionable",
+      "gk": "KC@SEA"
+    },
+    "4035693": {
+      "name": "Velus Jones Jr.",
+      "team": "SEA",
+      "pos": "RB",
+      "game": "KC at SEA, Sun Oct 25 8:20 PM ET (Week 8 vs. CHI MNF)",
+      "type": "injury",
+      "note": "Ruled out in the second half of SNF vs. KC with a hamstring injury while Zach Charbonnet was already inactive. No depth-chart move reported.",
+      "markets": [
+        "rush yds",
+        "rush att"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "out of SNF",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 10:00 AM ET",
+      "listed": "Questionable",
+      "gk": "KC@SEA"
+    },
+    "4426411": {
+      "name": "Sean Rhyan",
+      "team": "GB",
+      "pos": "C",
+      "game": "GB at DET, Sun Oct 25 (Week 8 TNF vs. CAR)",
+      "type": "injury",
+      "note": "Believed to have a high-ankle sprain (X-rays negative, Monday MRI scheduled; often a 4-6 week injury). Already expected to miss Thursday vs. CAR; John Williams is in line at center with Jacob Monk (quad) also expected out.",
+      "markets": [
+        "GB rush yds",
+        "GB QB sacks taken"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "X-rays negative, MRI Monday",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 9:47 AM ET",
+      "listed": "Doubtful",
+      "gk": "GB@DET"
+    },
+    "3124005": {
+      "name": "Zaire Franklin",
+      "team": "GB",
+      "pos": "LB",
+      "game": "GB at DET, Sun Oct 25 (Week 8 TNF vs. CAR)",
+      "type": "injury",
+      "note": "Has a hairline leg fracture from being accidentally kicked in practice and missed Week 7 vs. DET. Not being placed on IR and expected to miss minimal games; treat as doubtful for TNF vs. CAR (unconfirmed projection).",
+      "markets": [
+        "tackles + assists",
+        "solo tackles"
+      ],
+      "dir": "down",
+      "conf": "Unconfirmed",
+      "conf_note": "hairline fracture; TNF status projection",
+      "unconfirmed": true,
+      "src": "Report",
+      "time": "Oct 26, 2026 9:30 AM ET",
+      "listed": "Out",
+      "gk": "GB@DET"
+    },
+    "4696981": {
+      "name": "Cam Skattebo",
+      "team": "NYG",
+      "pos": "RB",
+      "game": "NYG at HOU, Sun Oct 25 (Week 8 Bye)",
+      "type": "injury",
+      "note": "Felt something in his hamstring on a 42-yard OT run in Sunday's win over HOU (17 carries, 124 yards, TD), but all indications are he should be OK. Giants are on a Week 8 bye and no IR is expected.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "expected OK entering Week 8 bye",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 9:59 AM ET",
+      "listed": "Questionable",
+      "gk": "NYG@HOU"
+    },
+    "3042519": {
+      "name": "Aaron Jones Sr.",
+      "team": "MIN",
+      "pos": "RB",
+      "game": "IND at MIN, Sun Oct 25 (Week 8 at DET)",
+      "type": "injury",
+      "note": "Aggravated a sprained left MCL during Sunday's win over IND; Monday MRI is pending. Jordan Mason logged 15 carries for 68 yards Sunday and is next in line.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "aggravated MCL; Monday MRI pending",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 8:22 AM ET",
+      "listed": "Questionable",
+      "gk": "IND@MIN"
     }
   },
   "injury_cascades": [
@@ -1061,17 +1185,17 @@
       "injured_player": "Aaron Jones Sr.",
       "team": "MIN",
       "pos": "RB",
-      "status": "Re-Injured Knee (Postgame MRI Pending)",
+      "status": "Aggravated Sprained Left MCL (Monday MRI Pending)",
       "game": "IND @ MIN",
       "beneficiaries": [
         {
           "player": "Jordan Mason",
           "pos": "RB",
           "boost": "+Lead RB Snaps (Live)",
-          "note": "Taking over Minnesota backfield snaps while Aaron Jones Sr. is Questionable to return with a knee injury."
+          "note": "Next up for lead backfield work after logging 15 carries for 68 yards Sunday while Aaron Jones Sr. awaits Monday MRI results."
         }
       ],
-      "summary": "Aaron Jones Sr. re-injured the same knee he hurt earlier this season (postgame update); Jordan Mason takes over as Minnesota's lead back."
+      "summary": "Aaron Jones Sr. aggravated a sprained left MCL Sunday vs. IND (Monday MRI pending); Jordan Mason (15 carries, 68 yds Sunday) is next up in Minnesota's backfield."
     },
     {
       "injured_player": "Kenny Gainwell",
