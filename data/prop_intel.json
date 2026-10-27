@@ -279,7 +279,7 @@
       ]
     }
   },
-  "updated_et": "Mon Oct 26, 2026 10:08 AM ET",
+  "updated_et": "Oct 26, 2026 9:00 PM ET",
   "players": {
     "3929630": {
       "name": "Saquon Barkley",
@@ -287,19 +287,19 @@
       "pos": "RB",
       "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
       "type": "injury",
-      "note": "Listed Questionable for MNF vs DAL but expected to play.",
+      "note": "Officially ACTIVE for tonight's MNF matchup against Dallas after missing two games with a hamstring injury, resuming his starting RB1 role with G Landon Dickerson also active off IR and Elijah Mitchell elevated from the practice squad as depth.",
       "markets": [
         "rush yds",
         "rush att",
         "anytime TD"
       ],
-      "dir": "uncertain",
+      "dir": "up",
       "conf": "Confirmed",
-      "conf_note": "questionable, expected to play",
+      "conf_note": "officially active for MNF",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 24, 2026 4:09 PM ET",
-      "listed": "Questionable",
+      "time": "Oct 26, 2026 6:45 PM ET",
+      "listed": "Active",
       "gk": "DAL@PHI"
     },
     "4360238": {
@@ -328,7 +328,7 @@
       "pos": "WR",
       "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
       "type": "injury",
-      "note": "Ruled out for MNF vs DAL. Depth-chart replacement at WR not officially reported.",
+      "note": "Officially INACTIVE (hamstring) for tonight's MNF game against Dallas alongside Dontayvion Wicks (ankle); targets funnel to TEs Dallas Goedert, Grant Calcaterra, and Eli Stowers plus depth WRs Makai Lemon, Darius Cooper, and Hollywood Brown.",
       "markets": [
         "rec yds",
         "receptions",
@@ -336,10 +336,10 @@
       ],
       "dir": "down",
       "conf": "Confirmed",
-      "conf_note": "out",
+      "conf_note": "officially inactive",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 24, 2026 3:48 PM ET",
+      "time": "Oct 26, 2026 6:45 PM ET",
       "listed": "Out",
       "gk": "DAL@PHI"
     },
@@ -349,7 +349,7 @@
       "pos": "TE",
       "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
       "type": "injury",
-      "note": "Knee; DNP Thursday. 6-61 on 8 targets in Week 6.",
+      "note": "Cleared with no injury designation for MNF vs. DAL (full practice Sat) and remains TE1 with DeVonta Smith and Dontayvion Wicks out; Eli Stowers and Grant Calcaterra were officially activated from IR for TE2/TE3 depth.",
       "markets": [
         "rec yds",
         "receptions",
@@ -357,10 +357,10 @@
       ],
       "dir": "uncertain",
       "conf": "Confirmed",
-      "conf_note": "DNP Thursday",
+      "conf_note": "cleared; Stowers/Calcaterra activated from IR",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 22, 2026 9:06 PM ET",
+      "time": "Oct 26, 2026 4:16 PM ET",
       "listed": "Active",
       "gk": "DAL@PHI"
     },
@@ -370,17 +370,17 @@
       "pos": "WR",
       "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
       "type": "injury",
-      "note": "Ankle; DNP Thursday.",
+      "note": "Officially INACTIVE (ankle) for tonight's MNF game against Dallas alongside DeVonta Smith (hamstring); targets funnel to TEs Dallas Goedert, Grant Calcaterra, and Eli Stowers plus depth WRs Makai Lemon, Darius Cooper, and Hollywood Brown.",
       "markets": [
         "rec yds",
         "receptions"
       ],
       "dir": "down",
       "conf": "Confirmed",
-      "conf_note": "DNP Thursday",
+      "conf_note": "officially inactive",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 22, 2026",
+      "time": "Oct 26, 2026 6:45 PM ET",
       "listed": "Out",
       "gk": "DAL@PHI"
     },
@@ -555,18 +555,18 @@
       "pos": "RB",
       "game": "DEN at ARI, Sun Oct 25 4:05 PM ET",
       "type": "injury",
-      "note": "High-ankle sprain; ruled out, confirmed by the head coach. Arizona's other RBs gain carries.",
+      "note": "Scheduled to return to practice Wednesday ahead of Week 8 at Dallas after missing Sunday's game against Denver with a high-ankle sprain.",
       "markets": [
         "rush yds",
         "rush att"
       ],
-      "dir": "down",
+      "dir": "uncertain",
       "conf": "Confirmed",
-      "conf_note": "out",
+      "conf_note": "practicing Wednesday",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 23, 2026 1:38 PM ET",
-      "listed": "Out",
+      "time": "Oct 26, 2026 6:30 PM ET",
+      "listed": "Questionable",
       "gk": "DEN@ARI"
     },
     "3052587": {
@@ -759,7 +759,7 @@
       "pos": "RB",
       "game": "KC at SEA, Sun Oct 25 8:20 PM ET",
       "type": "injury",
-      "note": "Ruled out one day after PUP activation. Next man up not reported.",
+      "note": "Inactive for SNF after Thursday PUP activation; Macdonald remained noncommittal Monday ('we're sticking with our plan') for Week 8 vs. CHI while Jadarian Price's 21-day window opens and Emanuel Wilson leads the backfield.",
       "markets": [
         "rush yds",
         "rush att",
@@ -770,7 +770,7 @@
       "conf_note": "out",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 23, 2026 4:42 PM ET",
+      "time": "Oct 26, 2026 2:55 PM ET",
       "listed": "Out",
       "gk": "KC@SEA"
     },
@@ -821,7 +821,7 @@
       "pos": "RB",
       "game": "IND at MIN, Sun Oct 25 (Week 8 at DET)",
       "type": "role change",
-      "note": "Next up in Minnesota's backfield (15 carries for 68 yards Sunday) while Aaron Jones Sr. undergoes a Monday MRI on an aggravated sprained left MCL.",
+      "note": "Led Minnesota's backfield Sunday vs. IND with 63% of snaps and 15 carries for 68 yards (while Aaron Jones Sr. played 29% of snaps before exiting in Q4). Jones's Monday MRI showed no significant knee damage (day-to-day), but Mason retains a major split and lead-back upside if Jones is limited.",
       "markets": [
         "rush yds",
         "rush att",
@@ -829,10 +829,10 @@
       ],
       "dir": "up",
       "conf": "Confirmed",
-      "conf_note": "next up while Aaron Jones MRI pending",
+      "conf_note": "63% snaps Sunday; Jones day-to-day",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 26, 2026 8:22 AM ET",
+      "time": "Oct 26, 2026 12:01 PM ET",
       "listed": "Active",
       "gk": "IND@MIN"
     },
@@ -1024,7 +1024,7 @@
       "pos": "WR",
       "game": "KC at SEA, Sun Oct 25 8:20 PM ET (Week 8 vs. CHI MNF)",
       "type": "injury",
-      "note": "Ruled out in the second half of SNF vs. KC with a knee injury. Week 8 status vs. CHI is TBD with MRI results pending; remaining SEA WRs take on additional snaps.",
+      "note": "Exited SNF 2H with a knee injury; Macdonald said Monday that 'the early returns are positive' (day-to-day, imaging unconfirmed) ahead of Week 8 MNF vs. CHI.",
       "markets": [
         "rec yds",
         "receptions",
@@ -1032,10 +1032,10 @@
       ],
       "dir": "down",
       "conf": "Confirmed",
-      "conf_note": "out of SNF; Week 8 TBD",
-      "unconfirmed": false,
+      "conf_note": "early returns positive; imaging unconfirmed",
+      "unconfirmed": true,
       "src": "Report",
-      "time": "Oct 26, 2026 10:00 AM ET",
+      "time": "Oct 26, 2026 2:55 PM ET",
       "listed": "Questionable",
       "gk": "KC@SEA"
     },
@@ -1065,17 +1065,17 @@
       "pos": "C",
       "game": "GB at DET, Sun Oct 25 (Week 8 TNF vs. CAR)",
       "type": "injury",
-      "note": "Believed to have a high-ankle sprain (X-rays negative, Monday MRI scheduled; often a 4-6 week injury). Already expected to miss Thursday vs. CAR; John Williams is in line at center with Jacob Monk (quad) also expected out.",
+      "note": "Believed to have a high-ankle sprain (X-rays negative, Monday MRI scheduled; often a 4-6 week injury, with unconfirmed IR risk that would sideline him at least 4 games until Week 13 on Dec 6 at NO). Already expected to miss Thursday vs. CAR, and with backup Jacob Monk (quad) officially placed on IR Monday (Mekhi Becton signed to the 53-man roster), third-stringer John Williams is in line at center.",
       "markets": [
         "GB rush yds",
         "GB QB sacks taken"
       ],
       "dir": "down",
       "conf": "Confirmed",
-      "conf_note": "X-rays negative, MRI Monday",
+      "conf_note": "Monday MRI; unconfirmed IR risk",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 26, 2026 9:47 AM ET",
+      "time": "Oct 26, 2026 4:03 PM ET",
       "listed": "Doubtful",
       "gk": "GB@DET"
     },
@@ -1126,7 +1126,7 @@
       "pos": "RB",
       "game": "IND at MIN, Sun Oct 25 (Week 8 at DET)",
       "type": "injury",
-      "note": "Aggravated a sprained left MCL during Sunday's win over IND; Monday MRI is pending. Jordan Mason logged 15 carries for 68 yards Sunday and is next in line.",
+      "note": "Monday MRI showed his knee injury is not considered significant and he is day-to-day. Jordan Mason led Minnesota's backfield Sunday with 63% of snaps and 15 carries for 68 yards (vs. Jones's 29% snaps and 8 carries before exiting in Q4), keeping Jones's rushing-attempt ceiling capped by the split.",
       "markets": [
         "rush yds",
         "rush att",
@@ -1134,12 +1134,314 @@
       ],
       "dir": "down",
       "conf": "Confirmed",
-      "conf_note": "aggravated MCL; Monday MRI pending",
+      "conf_note": "MRI not significant; day-to-day",
       "unconfirmed": false,
       "src": "Report",
-      "time": "Oct 26, 2026 8:22 AM ET",
+      "time": "Oct 26, 2026 12:01 PM ET",
       "listed": "Questionable",
       "gk": "IND@MIN"
+    },
+    "4426376": {
+      "name": "Charles Cross",
+      "team": "SEA",
+      "pos": "LT",
+      "game": "KC at SEA, Sun Oct 25 8:20 PM ET (Week 8 vs. CHI MNF)",
+      "type": "injury",
+      "note": "MRI confirmed a high-ankle sprain; expected to miss time with a target return of 1-2 weeks depending on rehab, putting Week 8 MNF vs. CHI in jeopardy. Veteran Josh Jones stepped in at left tackle on Sunday night and is in line to start while Cross is sidelined.",
+      "markets": [
+        "SEA pass yds",
+        "SEA QB sacks taken"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "MRI confirmed high-ankle sprain (1-2 weeks)",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 1:08 PM ET",
+      "listed": "Doubtful",
+      "gk": "KC@SEA"
+    },
+    "4685512": {
+      "name": "Jadarian Price",
+      "team": "SEA",
+      "pos": "RB",
+      "game": "KC at SEA (Week 8 vs. CHI MNF)",
+      "type": "injury",
+      "note": "21-day IR practice window is opening this week (chest); Macdonald said 'We don't know yet' on Week 8 MNF availability vs. CHI. Emanuel Wilson remains lead back unless Price/Charbonnet are activated into a committee.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "21-day window opening; Week 8 TBD",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 2:55 PM ET",
+      "listed": "IR-R",
+      "gk": "KC@SEA"
+    },
+    "4887558": {
+      "name": "Emanuel Wilson",
+      "team": "SEA",
+      "pos": "RB",
+      "game": "KC at SEA (Week 8 vs. CHI MNF)",
+      "type": "role",
+      "note": "Lead back with 24 carries for 100 yds and 1 TD vs. KC on SNF, but Jadarian Price's 21-day IR window is opening this week and Zach Charbonnet (ACL recovery) is also working back toward a potential committee.",
+      "markets": [
+        "rush yds",
+        "rush att",
+        "anytime TD"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "lead back; Price/Charbonnet return watch",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 2:55 PM ET",
+      "listed": "Active",
+      "gk": "KC@SEA"
+    },
+    "4431574": {
+      "name": "Eli Stowers",
+      "team": "PHI",
+      "pos": "TE",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Officially ACTIVE (activated from IR) and making his NFL debut tonight on MNF vs. Dallas alongside Grant Calcaterra and G Landon Dickerson. With WRs DeVonta Smith and Dontayvion Wicks officially inactive, Dallas Goedert leads the TE room with Stowers and Calcaterra providing TE2/TE3 depth.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "officially active for MNF",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 6:45 PM ET",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4241374": {
+      "name": "Grant Calcaterra",
+      "team": "PHI",
+      "pos": "TE",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Officially ACTIVE (activated from IR) tonight on MNF vs. Dallas alongside rookie TE Eli Stowers and G Landon Dickerson. With WRs DeVonta Smith and Dontayvion Wicks officially inactive, Dallas Goedert leads the TE room with Calcaterra and Stowers providing TE2/TE3 depth.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "officially active for MNF",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 6:45 PM ET",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4427834": {
+      "name": "Erick All Jr.",
+      "team": "CIN",
+      "pos": "TE",
+      "game": "CIN at BAL (Week 8 watch)",
+      "type": "injury",
+      "note": "Status unknown after exiting Sunday's second half with a knee injury; head coach Zac Taylor said the team needs more information before commenting (MRI/evaluation pending).",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Unconfirmed",
+      "conf_note": "awaiting further evaluation",
+      "unconfirmed": true,
+      "src": "Report",
+      "time": "Oct 26, 2026 4:00 PM ET",
+      "listed": "Questionable",
+      "gk": "CIN@BAL"
+    },
+    "4401811": {
+      "name": "Kyle Dugger",
+      "team": "CIN",
+      "pos": "S",
+      "game": "CIN at BAL (Week 8 watch)",
+      "type": "injury",
+      "note": "Ruled out for Week 8 after aggravating his quadriceps injury in Sunday's second half; replacement starter at safety not yet named.",
+      "markets": [
+        "CIN pass defense"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "ruled out for Week 8",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 4:00 PM ET",
+      "listed": "Out",
+      "gk": "CIN@BAL"
+    },
+    "2973051": {
+      "name": "Taylor Moton",
+      "team": "CAR",
+      "pos": "OT",
+      "game": "TB at CAR, Sun Oct 25 (Week 8 TNF at GB)",
+      "type": "injury",
+      "note": "Officially placed on injured reserve Monday and ruled out for the remainder of the season: head coach Dave Canales confirmed Moton will undergo season-ending ankle surgery to repair ligament damage alongside his fractured left fibula. Monroe Freeling takes over at right tackle starting Thursday night at Green Bay (OLB Nick Hampton promoted from the practice squad).",
+      "markets": [
+        "CAR pass yds",
+        "CAR rush yds"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "placed on IR; season-ending ankle surgery confirmed",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 7:56 PM ET",
+      "listed": "IR",
+      "gk": "TB@CAR"
+    },
+    "4428037": {
+      "name": "Jacob Monk",
+      "team": "GB",
+      "pos": "G",
+      "game": "GB at DET, Sun Oct 25 (Week 8 TNF vs. CAR)",
+      "type": "injury",
+      "note": "Officially placed on injured reserve Monday (quad) and OL Mekhi Becton was signed from the practice squad to the active 53-man roster. With starter Sean Rhyan (high-ankle sprain) also out Thursday vs. Carolina, third-stringer John Williams is in line at center.",
+      "markets": [
+        "GB rush yds",
+        "GB pass yds"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "placed on IR; John Williams in line at C",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 4:03 PM ET",
+      "listed": "IR",
+      "gk": "GB@DET"
+    },
+    "4035624": {
+      "name": "Landon Dickerson",
+      "team": "PHI",
+      "pos": "G",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Officially activated from injured reserve (knee) for tonight's MNF matchup against Dallas alongside TEs Grant Calcaterra and Eli Stowers; expected back at left guard, though a full starter workload tonight is not yet confirmed.",
+      "markets": [
+        "PHI rush yds",
+        "Saquon Barkley rush yds"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "activated from IR",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 4:16 PM ET",
+      "listed": "Active",
+      "gk": "DAL@PHI"
+    },
+    "4427238": {
+      "name": "Dillon Gabriel",
+      "team": "CLE",
+      "pos": "QB",
+      "game": "CLE at TEN, Sun Oct 25",
+      "type": "injury",
+      "note": "Officially activated off injured reserve (back) Monday afternoon with TE Carsen Ryan waived in a corresponding roster move; no starter change has been announced, leaving Gabriel's Week 8 QB role TBD.",
+      "markets": [
+        "pass yds",
+        "pass att"
+      ],
+      "dir": "uncertain",
+      "conf": "Confirmed",
+      "conf_note": "activated off IR; QB role TBD",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 4:26 PM ET",
+      "listed": "Active",
+      "gk": "CLE@TEN"
+    },
+    "4692835": {
+      "name": "Jalen Brooks",
+      "team": "ARI",
+      "pos": "WR",
+      "game": "DEN at ARI, Sun Oct 25",
+      "type": "injury",
+      "note": "Out for the remainder of the season and undergoing wrist surgery after playing 53-64% of offensive snaps over the last three games; no depth-chart replacement at WR has been announced yet.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "season-ending wrist surgery",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 4:09 PM ET",
+      "listed": "Out",
+      "gk": "DEN@ARI"
+    },
+    "4701936": {
+      "name": "Matthew Golden",
+      "team": "GB",
+      "pos": "WR",
+      "game": "GB at DET, Sun Oct 25 (Week 8 TNF vs. CAR)",
+      "type": "injury",
+      "note": "Estimated DNP (shoulder/foot) on Green Bay's Monday walkthrough injury report ahead of Thursday night vs. Carolina. Christian Watson and Jordan Love are off the injury report; other Packers WRs would pick up targets if Golden is limited or out Thursday.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "estimated DNP Mon (walkthrough)",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 5:42 PM ET",
+      "listed": "Questionable",
+      "gk": "GB@DET"
+    },
+    "3117251": {
+      "name": "Christian McCaffrey",
+      "team": "SF",
+      "pos": "RB",
+      "game": "SF at ATL, Sun Oct 25 (Week 8 Bye; Week 9 vs. LV)",
+      "type": "injury",
+      "note": "Diagnosed with a mild hamstring strain (clarified from Sunday's thigh designation); San Francisco is optimistic he will play after the Week 8 bye against the Raiders in Week 9 (WRs Mike Evans and Deebo Samuel Sr., DE Nick Bosa, LB Luke Gifford, S Marques Sigle, and DT C.J. West are also expected back after the bye, though not guaranteed).",
+      "markets": [
+        "rush yds",
+        "rec yds",
+        "anytime TD"
+      ],
+      "dir": "up",
+      "conf": "Confirmed",
+      "conf_note": "mild hamstring strain; optimistic for Week 9 post-bye",
+      "unconfirmed": false,
+      "src": "Report",
+      "time": "Oct 26, 2026 6:23 PM ET",
+      "listed": "Active",
+      "gk": "SF@ATL"
+    },
+    "3926231": {
+      "name": "Britain Covey",
+      "team": "PHI",
+      "pos": "WR",
+      "game": "DAL at PHI, Mon Oct 26 8:15 PM ET",
+      "type": "injury",
+      "note": "Exited in the first half of tonight's MNF game against Dallas with a knee injury (listed questionable to return by the team at 8:38 PM ET, then reported Out at 8:51 PM ET). Replacement punt/kick returner is unconfirmed; Makai Lemon continues handling the bigger WR role with DeVonta Smith and Dontayvion Wicks inactive.",
+      "markets": [
+        "rec yds",
+        "receptions"
+      ],
+      "dir": "down",
+      "conf": "Confirmed",
+      "conf_note": "in-game 1H knee injury; reported Out",
+      "unconfirmed": true,
+      "src": "Report",
+      "time": "Oct 26, 2026 8:51 PM ET",
+      "listed": "Out",
+      "gk": "DAL@PHI"
     }
   },
   "injury_cascades": [
@@ -1185,17 +1487,17 @@
       "injured_player": "Aaron Jones Sr.",
       "team": "MIN",
       "pos": "RB",
-      "status": "Aggravated Sprained Left MCL (Monday MRI Pending)",
+      "status": "Day-to-Day (Monday MRI Not Significant)",
       "game": "IND @ MIN",
       "beneficiaries": [
         {
           "player": "Jordan Mason",
           "pos": "RB",
           "boost": "+Lead RB Snaps (Live)",
-          "note": "Next up for lead backfield work after logging 15 carries for 68 yards Sunday while Aaron Jones Sr. awaits Monday MRI results."
+          "note": "Logged 63% of snaps and 15 carries for 68 yards Sunday; retains co-lead volume even with Jones day-to-day and full workhorse role if Jones sits."
         }
       ],
-      "summary": "Aaron Jones Sr. aggravated a sprained left MCL Sunday vs. IND (Monday MRI pending); Jordan Mason (15 carries, 68 yds Sunday) is next up in Minnesota's backfield."
+      "summary": "Aaron Jones Sr.'s Monday MRI showed his knee injury is not significant (day-to-day), though Jordan Mason (63% snaps, 15 carries, 68 yds Sunday) already led the backfield split."
     },
     {
       "injured_player": "Kenny Gainwell",

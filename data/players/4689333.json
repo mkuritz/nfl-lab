@@ -1,1 +1,154 @@
-{"id":"4689333","name":"Tyrus Wheat","team":"DAL","pos":"LB","grp":"DEF","num":"59","head":"https://a.espncdn.com/i/headshots/nfl/players/full/4689333.png","age":26,"exp":"4","college":"Mississippi State","draft":null,"depth":{"pos":"SLB","rank":3,"unit":"Base 3-4 D","team":"DAL"},"inj":{"status":"Active","note":"","date":"2026-10-27T13:07Z","detail":""},"next":{"opp":"ARI","home":true,"date":"2026-11-01T18:00Z"},"dvp":null,"news":[],"log":[{"s":2026,"w":2,"o":"WSH","t":"DAL","g":"2026_02_WAS_DAL","def_tackles_solo":1.0,"def_tackle_assists":1.0,"snap":4,"st":52,"home":true},{"s":2025,"w":18,"o":"CHI","t":"DET","g":"2025_18_DET_CHI","def_tackles_solo":1.0,"snap":15,"st":40,"home":false},{"s":2025,"w":15,"o":"LAR","t":"DET","g":"2025_15_DET_LA","def_tackles_solo":1.0,"snap":17,"st":62,"home":false},{"s":2025,"w":14,"o":"DAL","t":"DET","g":"2025_14_DAL_DET","def_tackles_solo":2.0,"def_qb_hits":1.0,"def_pass_defended":1.0,"snap":9,"st":65,"home":true},{"s":2025,"w":12,"o":"NYG","t":"DET","g":"2025_12_NYG_DET","def_tackles_solo":2.0,"def_tackle_assists":2.0,"snap":6,"st":56,"home":true},{"s":2025,"w":10,"o":"WSH","t":"DET","g":"2025_10_DET_WAS","def_tackle_assists":1.0,"snap":null,"st":56,"home":false},{"s":2025,"w":9,"o":"MIN","t":"DET","g":"2025_09_MIN_DET","def_tackle_assists":1.0,"snap":2,"st":40,"home":true},{"s":2025,"w":7,"o":"TB","t":"DET","g":"2025_07_TB_DET","def_tackles_solo":1.0,"def_tackle_assists":2.0,"def_tackles_for_loss":1.0,"def_sacks":1.5,"def_qb_hits":1.0,"def_fumbles_forced":1.0,"snap":13,"st":29,"home":true},{"s":2025,"w":6,"o":"KC","t":"DET","g":"2025_06_DET_KC","def_tackle_assists":1.0,"snap":3,"st":68,"home":false},{"s":2025,"w":4,"o":"CLE","t":"DET","g":"2025_04_CLE_DET","def_tackle_assists":1.0,"snap":3,"st":42,"home":true}],"season":2026}
+{
+  "id": "4689333",
+  "name": "Tyrus Wheat",
+  "team": "DAL",
+  "pos": "LB",
+  "grp": "DEF",
+  "num": "59",
+  "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4689333.png",
+  "age": 26,
+  "exp": "4",
+  "college": "Mississippi State",
+  "draft": null,
+  "depth": {
+    "pos": "SLB",
+    "rank": 3,
+    "unit": "Base 3-4 D",
+    "team": "DAL"
+  },
+  "inj": {
+    "status": "Out",
+    "detail": "Officially Inactive for MNF at PHI",
+    "date": "2026-10-26T22:51Z",
+    "note": "Officially inactive for Monday night's matchup at Philadelphia."
+  },
+  "next": {
+    "opp": "PHI",
+    "home": false,
+    "date": "2026-10-27T00:15Z"
+  },
+  "dvp": null,
+  "news": [],
+  "log": [
+    {
+      "s": 2026,
+      "w": 2,
+      "o": "WSH",
+      "t": "DAL",
+      "g": "2026_02_WAS_DAL",
+      "def_tackles_solo": 1.0,
+      "def_tackle_assists": 1.0,
+      "snap": 4,
+      "st": 52,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 18,
+      "o": "CHI",
+      "t": "DET",
+      "g": "2025_18_DET_CHI",
+      "def_tackles_solo": 1.0,
+      "snap": 15,
+      "st": 40,
+      "home": false
+    },
+    {
+      "s": 2025,
+      "w": 15,
+      "o": "LAR",
+      "t": "DET",
+      "g": "2025_15_DET_LA",
+      "def_tackles_solo": 1.0,
+      "snap": 17,
+      "st": 62,
+      "home": false
+    },
+    {
+      "s": 2025,
+      "w": 14,
+      "o": "DAL",
+      "t": "DET",
+      "g": "2025_14_DAL_DET",
+      "def_tackles_solo": 2.0,
+      "def_qb_hits": 1.0,
+      "def_pass_defended": 1.0,
+      "snap": 9,
+      "st": 65,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 12,
+      "o": "NYG",
+      "t": "DET",
+      "g": "2025_12_NYG_DET",
+      "def_tackles_solo": 2.0,
+      "def_tackle_assists": 2.0,
+      "snap": 6,
+      "st": 56,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 10,
+      "o": "WSH",
+      "t": "DET",
+      "g": "2025_10_DET_WAS",
+      "def_tackle_assists": 1.0,
+      "snap": null,
+      "st": 56,
+      "home": false
+    },
+    {
+      "s": 2025,
+      "w": 9,
+      "o": "MIN",
+      "t": "DET",
+      "g": "2025_09_MIN_DET",
+      "def_tackle_assists": 1.0,
+      "snap": 2,
+      "st": 40,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 7,
+      "o": "TB",
+      "t": "DET",
+      "g": "2025_07_TB_DET",
+      "def_tackles_solo": 1.0,
+      "def_tackle_assists": 2.0,
+      "def_tackles_for_loss": 1.0,
+      "def_sacks": 1.5,
+      "def_qb_hits": 1.0,
+      "def_fumbles_forced": 1.0,
+      "snap": 13,
+      "st": 29,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 6,
+      "o": "KC",
+      "t": "DET",
+      "g": "2025_06_DET_KC",
+      "def_tackle_assists": 1.0,
+      "snap": 3,
+      "st": 68,
+      "home": false
+    },
+    {
+      "s": 2025,
+      "w": 4,
+      "o": "CLE",
+      "t": "DET",
+      "g": "2025_04_CLE_DET",
+      "def_tackle_assists": 1.0,
+      "snap": 3,
+      "st": 42,
+      "home": true
+    }
+  ],
+  "season": 2026
+}

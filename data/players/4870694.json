@@ -1,1 +1,59 @@
-{"id":"4870694","name":"Monroe Freeling","team":"CAR","pos":"OT","grp":"DEF","num":"57","head":"https://a.espncdn.com/i/headshots/nfl/players/full/4870694.png","age":22,"exp":"0","college":"Georgia","draft":["2026","1","19"],"depth":{"pos":"RT","rank":1,"unit":"3WR 1TE","team":"CAR"},"inj":{"status":"Active","note":"Freeling logged three full practices leading up to Sunday's Week 7 game. The 22-year-old missed Week 6 with a knee injury suffered before Carolina's bye week. He will likely act as tackle depth behind Rasheed Walker and Taylor Moton.","date":"2026-10-25T16:16Z","detail":""},"next":{"opp":"GB","home":false,"date":"2026-10-30T00:15Z"},"dvp":null,"news":[],"log":[{"s":2026,"w":3,"o":"CLE","t":"CAR","g":"2026_03_CAR_CLE","snap":100,"st":15,"home":false},{"s":2026,"w":1,"o":"CHI","t":"CAR","g":"2026_01_CHI_CAR","snap":90,"st":16,"home":true}],"season":2026}
+{
+  "id": "4870694",
+  "name": "Monroe Freeling",
+  "team": "CAR",
+  "pos": "OT",
+  "grp": "DEF",
+  "num": "57",
+  "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4870694.png",
+  "age": 22,
+  "exp": "0",
+  "college": "Georgia",
+  "draft": [
+    "2026",
+    "1",
+    "19"
+  ],
+  "depth": {
+    "pos": "RT",
+    "rank": 1,
+    "unit": "3WR 1TE",
+    "team": "CAR"
+  },
+  "inj": {
+    "status": "Active",
+    "detail": "Projected Starter at RT (Taylor Moton out for season on IR)",
+    "date": "2026-10-26T22:56Z",
+    "note": "Takes over the starting right tackle role starting Thursday night at Green Bay after Taylor Moton (fractured fibula / season-ending ankle ligament surgery) was placed on injured reserve Monday."
+  },
+  "next": {
+    "opp": "GB",
+    "home": false,
+    "date": "2026-10-30T00:15Z"
+  },
+  "dvp": null,
+  "news": [],
+  "log": [
+    {
+      "s": 2026,
+      "w": 3,
+      "o": "CLE",
+      "t": "CAR",
+      "g": "2026_03_CAR_CLE",
+      "snap": 100,
+      "st": 15,
+      "home": false
+    },
+    {
+      "s": 2026,
+      "w": 1,
+      "o": "CHI",
+      "t": "CAR",
+      "g": "2026_01_CHI_CAR",
+      "snap": 90,
+      "st": 16,
+      "home": true
+    }
+  ],
+  "season": 2026
+}

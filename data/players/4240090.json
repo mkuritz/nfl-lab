@@ -1,1 +1,74 @@
-{"id":"4240090","name":"Mekhi Becton","team":"GB","pos":"G","grp":"DEF","num":"","head":"https://a.espncdn.com/i/headshots/nfl/players/full/4240090.png","age":27,"exp":"7","college":"Louisville","draft":["2020","1","11"],"depth":{"pos":"LT","rank":3,"unit":"3WR 1TE","team":"GB"},"inj":null,"next":{"opp":"CAR","home":true,"date":"2026-10-30T00:15Z"},"dvp":null,"news":[],"log":[{"s":2025,"w":10,"o":"PIT","t":"LAC","g":"2025_10_PIT_LAC","snap":100,"st":21,"home":true},{"s":2025,"w":7,"o":"IND","t":"LAC","g":"2025_07_IND_LAC","snap":99,"st":17,"home":true},{"s":2025,"w":3,"o":"DEN","t":"LAC","g":"2025_03_DEN_LAC","snap":36,"st":3,"home":true},{"s":2025,"w":1,"o":"KC","t":"LAC","g":"2025_01_KC_LAC","snap":75,"st":16,"home":true}],"season":2026}
+{
+  "id": "4240090",
+  "name": "Mekhi Becton",
+  "team": "GB",
+  "pos": "G",
+  "grp": "DEF",
+  "num": "",
+  "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4240090.png",
+  "age": 27,
+  "exp": "7",
+  "college": "Louisville",
+  "draft": [
+    "2020",
+    "1",
+    "11"
+  ],
+  "depth": null,
+  "inj": {
+    "status": "Active",
+    "detail": "Signed to Active 53-Man Roster from Practice Squad",
+    "date": "2026-10-26T20:05Z",
+    "note": "Signed from the practice squad to the active 53-man roster Monday to bolster Green Bay's interior offensive line depth ahead of Thursday night's Week 8 game against Carolina after Jacob Monk (quad) was placed on injured reserve and Sean Rhyan suffered a high-ankle sprain."
+  },
+  "next": {
+    "opp": "CAR",
+    "home": true,
+    "date": "2026-10-30T00:15Z"
+  },
+  "dvp": null,
+  "news": [],
+  "log": [
+    {
+      "s": 2025,
+      "w": 10,
+      "o": "PIT",
+      "t": "LAC",
+      "g": "2025_10_PIT_LAC",
+      "snap": 100,
+      "st": 21,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 7,
+      "o": "IND",
+      "t": "LAC",
+      "g": "2025_07_IND_LAC",
+      "snap": 99,
+      "st": 17,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 3,
+      "o": "DEN",
+      "t": "LAC",
+      "g": "2025_03_DEN_LAC",
+      "snap": 36,
+      "st": 3,
+      "home": true
+    },
+    {
+      "s": 2025,
+      "w": 1,
+      "o": "KC",
+      "t": "LAC",
+      "g": "2025_01_KC_LAC",
+      "snap": 75,
+      "st": 16,
+      "home": true
+    }
+  ],
+  "season": 2026
+}

@@ -1,6 +1,6 @@
 {
   "slate": "2026 Week 7",
-  "updated_et": "Mon Oct 26, 2026 10:08 AM ET",
+  "updated_et": "Oct 26, 2026 9:00 PM ET",
   "games": [
     {
       "key": "PIT@NO",
@@ -139,7 +139,7 @@
           "player": "CJ Donaldson",
           "team": "NO",
           "pos": "RB",
-          "status": "In-game injury tent (1Q) \u00b7 no team status yet",
+          "status": "In-game injury tent (1Q) · no team status yet",
           "conf": "Unconfirmed",
           "conf_note": "verify",
           "unconfirmed": true,
@@ -151,7 +151,7 @@
           "player": "Justin Reid",
           "team": "NO",
           "pos": "S",
-          "status": "To locker room (2Q, unspecified) \u00b7 no team status yet",
+          "status": "To locker room (2Q, unspecified) · no team status yet",
           "conf": "Unconfirmed",
           "conf_note": "verify",
           "unconfirmed": true,
@@ -163,7 +163,7 @@
           "player": "Martin Emerson Jr.",
           "team": "NO",
           "pos": "CB",
-          "status": "In-game injury tent (2Q, concussion evaluation) \u00b7 no team status yet",
+          "status": "In-game injury tent (2Q, concussion evaluation) · no team status yet",
           "conf": "Unconfirmed",
           "conf_note": "verify",
           "unconfirmed": true,
@@ -270,7 +270,7 @@
         {
           "dir": "NO OL injuries -> PIT defense",
           "injured": [
-            "Cesar Ruiz (RG, Inactive \u2014 rookie Jeremiah Wright starting)"
+            "Cesar Ruiz (RG, Inactive — rookie Jeremiah Wright starting)"
           ],
           "props": {
             "PIT team sacks / PIT pass-rusher sack props": "up",
@@ -361,7 +361,7 @@
         }
       ],
       "move": "Toward CIN by 2 pts; total -2.5 to -4. One market briefly flipped to CIN -1.5 on Wednesday",
-      "move_tied": "Directly tied to Jackson. A trader said the line 'went down a point and a half just off' him missing practice, and one market moved 4.5 pts to CIN -1.5 when he limped off Wednesday. The point value of Jackson vs. Huntley: no published estimate, though the reported moves imply about 1.5\u20134.5 pts.",
+      "move_tied": "Directly tied to Jackson. A trader said the line 'went down a point and a half just off' him missing practice, and one market moved 4.5 pts to CIN -1.5 when he limped off Wednesday. The point value of Jackson vs. Huntley: no published estimate, though the reported moves imply about 1.5–4.5 pts.",
       "injuries": [
         {
           "player": "Rashod Bateman",
@@ -430,6 +430,32 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 2:55 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Erick All Jr.",
+          "team": "CIN",
+          "pos": "TE",
+          "status": "Status unknown (exited Sun with knee injury; team awaiting more information/MRI)",
+          "conf": "Unconfirmed",
+          "conf_note": "awaiting further evaluation",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 4:00 PM ET",
+          "note": "Next CIN TE moves up if All misses time; replacement not named.",
+          "point_value": "no published estimate",
+          "intel_aid": "4427834"
+        },
+        {
+          "player": "Kyle Dugger",
+          "team": "CIN",
+          "pos": "S",
+          "status": "Out for Week 8 (quadriceps)",
+          "conf": "Confirmed",
+          "conf_note": "ruled out for Week 8",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 4:00 PM ET",
+          "note": "Replacement starter at safety not yet named.",
+          "point_value": "no published estimate",
+          "intel_aid": "4401811"
         }
       ],
       "ol": [
@@ -1249,6 +1275,61 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 3:25 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Bryce Young",
+          "team": "CAR",
+          "pos": "QB",
+          "status": "Estimated Full Participant Mon (knee) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jalen Coker",
+          "team": "CAR",
+          "pos": "WR",
+          "status": "Estimated Limited Mon (shoulder) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jaelan Phillips",
+          "team": "CAR",
+          "pos": "OLB",
+          "status": "Estimated DNP Mon (hamstring) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate; starter",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Bobby Brown III",
+          "team": "CAR",
+          "pos": "DT",
+          "status": "Estimated DNP Mon (hand) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate; starter",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Akayleb Evans",
+          "team": "CAR",
+          "pos": "CB",
+          "status": "Estimated DNP Mon (triceps/knee; day-to-day) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate; starter",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -1268,12 +1349,36 @@
           "player": "Taylor Moton",
           "team": "CAR",
           "pos": "RT",
-          "status": "Out indefinitely (fractured fibula)",
+          "status": "Placed on IR — out for season (fractured left fibula & season-ending ankle ligament surgery)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "out for season; confirmed by head coach",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 5:45 PM ET",
-          "replacement": "Monroe Freeling",
+          "time": "Oct 26, 2026 7:56 PM ET",
+          "replacement": "Monroe Freeling (takes over at RT starting TNF at GB; OLB Nick Hampton signed from PS to 53)",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Damien Lewis",
+          "team": "CAR",
+          "pos": "LG",
+          "status": "Estimated DNP Mon (knee) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate; starter",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Torricelli Simpkins III",
+          "team": "CAR",
+          "pos": "OL",
+          "status": "Estimated DNP Mon (ankle) for TNF at GB",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
       ],
@@ -1548,12 +1653,13 @@
           "player": "Christian McCaffrey",
           "team": "SF",
           "pos": "RB",
-          "status": "Active (returned in 2H after thigh evaluation)",
+          "status": "Mild hamstring strain (clarified from thigh; SF optimistic he plays Week 9 vs. LV after Week 8 bye)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "Week 8 bye; expected to remain RB1 in Week 9",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 3:40 PM ET",
-          "point_value": "no published estimate"
+          "time": "Oct 26, 2026 6:23 PM ET",
+          "point_value": "no published estimate",
+          "note": "WRs Mike Evans and Deebo Samuel Sr., DE Nick Bosa, LB Luke Gifford, S Marques Sigle, and DT C.J. West are also expected back after the Week 8 bye (not yet guaranteed)."
         },
         {
           "player": "Drake London",
@@ -1878,6 +1984,19 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 11:32 AM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Dillon Gabriel",
+          "team": "CLE",
+          "pos": "QB",
+          "status": "Activated off IR (back; QB role TBD)",
+          "conf": "Confirmed",
+          "conf_note": "activated from IR; TE Carsen Ryan waived",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 4:26 PM ET",
+          "note": "No starter change announced; TE Carsen Ryan waived in corresponding move.",
+          "point_value": "no published estimate",
+          "intel_aid": "4427238"
         }
       ],
       "ol": [
@@ -2164,13 +2283,13 @@
           "player": "Aaron Jones Sr.",
           "team": "MIN",
           "pos": "RB",
-          "status": "Questionable (aggravated sprained left MCL; Monday MRI pending, Jordan Mason next up after 15 carries Sunday)",
+          "status": "Questionable / Day-to-Day (Monday MRI showed knee injury is not significant; Jordan Mason led MIN backfield Sunday with 63% snaps & 15 carries vs. Jones's 29% snaps & 8 carries)",
           "conf": "Confirmed",
-          "conf_note": "Monday MRI pending",
+          "conf_note": "MRI clean of significant damage; day-to-day",
           "unconfirmed": false,
-          "time": "Oct 26, 2026 8:22 AM ET",
+          "time": "Oct 26, 2026 12:01 PM ET",
           "point_value": "no published estimate",
-          "note": "Jordan Mason logged 15 carries for 68 yards Sunday and is next in line.",
+          "note": "Jordan Mason logged 63% snaps and 15 carries for 68 yards Sunday; split caps Jones's rushing-attempt ceiling even if active.",
           "intel_aid": "3042519"
         },
         {
@@ -2336,12 +2455,12 @@
           "player": "Jeremiyah Love",
           "team": "ARI",
           "pos": "RB",
-          "status": "Inactive (high-ankle sprain)",
+          "status": "Inactive Week 7 (high-ankle sprain); scheduled to return to practice Wednesday for Week 8 at DAL",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "practicing Wednesday",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 2:35 PM ET",
-          "note": "Confirmed by the head coach.",
+          "time": "Oct 26, 2026 6:30 PM ET",
+          "note": "Expected to practice Wednesday ahead of Week 8 at Dallas.",
           "point_value": "no published estimate",
           "intel_aid": "4870808"
         },
@@ -2399,6 +2518,19 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 2:35 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Jalen Brooks",
+          "team": "ARI",
+          "pos": "WR",
+          "status": "Out for season (wrist surgery)",
+          "conf": "Confirmed",
+          "conf_note": "season-ending surgery",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 4:09 PM ET",
+          "note": "Played 53-64% of offensive snaps over last 3 games; WR replacement not yet announced.",
+          "point_value": "no published estimate",
+          "intel_aid": "4692835"
         }
       ],
       "ol": [
@@ -2591,41 +2723,6 @@
       "move_tied": "No injury attribution found.",
       "injuries": [
         {
-          "player": "Christian Watson",
-          "team": "GB",
-          "pos": "WR",
-          "status": "Questionable (ankle)",
-          "conf": "Confirmed",
-          "conf_note": "",
-          "unconfirmed": false,
-          "time": "Oct 23, 2026 11:57 AM ET",
-          "point_value": "no published estimate"
-        },
-        {
-          "player": "Matthew Golden",
-          "team": "GB",
-          "pos": "WR",
-          "status": "Active (returned after brief evaluation)",
-          "conf": "Confirmed",
-          "conf_note": "",
-          "unconfirmed": false,
-          "time": "Oct 25, 2026 6:20 PM ET",
-          "point_value": "no published estimate"
-        },
-        {
-          "player": "Zaire Franklin",
-          "team": "GB",
-          "pos": "LB",
-          "status": "Doubtful for TNF vs. CAR (hairline leg fracture from practice kick; missed Week 7, no IR planned, expected to miss minimal games)",
-          "conf": "Confirmed",
-          "conf_note": "hairline fracture; TNF status unconfirmed",
-          "unconfirmed": true,
-          "time": "Oct 26, 2026 9:30 AM ET",
-          "note": "No IR expected; no depth-chart replacement officially reported.",
-          "point_value": "no published estimate",
-          "intel_aid": "3124005"
-        },
-        {
           "player": "Josh Jacobs",
           "team": "GB",
           "pos": "RB",
@@ -2652,17 +2749,6 @@
           "player": "Kaleb Johnson",
           "team": "GB",
           "pos": "RB",
-          "status": "Inactive",
-          "conf": "Confirmed",
-          "conf_note": "",
-          "unconfirmed": false,
-          "time": "Oct 25, 2026 2:55 PM ET",
-          "point_value": "no published estimate"
-        },
-        {
-          "player": "Benjamin St-Juste",
-          "team": "GB",
-          "pos": "CB",
           "status": "Inactive",
           "conf": "Confirmed",
           "conf_note": "",
@@ -2713,6 +2799,85 @@
           "unconfirmed": false,
           "time": "Oct 25, 2026 6:40 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Jordan Love",
+          "team": "GB",
+          "pos": "QB",
+          "status": "Off Monday injury report (no designation for TNF vs. CAR)",
+          "conf": "Confirmed",
+          "conf_note": "cleared",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:01 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Christian Watson",
+          "team": "GB",
+          "pos": "WR",
+          "status": "Off Monday injury report (no designation for TNF vs. CAR)",
+          "conf": "Confirmed",
+          "conf_note": "cleared",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:01 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Matthew Golden",
+          "team": "GB",
+          "pos": "WR",
+          "status": "Estimated DNP Mon (shoulder/foot) for TNF vs. CAR",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "note": "Other GB WRs would pick up targets if Golden misses Thursday.",
+          "point_value": "no published estimate",
+          "intel_aid": "4701936"
+        },
+        {
+          "player": "Devonte Wyatt",
+          "team": "GB",
+          "pos": "DT",
+          "status": "Estimated DNP Mon (ankle) for TNF vs. CAR",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Zaire Franklin",
+          "team": "GB",
+          "pos": "LB",
+          "status": "Estimated DNP Mon (shin; hairline leg fracture) for TNF vs. CAR",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Anthony Campbell",
+          "team": "GB",
+          "pos": "DT",
+          "status": "Estimated DNP Mon (ankle) for TNF vs. CAR",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Benjamin St-Juste",
+          "team": "GB",
+          "pos": "CB",
+          "status": "Estimated Full Participant Mon (hamstring) for TNF vs. CAR",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "point_value": "no published estimate"
         }
       ],
       "ol": [
@@ -2720,12 +2885,12 @@
           "player": "Aaron Banks",
           "team": "GB",
           "pos": "LG",
-          "status": "Active (starting at LG)",
+          "status": "Estimated Limited Mon (knee/toe) for TNF vs. CAR",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "walkthrough estimate",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 2:55 PM ET",
-          "replacement": "active starter",
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "replacement": "active starter at LG",
           "reported_impact": "no published impact stat"
         },
         {
@@ -2768,24 +2933,24 @@
           "player": "Sean Rhyan",
           "team": "GB",
           "pos": "C",
-          "status": "Doubtful for TNF vs. CAR (believed to be high-ankle sprain; X-rays negative, Monday MRI; multi-week absence possible)",
+          "status": "Estimated DNP Mon (ankle; high-ankle sprain, Monday MRI; unconfirmed IR risk)",
           "conf": "Confirmed",
-          "conf_note": "X-rays negative, MRI Monday",
-          "unconfirmed": false,
-          "time": "Oct 26, 2026 9:47 AM ET",
-          "replacement": "John Williams (in line at C with Jacob Monk [quad] also expected out)",
+          "conf_note": "Monday MRI; unconfirmed IR risk (min 4 games if placed on IR)",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 5:42 PM ET",
+          "replacement": "John Williams (in line as 3rd-string C for TNF vs. CAR after Jacob Monk placed on IR)",
           "reported_impact": "no published impact stat"
         },
         {
           "player": "Jacob Monk",
           "team": "GB",
           "pos": "C/G",
-          "status": "Doubtful for TNF vs. CAR (in-game quad injury; expected to miss Thursday vs. CAR)",
+          "status": "Placed on IR (quadriceps; out at least 4 games including TNF vs. CAR)",
           "conf": "Confirmed",
-          "conf_note": "quad",
+          "conf_note": "IR; Mekhi Becton signed to 53",
           "unconfirmed": false,
-          "time": "Oct 26, 2026 9:47 AM ET",
-          "replacement": "John Williams (in line at C)",
+          "time": "Oct 26, 2026 4:03 PM ET",
+          "replacement": "John Williams (in line at C vs. CAR; OL Mekhi Becton signed from PS to 53)",
           "reported_impact": "no published impact stat"
         },
         {
@@ -2809,6 +2974,18 @@
           "conf_note": "",
           "unconfirmed": false,
           "time": "Oct 25, 2026 2:55 PM ET",
+          "replacement": "replacement not reported",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Travis Glover",
+          "team": "GB",
+          "pos": "G/T",
+          "status": "Estimated DNP Mon (knee) for TNF vs. CAR",
+          "conf": "Confirmed",
+          "conf_note": "walkthrough estimate",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 5:42 PM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
         }
@@ -2909,10 +3086,7 @@
           "props": "no reported DL injuries; no adjustment"
         }
       ],
-      "pending": [
-        "Christian Watson",
-        "Aaron Banks"
-      ],
+      "pending": [],
       "flag": "",
       "intel": [
         {
@@ -3341,12 +3515,12 @@
           "player": "Zach Charbonnet",
           "team": "SEA",
           "pos": "RB",
-          "status": "Inactive (Kenneth Walker III workhorse back)",
+          "status": "Inactive for SNF; Week 8 vs. CHI uncommitted ('sticking with our plan' after PUP activation)",
           "conf": "Confirmed",
           "conf_note": "",
           "unconfirmed": false,
-          "time": "Oct 25, 2026 6:50 PM ET",
-          "note": "Ruled out one day after PUP activation. Next man up not reported.",
+          "time": "Oct 26, 2026 2:55 PM ET",
+          "note": "Emanuel Wilson (24 carries, 100 yds, 1 TD vs. KC) leads the SEA backfield; Jadarian Price's 21-day IR practice window is also opening.",
           "point_value": "no published estimate",
           "intel_aid": "4426385"
         },
@@ -3464,12 +3638,12 @@
           "player": "Rashid Shaheed",
           "team": "SEA",
           "pos": "WR",
-          "status": "Out (ruled out of SNF 2H with knee injury; Week 8 vs. CHI TBD, MRI pending)",
+          "status": "Day-to-day (exited SNF 2H with knee injury; Macdonald said 'early returns are positive', imaging unconfirmed)",
           "conf": "Confirmed",
-          "conf_note": "out of SNF; Week 8 TBD",
-          "unconfirmed": false,
-          "time": "Oct 26, 2026 10:00 AM ET",
-          "note": "Remaining SEA WRs absorb extra snaps; no specific replacement reported.",
+          "conf_note": "early returns positive; imaging unconfirmed",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 2:55 PM ET",
+          "note": "Considered day-to-day for Week 8 MNF vs. CHI; remaining SEA WRs absorb extra snaps if limited.",
           "point_value": "no published estimate",
           "intel_aid": "4032473"
         },
@@ -3482,9 +3656,22 @@
           "conf_note": "out of SNF",
           "unconfirmed": false,
           "time": "Oct 26, 2026 10:00 AM ET",
-          "note": "No depth-chart move reported; Kenneth Walker III and George Holani lead SEA backfield.",
+          "note": "No depth-chart move reported; Emanuel Wilson and George Holani lead SEA active RB snaps.",
           "point_value": "no published estimate",
           "intel_aid": "4035693"
+        },
+        {
+          "player": "Jadarian Price",
+          "team": "SEA",
+          "pos": "RB",
+          "status": "IR / Designated to Return (21-day practice window opening this week; Week 8 vs. CHI TBD)",
+          "conf": "Confirmed",
+          "conf_note": "21-day window opening; Week 8 TBD",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 2:55 PM ET",
+          "note": "Macdonald on Week 8 vs. CHI: 'We don't know yet.' Emanuel Wilson remains lead back unless Price/Charbonnet are activated into a committee.",
+          "point_value": "no published estimate",
+          "intel_aid": "4685512"
         }
       ],
       "ol": [
@@ -3523,6 +3710,17 @@
           "time": "Oct 25, 2026 6:50 PM ET",
           "replacement": "replacement not reported",
           "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Charles Cross",
+          "team": "SEA",
+          "pos": "LT",
+          "status": "Out / Week-to-Week (MRI confirmed high-ankle sprain; expected to miss 1-2 weeks depending on rehab, putting Week 8 MNF vs. CHI in jeopardy)",
+          "conf": "Confirmed",
+          "conf_note": "MRI confirmed high-ankle sprain (1-2 weeks)",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 1:08 PM ET",
+          "replacement": "Josh Jones (stepped in at LT on SNF; projected starter while Cross is out)"
         }
       ],
       "dl": [
@@ -3627,14 +3825,14 @@
         {
           "aid": "4032473",
           "name": "Rashid Shaheed",
-          "dir": "down",
+          "dir": "uncertain",
           "markets": [
             "rec yds",
             "receptions",
             "anytime TD"
           ],
           "conf": "Confirmed",
-          "unconfirmed": false
+          "unconfirmed": true
         },
         {
           "aid": "4035693",
@@ -3643,6 +3841,41 @@
           "markets": [
             "rush yds",
             "rush att"
+          ],
+          "conf": "Confirmed",
+          "unconfirmed": false
+        },
+        {
+          "aid": "4426376",
+          "name": "Charles Cross",
+          "dir": "down",
+          "markets": [
+            "SEA pass yds",
+            "SEA QB sacks taken"
+          ],
+          "conf": "Confirmed",
+          "unconfirmed": false
+        },
+        {
+          "aid": "4685512",
+          "name": "Jadarian Price",
+          "dir": "uncertain",
+          "markets": [
+            "rush yds",
+            "rush att",
+            "anytime TD"
+          ],
+          "conf": "Confirmed",
+          "unconfirmed": false
+        },
+        {
+          "aid": "4887558",
+          "name": "Emanuel Wilson",
+          "dir": "uncertain",
+          "markets": [
+            "rush yds",
+            "rush att",
+            "anytime TD"
           ],
           "conf": "Confirmed",
           "unconfirmed": false
@@ -3710,13 +3943,14 @@
           "player": "Dallas Goedert",
           "team": "PHI",
           "pos": "TE",
-          "status": "DNP Thu (knee)",
+          "status": "Cleared (no designation; practiced in full Sat)",
           "conf": "Confirmed",
-          "conf_note": "DNP",
+          "conf_note": "cleared",
           "unconfirmed": false,
-          "time": "Oct 22, 2026",
+          "time": "Oct 26, 2026 4:16 PM ET",
           "point_value": "no published estimate",
-          "intel_aid": "3121023"
+          "intel_aid": "3121023",
+          "note": "Remains PHI TE1; Eli Stowers and Grant Calcaterra officially activated from IR for TE2/TE3 depth."
         },
         {
           "player": "P.J. Locke",
@@ -3728,43 +3962,6 @@
           "unconfirmed": false,
           "time": "Oct 23, 2026 2:37 PM ET",
           "point_value": "no published estimate"
-        },
-        {
-          "player": "DeVonta Smith",
-          "team": "PHI",
-          "pos": "WR",
-          "status": "Out vs DAL",
-          "conf": "Confirmed",
-          "conf_note": "out",
-          "unconfirmed": false,
-          "time": "Oct 24, 2026 3:48 PM ET",
-          "note": "Ruled out for MNF. Depth-chart replacement at WR not reported.",
-          "point_value": "no published estimate",
-          "intel_aid": "4241478"
-        },
-        {
-          "player": "Dontayvion Wicks",
-          "team": "PHI",
-          "pos": "WR",
-          "status": "Out vs DAL",
-          "conf": "Confirmed",
-          "conf_note": "out",
-          "unconfirmed": false,
-          "time": "Oct 24, 2026 3:48 PM ET",
-          "point_value": "no published estimate",
-          "intel_aid": "4428850"
-        },
-        {
-          "player": "Saquon Barkley",
-          "team": "PHI",
-          "pos": "RB",
-          "status": "Questionable (expected to play)",
-          "conf": "Confirmed",
-          "conf_note": "questionable",
-          "unconfirmed": false,
-          "time": "Oct 24, 2026 4:09 PM ET",
-          "point_value": "no published estimate",
-          "intel_aid": "3929630"
         },
         {
           "player": "George Pickens",
@@ -3788,6 +3985,186 @@
           "unconfirmed": false,
           "time": "Oct 24, 2026 4:00 PM ET",
           "point_value": "no published estimate"
+        },
+        {
+          "player": "Saquon Barkley",
+          "team": "PHI",
+          "pos": "RB",
+          "status": "Active (hamstring; returns as RB1, Elijah Mitchell elevated from PS)",
+          "conf": "Confirmed",
+          "conf_note": "officially active",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "note": "Resumes RB1 role vs. DAL; Elijah Mitchell elevated from practice squad as depth.",
+          "point_value": "no published estimate",
+          "intel_aid": "3929630"
+        },
+        {
+          "player": "DeVonta Smith",
+          "team": "PHI",
+          "pos": "WR",
+          "status": "Inactive (hamstring)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "note": "Officially inactive alongside Dontayvion Wicks; targets funnel to TEs (Dallas Goedert, plus Grant Calcaterra and Eli Stowers off IR) and depth WRs (specific WR2/WR3 order unconfirmed).",
+          "point_value": "no published estimate",
+          "intel_aid": "4241478"
+        },
+        {
+          "player": "Dontayvion Wicks",
+          "team": "PHI",
+          "pos": "WR",
+          "status": "Inactive (ankle)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "note": "Officially inactive alongside DeVonta Smith; targets funnel to TEs and depth WRs.",
+          "point_value": "no published estimate",
+          "intel_aid": "4428850"
+        },
+        {
+          "player": "Eli Stowers",
+          "team": "PHI",
+          "pos": "TE",
+          "status": "Active (activated from IR; making NFL debut vs. DAL)",
+          "conf": "Confirmed",
+          "conf_note": "officially active",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "note": "Dallas Goedert remains TE1; Stowers and Grant Calcaterra add TE2/TE3 depth with Smith and Wicks out.",
+          "point_value": "no published estimate",
+          "intel_aid": "4431574"
+        },
+        {
+          "player": "Grant Calcaterra",
+          "team": "PHI",
+          "pos": "TE",
+          "status": "Active (activated from IR for MNF vs. DAL)",
+          "conf": "Confirmed",
+          "conf_note": "officially active",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "note": "Dallas Goedert remains TE1; Calcaterra and Eli Stowers add TE2/TE3 depth with Smith and Wicks out.",
+          "point_value": "no published estimate",
+          "intel_aid": "4241374"
+        },
+        {
+          "player": "Nolan Smith",
+          "team": "PHI",
+          "pos": "OLB",
+          "status": "Inactive (concussion)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "note": "Jonathan Greenard is active and covers edge snaps opposite Nolan Smith's spot.",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Jonathan Greenard",
+          "team": "PHI",
+          "pos": "OLB",
+          "status": "Active (ankle; covers edge snaps with Nolan Smith out)",
+          "conf": "Confirmed",
+          "conf_note": "officially active",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:49 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Michael Carter II",
+          "team": "PHI",
+          "pos": "DB",
+          "status": "Inactive (abdomen)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Cole Payton",
+          "team": "PHI",
+          "pos": "QB",
+          "status": "Inactive (Emergency 3rd QB; Joe Milton III is QB2 behind Tanner McKee)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:46 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "KaVontae Turpin",
+          "team": "DAL",
+          "pos": "WR",
+          "status": "Inactive (ribs)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive; replacement returner unconfirmed",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 6:51 PM ET",
+          "note": "WR4 and return snaps go to depth players (replacement returner not yet confirmed).",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Emari Demercado",
+          "team": "DAL",
+          "pos": "RB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:51 PM ET",
+          "note": "Javonte Williams leads DAL backfield with Tyler Goodson mixing in.",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Dee Winters",
+          "team": "DAL",
+          "pos": "LB",
+          "status": "Inactive (calf)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:51 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Tyrus Wheat",
+          "team": "DAL",
+          "pos": "OLB",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:51 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "DeMarvion Overshown",
+          "team": "DAL",
+          "pos": "LB",
+          "status": "Active (not on inactive list; role unconfirmed)",
+          "conf": "Unconfirmed",
+          "conf_note": "not on inactive list; snap role unconfirmed",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 6:56 PM ET",
+          "point_value": "no published estimate"
+        },
+        {
+          "player": "Britain Covey",
+          "team": "PHI",
+          "pos": "WR/KR",
+          "status": "Out (in-game 1H knee injury; initially questionable to return, reported Out)",
+          "conf": "Confirmed",
+          "conf_note": "team listed Q to return; reported Out (replacement returner unconfirmed)",
+          "unconfirmed": true,
+          "time": "Oct 26, 2026 8:51 PM ET",
+          "note": "Replacement punt/kick returner not yet confirmed; Makai Lemon continues seeing primary slot/WR snaps with DeVonta Smith and Dontayvion Wicks inactive.",
+          "point_value": "no published estimate",
+          "intel_aid": "3926231"
         }
       ],
       "ol": [
@@ -3807,12 +4184,12 @@
           "player": "Landon Dickerson",
           "team": "PHI",
           "pos": "G/C",
-          "status": "Limited Thu (knee/pectoral)",
+          "status": "Active (activated from IR; expected back at LG, starter workload TBD)",
           "conf": "Confirmed",
-          "conf_note": "",
+          "conf_note": "officially active",
           "unconfirmed": false,
-          "time": "Oct 22, 2026",
-          "replacement": "replacement not reported",
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "replacement": "Expected back at LG (starter workload tonight TBD)",
           "reported_impact": "no published impact stat"
         },
         {
@@ -3861,6 +4238,30 @@
           "unconfirmed": true,
           "time": "Oct 23, 2026 11:57 AM ET",
           "replacement": "Drew Shelton (LT2) is also DNP (hamstring)",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Jake Majors",
+          "team": "PHI",
+          "pos": "OL",
+          "status": "Inactive",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:45 PM ET",
+          "replacement": "depth OL",
+          "reported_impact": "no published impact stat"
+        },
+        {
+          "player": "Drew Shelton",
+          "team": "DAL",
+          "pos": "OT",
+          "status": "Inactive (hamstring)",
+          "conf": "Confirmed",
+          "conf_note": "officially inactive",
+          "unconfirmed": false,
+          "time": "Oct 26, 2026 6:51 PM ET",
+          "replacement": "depth OT",
           "reported_impact": "no published impact stat"
         }
       ],
@@ -4010,16 +4411,7 @@
           }
         }
       ],
-      "pending": [
-        "Saquon Barkley",
-        "Dallas Goedert",
-        "Dontayvion Wicks",
-        "Nolan Smith",
-        "Greenard",
-        "Lampkin",
-        "Dickerson",
-        "Tyler Guyton"
-      ],
+      "pending": [],
       "flag": "PHI: 4 interior OL on the report (Lampkin DNP; Dickerson, Steen and Kendall limited), plus an unverified Lane Johnson listing. PHI's edge group is also depleted.",
       "intel": [
         {
