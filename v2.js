@@ -63,5 +63,5 @@ function bar(){if(document.getElementById("v2bar"))return;var C=window.SLTOP;if(
  b.querySelector("form").onsubmit=function(e){e.preventDefault();var q=b.querySelector("input").value.trim();location.href=C.ask+encodeURIComponent(q||"best NFL props this week")};
 }
 if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",bar);else bar();
-if(!window.__sl&&!document.querySelector('script[src*="/sl/sl.js"]')){var _sls=document.createElement("script");_sls.src="https://sportslabshq.com/sl/sl.js?v=9";_sls.defer=true;document.head.appendChild(_sls);}
+if(!window.__sl&&!document.querySelector('script[src*="/sl/sl.js"]')){var _sls=document.createElement("script");_sls.src="https://sportslabshq.com/sl/sl.js?v=10";_sls.defer=true;document.head.appendChild(_sls);}
 })();
