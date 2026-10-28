@@ -9,3 +9,4 @@
 table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{padding:5px 6px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--mut);font-size:11px}.wrap{overflow-x:auto}
 .pill{font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;background:#a3e63522;color:var(--acc2)}.tk{margin:4px 0}.nw{margin:6px 0}.two{display:grid;grid-template-columns:2fr 1fr;gap:14px}@media(max-width:850px){.two{grid-template-columns:1fr}}
 footer{font-size:11px;color:var(--mut);margin:20px 0}
+@media(min-width:1200px){.w{max-width:1460px;padding:20px 24px}.grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}}

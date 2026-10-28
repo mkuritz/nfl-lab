@@ -96,3 +96,10 @@ header#v2bar .in{border:0;border-radius:0;background:none}
 
 .nfl-viz-meter .nvm-row[data-fcat]{cursor:pointer;padding:3px 5px;border-radius:6px;transition:background .12s,transform .1s}
 .nfl-viz-meter .nvm-row[data-fcat]:hover{background:rgba(56,208,240,.12);outline:1px solid rgba(56,208,240,.4)}
+
+#slbar{position:fixed;bottom:12px;right:14px;padding:6px 12px;font-size:12px;border-radius:99px;background:rgba(15,23,42,.94);border:1px solid #34d399;color:#ecfdf5;z-index:85;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+@media(min-width:1200px){
+  .w,#v2bar .in{max-width:1460px;padding-left:24px;padding-right:24px}
+  .pcards{grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:14px}
+  .gl,.grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+}
