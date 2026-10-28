@@ -23,4 +23,4 @@ for r in d['rows']:
 json.dump(d,open('data/v2.json','w'))
 T=sorted([r for r in d['rows'] if r['market']=='Anytime TD' and r['edge'] is not None],key=lambda r:-r['edge'])
 print('updated',n)
-for r in T[:10]: print(f"{r['name']:22} v1 {r['p_model_v1']*100:5.1f} v2 {r['p_model_v2']*100:5.1f} fair {r['fair']*100:5.1f} ({r['fsrc']},{r['nb']}) final {r['prob']*100:5.1f} edge {r['edge']*100:+5.1f} best {r['bbook']} {r['best']}")
+for r in T[:10]: print(f"{r['name']:22} v1 {r['p_model_v1']*100:5.1f} v2 {r['p_model_v2']*100:5.1f} fair {r['fair']*100:5.1f} ({r.get('fsrc','books')},{r.get('nb')}) final {r['prob']*100:5.1f} edge {r['edge']*100:+5.1f} best {r['bbook']} {r['best']}")

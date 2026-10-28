@@ -83,16 +83,30 @@ KEEP = ["completions", "attempts", "passing_yards", "passing_tds", "passing_inte
         "carries", "rushing_yards", "rushing_tds", "rushing_epa", "receptions", "targets", "receiving_yards", "receiving_tds", "receiving_air_yards",
         "receiving_yards_after_catch", "target_share", "air_yards_share", "receiving_epa", "def_tackles_solo", "def_tackle_assists", "def_tackles_for_loss",
         "def_sacks", "def_qb_hits", "def_interceptions", "def_pass_defended", "def_fumbles_forced", "fg_made", "fg_att", "fg_long", "pat_made", "pat_att", "fantasy_points_ppr"]
-ids = set(weekly) | set(depth)
+# Live Sleeper + trade overrides for mid-season trades & practice-squad/active promotions
+TRADE_OV = {"2971282": "SF", "3129308": "SEA", "4361196": "IND", "4685970": "IND", "4838270": "IND", "4371336": "IND", "4689989": "IND", "3929641": "SF", "4362135": "FA"}
+TRADE_POS = {"2971282": "DT", "3129308": "G", "4361196": "CB", "4685970": "CB", "4838270": "G", "4371336": "CB", "4689989": "CB", "3929641": "DT", "4362135": "G"}
+sl_team, sl_name, sl_pos = {}, {}, {}
+try:
+    for _sp in (js("https://api.sleeper.app/v1/players/nfl") or {}).values():
+        _eid = str(_sp.get("espn_id") or "")
+        if _eid and _sp.get("active") and _sp.get("team"):
+            sl_team[_eid] = FIX.get(_sp["team"], _sp["team"])
+            if _sp.get("full_name"): sl_name[_eid] = _sp["full_name"]
+            if _sp.get("position"): sl_pos[_eid] = _sp["position"]
+except Exception as _e: print("sleeper warn:", _e)
+inj.setdefault("4361196", {"status": "Injured Reserve", "note": "Placed on Injured Reserve on Oct 27, 2026 due to a groin injury (out at least 4 games).", "date": "2026-10-27T23:40Z", "detail": "Groin"})
+ids = set(weekly) | set(depth) | set(TRADE_OV)
 idx = []
 os.makedirs(os.path.join(OUT, "players"), exist_ok=True)
 for e in ids:
     W = sorted(weekly.get(e, []), key=lambda r: (int(r["season"]), int(r["week"])), reverse=True)
     b = BIO.get(e, {}); dp = depth.get(e, {})
-    name = (W[0]["player_display_name"] if W else None) or b.get("display_name")
+    name = (W[0]["player_display_name"] if W else None) or b.get("display_name") or sl_name.get(e)
     if not name: continue
-    team = FIX.get(W[0]["team"], W[0]["team"]) if W and int(W[0]["season"]) == SEASON else dp.get("team") or FIX.get(b.get("latest_team", ""), b.get("latest_team", ""))
-    pos = (W[0]["position"] if W else None) or b.get("position") or dp.get("pos", "")
+    # Prioritize today's live depth chart / Sleeper active team / trade overrides over completed game logs so mid-week trades update immediately
+    team = TRADE_OV.get(e) or dp.get("team") or sl_team.get(e) or (FIX.get(W[0]["team"], W[0]["team"]) if W and int(W[0]["season"]) == SEASON else FIX.get(b.get("latest_team", ""), b.get("latest_team", "")))
+    pos = TRADE_POS.get(e) or (W[0]["position"] if W else None) or b.get("position") or dp.get("pos", "") or sl_pos.get(e, "")
     log = []
     for r in W:
         s, w = int(r["season"]), int(r["week"]); sn = snaps.get((e, s, w))

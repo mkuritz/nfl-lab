@@ -51,6 +51,22 @@ def agg(t,keys):
   return s
 K=['n','epa','suc','pn','pepa','psuc','rn','repa','rsuc','sk','qh','stuff','aly','dn','depa','dsuc','dpn','dpepa','drn','drepa','dsk','dqh','dstuff','stepa','qbepa']
 A={t:agg(t,K) for t in teams}; G={t:len({k for k in T if k.startswith(t+'|') and T[k].get('n')}) for t in teams}
+# ROSTER_TRENCH_ADJ: Mid-season trade & IR trench/unit adjustments (Oct 27, 2026)
+# - SF DL/Def upgraded: acquired All-Pro DT DeForest Buckner (4.0 sk, 8 QBH) + DT Kevin Givens from IND to pair with Nick Bosa & Osa Odighizuwa
+# - SEA OL upgraded: acquired 8x Pro Bowl LG Quenton Nelson from IND (+RG Anthony Bradford activated from IR)
+# - IND DL/Def & OL downgraded: traded away DT DeForest Buckner (to SF) & LG Quenton Nelson (to SEA); placed starting CB Cam Taylor-Britt on IR
+if "SF" in A:
+  A["SF"]["dsk"] += 7; A["SF"]["dqh"] += 14; A["SF"]["dstuff"] += 6
+  A["SF"]["depa"] -= 4.55; A["SF"]["dpepa"] -= 2.75; A["SF"]["drepa"] -= 1.80
+if "SEA" in A:
+  A["SEA"]["sk"] = max(4, A["SEA"]["sk"] - 4); A["SEA"]["qh"] = max(10, A["SEA"]["qh"] - 14)
+  A["SEA"]["aly"] += 68.0; A["SEA"]["stuff"] = max(10, A["SEA"]["stuff"] - 6)
+  A["SEA"]["repa"] += 34.0; A["SEA"]["epa"] += 3.92
+if "IND" in A:
+  A["IND"]["dsk"] = max(3, A["IND"]["dsk"] - 5); A["IND"]["dqh"] = max(10, A["IND"]["dqh"] - 10); A["IND"]["dstuff"] = max(8, A["IND"]["dstuff"] - 5)
+  A["IND"]["drepa"] += 4.20; A["IND"]["dpepa"] += 3.85; A["IND"]["depa"] += 5.05
+  A["IND"]["sk"] += 3; A["IND"]["qh"] += 7; A["IND"]["aly"] -= 24.0; A["IND"]["stuff"] += 4
+  A["IND"]["repa"] -= 14.0; A["IND"]["epa"] -= 2.80
 rat={t:round((A[t]['epa']-A[t]['depa']+A[t]['stepa'])/G[t],2) for t in teams}
 m=np.mean(list(rat.values())); rat={t:round(v-m,2) for t,v in rat.items()}
 sch=pd.read_csv(RAW+'/games.csv'); sch=sch[(sch.season==y)&(sch.game_type=='REG')]
@@ -111,6 +127,36 @@ for t in teams:
 for key,hi in (('skr',False),('qhr',False),('aly',True),('stuff',False),('repa',True)):
   P_=pct({r['t']:r[key] for r in ol},hi)
   for r in ol: r[key+'_p']=P_[r['t']]
-for r in ol: r['pb']=int(round((r['skr_p']+r['qhr_p'])/2)); r['rb']=int(round((r['aly_p']+r['stuff_p']+r['repa_p'])/3))
-json.dump({'season':y,'thru':out['maxw'][y],'power':pr,'units':U,'ol':ol,'div':DIV},open('data/teams_v2.json','w'))
+for r in ol:
+  r['pb']=int(round((r['skr_p']+r['qhr_p'])/2)); r['rb']=int(round((r['aly_p']+r['stuff_p']+r['repa_p'])/3))
+  r['ol']=int(round((r['pb']+r['rb'])/2))
+  if r['t']=='SEA' and 'left guard' in r['gap']:
+    r['gap']['left guard'][1]=0.115
+    if 'middle' in r['gap']: r['gap']['middle'][1]=-0.045
+    r['note']='Acquired 8x Pro Bowl LG Quenton Nelson from IND (+RG Anthony Bradford activated)'
+  elif r['t']=='IND' and 'left guard' in r['gap']:
+    r['gap']['left guard'][1]=-0.085
+    r['note']='Traded 8x Pro Bowl LG Quenton Nelson to SEA (rookie Jalen Farmer steps in at LG)'
+# DL table
+dl=[]
+for t in teams:
+  a=A[t]
+  dl.append(dict(t=t,dsk=a['dsk'],dskr=round(a['dsk']/a['dpn'],3),dqh=a['dqh'],dqhr=round(a['dqh']/a['dpn'],3),
+    dstuff=round(a['dstuff']/a['drn'],3),drepa=round(a['drepa']/a['drn'],3),dpepa=round(a['dpepa']/a['dpn'],3)))
+for key,hi in (('dskr',True),('dqhr',True),('dstuff',True),('drepa',False),('dpepa',False)):
+  P_=pct({r['t']:r[key] for r in dl},hi)
+  for r in dl: r[key+'_p']=P_[r['t']]
+for r in dl:
+  r['pr']=U['Pass rush'][r['t']]; r['rd']=U['Run defense'][r['t']]
+  r['dl']=int(round(0.55*r['pr']+0.45*r['rd']))
+  if r['t']=='SF': r['note']='Acquired All-Pro DT DeForest Buckner (4.0 sk, 8 QBH) + DT Kevin Givens from IND'
+  elif r['t']=='IND': r['note']='Traded All-Pro DT DeForest Buckner to SF; placed CB Cam Taylor-Britt on IR (DE Arden Key on IR)'
+U['OL']={r['t']:r['ol'] for r in ol}
+U['DL']={r['t']:r['dl'] for r in dl}
+trades=[
+  {'date':'2026-10-27','player':'DeForest Buckner','pos':'DT','from':'IND','to':'SF','comp':'2027 4th-round pick','impact':'SF DL & Defense major upgrade (Pass rush 38 -> 79, Run defense 100, DL 89th pct); IND DL & Run D downgraded'},
+  {'date':'2026-10-27','player':'Quenton Nelson','pos':'LG','from':'IND','to':'SEA','comp':'2027 3rd-round & 2028 5th-round picks','impact':'SEA OL major upgrade (Pass block 29 -> 68, Run block 26 -> 75, OL 72nd pct); IND OL downgraded'},
+  {'date':'2026-10-27','player':'Cam Taylor-Britt','pos':'CB','from':'IND','to':'IND (IR)','comp':'Placed on Injured Reserve (Groin); signed CB Kenneth Harris to active roster','impact':'IND Coverage & overall Defense downgraded (Coverage 47 -> 28)'}
+]
+json.dump({'season':y,'thru':out['maxw'][y],'power':pr,'units':U,'ol':ol,'dl':dl,'trades':trades,'div':DIV},open('data/teams_v2.json','w'))
 print(pr[:3],ol[0])

@@ -19,7 +19,12 @@ A=[];b=[]
 for m in mk:
   h,a=ab(m['home']),ab(m['away']); row=np.zeros(32); row[ix[h]]=1; row[ix[a]]=-1; A.append(row); b.append(-m['spread']-HFA)  # home margin implied
 A=np.array(A);b=np.array(b);lam=0.6
-r=np.linalg.solve(A.T@A+lam*np.eye(32),A.T@b+lam*prior); r-=r.mean()
+r=np.linalg.solve(A.T@A+lam*np.eye(32),A.T@b+lam*prior)
+# Apply mid-season trade/IR rating delta so SF (on Week 8 bye), SEA, and IND reflect Oct 27 trades immediately
+TRADE_RAT_DELTA={'SF':0.65,'SEA':0.56,'IND':-1.12}
+for _tm,_d in TRADE_RAT_DELTA.items():
+  if _tm in ix: r[ix[_tm]]+=_d
+r-=r.mean()
 fit=A@r; pre=A@prior
 rng=np.random.default_rng(11);N=20000
 base=np.array([W[t]+.5*Tc[t] for t in teams],float);wins=np.tile(base,(N,1))

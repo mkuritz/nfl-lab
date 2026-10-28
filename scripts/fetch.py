@@ -36,7 +36,11 @@ def main(sport):
         lgs={"eng.1":"soccer/eng.1","esp.1":"soccer/esp.1","ita.1":"soccer/ita.1","ger.1":"soccer/ger.1","fra.1":"soccer/fra.1","usa.1":"soccer/usa.1","uefa.champions":"soccer/uefa.champions"}
     meta={"updated":now,"leagues":{}}
     for k,p in lgs.items():
-        if sport=="nfl": b=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/scoreboard")
+        if sport=="nfl":
+            b=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/scoreboard")
+            if b and not any(e.get("status",{}).get("type",{}).get("state")!="post" for e in b.get("events",[])):
+                wk=(b.get("week") or {}).get("number")
+                if wk: b=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/scoreboard?week={wk+1}&seasontype=2") or b
         else:
             b={"events":[]}
             for i in range(8):
