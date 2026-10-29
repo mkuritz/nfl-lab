@@ -25,9 +25,14 @@ def apply(A,sc,raw):
   except Exception: sn=None
   idc=[c for c in sc.columns if c.endswith('_player_id') and any(k in c for k in ('sack','qb_hit','tackle'))]
   out={}
-  for t in d.get('injuries',[]):
+  # Overlay (data/trench_overlay.json): report-only linemen not yet on the official feed. Feed always wins; weight capped (default Questionable 0.25).
+  feed_names={((i.get('athlete') or {}).get('displayName')) for t in d.get('injuries',[]) for i in t.get('injuries',[])}
+  try: ov=json.load(open(os.path.join(os.path.dirname(__file__),'..','..','data','trench_overlay.json'))).get('players',[])
+  except Exception: ov=[]
+  extra=[{'status':x.get('status','Questionable'),'_cap':float(x.get('cap_w',0.25)),'athlete':{'displayName':x['name'],'position':{'abbreviation':x['pos']},'team':{'abbreviation':x['team']},'links':[]}} for x in ov if x['name'] not in feed_names]
+  for t in d.get('injuries',[])+[{'injuries':extra}]:
     for i in t.get('injuries',[]):
-      a=i.get('athlete') or {}; w=SW.get(i.get('status'),0)
+      a=i.get('athlete') or {}; w=min(SW.get(i.get('status'),0),i.get('_cap',1.0))
       pos=((a.get('position') or {}).get('abbreviation') or '').upper(); tm=FIX.get((a.get('team') or {}).get('abbreviation'),(a.get('team') or {}).get('abbreviation'))
       if not w or tm not in A or (pos not in OL_POS and pos not in DL_POS): continue
       href=next((l['href'] for l in a.get('links',[]) if '/id/' in l.get('href','')),'')
