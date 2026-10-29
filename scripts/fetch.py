@@ -18,7 +18,8 @@ def slim_board(j):
             "odds_src":(o.get("provider") or {}).get("name"),"bc":[(b.get("names") or [None])[0] for b in c.get("broadcasts",[])][:2]})
     return out
 def slim_news(j):
-    return [{"t":a.get("headline"),"d":a.get("published"),"u":((a.get("links") or {}).get("web") or {}).get("href"),"desc":a.get("description")} for a in (j or {}).get("articles",[])][:25]
+    from srcscrub import strip_reporters   # no reporter/outlet names in public news text
+    return [{"t":strip_reporters(a.get("headline")),"d":a.get("published"),"u":((a.get("links") or {}).get("web") or {}).get("href"),"desc":strip_reporters(a.get("description"))} for a in (j or {}).get("articles",[])][:25]
 def slim_stand(j):
     rows=[]
     def walk(n,grp):

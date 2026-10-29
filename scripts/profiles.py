@@ -124,6 +124,8 @@ for e in ids:
         if x: dv = dict(x, n=dvp.get("n", 32), g=((dvp.get("teams") or {}).get(no["opp"]) or {}).get("g"))
     nn = name.lower(); last = nn.split()[-1]
     nw = [a for a in news.get(team, []) if nn in ((a["h"] or "") + " " + (a["d"] or "")).lower()][:5]
+    from srcscrub import strip_reporters   # no reporter/outlet names in public news text
+    nw = [dict(a, h=strip_reporters(a.get("h")), d=strip_reporters(a.get("d"))) for a in nw]
     P = {"id": e, "name": name, "team": team, "pos": pos, "grp": grp, "num": b.get("jersey_number"), "head": "https://a.espncdn.com/i/headshots/nfl/players/full/%s.png" % e,
          "age": None, "exp": b.get("years_of_experience"), "college": b.get("college_name"), "draft": [b.get("draft_year"), b.get("draft_round"), b.get("draft_pick")] if b.get("draft_year") else None,
          "depth": dp or None, "inj": inj.get(e), "next": no, "dvp": dv, "news": nw, "log": log, "season": SEASON}

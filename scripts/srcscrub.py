@@ -68,6 +68,38 @@ def books_obj(d, k=None):
     if isinstance(d, list): return [books_obj(x, k) for x in d]
     if isinstance(d, str): return books_s(d)
     return d
+
+# ---- reporter / outlet attributions in public text (standing rule: no data-source names). Generic patterns, not a name list,
+# so player names (e.g. a kicker who shares a reporter's surname) are never touched. Logs/history are never rewritten.
+_N = r"[A-Z][\w'.-]+(?:\s+[A-Z]\.)*(?:\s+[A-Z][\w'.-]+){1,2}"
+_OUT = r"(?:the\s+)?[A-Z][\w'.&-]*(?:\s+(?:[A-Z0-9][\w'.&-]*|of|the|and))*"
+RR = [(re.compile(a), b) for a, b in [
+    (r",?\s*%s\s+of\s+[^,.;]*?\s+report(?:s|ed)\b" % _N, ""),                          # ", Jane Doe of The Outlet reports"
+    (r",?\s*(?:a\s+(?:team\s+|league\s+)?source|sources?)\s+told\s+%s(?=[.;,]|$)" % _OUT, ""),   # ", sources told NFL Network"
+    (r",?\s*(?:according to|per)\s+(?!a source\b)%s(?:'s\s+%s)?(?=[.;,]|$)" % (_OUT, _N), ""),
+    (r"\s+and\s+%s's\s+%s(?=[.;]|$)" % (_OUT, _N), ""),                                 # "from the Titans and NFL Network's Ian Rapoport."
+    (r"\s+from\s+(?:%s,\s+)+%s,?\s+and\s+%s(?=[.;]|$)" % (_N, _N, _N), ""),             # "rankings from A, B, C and D."
+    (r"^%s\s+reports\s+on\s+" % _N, "Report on "),
+    (r"^%s\s+reports\s+(?:that\s+)?" % _N, "Report: "),
+    (r"^%s\s+details\s+" % _N, "Breakdown: "),
+    (r"([?.!])\s*%s\s+(?:weighs in|reacts|explains|breaks it down)\s*$" % _N, r"\1"),
+    (r",?\s*%s\s+report(?:s|ed)\s*(?=[.;]|$)" % _N, ""),                                # trailing ", Jane Doe reports."
+]]
+def strip_reporters(v):
+    if not isinstance(v, str) or not v or v.startswith(("http://", "https://")): return v
+    if not re.search(r"report|told|according|per |'s |details|weighs|reacts|explains|breaks it down|from ", v): return v
+    o = v
+    for a, b in RR: v = a.sub(b, v)
+    if v == o: return v
+    v = re.sub(r"\s+([,.;?!])", r"\1", re.sub(r"\s{2,}", " ", v)).strip()
+    if o.rstrip().endswith(".") and v and v[-1] not in ".?!": v += "."
+    return v[:1].upper() + v[1:]
+REP_SKIP_KEYS = {"url", "src_url", "link", "href", "img", "logo", "id", "aid", "espn_id", "u", "n", "name", "player", "slug"}
+def reporters_obj(d, k=None):
+    if isinstance(d, dict): return {kk: (vv if kk in REP_SKIP_KEYS else reporters_obj(vv, kk)) for kk, vv in d.items()}
+    if isinstance(d, list): return [reporters_obj(x, k) for x in d]
+    if isinstance(d, str): return strip_reporters(d)
+    return d
 def _is_log(p):
     b = os.path.basename(p).lower()
     return b.endswith(".jsonl") or any(t in b for t in ("log", "ledger", "grades", "history", "tracker", "clv"))
@@ -83,7 +115,7 @@ def scrub_file(p):
             if N != O: open(p, "w").write("\n".join(r.rstrip("\n") if o == n else json.dumps(n, separators=(",", ":")) for r, o, n in zip(raw, O, N)) + "\n")
         else:
             O = json.load(open(p)); N = scrub_obj(O)
-            if not _is_log(p): N = books_obj(N)   # logged picks/history are never rewritten
+            if not _is_log(p): N = reporters_obj(books_obj(N))   # logged picks/history are never rewritten
             if N != O: open(p, "w").write(json.dumps(N, separators=(",", ":"), ensure_ascii=False))
     except Exception as e: print("srcscrub skip", p, e)
 def scrub_dir(a):
