@@ -23,7 +23,7 @@ function draw(){gsel.innerHTML='<button class="chip'+(sel?"":" on")+'" data-k=""
  gsel.querySelectorAll("button").forEach(function(b){b.onclick=function(){sel=b.dataset.k||null;draw()}})}
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-aid]");if(a){e.preventDefault();var id=a.dataset.aid;NFLV2.open(id,function(i){window.NFLProfile&&NFLProfile(i)})}});
 
-fetch("data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(function(r){return r.ok?r.json():null}).then(function(E0){
+fetch("https://betlab.sportslabshq.com/data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(function(r){return r.ok?r.json():null}).catch(function(){return null}).then(function(j){return j||fetch("data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(function(r){return r.ok?r.json():null})}).then(function(E0){
  if(!E0)return;var tab="props",showAll=false,box=document.getElementById("eia-mount");
  function pc(x){return Math.round((x||0)*100)+"%"}
  function am(p){return p==null?"":p>0?"+"+p:""+p}
@@ -41,7 +41,7 @@ fetch("data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(fun
     '</div>'+
     (sp?'<div class="sm mut">Starter Prop: <b style="color:var(--txt)">'+E(r.player)+' '+(sp.market=="Anytime TD"?"Anytime TD":"o/u "+E(sp.line)+" "+E(sp.market))+' ('+am(sp.price)+' '+E(sp.book)+')</b> · 100% Void/Refund if Inactive</div>':'')+
     '<div class="sm" style="margin-top:5px"><b>🎯 Execution:</b> '+E(r.execution_plan)+'</div>'+
-    (r.beneficiaries||[]).slice(0,3).map(function(b){var bp=b.prop;return '<div class="sm" style="border-top:1px solid var(--line);margin-top:5px;padding-top:5px"><b>↗ '+E(b.player)+' ('+E(b.pos)+')</b>: <span class="up">'+E(b.shift_summary)+'</span>'+(bp?' · <b>'+(bp.market=="Anytime TD"?"Anytime TD":"Over "+E(bp.line)+" "+E(bp.market))+' ('+am(bp.price)+' '+E(bp.book)+')</b>':'')+(b.est_line_bump?'<div class="mut sm">'+E(b.est_line_bump)+'</div>':'')+'</div>'}).join("")+
+    (r.pie||r.beneficiaries||[]).map(function(b){var bp=b.prop;return '<div class="sm" style="border-top:1px solid var(--line);margin-top:5px;padding-top:5px"><b>↗ '+E(b.player)+' ('+E(b.pos)+')</b>: <span class="up">'+E(b.shift_summary)+'</span>'+(bp?' · <b>'+(bp.market=="Anytime TD"?"Anytime TD":"Over "+E(bp.line)+" "+E(bp.market))+' ('+am(bp.price)+' '+E(bp.book)+')</b>':'')+(b.est_line_bump?'<div class="mut sm">'+E(b.est_line_bump)+'</div>':'')+'</div>'}).join("")+
    '</div>'}).join("");
   var lHtml=LO.map(function(g){
    return '<div class="card" style="margin:0;background:var(--panel2)">'+
