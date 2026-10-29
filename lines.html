@@ -41,7 +41,7 @@ fetch("https://betlab.sportslabshq.com/data/early_injury_adjust.json?v="+Math.fl
     '</div>'+
     (sp?'<div class="sm mut">Starter Prop: <b style="color:var(--txt)">'+E(r.player)+' '+(sp.market=="Anytime TD"?"Anytime TD":"o/u "+E(sp.line)+" "+E(sp.market))+' ('+am(sp.price)+' '+E(sp.book)+')</b> · 100% Void/Refund if Inactive</div>':'')+
     '<div class="sm" style="margin-top:5px"><b>🎯 Execution:</b> '+E(r.execution_plan)+'</div>'+
-    (r.pie||r.beneficiaries||[]).map(function(b){var bp=b.prop;return '<div class="sm" style="border-top:1px solid var(--line);margin-top:5px;padding-top:5px"><b>↗ '+E(b.player)+' ('+E(b.pos)+')</b>: <span class="up">'+E(b.shift_summary)+'</span>'+(bp?' · <b>'+(bp.market=="Anytime TD"?"Anytime TD":"Over "+E(bp.line)+" "+E(bp.market))+' ('+am(bp.price)+' '+E(bp.book)+')</b>':'')+(b.est_line_bump?'<div class="mut sm">'+E(b.est_line_bump)+'</div>':'')+'</div>'}).join("")+
+    (r.pie||r.beneficiaries||[]).map(function(b){var bp=b.prop;return '<div class="sm" style="border-top:1px solid var(--line);margin-top:5px;padding-top:5px"><b>↗ '+E(b.player)+' ('+E(b.pos)+')</b>: <span class="up">'+E(b.shift_summary)+'</span>'+(bp?' · <b>'+(bp.market=="Anytime TD"?"Anytime TD":"Over "+E(bp.line)+" "+E(bp.market))+' ('+am(bp.price)+' '+E(bp.book)+')</b>':'')+(b.est_line_bump?'<div class="mut sm">'+E(b.est_line_bump)+'</div>':'')+((b.props_all||[]).length?'<div class="mut sm">Lines: '+b.props_all.map(function(q){return (q.market=="Anytime TD"?"Anytime TD":"o"+E(q.line)+" "+E(q.market))+" ("+(q.price==null?"price pending":am(q.price)+" "+E(q.book))+")"+eiaAdd(q.slip?[q.slip]:null)}).join(" · ")+'</div>':'')+(b.pair?'<div class="mut sm">🔄 Pair: '+E(b.pair)+eiaAdd(b.pair_legs,"Pair needs real prices on both legs")+'</div>':'')+'</div>'}).join("")+
    '</div>'}).join("");
   var lHtml=LO.map(function(g){
    return '<div class="card" style="margin:0;background:var(--panel2)">'+
@@ -66,4 +66,4 @@ fetch("https://betlab.sportslabshq.com/data/early_injury_adjust.json?v="+Math.fl
 });
 
 fetch("data/line_impact.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.json()}).then(function(j){D=j;sub.textContent=j.slate+" · all "+j.games.length+" Sunday/Monday games · updated "+j.updated_et;draw()})})();</script>
-<script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=1" defer></script></body></html>
+<script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=1" defer></script><script src="https://betlab.sportslabshq.com/eiaslip.js?v=1"></script></body></html>
