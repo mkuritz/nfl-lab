@@ -12,7 +12,7 @@ function story(g){const h=g.home,a=g.away,out=[];const fav=g.line&&g.line!="EVEN
  out.push(`${esc(a.name)} (${esc(a.record||"—")}) at ${esc(h.name)} (${esc(h.record||"—")}).`);
  if(g.line)out.push(`Market: ${esc(g.line)}${g.total?`, total ${g.total}`:""} (${esc(g.odds_src||"sportsbook")}).`);
  const x=CFG.extra?CFG.extra(g,EX):[];return out.concat(x)}
-function render(){const G=(D.games||[]).slice().sort((x,y)=>x.date<y.date?-1:1);
+function render(){const G0=(D.games||[]).slice().sort((x,y)=>x.date<y.date?-1:1);const hasUp=G0.some(g=>g.state!="post");const G=hasUp?G0.filter(g=>g.state!="post"||(Date.now()-new Date(g.date))<18*3600e3):G0;
  $("upd").innerHTML=`Data updated ${ago(D.updated)} (${et(D.updated)}) · ${esc(D.league||"")}${D.week?" · Week "+D.week:""} ${D.season||""}`;
  const rec=REC.filter(r=>CFG.recSport.includes(r.sport));
  $("take").innerHTML=rec.length?rec.slice(0,6).map(r=>`<div class="tk"><span class="pill">SPORTS LABS HIGHLIGHTED</span> <b>${esc(r.title)}</b> <span class="mut">${et(r.start)}</span>${window.LR?LR.tag(r.sport,(r.ref||{}).aid||"",r.market,(r.ref||{}).line,(r.ref||{}).player||r.title.replace(/ (anytime|over|under|to score).*$/i,"")):""}</div>`).join("")+`<a href="${BL}sharp.html">All Highlighted in Bet Lab →</a>`:`<div class="mut">No Highlighted ${CFG.short} highlights have cleared our bar right now. When they do, they show here. <a href="${BL}sharp.html">Highlighted in Bet Lab →</a></div>`;

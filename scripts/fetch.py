@@ -38,7 +38,10 @@ def main(sport):
     for k,p in lgs.items():
         if sport=="nfl":
             b=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/scoreboard")
-            if b and not any(e.get("status",{}).get("type",{}).get("state")!="post" for e in b.get("events",[])):
+            et_now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-4)))
+            all_done = b and not any(e.get("status",{}).get("type",{}).get("state")!="post" for e in b.get("events",[]))
+            tue_rollover = et_now.weekday() in (1, 2) and b and all((datetime.datetime.fromisoformat(e["date"].replace("Z","+00:00")) - datetime.timedelta(hours=4)).date() < et_now.date() for e in b.get("events",[]) if e.get("date"))
+            if all_done or tue_rollover:
                 wk=(b.get("week") or {}).get("number")
                 if wk: b=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/scoreboard?week={wk+1}&seasontype=2") or b
         else:
