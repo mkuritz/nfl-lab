@@ -80,6 +80,9 @@ _js=_player_trench(sc,'TEN','J.Simmons')
 if _js and 'CHI' in A and 'TEN' in A:
   for _k in ('dsk','dqh','dstuff'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]=max(0,A['TEN'][_k]-_js[_k])
   for _k in ('dpepa','drepa'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]-=_js[_k]; A['CHI']['depa']+=_js[_k]; A['TEN']['depa']-=_js[_k]
+# Availability: current OL/DL injuries/inactives (scripts/v2/trench_avail.py)
+import sys;sys.path.insert(0,os.path.dirname(__file__));import trench_avail
+AV=trench_avail.apply(A,sc,RAW)
 rat={t:round((A[t]['epa']-A[t]['depa']+A[t]['stepa'])/G[t],2) for t in teams}
 m=np.mean(list(rat.values())); rat={t:round(v-m,2) for t,v in rat.items()}
 sch=pd.read_csv(RAW+'/games.csv'); sch=sch[(sch.season==y)&(sch.game_type=='REG')]
@@ -135,7 +138,7 @@ for t in teams:
   for k,v in T.items():
     if k.startswith(t+'|'):
       for dr,(n,e) in (v.get('gap') or {}).items(): g=gp.setdefault(dr,[0,0]); g[0]+=n; g[1]+=e
-  ol.append(dict(t=t,sk=a['sk'],skr=round(a['sk']/a['pn'],3),qh=a['qh'],qhr=round(a['qh']/a['pn'],3),aly=round(a['aly']/a['rn'],2),stuff=round(a['stuff']/a['rn'],3),
+  ol.append(dict(t=t,sk=int(round(a['sk'])),skr=round(a['sk']/a['pn'],3),qh=int(round(a['qh'])),qhr=round(a['qh']/a['pn'],3),aly=round(a['aly']/a['rn'],2),stuff=round(a['stuff']/a['rn'],3),
      repa=round(a['repa']/a['rn'],3),gap={k:[v[0],round(v[1]/v[0],3)] for k,v in gp.items() if v[0]>=8 and '?' not in k}))
 for key,hi in (('skr',False),('qhr',False),('aly',True),('stuff',False),('repa',True)):
   P_=pct({r['t']:r[key] for r in ol},hi)
@@ -154,7 +157,7 @@ for r in ol:
 dl=[]
 for t in teams:
   a=A[t]
-  dl.append(dict(t=t,dsk=a['dsk'],dskr=round(a['dsk']/a['dpn'],3),dqh=a['dqh'],dqhr=round(a['dqh']/a['dpn'],3),
+  dl.append(dict(t=t,dsk=round(a['dsk'],1),dskr=round(a['dsk']/a['dpn'],3),dqh=round(a['dqh'],1),dqhr=round(a['dqh']/a['dpn'],3),
     dstuff=round(a['dstuff']/a['drn'],3),drepa=round(a['drepa']/a['drn'],3),dpepa=round(a['dpepa']/a['dpn'],3)))
 for key,hi in (('dskr',True),('dqhr',True),('dstuff',True),('drepa',False),('dpepa',False)):
   P_=pct({r['t']:r[key] for r in dl},hi)
@@ -166,6 +169,15 @@ for r in dl:
   elif r['t']=='IND': r['note']='Traded All-Pro DT DeForest Buckner to SF; placed CB Cam Taylor-Britt on IR (DE Arden Key on IR)'
   elif r['t']=='CHI': r['note']='Acquired All-Pro DT Jeffery Simmons from TEN (4.0 sk, 9 QBH in 2026); pairs with DE Montez Sweat'
   elif r['t']=='TEN': r['note']='Traded All-Pro DT Jeffery Simmons to CHI; Solomon Thomas & John Franklin-Myers rotate at DT'
+def _av(t,k):
+  L=[x for x in (AV.get(t) or {}).get(k,[])]
+  return ('; '.join(f"{x['n']} ({x['st']})" for x in L)) if L else ''
+for r in ol:
+  m=_av(r['t'],'ol')
+  if m: r['avail']=m; r['note']=((r.get('note')+' · ') if r.get('note') else '')+'OL availability: '+m
+for r in dl:
+  m=_av(r['t'],'dl')
+  if m: r['avail']=m; r['note']=((r.get('note')+' · ') if r.get('note') else '')+'DL availability: '+m
 U['OL']={r['t']:r['ol'] for r in ol}
 U['DL']={r['t']:r['dl'] for r in dl}
 trades=[

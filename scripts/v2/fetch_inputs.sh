@@ -7,4 +7,5 @@ R=https://github.com/nflverse/nflverse-data/releases/download
 curl -fsSL "$R/pbp/play_by_play_2025.parquet" -o "$RAW/pbp_2025.parquet"
 curl -fsSL "$R/pbp/play_by_play_2026.parquet" -o "$RAW/pbp_2026.parquet"
 curl -fsSL "$R/players/players.csv" -o "$RAW/players.csv"
+curl -fsSL "$R/snap_counts/snap_counts_2026.parquet" -o "$RAW/snap_2026.parquet" || echo "snap counts unavailable"
 curl -fsSL "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv" -o "$RAW/games.csv"
