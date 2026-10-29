@@ -67,6 +67,19 @@ if "IND" in A:
   A["IND"]["drepa"] += 4.20; A["IND"]["dpepa"] += 3.85; A["IND"]["depa"] += 5.05
   A["IND"]["sk"] += 3; A["IND"]["qh"] += 7; A["IND"]["aly"] -= 24.0; A["IND"]["stuff"] += 4
   A["IND"]["repa"] -= 14.0; A["IND"]["epa"] -= 2.80
+# CHI DL upgraded / TEN DL downgraded: Bears acquired All-Pro DT Jeffery Simmons from TEN (Oct 29, 2026).
+# Uses Simmons' actual 2026 play-by-play involvement (sacks, QB hits, run stuffs and the EPA of those plays), moved TEN -> CHI.
+def _player_trench(sc_,team,tag):
+  cols=[c for c in sc_.columns if c.endswith('_player_name') and any(k in c for k in ('sack','qb_hit','tackle'))]
+  if not cols: return None
+  g=sc_[sc_.defteam==team]; has=lambda cs:g[cs].apply(lambda r:r.astype(str).str.fullmatch(tag).any(),axis=1)
+  skm=has([c for c in cols if 'sack' in c])&(g.ispass==1); qhm=has([c for c in cols if 'qb_hit' in c])&(g.ispass==1)
+  stm=has(cols)&(g.isrun==1)&(g.yards_gained<=0)
+  return dict(dsk=int(skm.sum()),dqh=int(qhm.sum()),dstuff=int(stm.sum()),dpepa=float(g[skm|qhm].epa.sum()),drepa=float(g[stm].epa.sum()))
+_js=_player_trench(sc,'TEN','J.Simmons')
+if _js and 'CHI' in A and 'TEN' in A:
+  for _k in ('dsk','dqh','dstuff'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]=max(0,A['TEN'][_k]-_js[_k])
+  for _k in ('dpepa','drepa'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]-=_js[_k]; A['CHI']['depa']+=_js[_k]; A['TEN']['depa']-=_js[_k]
 rat={t:round((A[t]['epa']-A[t]['depa']+A[t]['stepa'])/G[t],2) for t in teams}
 m=np.mean(list(rat.values())); rat={t:round(v-m,2) for t,v in rat.items()}
 sch=pd.read_csv(RAW+'/games.csv'); sch=sch[(sch.season==y)&(sch.game_type=='REG')]
@@ -151,6 +164,8 @@ for r in dl:
   r['dl']=int(round(0.55*r['pr']+0.45*r['rd']))
   if r['t']=='SF': r['note']='Acquired All-Pro DT DeForest Buckner (4.0 sk, 8 QBH) + DT Kevin Givens from IND'
   elif r['t']=='IND': r['note']='Traded All-Pro DT DeForest Buckner to SF; placed CB Cam Taylor-Britt on IR (DE Arden Key on IR)'
+  elif r['t']=='CHI': r['note']='Acquired All-Pro DT Jeffery Simmons from TEN (4.0 sk, 9 QBH in 2026); pairs with DE Montez Sweat'
+  elif r['t']=='TEN': r['note']='Traded All-Pro DT Jeffery Simmons to CHI; Solomon Thomas & John Franklin-Myers rotate at DT'
 U['OL']={r['t']:r['ol'] for r in ol}
 U['DL']={r['t']:r['dl'] for r in dl}
 trades=[
@@ -158,5 +173,7 @@ trades=[
   {'date':'2026-10-27','player':'Quenton Nelson','pos':'LG','from':'IND','to':'SEA','comp':'2027 3rd-round & 2028 5th-round picks','impact':'SEA OL major upgrade (Pass block 29 -> 68, Run block 26 -> 75, OL 72nd pct); IND OL downgraded'},
   {'date':'2026-10-27','player':'Cam Taylor-Britt','pos':'CB','from':'IND','to':'IND (IR)','comp':'Placed on Injured Reserve (Groin); signed CB Kenneth Harris to active roster','impact':'IND Coverage & overall Defense downgraded (Coverage 47 -> 28)'}
 ]
+_dlp={r['t']:r for r in dl}
+trades.insert(0,{'date':'2026-10-29','player':'Jeffery Simmons','pos':'DT','from':'TEN','to':'CHI','comp':'2027 & 2028 1st-round picks + 2027 4th-round pick (CHI also gets a 2028 5th)','impact':f"CHI DL upgrade (Pass rush {_dlp['CHI']['pr']}, Run defense {_dlp['CHI']['rd']}, DL {_dlp['CHI']['dl']} pct); TEN DL downgraded (Pass rush {_dlp['TEN']['pr']}, Run defense {_dlp['TEN']['rd']}, DL {_dlp['TEN']['dl']} pct)"})
 json.dump({'season':y,'thru':out['maxw'][y],'power':pr,'units':U,'ol':ol,'dl':dl,'trades':trades,'div':DIV},open('data/teams_v2.json','w'))
 print(pr[:3],ol[0])
