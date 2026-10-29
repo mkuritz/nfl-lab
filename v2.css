@@ -103,3 +103,5 @@ header#v2bar .in{border:0;border-radius:0;background:none}
   .pcards{grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:14px}
   .gl,.grid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
 }
+
+.pc .nm .nfp{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}.pc .nm .nfp:hover{color:#53e3a6}.pc .nm .nfp:focus-visible{outline:2px solid #53e3a6;outline-offset:2px}
