@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-29T15:04-04:00",
-  "updated_et": "Oct 29, 2026 \u00b7 3:04 PM ET",
+  "updated": "2026-10-29T15:08-04:00",
+  "updated_et": "Oct 29, 2026 \u00b7 3:08 PM ET",
   "week": 8,
   "season": 2026,
   "title": "Early Injury Line Adjustment",
@@ -83,13 +83,13 @@
       "starter_prop": {
         "aid": "4701936",
         "market": "Receiving Yards",
-        "line": 58.5,
-        "price": -138,
-        "book": "Exchange C"
+        "line": 59.5,
+        "price": -113,
+        "book": "Book B"
       },
       "strategy_code": "DECOY_SNAP_HEDGE",
       "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
-      "execution_plan": "Primary: Tucker Kraft Over 44.5 Receiving Yards (+2.5 targets/g \u00b7 +8% TD rate). Pair Option 1 (Decoy Hedge): Matthew Golden Under 58.5 Receiving Yards + Tucker Kraft Over 44.5 Receiving Yards (wins 2-0 if Matthew Golden suits up on a 26% pitch count; if Inactive [52%], Matthew Golden leg VOIDS and Tucker Kraft freerolls). Pair Option 2 (Void Freeroll): Matthew Golden Over 58.5 Receiving Yards + Tucker Kraft Over 44.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "execution_plan": "Primary: Tucker Kraft Over 44.5 Receiving Yards (+2.5 targets/g \u00b7 +8% TD rate). Pair Option 1 (Decoy Hedge): Matthew Golden Under 59.5 Receiving Yards + Tucker Kraft Over 44.5 Receiving Yards (wins 2-0 if Matthew Golden suits up on a 26% pitch count; if Inactive [52%], Matthew Golden leg VOIDS and Tucker Kraft freerolls). Pair Option 2 (Void Freeroll): Matthew Golden Over 59.5 Receiving Yards + Tucker Kraft Over 44.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
       "beneficiaries": [
         {
           "player": "Tucker Kraft",
@@ -148,16 +148,16 @@
           "prop": {
             "aid": "4248528",
             "market": "Receiving Yards",
-            "line": 72.5,
-            "price": -113,
-            "book": "Book B",
+            "line": 70.5,
+            "price": 110,
+            "book": "Book L",
             "l10": [
               4,
               10,
               76.1
             ]
           },
-          "est_line_bump": "Line o72.5 \u2192 projects to steam to 83.4 if Golden sits (+10.9 yds unpriced)"
+          "est_line_bump": "Line o70.5 \u2192 projects to steam to 81.4 if Golden sits (+10.9 yds unpriced)"
         },
         {
           "player": "Bo Melton",
@@ -241,7 +241,7 @@
       "unconfirmed": false,
       "injury": "Shoulder/Foot",
       "impact_score": 34.0,
-      "note": "Gibbs (shoulder) did not practice Wednesday.",
+      "note": "Gibbs (shoulder) returned to practice Thursday.",
       "usage": {
         "tg_g": 6.7,
         "tg_share_pct": 18,
@@ -908,16 +908,16 @@
           "prop": {
             "aid": "4597500",
             "market": "Receiving Yards",
-            "line": 22.5,
+            "line": 21.5,
             "price": null,
             "book": "price pending",
             "l10": [
-              7,
+              8,
               10,
               41.4
             ]
           },
-          "est_line_bump": "Line o22.5 \u2192 projects to steam to 27.2 if Allen sits (+4.7 yds unpriced)"
+          "est_line_bump": "Line o21.5 \u2192 projects to steam to 26.2 if Allen sits (+4.7 yds unpriced)"
         },
         {
           "player": "Isaiah Davis",
@@ -1039,7 +1039,7 @@
           "prop": {
             "aid": "3045523",
             "market": "Receiving Yards",
-            "line": 31.5,
+            "line": 32.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -1048,7 +1048,7 @@
               23.4
             ]
           },
-          "est_line_bump": "Line o31.5 \u2192 projects to steam to 35.7 if Love sits (+4.2 yds unpriced)"
+          "est_line_bump": "Line o32.5 \u2192 projects to steam to 36.7 if Love sits (+4.2 yds unpriced)"
         },
         {
           "player": "Trey McBride",
@@ -1365,7 +1365,7 @@
       "unconfirmed": false,
       "injury": "Ankle",
       "impact_score": 13.4,
-      "note": "St. Brown (ankle) didn't practice Wednesday.",
+      "note": "St. Brown (ankle) returned to practice Thursday.",
       "usage": {
         "tg_g": 11.3,
         "tg_share_pct": 31,
@@ -1658,7 +1658,7 @@
           "prop": {
             "aid": "4360761",
             "market": "Receiving Yards",
-            "line": 53.5,
+            "line": 52.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -1667,7 +1667,7 @@
               61.5
             ]
           },
-          "est_line_bump": "Line o53.5 \u2192 projects to steam to 57.1 if Allgeier sits (+3.6 yds unpriced)"
+          "est_line_bump": "Line o52.5 \u2192 projects to steam to 56.1 if Allgeier sits (+3.6 yds unpriced)"
         },
         {
           "player": "Bam Knight",
@@ -2070,7 +2070,7 @@
           "prop": {
             "aid": "4428718",
             "market": "Receiving Yards",
-            "line": 46.5,
+            "line": 47.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -2079,7 +2079,7 @@
               59.6
             ]
           },
-          "est_line_bump": "Line o46.5 \u2192 projects to steam to 50.7 if Bowers sits (+4.2 yds unpriced)"
+          "est_line_bump": "Line o47.5 \u2192 projects to steam to 51.7 if Bowers sits (+4.2 yds unpriced)"
         },
         {
           "player": "Jalen Nailor",
@@ -2181,13 +2181,13 @@
       "starter_prop": {
         "aid": "4360761",
         "market": "Receiving Yards",
-        "line": 53.5,
+        "line": 52.5,
         "price": null,
         "book": "price pending"
       },
       "strategy_code": "DECOY_SNAP_HEDGE",
       "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
-      "execution_plan": "Primary: Trey McBride Over 72.5 Receiving Yards (+4.2 targets/g \u00b7 +12% TD rate). Pair Option 1 (Decoy Hedge): Michael Wilson Under 53.5 Receiving Yards + Trey McBride Over 72.5 Receiving Yards (wins 2-0 if Michael Wilson suits up on a 24% pitch count; if Inactive [38%], Michael Wilson leg VOIDS and Trey McBride freerolls). Pair Option 2 (Void Freeroll): Michael Wilson Over 53.5 Receiving Yards + Trey McBride Over 72.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "execution_plan": "Primary: Trey McBride Over 72.5 Receiving Yards (+4.2 targets/g \u00b7 +12% TD rate). Pair Option 1 (Decoy Hedge): Michael Wilson Under 52.5 Receiving Yards + Trey McBride Over 72.5 Receiving Yards (wins 2-0 if Michael Wilson suits up on a 24% pitch count; if Inactive [38%], Michael Wilson leg VOIDS and Trey McBride freerolls). Pair Option 2 (Void Freeroll): Michael Wilson Over 52.5 Receiving Yards + Trey McBride Over 72.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
       "beneficiaries": [
         {
           "player": "Trey McBride",
@@ -2246,7 +2246,7 @@
           "prop": {
             "aid": "3045523",
             "market": "Receiving Yards",
-            "line": 31.5,
+            "line": 32.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -2255,7 +2255,7 @@
               23.4
             ]
           },
-          "est_line_bump": "Line o31.5 \u2192 projects to steam to 41.9 if Wilson sits (+10.4 yds unpriced)"
+          "est_line_bump": "Line o32.5 \u2192 projects to steam to 42.9 if Wilson sits (+10.4 yds unpriced)"
         },
         {
           "player": "Tyler Allgeier",
@@ -3005,7 +3005,7 @@
       "unconfirmed": false,
       "injury": "Ankle",
       "impact_score": 8.8,
-      "note": "Chase (ankle) isn't believed to be dealing with a serious injury, and he's expected to suit up Sunday against the Titans.",
+      "note": "Chase (ankle) is in uniform for Thursday's practice.",
       "usage": {
         "tg_g": 7.5,
         "tg_share_pct": 21,
@@ -3023,13 +3023,13 @@
       "starter_prop": {
         "aid": "4362628",
         "market": "Receiving Yards",
-        "line": 81.5,
+        "line": 80.5,
         "price": null,
         "book": "price pending"
       },
       "strategy_code": "DECOY_SNAP_HEDGE",
       "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
-      "execution_plan": "Primary: Tee Higgins Over 69.5 Receiving Yards (+1.8 targets/g (7.1 \u2192 6.0 tgt/g in 1G w/o) \u00b7 +5% TD rate). Pair Option 1 (Decoy Hedge): Ja'Marr Chase Under 81.5 Receiving Yards + Tee Higgins Over 69.5 Receiving Yards (wins 2-0 if Ja'Marr Chase suits up on a 24% pitch count; if Inactive [38%], Ja'Marr Chase leg VOIDS and Tee Higgins freerolls). Pair Option 2 (Void Freeroll): Ja'Marr Chase Over 81.5 Receiving Yards + Tee Higgins Over 69.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "execution_plan": "Primary: Tee Higgins Over 67.5 Receiving Yards (+1.8 targets/g (7.1 \u2192 6.0 tgt/g in 1G w/o) \u00b7 +5% TD rate). Pair Option 1 (Decoy Hedge): Ja'Marr Chase Under 80.5 Receiving Yards + Tee Higgins Over 67.5 Receiving Yards (wins 2-0 if Ja'Marr Chase suits up on a 24% pitch count; if Inactive [38%], Ja'Marr Chase leg VOIDS and Tee Higgins freerolls). Pair Option 2 (Void Freeroll): Ja'Marr Chase Over 80.5 Receiving Yards + Tee Higgins Over 67.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
       "beneficiaries": [
         {
           "player": "Tee Higgins",
@@ -3054,7 +3054,7 @@
           "prop": {
             "aid": "4239993",
             "market": "Receiving Yards",
-            "line": 69.5,
+            "line": 67.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -3063,7 +3063,7 @@
               84.2
             ]
           },
-          "est_line_bump": "Line o69.5 \u2192 projects to steam to 78.9 if Chase sits (+9.4 yds unpriced)"
+          "est_line_bump": "Line o67.5 \u2192 projects to steam to 76.9 if Chase sits (+9.4 yds unpriced)"
         },
         {
           "player": "Mike Gesicki",
@@ -3088,7 +3088,7 @@
           "prop": {
             "aid": "3116164",
             "market": "Receiving Yards",
-            "line": 25.5,
+            "line": 24.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -3097,7 +3097,7 @@
               27.1
             ]
           },
-          "est_line_bump": "Line o25.5 \u2192 projects to steam to 31.7 if Chase sits (+6.2 yds unpriced)"
+          "est_line_bump": "Line o24.5 \u2192 projects to steam to 30.7 if Chase sits (+6.2 yds unpriced)"
         },
         {
           "player": "Chase Brown",
@@ -3156,7 +3156,7 @@
           "prop": {
             "aid": "4384852",
             "market": "Receiving Yards",
-            "line": 14.5,
+            "line": 13.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -3165,7 +3165,7 @@
               23.5
             ]
           },
-          "est_line_bump": "Line o14.5 \u2192 projects to steam to 19.7 if Chase sits (+5.2 yds unpriced)"
+          "est_line_bump": "Line o13.5 \u2192 projects to steam to 18.7 if Chase sits (+5.2 yds unpriced)"
         }
       ]
     },
@@ -3375,13 +3375,13 @@
       "starter_prop": {
         "aid": "2976212",
         "market": "Receiving Yards",
-        "line": 42.5,
+        "line": 41.5,
         "price": null,
         "book": "price pending"
       },
       "strategy_code": "DECOY_SNAP_HEDGE",
       "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
-      "execution_plan": "Primary: Chig Okonkwo Over 32.5 Receiving Yards (+1.4 targets/g (4.7 \u2192 6.0 tgt/g in 1G w/o)). Pair Option 1 (Decoy Hedge): Stefon Diggs Under 42.5 Receiving Yards + Chig Okonkwo Over 32.5 Receiving Yards (wins 2-0 if Stefon Diggs suits up on a 24% pitch count; if Inactive [38%], Stefon Diggs leg VOIDS and Chig Okonkwo freerolls). Pair Option 2 (Void Freeroll): Stefon Diggs Over 42.5 Receiving Yards + Chig Okonkwo Over 32.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "execution_plan": "Primary: Chig Okonkwo Over 32.5 Receiving Yards (+1.4 targets/g (4.7 \u2192 6.0 tgt/g in 1G w/o)). Pair Option 1 (Decoy Hedge): Stefon Diggs Under 41.5 Receiving Yards + Chig Okonkwo Over 32.5 Receiving Yards (wins 2-0 if Stefon Diggs suits up on a 24% pitch count; if Inactive [38%], Stefon Diggs leg VOIDS and Chig Okonkwo freerolls). Pair Option 2 (Void Freeroll): Stefon Diggs Over 41.5 Receiving Yards + Chig Okonkwo Over 32.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
       "beneficiaries": [
         {
           "player": "Chig Okonkwo",
@@ -3709,14 +3709,14 @@
       },
       "starter_prop": {
         "aid": "4871023",
-        "market": "Anytime TD",
-        "line": 0.5,
+        "market": "Receiving Yards",
+        "line": 50.5,
         "price": null,
         "book": "price pending"
       },
-      "strategy_code": "BENEFICIARY_FRONT_RUN",
-      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
-      "execution_plan": "Front-run Wan'Dale Robinson Anytime TD (price pending) before official inactives drop. Carnell Tate has only a 38% full-workload probability (38% Void/Out, 24% Limited), boosting Wan'Dale Robinson by +2.2 targets/g \u00b7 +7% TD rate.",
+      "strategy_code": "DECOY_SNAP_HEDGE",
+      "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
+      "execution_plan": "Primary: Wan'Dale Robinson Anytime TD (+2.2 targets/g \u00b7 +7% TD rate). Pair Option 1 (Decoy Hedge): Carnell Tate Under 50.5 Receiving Yards + Wan'Dale Robinson Anytime TD (wins 2-0 if Carnell Tate suits up on a 24% pitch count; if Inactive [38%], Carnell Tate leg VOIDS and Wan'Dale Robinson freerolls). Pair Option 2 (Void Freeroll): Carnell Tate Over 50.5 Receiving Yards + Wan'Dale Robinson Anytime TD if pre-game reports confirm full workload vs. scratch.",
       "beneficiaries": [
         {
           "player": "Wan'Dale Robinson",
@@ -4063,13 +4063,13 @@
       "starter_prop": {
         "aid": "4047646",
         "market": "Receiving Yards",
-        "line": 56.5,
+        "line": 55.5,
         "price": null,
         "book": "price pending"
       },
       "strategy_code": "BENEFICIARY_FRONT_RUN",
       "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
-      "execution_plan": "Front-run Efton Chism III Anytime TD (price pending) before official inactives drop. A.J. Brown has only a 28% full-workload probability (50% Void/Out, 22% Limited), boosting Efton Chism III by +1.5 targets/g (1.0 \u2192 3.2 tgt/g in 4G w/o) \u00b7 +4% TD rate.",
+      "execution_plan": "Front-run Efton Chism III Over 13.5 Receiving Yards (price pending) before official inactives drop. A.J. Brown has only a 28% full-workload probability (50% Void/Out, 22% Limited), boosting Efton Chism III by +1.5 targets/g (1.0 \u2192 3.2 tgt/g in 4G w/o) \u00b7 +4% TD rate.",
       "beneficiaries": [
         {
           "player": "Efton Chism III",
@@ -4093,17 +4093,17 @@
           "shift_summary": "+1.5 targets/g (1.0 \u2192 3.2 tgt/g in 4G w/o) \u00b7 +4% TD rate",
           "prop": {
             "aid": "4695193",
-            "market": "Anytime TD",
-            "line": 0.5,
+            "market": "Receiving Yards",
+            "line": 13.5,
             "price": null,
             "book": "price pending",
             "l10": [
-              2,
+              6,
               10,
-              0.2
+              20.9
             ]
           },
-          "est_line_bump": "Red-zone & touch share jump (+4% TD prob) before book reprices"
+          "est_line_bump": "Line o13.5 \u2192 projects to steam to 21.3 if Brown sits (+7.8 yds unpriced)"
         },
         {
           "player": "Kyle Williams",
@@ -4125,8 +4125,19 @@
             "tg": 2.5
           },
           "shift_summary": "+1.2 targets/g (0.7 \u2192 2.5 tgt/g in 4G w/o)",
-          "prop": null,
-          "est_line_bump": ""
+          "prop": {
+            "aid": "4613202",
+            "market": "Receiving Yards",
+            "line": 16.5,
+            "price": null,
+            "book": "price pending",
+            "l10": [
+              2,
+              10,
+              16.1
+            ]
+          },
+          "est_line_bump": "Line o16.5 \u2192 projects to steam to 22.7 if Brown sits (+6.2 yds unpriced)"
         },
         {
           "player": "Eli Raridon",
@@ -4148,8 +4159,19 @@
             "tg": 2.7
           },
           "shift_summary": "+0.4 targets/g (2.7 \u2192 2.7 tgt/g in 3G w/o)",
-          "prop": null,
-          "est_line_bump": ""
+          "prop": {
+            "aid": "4831959",
+            "market": "Receiving Yards",
+            "line": 17.5,
+            "price": null,
+            "book": "price pending",
+            "l10": [
+              3,
+              6,
+              28.0
+            ]
+          },
+          "est_line_bump": "Line o17.5 \u2192 projects to steam to 19.6 if Brown sits (+2.1 yds unpriced)"
         },
         {
           "player": "Drake Maye",
@@ -4174,11 +4196,11 @@
           "prop": {
             "aid": "4431452",
             "market": "Rushing Yards",
-            "line": 23.5,
+            "line": 24.5,
             "price": null,
             "book": "price pending",
             "l10": [
-              7,
+              6,
               10,
               32.3
             ]
@@ -4585,7 +4607,7 @@
           "prop": {
             "aid": "2976212",
             "market": "Receiving Yards",
-            "line": 42.5,
+            "line": 41.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -4594,7 +4616,7 @@
               36.7
             ]
           },
-          "est_line_bump": "Line o42.5 \u2192 projects to steam to 49.8 if McLaurin sits (+7.3 yds unpriced)"
+          "est_line_bump": "Line o41.5 \u2192 projects to steam to 48.8 if McLaurin sits (+7.3 yds unpriced)"
         },
         {
           "player": "Dyami Brown",
@@ -4838,7 +4860,7 @@
       "starter_prop": {
         "aid": "3916433",
         "market": "Receiving Yards",
-        "line": 36.5,
+        "line": 35.5,
         "price": null,
         "book": "price pending"
       },
@@ -4994,7 +5016,7 @@
           "prop": {
             "aid": "4430968",
             "market": "Receiving Yards",
-            "line": 7.5,
+            "line": 8.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -5003,7 +5025,7 @@
               7.6
             ]
           },
-          "est_line_bump": "Line o7.5 \u2192 projects to steam to 10.1 if Harris sits (+2.6 yds unpriced)"
+          "est_line_bump": "Line o8.5 \u2192 projects to steam to 11.1 if Harris sits (+2.6 yds unpriced)"
         },
         {
           "player": "KeAndre Lambert-Smith",
@@ -5590,7 +5612,7 @@
           "prop": {
             "aid": "4430737",
             "market": "Receiving Yards",
-            "line": 22.5,
+            "line": 23.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -5599,7 +5621,7 @@
               30.9
             ]
           },
-          "est_line_bump": "Line o22.5 \u2192 projects to steam to 29.3 if Ferguson sits (+6.8 yds unpriced)"
+          "est_line_bump": "Line o23.5 \u2192 projects to steam to 30.3 if Ferguson sits (+6.8 yds unpriced)"
         },
         {
           "player": "Blake Corum",
@@ -5624,16 +5646,16 @@
           "prop": {
             "aid": "4429096",
             "market": "Receiving Yards",
-            "line": 7.5,
+            "line": 6.5,
             "price": null,
             "book": "price pending",
             "l10": [
-              6,
+              7,
               10,
               13.6
             ]
           },
-          "est_line_bump": "Line o7.5 \u2192 projects to steam to 11.1 if Ferguson sits (+3.6 yds unpriced)"
+          "est_line_bump": "Line o6.5 \u2192 projects to steam to 10.1 if Ferguson sits (+3.6 yds unpriced)"
         },
         {
           "player": "Colby Parkinson",
@@ -5832,7 +5854,7 @@
       "starter_prop": null,
       "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
       "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
-      "execution_plan": "Take Tre Tucker Over 46.5 Receiving Yards (price pending) \u2014 Jack Bech is Injured Reserve (Forearm), locking in +1.9 targets/g (4.9 \u2192 7.5 tgt/g in 8G w/o) \u00b7 +7% TD rate.",
+      "execution_plan": "Take Tre Tucker Over 47.5 Receiving Yards (price pending) \u2014 Jack Bech is Injured Reserve (Forearm), locking in +1.9 targets/g (4.9 \u2192 7.5 tgt/g in 8G w/o) \u00b7 +7% TD rate.",
       "beneficiaries": [
         {
           "player": "Tre Tucker",
@@ -5857,7 +5879,7 @@
           "prop": {
             "aid": "4428718",
             "market": "Receiving Yards",
-            "line": 46.5,
+            "line": 47.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -5866,7 +5888,7 @@
               59.6
             ]
           },
-          "est_line_bump": "Line o46.5 \u2192 projects to steam to 56.4 if Bech sits (+9.9 yds unpriced)"
+          "est_line_bump": "Line o47.5 \u2192 projects to steam to 57.4 if Bech sits (+9.9 yds unpriced)"
         },
         {
           "player": "Brock Bowers",
@@ -6002,7 +6024,7 @@
       "starter_prop": null,
       "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
       "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
-      "execution_plan": "Take Tee Higgins Over 69.5 Receiving Yards (price pending) \u2014 Erick All is Injured Reserve (Knee - ACL), locking in +1.6 targets/g (7.0 \u2192 9.7 tgt/g in 3G w/o) \u00b7 +5% TD rate.",
+      "execution_plan": "Take Tee Higgins Over 67.5 Receiving Yards (price pending) \u2014 Erick All is Injured Reserve (Knee - ACL), locking in +1.6 targets/g (7.0 \u2192 9.7 tgt/g in 3G w/o) \u00b7 +5% TD rate.",
       "beneficiaries": [
         {
           "player": "Tee Higgins",
@@ -6027,7 +6049,7 @@
           "prop": {
             "aid": "4239993",
             "market": "Receiving Yards",
-            "line": 69.5,
+            "line": 67.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -6036,7 +6058,7 @@
               84.2
             ]
           },
-          "est_line_bump": "Line o69.5 \u2192 projects to steam to 77.8 if All sits (+8.3 yds unpriced)"
+          "est_line_bump": "Line o67.5 \u2192 projects to steam to 75.8 if All sits (+8.3 yds unpriced)"
         },
         {
           "player": "Dohnte Meyers",
@@ -6061,7 +6083,7 @@
           "prop": {
             "aid": "4384852",
             "market": "Receiving Yards",
-            "line": 14.5,
+            "line": 13.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -6070,7 +6092,7 @@
               23.5
             ]
           },
-          "est_line_bump": "Line o14.5 \u2192 projects to steam to 22.8 if All sits (+8.3 yds unpriced)"
+          "est_line_bump": "Line o13.5 \u2192 projects to steam to 21.8 if All sits (+8.3 yds unpriced)"
         },
         {
           "player": "Mike Gesicki",
@@ -6095,7 +6117,7 @@
           "prop": {
             "aid": "3116164",
             "market": "Receiving Yards",
-            "line": 25.5,
+            "line": 24.5,
             "price": null,
             "book": "price pending",
             "l10": [
@@ -6104,41 +6126,41 @@
               27.1
             ]
           },
-          "est_line_bump": "Line o25.5 \u2192 projects to steam to 34.3 if All sits (+8.8 yds unpriced)"
+          "est_line_bump": "Line o24.5 \u2192 projects to steam to 33.3 if All sits (+8.8 yds unpriced)"
         },
         {
-          "player": "Joe Burrow",
-          "pos": "QB",
-          "depth": null,
-          "d_tg": 0.0,
+          "player": "Drew Sample",
+          "pos": "TE",
+          "depth": 2,
+          "d_tg": 0.4,
           "d_ca": 0.0,
-          "d_td": 0.0,
+          "d_td": 0.015,
           "with": {
-            "ca": 2.3,
-            "g": 3,
-            "td": 0.0,
-            "tg": 0.0
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.5,
+            "tg": 1.5
           },
           "without": {
-            "ca": 3.3,
-            "g": 3,
-            "td": 0.33,
-            "tg": 0.0
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 2.5
           },
-          "shift_summary": "+92 pass yds/g",
+          "shift_summary": "+0.4 targets/g (1.5 \u2192 2.5 tgt/g in 2G w/o)",
           "prop": {
-            "aid": "3915511",
-            "market": "Rushing Yards",
-            "line": 5.5,
+            "aid": "3127310",
+            "market": "Receiving Yards",
+            "line": 7.5,
             "price": null,
             "book": "price pending",
             "l10": [
-              7,
+              6,
               10,
-              9.0
+              11.6
             ]
           },
-          "est_line_bump": ""
+          "est_line_bump": "Line o7.5 \u2192 projects to steam to 9.6 if All sits (+2.1 yds unpriced)"
         }
       ]
     }
@@ -6155,8 +6177,8 @@
       "total_open": 47.5,
       "total_current": 46.5,
       "line_status": "UNADJUSTED (0.0 pt move from open)",
-      "action_side": "CAR ML (+160 consensus) \u00b7 Lean Carolina Panthers Win (also CAR +3.5)",
-      "action_type": "Moneyline & Underdog Bounce-Back Lean",
+      "action_side": "CAR ML (+154 consensus) \u00b7 Lean Carolina Panthers Win (also CAR +3.5)",
+      "action_type": "Moneyline & Bounce-Back Lean (dog)",
       "unpriced_edge_pts": "+1.5 pts toward CAR (Fair Line GB -2.0 if Golden sits/limited)",
       "key_unresolved_players": [
         {
@@ -6201,8 +6223,8 @@
         "Tetairoa McMillan (CAR WR) Over 71.5 Rec Yds (-113 Book B)"
       ],
       "ml_current": {
-        "CAR": 160,
-        "GB": -192
+        "CAR": 154,
+        "GB": -185
       },
       "unconfirmed_reports": 1
     },
@@ -6361,7 +6383,7 @@
       "total_open": 40.5,
       "total_current": 40.5,
       "line_status": "MOVED 0.5 pt toward WSH since open",
-      "action_side": "WSH -6 \u00b7 WSH ML (-230 consensus) \u00b7 Opposing Team Front-Run",
+      "action_side": "WSH -6 \u00b7 WSH ML (-238 consensus) \u00b7 Opposing Team Front-Run",
       "action_type": "Opposing Team Spread Front-Run (unconfirmed reports)",
       "unpriced_edge_pts": "+1.5 to +2.5 pts toward WSH if Barkley and both top WRs sit (projects WSH -7.5 to -8.5); line has only moved 0.5 since open",
       "key_unresolved_players": [
@@ -6467,8 +6489,8 @@
         "Stefon Diggs / Antonio Williams (WSH WRs) Over Rec Yds (+1.6 tgt/g with Terry McLaurin Out)"
       ],
       "ml_current": {
-        "PHI": 190,
-        "WSH": -230
+        "PHI": 195,
+        "WSH": -238
       },
       "unconfirmed_reports": 6
     },
@@ -6516,8 +6538,8 @@
         "Puka Nacua (LAR WR) Anytime TD / Rec Yds (+2.2 tgt/g with TE Terrance Ferguson on IR)"
       ],
       "ml_current": {
-        "LAC": 225,
-        "LAR": -278
+        "LAC": 220,
+        "LAR": -270
       }
     },
     {
@@ -6573,7 +6595,7 @@
       "key": "NE@MIA",
       "matchup": "NE @ MIA",
       "window": "Sun Nov 1, 4:25 PM ET",
-      "action_side": "Watch: MIA +7 / MIA ML (+250 consensus) if A.J. Brown is downgraded",
+      "action_side": "Watch: MIA +7 / MIA ML (+260 consensus) if A.J. Brown is downgraded",
       "action_type": "Opposing Team Front-Run Watch (unconfirmed report)",
       "unpriced_edge_pts": "Line still NE -7; not yet adjusted for the NE report",
       "key_unresolved_players": [
@@ -6611,8 +6633,8 @@
       "total_current": 43.5,
       "total_open": 43.5,
       "ml_current": {
-        "NE": -310,
-        "MIA": 250
+        "NE": -325,
+        "MIA": 260
       },
       "unconfirmed_reports": 2
     }
