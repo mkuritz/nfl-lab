@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css"><script src="sl-sports.js"></script><script src="navcfg-v2.js"></script><script src="v2.js"></script><title>Lines &amp; Injuries · NFL Hub</title>
 <style>.lt h3{margin:14px 0 6px;font-size:13px;letter-spacing:.04em}.lt table{font-size:12.5px}.lt .u{display:inline-block;margin-left:4px;padding:1px 7px;border-radius:999px;font-size:10px;font-weight:800;background:#facc1522;color:#facc15;border:1px solid #facc1555}.lt .np{color:var(--mut);font-style:italic}.lt .nums{display:flex;gap:10px;flex-wrap:wrap}.lt .nums>div{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;min-width:120px}.lt .nums b{display:block;font-size:16px}.lt .nums span{font-size:10.5px;color:var(--mut);font-weight:800;letter-spacing:.05em}.lt .up{color:var(--acc2)}.lt .dn{color:var(--bad)}.lt .tag{font-size:10px;font-weight:800;padding:1px 6px;border-radius:5px;background:#38d0f022;color:var(--acc)}</style><script src="https://sportslabshq.com/sl/sl.js?v=11" defer></script></head><body><div class="w lt">
-<h2 style="margin-top:14px">Lines &amp; injuries</h2><p class="mut sm" id="sub"></p><div class="chips" id="gsel" style="margin:8px 0"></div><div id="out"></div>
+<h2 style="margin-top:14px">Lines &amp; injuries</h2><p class="mut sm" id="sub"></p><div id="eia-mount" style="margin:12px 0"></div><div class="chips" id="gsel" style="margin:8px 0"></div><div id="out"></div>
 <footer>Spreads and totals are shown as numbers only. "No published estimate" means no point value for an injury has been reported, so none is shown. Unconfirmed items are flagged and can change before kickoff. Trench directions are qualitative, not projections.</footer></div>
 <script>(function(){var E=NFLV2.E,sel=null,D=null,PI={};
 function f(n){return(n>0?"+":"")+(+n)}
@@ -22,5 +22,48 @@ function draw(){gsel.innerHTML='<button class="chip'+(sel?"":" on")+'" data-k=""
  out.innerHTML=D.games.filter(function(g){return!sel||g.key==sel}).map(game).join("");
  gsel.querySelectorAll("button").forEach(function(b){b.onclick=function(){sel=b.dataset.k||null;draw()}})}
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-aid]");if(a){e.preventDefault();var id=a.dataset.aid;NFLV2.open(id,function(i){window.NFLProfile&&NFLProfile(i)})}});
+
+fetch("data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(function(r){return r.ok?r.json():null}).then(function(E0){
+ if(!E0)return;var tab="props",showAll=false,box=document.getElementById("eia-mount");
+ function pc(x){return Math.round((x||0)*100)+"%"}
+ function am(p){return p==null?"":p>0?"+"+p:""+p}
+ function drawEia(){
+  var PF=E0.prop_freerolls||[],LO=E0.line_opportunities||[];
+  var pHtml=PF.slice(0,showAll?PF.length:8).map(function(r){var P=r.probabilities||{},sp=r.starter_prop;
+   return '<div class="card" style="margin:0;background:var(--panel2)">'+
+    '<div style="display:flex;justify-content:space-between;gap:6px;align-items:baseline;flex-wrap:wrap"><b>'+E(r.player)+' <span class="mut">'+E(r.team)+' '+E(r.pos)+' · vs '+E(r.opp)+'</span></b><span class="tag">'+E(r.strategy_badge)+'</span></div>'+
+    '<div class="mut sm" style="margin-top:3px">Status: <b style="color:#facc15">'+E(r.status)+' ('+E(r.injury)+')</b>'+(r.usage&&(r.usage.tg_g||r.usage.ca_g)?' · Baseline: '+(r.usage.tg_g?r.usage.tg_g+' tgt/g ('+r.usage.tg_share_pct+'%)':'')+(r.usage.tg_g&&r.usage.ca_g?', ':'')+(r.usage.ca_g?r.usage.ca_g+' car/g ('+r.usage.ca_share_pct+'%)':''):'')+'</div>'+
+    '<div class="nums" style="margin:8px 0;gap:6px">'+
+     '<div style="min-width:70px;flex:1;padding:6px 8px"><span>P(PLAY)</span><b style="color:#38d0f0">'+pc(P.p_play)+'</b></div>'+
+     '<div style="min-width:70px;flex:1;padding:6px 8px"><span>P(PLAY WELL)</span><b class="up">'+pc(P.p_play_well)+'</b></div>'+
+     '<div style="min-width:70px;flex:1;padding:6px 8px"><span>P(DECOY/LIM)</span><b style="color:#facc15">'+pc(P.p_decoy)+'</b></div>'+
+     '<div style="min-width:70px;flex:1;padding:6px 8px"><span>P(VOID/OUT)</span><b class="dn">'+pc(P.p_void)+'</b></div>'+
+    '</div>'+
+    (sp?'<div class="sm mut">Starter Prop: <b style="color:var(--txt)">'+E(r.player)+' '+(sp.market=="Anytime TD"?"Anytime TD":"o/u "+E(sp.line)+" "+E(sp.market))+' ('+am(sp.price)+' '+E(sp.book)+')</b> · 100% Void/Refund if Inactive</div>':'')+
+    '<div class="sm" style="margin-top:5px"><b>🎯 Execution:</b> '+E(r.execution_plan)+'</div>'+
+    (r.beneficiaries||[]).slice(0,3).map(function(b){var bp=b.prop;return '<div class="sm" style="border-top:1px solid var(--line);margin-top:5px;padding-top:5px"><b>↗ '+E(b.player)+' ('+E(b.pos)+')</b>: <span class="up">'+E(b.shift_summary)+'</span>'+(bp?' · <b>'+(bp.market=="Anytime TD"?"Anytime TD":"Over "+E(bp.line)+" "+E(bp.market))+' ('+am(bp.price)+' '+E(bp.book)+')</b>':'')+(b.est_line_bump?'<div class="mut sm">'+E(b.est_line_bump)+'</div>':'')+'</div>'}).join("")+
+   '</div>'}).join("");
+  var lHtml=LO.map(function(g){
+   return '<div class="card" style="margin:0;background:var(--panel2)">'+
+    '<div style="display:flex;justify-content:space-between;gap:6px;align-items:baseline;flex-wrap:wrap"><b>'+E(g.matchup)+' <span class="mut sm">· '+E(g.window)+'</span></b><span class="tag">'+E(g.line_status)+'</span></div>'+
+    '<div class="sm" style="margin:5px 0">Open: <b>'+E(g.spread_open)+'</b> → Current: <b>'+E(g.spread_current)+'</b> (O/U '+E(g.total_current)+') · Unpriced Edge: <b class="up">'+E(g.unpriced_edge_pts)+'</b></div>'+
+    '<div class="sm" style="background:#102a22;border:1px solid #2b6b4f;border-radius:8px;padding:6px 9px;margin:5px 0"><b class="up">🏆 Actionable Front-Run: '+E(g.action_side)+'</b></div>'+
+    '<div class="sm mut" style="margin-bottom:5px">'+E(g.why_take_now)+'</div>'+
+    (g.key_unresolved_players||[]).map(function(p){return '<div class="sm" style="border-top:1px solid var(--line);margin-top:5px;padding-top:5px"><b>'+E(p.player)+' ('+E(p.team)+' '+E(p.pos)+')</b> · <span style="color:#facc15">'+E(p.status)+'</span><div class="mut sm">P(Play): <b>'+pc(p.p_play)+'</b> · P(Play Well): <b class="up">'+pc(p.p_play_well)+'</b> · P(Limited): <b>'+pc(p.p_decoy)+'</b> · P(Inactive/Void): <b class="dn">'+pc(p.p_void)+'</b></div><div class="mut sm">'+E(p.impact_note)+'</div></div>'}).join("")+
+   '</div>'}).join("");
+  box.innerHTML='<div class="card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><h3 style="margin:0;font-size:16px">⚡ Early Injury Line Adjustment</h3><span class="mut sm">Updated '+E(E0.updated_et||"")+'</span></div>'+
+   '<p class="mut sm" style="margin:4px 0 8px">'+E(E0.subtitle||"")+'</p>'+
+   '<div class="chips" style="margin-bottom:10px">'+
+    '<button class="chip '+(tab=="props"?"on":"")+'" data-et="props">🔄 Prop Void-Freerolls &amp; Beneficiaries ('+PF.length+')</button>'+
+    '<button class="chip '+(tab=="lines"?"on":"")+'" data-et="lines">📈 Unadjusted Spread &amp; ML Front-Runs ('+LO.length+')</button>'+
+    (tab=="props"&&PF.length>8?'<button class="chip '+(showAll?"on":"")+'" data-ea="1">'+(showAll?"Show Top 8":"Show All "+PF.length+" Cascades")+'</button>':'')+
+   '</div>'+
+   '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:10px">'+(tab=="props"?pHtml:lHtml)+'</div></div>';
+  box.querySelectorAll("[data-et]").forEach(function(b){b.onclick=function(){tab=b.dataset.et;drawEia()}});
+  var ea=box.querySelector("[data-ea]");if(ea)ea.onclick=function(){showAll=!showAll;drawEia()};
+ }
+ drawEia();
+});
+
 fetch("data/line_impact.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.json()}).then(function(j){D=j;sub.textContent=j.slate+" · all "+j.games.length+" Sunday/Monday games · updated "+j.updated_et;draw()})})();</script>
 <script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=1" defer></script></body></html>

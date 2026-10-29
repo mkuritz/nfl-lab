@@ -1,0 +1,3652 @@
+{
+  "updated": "2026-10-28T22:28-04:00",
+  "updated_et": "Oct 28, 2026 \u00b7 10:28 PM ET",
+  "week": 8,
+  "season": 2026,
+  "title": "Early Injury Line Adjustment",
+  "subtitle": "4-State Play & Workload Probabilities (P(Play), P(Play Well), P(Limited/Decoy), P(Inactive \u2192 Void)) paired with (1) Player Prop Void-Freerolls & Complementary Beneficiary Front-Runs and (2) Unadjusted Spread & Moneyline Opportunities before official 90-minute inactives drop.",
+  "methodology": {
+    "void_rule": "At major sportsbooks (Book A\u2013W), a pre-game straight player prop requires the player to take at least 1 snap for action. If a Questionable starter is ruled Inactive pre-game, their prop is 100% VOIDED/REFUNDED while your complementary beneficiary ticket remains live at a stale pre-scratch line.",
+    "four_state_model": [
+      {
+        "key": "p_play",
+        "label": "P(Play)",
+        "desc": "Probability the injured player suits up for at least 1 snap (1 \u2212 P(Void))."
+      },
+      {
+        "key": "p_play_well",
+        "label": "P(Play Well / Full)",
+        "desc": "Probability the player suits up AND plays their normal effective snap/usage workload."
+      },
+      {
+        "key": "p_decoy",
+        "label": "P(Limited / Decoy)",
+        "desc": "Probability the player suits up on a pitch count, snap limit, or decoy role (Action, not voided)."
+      },
+      {
+        "key": "p_void",
+        "label": "P(Inactive \u2192 Void)",
+        "desc": "Probability the player is ruled Out/Inactive pre-game, triggering a 100% void/refund on their pre-game props."
+      }
+    ],
+    "strategies": [
+      {
+        "code": "DUAL_OVER_VOID_FREEROLL",
+        "badge": "\ud83d\udd04 Dual-Over Void Freeroll",
+        "when": "Low decoy risk (P(Decoy) \u2264 15%). Take Starter Over + Beneficiary Over. If Starter is Inactive, Starter leg voids/refunds 100% while Beneficiary freerolls a 10\u201320+ yd line jump."
+      },
+      {
+        "code": "BENEFICIARY_FRONT_RUN",
+        "badge": "\u26a1 Early Beneficiary Front-Run",
+        "when": "Low P(Play Well) (< 40%). Bet the WR2/TE1/RB2 Over right now before the official Out announcement moves their line."
+      },
+      {
+        "code": "DECOY_SNAP_HEDGE",
+        "badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge",
+        "when": "High soft-tissue/shoulder decoy risk (P(Decoy) \u2265 24%). Pair Starter Under + Beneficiary Over (wins 2-0 if starter plays limited snaps; if Inactive, Starter Under voids and Beneficiary Over freerolls)."
+      }
+    ]
+  },
+  "summary_counts": {
+    "prop_cascades": 24,
+    "unadjusted_game_lines": 7,
+    "featured_tnf_lean": "CAR ML (+154 / +160) & Tucker Kraft o45.5 Rec Yds (Matthew Golden Q - Shoulder/Foot)"
+  },
+  "prop_freerolls": [
+    {
+      "player": "Matthew Golden",
+      "team": "GB",
+      "opp": "CAR",
+      "matchup": "GB vs CAR",
+      "day": "2026-10-29",
+      "pos": "WR",
+      "role": "WR1",
+      "status": "Questionable",
+      "injury": "Shoulder",
+      "impact_score": 11.8,
+      "note": "Golden (shoulder/foot) didn't participate in Tuesday's walkthrough practice.",
+      "usage": {
+        "tg_g": 9.9,
+        "tg_share_pct": 26,
+        "ca_g": 0.1,
+        "ca_share_pct": 1,
+        "rz_share_pct": 18
+      },
+      "probabilities": {
+        "p_play": 0.48,
+        "p_play_well": 0.22,
+        "p_decoy": 0.26,
+        "p_void": 0.52,
+        "profile": "Short-Week DNP (Shoulder/Foot) \u2014 High Void (52%) or Snap-Count (26%) Risk"
+      },
+      "starter_prop": {
+        "aid": "4701936",
+        "market": "Receiving Yards",
+        "line": 59.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "DECOY_SNAP_HEDGE",
+      "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
+      "execution_plan": "Primary: Tucker Kraft Over 45.5 Receiving Yards (+2.5 targets/g \u00b7 +8% TD rate). Pair Option 1 (Decoy Hedge): Matthew Golden Under 59.5 Receiving Yards + Tucker Kraft Over 45.5 Receiving Yards (wins 2-0 if Matthew Golden suits up on a 26% pitch count; if Inactive [52%], Matthew Golden leg VOIDS and Tucker Kraft freerolls). Pair Option 2 (Void Freeroll): Matthew Golden Over 59.5 Receiving Yards + Tucker Kraft Over 45.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "beneficiaries": [
+        {
+          "player": "Tucker Kraft",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 2.5,
+          "d_ca": 0.0,
+          "d_td": 0.083,
+          "with": {
+            "ca": 0.2,
+            "g": 15,
+            "td": 0.53,
+            "tg": 5.8
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+2.5 targets/g \u00b7 +8% TD rate",
+          "prop": {
+            "aid": "4572680",
+            "market": "Receiving Yards",
+            "line": 45.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              51.8
+            ]
+          },
+          "est_line_bump": "Line o45.5 \u2192 projects to steam to 58.5 if Golden sits (+13.0 yds unpriced)"
+        },
+        {
+          "player": "Christian Watson",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 2.1,
+          "d_ca": 0.1,
+          "d_td": 0.058,
+          "with": {
+            "ca": 0.0,
+            "g": 14,
+            "td": 0.79,
+            "tg": 6.4
+          },
+          "without": {
+            "ca": 0.3,
+            "g": 3,
+            "td": 0.33,
+            "tg": 7.0
+          },
+          "shift_summary": "+2.1 targets/g (6.4 \u2192 7.0 tgt/g in 3G w/o) \u00b7 +6% TD rate",
+          "prop": {
+            "aid": "4248528",
+            "market": "Receiving Yards",
+            "line": 69.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              4,
+              10,
+              76.1
+            ]
+          },
+          "est_line_bump": "Line o69.5 \u2192 projects to steam to 80.4 if Golden sits (+10.9 yds unpriced)"
+        },
+        {
+          "player": "MarShawn Lloyd",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.9,
+          "d_ca": 0.1,
+          "d_td": 0.028,
+          "with": {
+            "ca": 7.7,
+            "g": 7,
+            "td": 0.43,
+            "tg": 2.3
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+0.9 targets/g",
+          "prop": {
+            "aid": "4429023",
+            "market": "Receiving Yards",
+            "line": 6.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              3,
+              8,
+              9.12
+            ]
+          },
+          "est_line_bump": "Line o6.5 \u2192 projects to steam to 11.2 if Golden sits (+4.7 yds unpriced)"
+        },
+        {
+          "player": "Bo Melton",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.1,
+          "d_ca": 0.1,
+          "d_td": 0.056,
+          "with": {
+            "ca": 0.2,
+            "g": 18,
+            "td": 0.06,
+            "tg": 0.9
+          },
+          "without": {
+            "ca": 1.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 3.0
+          },
+          "shift_summary": "+1.1 targets/g (0.9 \u2192 3.0 tgt/g in 2G w/o) \u00b7 +6% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Aaron Jones",
+      "team": "MIN",
+      "opp": "DET",
+      "matchup": "MIN vs DET",
+      "day": "2026-11-01",
+      "pos": "RB",
+      "role": "RB1",
+      "status": "Questionable",
+      "injury": "Knee",
+      "impact_score": 24.1,
+      "note": "The left knee injury that forced Jones out of Sunday's 16-10 win over the Colts isn't considered significant, and the running back is viewed as day-to-day.",
+      "usage": {
+        "tg_g": 3.2,
+        "tg_share_pct": 12,
+        "ca_g": 17.5,
+        "ca_share_pct": 58,
+        "rz_share_pct": 34
+      },
+      "probabilities": {
+        "p_play": 0.54,
+        "p_play_well": 0.29,
+        "p_decoy": 0.25,
+        "p_void": 0.46,
+        "profile": "In-Game Knee Exit (Day-to-Day) \u2014 46% Void Risk, 25% Red-Zone/Carry Split Risk"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Jordan Mason Anytime TD (Book A) before official inactives drop. Aaron Jones has only a 28% full-workload probability (46% Void/Out, 25% Limited), boosting Jordan Mason by +9.8 carries/g (8.8 \u2192 14.8 car/g in 5G w/o) \u00b7 +15% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "Jordan Mason",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 0.3,
+          "d_ca": 9.8,
+          "d_td": 0.15,
+          "with": {
+            "ca": 8.8,
+            "g": 13,
+            "td": 0.23,
+            "tg": 0.8
+          },
+          "without": {
+            "ca": 14.8,
+            "g": 5,
+            "td": 0.8,
+            "tg": 1.4
+          },
+          "shift_summary": "+9.8 carries/g (8.8 \u2192 14.8 car/g in 5G w/o) \u00b7 +15% TD rate",
+          "prop": {
+            "aid": "4360569",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              3,
+              10,
+              0.3
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+15% TD prob) before book reprices"
+        },
+        {
+          "player": "Justin Jefferson",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.9,
+          "d_ca": 0.0,
+          "d_td": 0.057,
+          "with": {
+            "ca": 0.1,
+            "g": 17,
+            "td": 0.29,
+            "tg": 7.2
+          },
+          "without": {
+            "ca": 0.2,
+            "g": 5,
+            "td": 0.0,
+            "tg": 10.0
+          },
+          "shift_summary": "+1.9 targets/g (7.2 \u2192 10.0 tgt/g in 5G w/o) \u00b7 +6% TD rate",
+          "prop": {
+            "aid": "4262921",
+            "market": "Receiving Yards",
+            "line": 78.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              4,
+              10,
+              55.1
+            ]
+          },
+          "est_line_bump": "Line o78.5 \u2192 projects to steam to 88.4 if Jones sits (+9.9 yds unpriced)"
+        },
+        {
+          "player": "T.J. Hockenson",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.5,
+          "d_ca": 0.0,
+          "d_td": 0.063,
+          "with": {
+            "ca": 0.1,
+            "g": 17,
+            "td": 0.24,
+            "tg": 4.2
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 6.5
+          },
+          "shift_summary": "+1.5 targets/g (4.2 \u2192 6.5 tgt/g in 4G w/o) \u00b7 +6% TD rate",
+          "prop": {
+            "aid": "4036133",
+            "market": "Receiving Yards",
+            "line": 39.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              3,
+              10,
+              37.6
+            ]
+          },
+          "est_line_bump": "Line o39.5 \u2192 projects to steam to 47.3 if Jones sits (+7.8 yds unpriced)"
+        },
+        {
+          "player": "Jordan Addison",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.4,
+          "d_ca": -0.1,
+          "d_td": 0.049,
+          "with": {
+            "ca": 0.3,
+            "g": 15,
+            "td": 0.27,
+            "tg": 5.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 7.2
+          },
+          "shift_summary": "+1.4 targets/g (5.0 \u2192 7.2 tgt/g in 4G w/o) \u00b7 +5% TD rate",
+          "prop": {
+            "aid": "4429205",
+            "market": "Receiving Yards",
+            "line": 40.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              4,
+              10,
+              34.5
+            ]
+          },
+          "est_line_bump": "Line o40.5 \u2192 projects to steam to 47.8 if Jones sits (+7.3 yds unpriced)"
+        }
+      ]
+    },
+    {
+      "player": "Lamar Jackson",
+      "team": "BAL",
+      "opp": "BUF",
+      "matchup": "BAL @ BUF",
+      "day": "2026-11-01",
+      "pos": "QB",
+      "role": "QB1",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "impact_score": 23.5,
+      "note": "Lamar Jackson (Questionable, ankle) + starting LG Olaivavega Ioane (Doubtful, knee MCL). Without Lamar (15G sample in analyst_nfl.json), Derrick Henry drops from 101.7 rush yds/g (21.2 car/g) to 83.9 rush yds/g (17.5 car/g).",
+      "usage": {
+        "tg_g": 0.0,
+        "tg_share_pct": 0,
+        "ca_g": 6.8,
+        "ca_share_pct": 24,
+        "rz_share_pct": 28
+      },
+      "probabilities": {
+        "p_play": 0.65,
+        "p_play_well": 0.4,
+        "p_decoy": 0.25,
+        "p_void": 0.35,
+        "profile": "QB Ankle Mobility Risk \u2014 65% Active, 25% Limited Rush/Pocket Mobility, 35% Inactive"
+      },
+      "starter_prop": {
+        "aid": "3916387",
+        "market": "Rushing Yards",
+        "line": 26.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "DECOY_SNAP_HEDGE",
+      "strategy_badge": "\ud83d\udee1\ufe0f QB Mobility Hedge & Inverse Cascade",
+      "execution_plan": "If Lamar Jackson suits up on a taped ankle (25% limited-mobility state), his designed rushing drops while Buffalo (-3.0) forces Baltimore into a trailing script: Lamar Jackson Under 26.5 Rushing Yards + Derrick Henry Under 82.5 Rushing Yards (Henry averages 83.9 rush yds/g without Lamar vs 101.7 with him, and LG Olaivavega Ioane is Doubtful). If Lamar is ruled Inactive pre-game (35% chance), Lamar's prop 100% VOIDS/REFUNDS while Henry faces stacked boxes with Tyler Huntley.",
+      "beneficiaries": [
+        {
+          "player": "Derrick Henry",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": -0.1,
+          "d_ca": -3.7,
+          "d_td": -0.07,
+          "with": {
+            "ca": 21.2,
+            "g": 9,
+            "td": 1.0,
+            "rush_yds": 101.7
+          },
+          "without": {
+            "ca": 17.5,
+            "g": 15,
+            "td": 0.93,
+            "rush_yds": 83.9
+          },
+          "shift_summary": "-17.8 rush yds/g & -3.7 carries/g without Lamar (101.7 \u2192 83.9 rush yds/g across 15G)",
+          "prop": {
+            "aid": "3043078",
+            "market": "Rushing Yards",
+            "line": 82.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              88.4
+            ]
+          },
+          "est_line_bump": "Line 82.5 \u2192 drops to ~71.5 if Lamar Jackson is ruled Out"
+        }
+      ]
+    },
+    {
+      "player": "Breece Hall",
+      "team": "NYJ",
+      "opp": "LV",
+      "matchup": "NYJ vs LV",
+      "day": "2026-11-01",
+      "pos": "RB",
+      "role": "RB1",
+      "status": "Questionable",
+      "injury": "Quadriceps",
+      "impact_score": 22.0,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 3.3,
+        "tg_share_pct": 11,
+        "ca_g": 17.0,
+        "ca_share_pct": 60,
+        "rz_share_pct": 17
+      },
+      "probabilities": {
+        "p_play": 0.58,
+        "p_play_well": 0.33,
+        "p_decoy": 0.25,
+        "p_void": 0.42,
+        "profile": "Soft-Tissue (Hamstring/Quad/Groin) \u2014 42% Void, 25% Snap-Count / Decoy Risk"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Omar Cooper Jr. Anytime TD (Book A) before official inactives drop. Breece Hall has only a 33% full-workload probability (42% Void/Out, 25% Limited), boosting Omar Cooper Jr. by +1.8 targets/g (1.0 \u2192 6.0 tgt/g in 2G w/o) \u00b7 +5% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "Omar Cooper Jr.",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.8,
+          "d_ca": 0.0,
+          "d_td": 0.053,
+          "with": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 1.0,
+            "tg": 6.0
+          },
+          "shift_summary": "+1.8 targets/g (1.0 \u2192 6.0 tgt/g in 2G w/o) \u00b7 +5% TD rate",
+          "prop": {
+            "aid": "4723820",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              2,
+              3,
+              0.67
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+5% TD prob) before book reprices"
+        },
+        {
+          "player": "Braelon Allen",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 1.5,
+          "d_ca": 14.0,
+          "d_td": 0.15,
+          "with": {
+            "ca": 5.3,
+            "g": 7,
+            "td": 0.29,
+            "tg": 1.1
+          },
+          "without": {
+            "ca": 18.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 3.8
+          },
+          "shift_summary": "+14.0 carries/g (5.3 \u2192 18.0 car/g in 4G w/o) \u00b7 +1.5 targets/g (1.1 \u2192 3.8 tgt/g in 4G w/o) \u00b7 +15% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Isaiah Davis",
+          "pos": "RB",
+          "depth": 2,
+          "d_tg": 0.0,
+          "d_ca": 0.9,
+          "d_td": 0.012,
+          "with": {
+            "ca": 2.4,
+            "g": 18,
+            "td": 0.06,
+            "tg": 1.6
+          },
+          "without": {
+            "ca": 2.5,
+            "g": 4,
+            "td": 0.0,
+            "tg": 1.5
+          },
+          "shift_summary": "+0.9 carries/g (2.4 \u2192 2.5 car/g in 4G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Jeremiyah Love",
+      "team": "ARI",
+      "opp": "DAL",
+      "matchup": "ARI vs DAL",
+      "day": "2026-11-01",
+      "pos": "RB",
+      "role": "RB1",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "impact_score": 17.7,
+      "note": "Head coach Mike LaFleur said Monday that Love (ankle) will take part in Wednesday's practice, Theo Mackie of The Arizona Republic reports.",
+      "usage": {
+        "tg_g": 2.8,
+        "tg_share_pct": 7,
+        "ca_g": 13.4,
+        "ca_share_pct": 55,
+        "rz_share_pct": 15
+      },
+      "probabilities": {
+        "p_play": 0.74,
+        "p_play_well": 0.54,
+        "p_decoy": 0.2,
+        "p_void": 0.26,
+        "profile": "Trending Active in Practice \u2014 74% Play / 54% Full Workload"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Trey McBride Anytime TD (Book A) before official inactives drop. Jeremiyah Love has only a 54% full-workload probability (26% Void/Out, 20% Limited), boosting Trey McBride by +0.6 targets/g (11.2 \u2192 11.0 tgt/g in 2G w/o).",
+      "beneficiaries": [
+        {
+          "player": "Trey McBride",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 0.6,
+          "d_ca": 0.0,
+          "d_td": 0.017,
+          "with": {
+            "ca": 0.0,
+            "g": 5,
+            "td": 0.6,
+            "tg": 11.2
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.5,
+            "tg": 11.0
+          },
+          "shift_summary": "+0.6 targets/g (11.2 \u2192 11.0 tgt/g in 2G w/o)",
+          "prop": {
+            "aid": "4361307",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              0.5
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+2% TD prob) before book reprices"
+        },
+        {
+          "player": "Tyler Allgeier",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 0.2,
+          "d_ca": 8.3,
+          "d_td": 0.136,
+          "with": {
+            "ca": 7.0,
+            "g": 5,
+            "td": 0.2,
+            "tg": 2.4
+          },
+          "without": {
+            "ca": 13.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 2.5
+          },
+          "shift_summary": "+8.3 carries/g (7.0 \u2192 13.0 car/g in 2G w/o) \u00b7 +14% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Bam Knight",
+          "pos": "RB",
+          "depth": 2,
+          "d_tg": 1.2,
+          "d_ca": 5.8,
+          "d_td": 0.15,
+          "with": {
+            "ca": 1.5,
+            "g": 2,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "without": {
+            "ca": 11.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 3.5
+          },
+          "shift_summary": "+5.8 carries/g (1.5 \u2192 11.0 car/g in 2G w/o) \u00b7 +1.2 targets/g (0.0 \u2192 3.5 tgt/g in 2G w/o) \u00b7 +15% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Kendrick Bourne",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.8,
+          "d_ca": 0.0,
+          "d_td": 0.023,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.0,
+            "tg": 5.5
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 7.0
+          },
+          "shift_summary": "+0.8 targets/g (5.5 \u2192 7.0 tgt/g in 2G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Kyle Monangai",
+      "team": "CHI",
+      "opp": "SEA",
+      "matchup": "CHI vs SEA",
+      "day": "2026-11-02",
+      "pos": "RB",
+      "role": "RB",
+      "status": "Questionable",
+      "injury": "Toe",
+      "impact_score": 17.7,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 1.2,
+        "tg_share_pct": 4,
+        "ca_g": 15.0,
+        "ca_share_pct": 38,
+        "rz_share_pct": 14
+      },
+      "probabilities": {
+        "p_play": 0.55,
+        "p_play_well": 0.3,
+        "p_decoy": 0.25,
+        "p_void": 0.45,
+        "profile": "RB Turf/Toe Issue \u2014 45% Inactive/Void, 25% Reduced Carry Share"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run D'Andre Swift Anytime TD (Book A) before official inactives drop. Kyle Monangai has only a 30% full-workload probability (45% Void/Out, 25% Limited), boosting D'Andre Swift by +7.6 carries/g (14.6 \u2192 15.7 car/g in 3G w/o) \u00b7 +0.8 targets/g (3.0 \u2192 4.7 tgt/g in 3G w/o) \u00b7 +14% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "D'Andre Swift",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 0.8,
+          "d_ca": 7.6,
+          "d_td": 0.139,
+          "with": {
+            "ca": 14.6,
+            "g": 20,
+            "td": 0.65,
+            "tg": 3.0
+          },
+          "without": {
+            "ca": 15.7,
+            "g": 3,
+            "td": 1.33,
+            "tg": 4.7
+          },
+          "shift_summary": "+7.6 carries/g (14.6 \u2192 15.7 car/g in 3G w/o) \u00b7 +0.8 targets/g (3.0 \u2192 4.7 tgt/g in 3G w/o) \u00b7 +14% TD rate",
+          "prop": {
+            "aid": "4259545",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              0.8
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+14% TD prob) before book reprices"
+        },
+        {
+          "player": "Colston Loveland",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.2,
+          "d_ca": 0.0,
+          "d_td": 0.052,
+          "with": {
+            "ca": 0.1,
+            "g": 20,
+            "td": 0.3,
+            "tg": 5.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.67,
+            "tg": 8.0
+          },
+          "shift_summary": "+1.2 targets/g (5.0 \u2192 8.0 tgt/g in 3G w/o) \u00b7 +5% TD rate",
+          "prop": {
+            "aid": "4723086",
+            "market": "Receiving Yards",
+            "line": 42.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              52.8
+            ]
+          },
+          "est_line_bump": "Line o42.5 \u2192 projects to steam to 48.7 if Monangai sits (+6.2 yds unpriced)"
+        },
+        {
+          "player": "Luther Burden III",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.7,
+          "d_ca": 0.5,
+          "d_td": 0.032,
+          "with": {
+            "ca": 0.5,
+            "g": 19,
+            "td": 0.16,
+            "tg": 4.7
+          },
+          "without": {
+            "ca": 1.7,
+            "g": 3,
+            "td": 0.33,
+            "tg": 6.0
+          },
+          "shift_summary": "+0.7 targets/g (4.7 \u2192 6.0 tgt/g in 3G w/o)",
+          "prop": {
+            "aid": "4685278",
+            "market": "Receiving Yards",
+            "line": 52.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              59.2
+            ]
+          },
+          "est_line_bump": "Line o52.5 \u2192 projects to steam to 56.1 if Monangai sits (+3.6 yds unpriced)"
+        },
+        {
+          "player": "Roschon Johnson",
+          "pos": "RB",
+          "depth": 2,
+          "d_tg": 1.2,
+          "d_ca": 4.0,
+          "d_td": 0.144,
+          "with": {
+            "ca": 0.8,
+            "g": 8,
+            "td": 0.0,
+            "tg": 0.1
+          },
+          "without": {
+            "ca": 6.7,
+            "g": 3,
+            "td": 0.33,
+            "tg": 3.0
+          },
+          "shift_summary": "+4.0 carries/g (0.8 \u2192 6.7 car/g in 3G w/o) \u00b7 +1.2 targets/g (0.1 \u2192 3.0 tgt/g in 3G w/o) \u00b7 +14% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Dameon Pierce",
+      "team": "PHI",
+      "opp": "WSH",
+      "matchup": "PHI vs WSH",
+      "day": "2026-11-01",
+      "pos": "RB",
+      "role": "RB1",
+      "status": "Questionable",
+      "injury": "Undisclosed",
+      "impact_score": 17.5,
+      "note": "Pierce didn't take the field for either of the Eagles' final two possessions of Monday's 38-21 loss to the Cowboys after sustaining an undisclosed injury with 8:38 remaining in the fourth quarter, Dave Zangaro of NBC Sports Philadelphia rep",
+      "usage": {
+        "tg_g": 3.7,
+        "tg_share_pct": 10,
+        "ca_g": 12.3,
+        "ca_share_pct": 66,
+        "rz_share_pct": 15
+      },
+      "probabilities": {
+        "p_play": 0.48,
+        "p_play_well": 0.24,
+        "p_decoy": 0.24,
+        "p_void": 0.52,
+        "profile": "Exited MNF 4Q + Short Turnaround \u2014 52% Inactive/Void, 24% Split Snap Count"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Saquon Barkley (RB) volume props (+6.8 carries/g (7.0 \u2192 9.0 car/g in 4G w/o) \u00b7 +12% TD rate) \u2014 Dameon Pierce carries 52% Out/Void risk and 24% limited-snap risk.",
+      "beneficiaries": [
+        {
+          "player": "Saquon Barkley",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 0.0,
+          "d_ca": 6.8,
+          "d_td": 0.122,
+          "with": {
+            "ca": 7.0,
+            "g": 1,
+            "td": 1.0,
+            "tg": 2.0
+          },
+          "without": {
+            "ca": 9.0,
+            "g": 4,
+            "td": 0.0,
+            "tg": 1.8
+          },
+          "shift_summary": "+6.8 carries/g (7.0 \u2192 9.0 car/g in 4G w/o) \u00b7 +12% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Amon-Ra St. Brown",
+      "team": "DET",
+      "opp": "MIN",
+      "matchup": "DET vs MIN",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR1",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "impact_score": 13.4,
+      "note": "Lions head coach Dan Campbell said that St. Brown tweaked his ankle during Sunday's 20-17 win over the Packers but should be ready to practice Thursday, Richard Silva of The Detroit News reports.",
+      "usage": {
+        "tg_g": 11.3,
+        "tg_share_pct": 31,
+        "ca_g": 0.2,
+        "ca_share_pct": 1,
+        "rz_share_pct": 19
+      },
+      "probabilities": {
+        "p_play": 0.82,
+        "p_play_well": 0.68,
+        "p_decoy": 0.14,
+        "p_void": 0.18,
+        "profile": "Minor Ankle Tweak (Practicing Thu) \u2014 High Full-Go (68%) / Low Decoy (14%)"
+      },
+      "starter_prop": {
+        "aid": "4374302",
+        "market": "Receiving Yards",
+        "line": 75.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "DUAL_OVER_VOID_FREEROLL",
+      "strategy_badge": "\ud83d\udd04 Dual-Over Void Freeroll",
+      "execution_plan": "Leg A: Amon-Ra St. Brown Over 75.5 Receiving Yards + Leg B: Sam LaPorta Over 50.5 Receiving Yards. If Amon-Ra St. Brown is Inactive (18% chance), Leg A 100% VOIDS/REFUNDS and you freeroll Sam LaPorta at a stale pre-scratch number (+2.9 targets/g \u00b7 +11% TD rate). If Amon-Ra St. Brown plays full (68% chance), both alpha weapons can clear.",
+      "beneficiaries": [
+        {
+          "player": "Sam LaPorta",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 2.9,
+          "d_ca": 0.0,
+          "d_td": 0.108,
+          "with": {
+            "ca": 0.0,
+            "g": 15,
+            "td": 0.4,
+            "tg": 5.9
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+2.9 targets/g \u00b7 +11% TD rate",
+          "prop": {
+            "aid": "4430027",
+            "market": "Receiving Yards",
+            "line": 50.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              55.4
+            ]
+          },
+          "est_line_bump": "Line o50.5 \u2192 projects to steam to 65.6 if Brown sits (+15.1 yds unpriced)"
+        },
+        {
+          "player": "Jameson Williams",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 2.9,
+          "d_ca": 0.0,
+          "d_td": 0.097,
+          "with": {
+            "ca": 0.3,
+            "g": 23,
+            "td": 0.48,
+            "tg": 6.1
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+2.9 targets/g \u00b7 +10% TD rate",
+          "prop": {
+            "aid": "4426388",
+            "market": "Receiving Yards",
+            "line": 51.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              68.2
+            ]
+          },
+          "est_line_bump": "Line o51.5 \u2192 projects to steam to 66.6 if Brown sits (+15.1 yds unpriced)"
+        },
+        {
+          "player": "Jahmyr Gibbs",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 3.0,
+          "d_ca": 0.1,
+          "d_td": 0.047,
+          "with": {
+            "ca": 16.4,
+            "g": 23,
+            "td": 1.17,
+            "tg": 5.8
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+3.0 targets/g \u00b7 +5% TD rate",
+          "prop": {
+            "aid": "4429795",
+            "market": "Receiving Yards",
+            "line": 34.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              4,
+              10,
+              41.2
+            ]
+          },
+          "est_line_bump": "Line o34.5 \u2192 projects to steam to 50.1 if Brown sits (+15.6 yds unpriced)"
+        },
+        {
+          "player": "Isaac TeSlaa",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.067,
+          "with": {
+            "ca": 0.0,
+            "g": 20,
+            "td": 0.3,
+            "tg": 2.4
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+1.6 targets/g \u00b7 +7% TD rate",
+          "prop": {
+            "aid": "5123663",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              2,
+              10,
+              0.2
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+7% TD prob) before book reprices"
+        }
+      ]
+    },
+    {
+      "player": "Jadarian Price",
+      "team": "SEA",
+      "opp": "CHI",
+      "matchup": "SEA vs CHI",
+      "day": "2026-11-02",
+      "pos": "RB",
+      "role": "RB",
+      "status": "Injured Reserve",
+      "injury": "Chest",
+      "impact_score": 12.1,
+      "note": "Seahawks head coach Mike Macdonald said Monday that Price (chest) will be designated for return from injured reserve during Week 8, Gregg Bell of Sports Radio 93.3 KJR Seattle reports.",
+      "usage": {
+        "tg_g": 2.3,
+        "tg_share_pct": 7,
+        "ca_g": 9.3,
+        "ca_share_pct": 35,
+        "rz_share_pct": 5
+      },
+      "probabilities": {
+        "p_play": 0.0,
+        "p_play_well": 0.0,
+        "p_decoy": 0.0,
+        "p_void": 1.0,
+        "profile": "Confirmed Out / IR \u2014 Beneficiary Boost Locked In"
+      },
+      "starter_prop": null,
+      "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
+      "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
+      "execution_plan": "Take Cooper Kupp Anytime TD (Book A) \u2014 Jadarian Price is Injured Reserve (Chest), locking in +0.6 targets/g (3.3 \u2192 4.2 tgt/g in 4G w/o).",
+      "beneficiaries": [
+        {
+          "player": "Cooper Kupp",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.6,
+          "d_ca": 0.0,
+          "d_td": 0.026,
+          "with": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.33,
+            "tg": 3.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.0,
+            "tg": 4.2
+          },
+          "shift_summary": "+0.6 targets/g (3.3 \u2192 4.2 tgt/g in 4G w/o)",
+          "prop": {
+            "aid": "2977187",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              2,
+              10,
+              0.2
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+3% TD prob) before book reprices"
+        },
+        {
+          "player": "Sam Darnold",
+          "pos": "QB",
+          "depth": null,
+          "d_tg": 0.0,
+          "d_ca": 0.7,
+          "d_td": 0.022,
+          "with": {
+            "ca": 0.5,
+            "g": 2,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "without": {
+            "ca": 2.0,
+            "g": 4,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "shift_summary": "+28 pass yds/g",
+          "prop": {
+            "aid": "3912547",
+            "market": "Rushing Yards",
+            "line": 4.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              8,
+              10,
+              7.5
+            ]
+          },
+          "est_line_bump": "Line o4.5 \u2192 projects to steam to 7.2 if Price sits (+2.7 yds unpriced)"
+        },
+        {
+          "player": "Emanuel Wilson",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 0.9,
+          "d_ca": 7.9,
+          "d_td": 0.15,
+          "with": {
+            "ca": 10.7,
+            "g": 3,
+            "td": 0.0,
+            "tg": 0.3
+          },
+          "without": {
+            "ca": 19.8,
+            "g": 4,
+            "td": 1.0,
+            "tg": 2.0
+          },
+          "shift_summary": "+7.9 carries/g (10.7 \u2192 19.8 car/g in 4G w/o) \u00b7 +0.9 targets/g (0.3 \u2192 2.0 tgt/g in 4G w/o) \u00b7 +15% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Zach Charbonnet",
+          "pos": "RB",
+          "depth": 2,
+          "d_tg": 0.6,
+          "d_ca": 2.3,
+          "d_td": 0.0,
+          "with": {
+            "g": 0
+          },
+          "without": {
+            "g": 0
+          },
+          "shift_summary": "+2.3 carries/g \u00b7 +0.6 targets/g",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Saquon Barkley",
+      "team": "PHI",
+      "opp": "WSH",
+      "matchup": "PHI vs WSH",
+      "day": "2026-11-01",
+      "pos": "RB",
+      "role": "RB",
+      "status": "Questionable",
+      "injury": "Back",
+      "impact_score": 11.9,
+      "note": "Barkley said after Monday's 38-21 loss to the Cowboys that his \"hamstring came out great,\" and noted that the back issue that kept him out for the entire fourth quarter isn't anything that he expects to prevent him from playing Sunday again",
+      "usage": {
+        "tg_g": 1.8,
+        "tg_share_pct": 6,
+        "ca_g": 8.6,
+        "ca_share_pct": 34,
+        "rz_share_pct": 15
+      },
+      "probabilities": {
+        "p_play": 0.72,
+        "p_play_well": 0.46,
+        "p_decoy": 0.26,
+        "p_void": 0.28,
+        "profile": "Back/Hamstring Management \u2014 72% Active but 26% Pitch-Count / 4Q Rest Risk"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Dameon Pierce (RB) volume props (+4.5 carries/g (14.0 \u2192 11.5 car/g in 2G w/o) \u00b7 +1.4 targets/g (1.0 \u2192 5.0 tgt/g in 2G w/o) \u00b7 +11% TD rate) \u2014 Saquon Barkley carries 28% Out/Void risk and 26% limited-snap risk.",
+      "beneficiaries": [
+        {
+          "player": "Dameon Pierce",
+          "pos": "RB",
+          "depth": 1,
+          "d_tg": 1.4,
+          "d_ca": 4.5,
+          "d_td": 0.109,
+          "with": {
+            "ca": 14.0,
+            "g": 1,
+            "td": 1.0,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 11.5,
+            "g": 2,
+            "td": 0.5,
+            "tg": 5.0
+          },
+          "shift_summary": "+4.5 carries/g (14.0 \u2192 11.5 car/g in 2G w/o) \u00b7 +1.4 targets/g (1.0 \u2192 5.0 tgt/g in 2G w/o) \u00b7 +11% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Elijah Mitchell",
+          "pos": "RB",
+          "depth": 2,
+          "d_tg": 0.5,
+          "d_ca": 2.1,
+          "d_td": 0.0,
+          "with": {
+            "g": 0
+          },
+          "without": {
+            "g": 0
+          },
+          "shift_summary": "+2.1 carries/g \u00b7 +0.5 targets/g",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Dallas Goedert",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.0,
+          "d_td": 0.035,
+          "with": {
+            "ca": 0.0,
+            "g": 18,
+            "td": 0.72,
+            "tg": 5.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 8.5
+          },
+          "shift_summary": "+1.3 targets/g (5.3 \u2192 8.5 tgt/g in 2G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "DeVonta Smith",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.9,
+          "d_ca": 0.0,
+          "d_td": 0.024,
+          "with": {
+            "ca": 0.0,
+            "g": 19,
+            "td": 0.26,
+            "tg": 7.2
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.5,
+            "tg": 9.0
+          },
+          "shift_summary": "+0.9 targets/g (7.2 \u2192 9.0 tgt/g in 2G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "DeVonta Smith",
+      "team": "PHI",
+      "opp": "WSH",
+      "matchup": "PHI vs WSH",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR1",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "impact_score": 10.8,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 10.2,
+        "tg_share_pct": 33,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 6
+      },
+      "probabilities": {
+        "p_play": 0.58,
+        "p_play_well": 0.33,
+        "p_decoy": 0.25,
+        "p_void": 0.42,
+        "profile": "Soft-Tissue (Hamstring/Quad/Groin) \u2014 42% Void, 25% Snap-Count / Decoy Risk"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Makai Lemon (WR) volume props (+2.7 targets/g (3.8 \u2192 7.0 tgt/g in 3G w/o) \u00b7 +8% TD rate) \u2014 DeVonta Smith carries 42% Out/Void risk and 25% limited-snap risk.",
+      "beneficiaries": [
+        {
+          "player": "Makai Lemon",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 2.7,
+          "d_ca": 0.0,
+          "d_td": 0.078,
+          "with": {
+            "ca": 0.2,
+            "g": 4,
+            "td": 0.0,
+            "tg": 3.8
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.33,
+            "tg": 7.0
+          },
+          "shift_summary": "+2.7 targets/g (3.8 \u2192 7.0 tgt/g in 3G w/o) \u00b7 +8% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Dallas Goedert",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 2.2,
+          "d_ca": 0.0,
+          "d_td": 0.061,
+          "with": {
+            "ca": 0.0,
+            "g": 18,
+            "td": 0.72,
+            "tg": 5.4
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 8.0
+          },
+          "shift_summary": "+2.2 targets/g (5.4 \u2192 8.0 tgt/g in 2G w/o) \u00b7 +6% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Dontayvion Wicks",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 2.0,
+          "d_ca": 0.0,
+          "d_td": 0.077,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 4.8
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 6.5
+          },
+          "shift_summary": "+2.0 targets/g (4.8 \u2192 6.5 tgt/g in 2G w/o) \u00b7 +8% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Darius Cooper",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.8,
+          "d_ca": 0.0,
+          "d_td": 0.095,
+          "with": {
+            "ca": 0.0,
+            "g": 10,
+            "td": 0.1,
+            "tg": 1.6
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 1.0,
+            "tg": 4.3
+          },
+          "shift_summary": "+1.8 targets/g (1.6 \u2192 4.3 tgt/g in 3G w/o) \u00b7 +10% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Emeka Egbuka",
+      "team": "TB",
+      "opp": "ATL",
+      "matchup": "TB vs ATL",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR1",
+      "status": "Questionable",
+      "injury": "Concussion",
+      "impact_score": 9.5,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 8.2,
+        "tg_share_pct": 26,
+        "ca_g": 0.3,
+        "ca_share_pct": 1,
+        "rz_share_pct": 10
+      },
+      "probabilities": {
+        "p_play": 0.52,
+        "p_play_well": 0.43,
+        "p_decoy": 0.09,
+        "p_void": 0.48,
+        "profile": "Concussion Protocol \u2014 Binary Clearance (Plays Full 43% or Voids 48%; Low Decoy 9%)"
+      },
+      "starter_prop": {
+        "aid": "4567750",
+        "market": "Anytime TD",
+        "line": 0.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "DUAL_OVER_VOID_FREEROLL",
+      "strategy_badge": "\ud83d\udd04 Dual-Over Void Freeroll",
+      "execution_plan": "Leg A: Emeka Egbuka Anytime TD + Leg B: Chris Godwin Jr. Anytime TD. If Emeka Egbuka is Inactive (48% chance), Leg A 100% VOIDS/REFUNDS and you freeroll Chris Godwin Jr. at a stale pre-scratch number (+1.4 targets/g (5.3 \u2192 5.0 tgt/g in 1G w/o)). If Emeka Egbuka plays full (43% chance), both alpha weapons can clear.",
+      "beneficiaries": [
+        {
+          "player": "Chris Godwin Jr.",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.4,
+          "d_ca": 0.0,
+          "d_td": 0.029,
+          "with": {
+            "ca": 0.2,
+            "g": 15,
+            "td": 0.13,
+            "tg": 5.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 5.0
+          },
+          "shift_summary": "+1.4 targets/g (5.3 \u2192 5.0 tgt/g in 1G w/o)",
+          "prop": {
+            "aid": "3116165",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              1,
+              10,
+              0.1
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+3% TD prob) before book reprices"
+        },
+        {
+          "player": "Bucky Irving",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.7,
+          "d_ca": 0.3,
+          "d_td": 0.014,
+          "with": {
+            "ca": 16.8,
+            "g": 16,
+            "td": 0.44,
+            "tg": 3.5
+          },
+          "without": {
+            "ca": 24.0,
+            "g": 1,
+            "td": 2.0,
+            "tg": 2.0
+          },
+          "shift_summary": "+0.7 targets/g (3.5 \u2192 2.0 tgt/g in 1G w/o)",
+          "prop": {
+            "aid": "4596448",
+            "market": "Receiving Yards",
+            "line": 13.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              2,
+              10,
+              10.5
+            ]
+          },
+          "est_line_bump": "Line o13.5 \u2192 projects to steam to 17.1 if Egbuka sits (+3.6 yds unpriced)"
+        },
+        {
+          "player": "Cade Otton",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 0.5,
+          "d_ca": 0.0,
+          "d_td": 0.004,
+          "with": {
+            "ca": 0.0,
+            "g": 21,
+            "td": 0.05,
+            "tg": 5.2
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 1.0
+          },
+          "shift_summary": "+0.5 targets/g (5.2 \u2192 1.0 tgt/g in 1G w/o)",
+          "prop": {
+            "aid": "4243331",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              1,
+              10,
+              0.1
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+0% TD prob) before book reprices"
+        },
+        {
+          "player": "Tez Johnson",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.5,
+          "d_ca": 0.1,
+          "d_td": 0.029,
+          "with": {
+            "ca": 0.4,
+            "g": 21,
+            "td": 0.24,
+            "tg": 2.7
+          },
+          "without": {
+            "ca": 1.0,
+            "g": 1,
+            "td": 1.0,
+            "tg": 2.0
+          },
+          "shift_summary": "+0.5 targets/g (2.7 \u2192 2.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Tyler Warren",
+      "team": "IND",
+      "opp": "JAX",
+      "matchup": "IND vs JAX",
+      "day": "2026-11-01",
+      "pos": "TE",
+      "role": "TE1",
+      "status": "Questionable",
+      "injury": "Groin",
+      "impact_score": 8.6,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 7.2,
+        "tg_share_pct": 22,
+        "ca_g": 0.6,
+        "ca_share_pct": 2,
+        "rz_share_pct": 8
+      },
+      "probabilities": {
+        "p_play": 0.58,
+        "p_play_well": 0.33,
+        "p_decoy": 0.25,
+        "p_void": 0.42,
+        "profile": "Soft-Tissue (Hamstring/Quad/Groin) \u2014 42% Void, 25% Snap-Count / Decoy Risk"
+      },
+      "starter_prop": {
+        "aid": "4431459",
+        "market": "Receiving Yards",
+        "line": 37.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "DECOY_SNAP_HEDGE",
+      "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
+      "execution_plan": "Primary: Jonathan Taylor Over 16.5 Receiving Yards (+0.8 targets/g (3.4 \u2192 3.5 tgt/g in 2G w/o)). Pair Option 1 (Decoy Hedge): Tyler Warren Under 37.5 Receiving Yards + Jonathan Taylor Over 16.5 Receiving Yards (wins 2-0 if Tyler Warren suits up on a 25% pitch count; if Inactive [42%], Tyler Warren leg VOIDS and Jonathan Taylor freerolls). Pair Option 2 (Void Freeroll): Tyler Warren Over 37.5 Receiving Yards + Jonathan Taylor Over 16.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "beneficiaries": [
+        {
+          "player": "Jonathan Taylor",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.8,
+          "d_ca": 0.4,
+          "d_td": 0.018,
+          "with": {
+            "ca": 19.3,
+            "g": 22,
+            "td": 1.18,
+            "tg": 3.4
+          },
+          "without": {
+            "ca": 19.5,
+            "g": 2,
+            "td": 1.0,
+            "tg": 3.5
+          },
+          "shift_summary": "+0.8 targets/g (3.4 \u2192 3.5 tgt/g in 2G w/o)",
+          "prop": {
+            "aid": "4242335",
+            "market": "Receiving Yards",
+            "line": 16.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              23.8
+            ]
+          },
+          "est_line_bump": "Line o16.5 \u2192 projects to steam to 20.7 if Warren sits (+4.2 yds unpriced)"
+        },
+        {
+          "player": "Mo Alie-Cox",
+          "pos": "TE",
+          "depth": 2,
+          "d_tg": 1.8,
+          "d_ca": 0.1,
+          "d_td": 0.0,
+          "with": {
+            "g": 0
+          },
+          "without": {
+            "g": 0
+          },
+          "shift_summary": "+1.8 targets/g",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Will Mallory",
+          "pos": "TE",
+          "depth": 1,
+          "d_tg": 1.4,
+          "d_ca": 0.0,
+          "d_td": 0.041,
+          "with": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 4.5
+          },
+          "shift_summary": "+1.4 targets/g (1.0 \u2192 4.5 tgt/g in 2G w/o) \u00b7 +4% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Josh Downs",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.1,
+          "d_td": 0.038,
+          "with": {
+            "ca": 0.1,
+            "g": 21,
+            "td": 0.19,
+            "tg": 5.8
+          },
+          "without": {
+            "ca": 0.5,
+            "g": 2,
+            "td": 0.0,
+            "tg": 6.0
+          },
+          "shift_summary": "+1.3 targets/g (5.8 \u2192 6.0 tgt/g in 2G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Jaylen Waddle",
+      "team": "DEN",
+      "opp": "KC",
+      "matchup": "DEN vs KC",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR1",
+      "status": "Questionable",
+      "injury": "Chest",
+      "impact_score": 7.5,
+      "note": "Waddle aggravated a previous chest injury during last week's 30-16 win over the Cardinals, and his status for Sunday's game against the Chiefs will be determined based on how he fares in practice this week, Ian Rapoport of NFL Network repor",
+      "usage": {
+        "tg_g": 6.4,
+        "tg_share_pct": 23,
+        "ca_g": 0.3,
+        "ca_share_pct": 1,
+        "rz_share_pct": 8
+      },
+      "probabilities": {
+        "p_play": 0.52,
+        "p_play_well": 0.26,
+        "p_decoy": 0.26,
+        "p_void": 0.48,
+        "profile": "Aggravated Chest Injury \u2014 48% Scratch/Void, 26% Early-Exit / Decoy Risk"
+      },
+      "starter_prop": {
+        "aid": "4372016",
+        "market": "Anytime TD",
+        "line": 0.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Courtland Sutton Anytime TD (Book A) before official inactives drop. Jaylen Waddle has only a 26% full-workload probability (48% Void/Out, 26% Limited), boosting Courtland Sutton by +1.6 targets/g \u00b7 +4% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "Courtland Sutton",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.042,
+          "with": {
+            "ca": 0.0,
+            "g": 7,
+            "td": 0.14,
+            "tg": 4.7
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+1.6 targets/g \u00b7 +4% TD rate",
+          "prop": {
+            "aid": "3128429",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              2,
+              10,
+              0.2
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+4% TD prob) before book reprices"
+        },
+        {
+          "player": "RJ Harvey",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 1.4,
+          "d_ca": 0.1,
+          "d_td": 0.038,
+          "with": {
+            "ca": 4.0,
+            "g": 6,
+            "td": 0.33,
+            "tg": 4.7
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+1.4 targets/g",
+          "prop": {
+            "aid": "4568490",
+            "market": "Receiving Yards",
+            "line": 24.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              32.3
+            ]
+          },
+          "est_line_bump": "Line o24.5 \u2192 projects to steam to 31.8 if Waddle sits (+7.3 yds unpriced)"
+        },
+        {
+          "player": "Evan Engram",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.1,
+          "d_ca": 0.0,
+          "d_td": 0.042,
+          "with": {
+            "ca": 0.0,
+            "g": 7,
+            "td": 0.14,
+            "tg": 3.1
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+1.1 targets/g \u00b7 +4% TD rate",
+          "prop": {
+            "aid": "3051876",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              1,
+              10,
+              0.1
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+4% TD prob) before book reprices"
+        },
+        {
+          "player": "J.K. Dobbins",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.4,
+          "d_ca": 0.2,
+          "d_td": 0.013,
+          "with": {
+            "ca": 12.4,
+            "g": 7,
+            "td": 0.43,
+            "tg": 1.3
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+0.4 targets/g",
+          "prop": {
+            "aid": "4241985",
+            "market": "Rushing Yards",
+            "line": 23.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              9,
+              10,
+              54.2
+            ]
+          },
+          "est_line_bump": "Line o23.5 \u2192 projects to steam to 24.3 if Waddle sits (+0.8 yds unpriced)"
+        }
+      ]
+    },
+    {
+      "player": "Rashee Rice",
+      "team": "KC",
+      "opp": "DEN",
+      "matchup": "KC vs DEN",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR2",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "impact_score": 6.3,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 5.7,
+        "tg_share_pct": 19,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 7
+      },
+      "probabilities": {
+        "p_play": 0.58,
+        "p_play_well": 0.33,
+        "p_decoy": 0.25,
+        "p_void": 0.42,
+        "profile": "Soft-Tissue (Hamstring/Quad/Groin) \u2014 42% Void, 25% Snap-Count / Decoy Risk"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Jalen Royals Anytime TD (Book A) before official inactives drop. Rashee Rice has only a 33% full-workload probability (42% Void/Out, 25% Limited), boosting Jalen Royals by +0.9 targets/g (1.0 \u2192 2.2 tgt/g in 5G w/o).",
+      "beneficiaries": [
+        {
+          "player": "Jalen Royals",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.9,
+          "d_ca": 0.0,
+          "d_td": 0.036,
+          "with": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.33,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 5,
+            "td": 0.0,
+            "tg": 2.2
+          },
+          "shift_summary": "+0.9 targets/g (1.0 \u2192 2.2 tgt/g in 5G w/o)",
+          "prop": {
+            "aid": "5082630",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              1,
+              10,
+              0.1
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+4% TD prob) before book reprices"
+        },
+        {
+          "player": "Emmett Johnson",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.7,
+          "d_ca": 0.0,
+          "d_td": 0.02,
+          "with": {
+            "ca": 5.3,
+            "g": 3,
+            "td": 0.0,
+            "tg": 1.3
+          },
+          "without": {
+            "ca": 1.0,
+            "g": 3,
+            "td": 0.0,
+            "tg": 2.3
+          },
+          "shift_summary": "+0.7 targets/g (1.3 \u2192 2.3 tgt/g in 3G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Noah Gray",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 0.4,
+          "d_ca": 0.0,
+          "d_td": 0.013,
+          "with": {
+            "ca": 0.0,
+            "g": 9,
+            "td": 0.0,
+            "tg": 2.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 11,
+            "td": 0.0,
+            "tg": 2.7
+          },
+          "shift_summary": "+0.4 targets/g (2.3 \u2192 2.7 tgt/g in 11G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Cyrus Allen",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.4,
+          "d_ca": 0.0,
+          "d_td": 0.012,
+          "with": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.0,
+            "tg": 1.7
+          },
+          "shift_summary": "+0.4 targets/g (1.0 \u2192 1.7 tgt/g in 3G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Dontayvion Wicks",
+      "team": "PHI",
+      "opp": "WSH",
+      "matchup": "PHI vs WSH",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR2",
+      "status": "Questionable",
+      "injury": "Ankle",
+      "impact_score": 6.1,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 5.3,
+        "tg_share_pct": 17,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 8
+      },
+      "probabilities": {
+        "p_play": 0.62,
+        "p_play_well": 0.38,
+        "p_decoy": 0.24,
+        "p_void": 0.38,
+        "profile": "Questionable Tag \u2014 62% Active (38% Full Workload / 24% Limited) \u00b7 38% Void"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Makai Lemon (WR) volume props (+1.6 targets/g (4.7 \u2192 8.0 tgt/g in 1G w/o) \u00b7 +5% TD rate) \u2014 Dontayvion Wicks carries 38% Out/Void risk and 24% limited-snap risk.",
+      "beneficiaries": [
+        {
+          "player": "Makai Lemon",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.046,
+          "with": {
+            "ca": 0.2,
+            "g": 6,
+            "td": 0.0,
+            "tg": 4.7
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 1.0,
+            "tg": 8.0
+          },
+          "shift_summary": "+1.6 targets/g (4.7 \u2192 8.0 tgt/g in 1G w/o) \u00b7 +5% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "DeVonta Smith",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.0,
+          "d_td": 0.038,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.5,
+            "tg": 10.2
+          },
+          "without": {
+            "ca": null,
+            "g": 0,
+            "td": null,
+            "tg": null
+          },
+          "shift_summary": "+1.3 targets/g",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Marquise Brown",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.1,
+          "d_ca": 0.0,
+          "d_td": 0.033,
+          "with": {
+            "ca": 2.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 5.0
+          },
+          "shift_summary": "+1.1 targets/g (0.0 \u2192 5.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Dallas Goedert",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.0,
+          "d_ca": 0.0,
+          "d_td": 0.035,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.5,
+            "tg": 6.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 7.0
+          },
+          "shift_summary": "+1.0 targets/g (6.0 \u2192 7.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Terry McLaurin",
+      "team": "WSH",
+      "opp": "PHI",
+      "matchup": "WSH vs PHI",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR2",
+      "status": "Out",
+      "injury": "Knee",
+      "impact_score": 6.1,
+      "note": "Commanders head coach Dan Quinn announced Monday that McLaurin has been diagnosed with a torn patellar tendon in his left knee following an MRI and will miss the rest of the season.",
+      "usage": {
+        "tg_g": 5.4,
+        "tg_share_pct": 18,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 7
+      },
+      "probabilities": {
+        "p_play": 0.0,
+        "p_play_well": 0.0,
+        "p_decoy": 0.0,
+        "p_void": 1.0,
+        "profile": "Confirmed Out / IR \u2014 Beneficiary Boost Locked In"
+      },
+      "starter_prop": null,
+      "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
+      "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
+      "execution_plan": "Target Antonio Williams (WR) Overs as soon as books post (+1.6 targets/g (3.6 \u2192 8.0 tgt/g in 1G w/o) \u00b7 +7% TD rate).",
+      "beneficiaries": [
+        {
+          "player": "Antonio Williams",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.071,
+          "with": {
+            "ca": 0.0,
+            "g": 5,
+            "td": 0.2,
+            "tg": 3.6
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 8.0
+          },
+          "shift_summary": "+1.6 targets/g (3.6 \u2192 8.0 tgt/g in 1G w/o) \u00b7 +7% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Stefon Diggs",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.4,
+          "d_ca": 0.0,
+          "d_td": 0.031,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 1.0,
+            "tg": 7.2
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 9.0
+          },
+          "shift_summary": "+1.4 targets/g (7.2 \u2192 9.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Dyami Brown",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.8,
+          "d_ca": 0.0,
+          "d_td": 0.023,
+          "with": {
+            "ca": 0.0,
+            "g": 5,
+            "td": 0.0,
+            "tg": 2.4
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 4.0
+          },
+          "shift_summary": "+0.8 targets/g (2.4 \u2192 4.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "John Bates",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 0.6,
+          "d_ca": 0.0,
+          "d_td": 0.031,
+          "with": {
+            "ca": 0.0,
+            "g": 10,
+            "td": 0.1,
+            "tg": 1.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.0,
+            "tg": 2.2
+          },
+          "shift_summary": "+0.6 targets/g (1.3 \u2192 2.2 tgt/g in 4G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "DJ Moore",
+      "team": "BUF",
+      "opp": "BAL",
+      "matchup": "BUF vs BAL",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR2",
+      "status": "Questionable",
+      "injury": "Shoulder - AC Joint",
+      "impact_score": 6.0,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 5.0,
+        "tg_share_pct": 18,
+        "ca_g": 0.5,
+        "ca_share_pct": 2,
+        "rz_share_pct": 5
+      },
+      "probabilities": {
+        "p_play": 0.62,
+        "p_play_well": 0.38,
+        "p_decoy": 0.24,
+        "p_void": 0.38,
+        "profile": "Questionable Tag \u2014 62% Active (38% Full Workload / 24% Limited) \u00b7 38% Void"
+      },
+      "starter_prop": {
+        "aid": "3915416",
+        "market": "Receiving Yards",
+        "line": 56.5,
+        "price": -110,
+        "book": "Book A"
+      },
+      "strategy_code": "DECOY_SNAP_HEDGE",
+      "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
+      "execution_plan": "Primary: Dalton Kincaid Over 46.5 Receiving Yards (+0.8 targets/g (4.8 \u2192 5.0 tgt/g in 2G w/o)). Pair Option 1 (Decoy Hedge): DJ Moore Under 56.5 Receiving Yards + Dalton Kincaid Over 46.5 Receiving Yards (wins 2-0 if DJ Moore suits up on a 24% pitch count; if Inactive [38%], DJ Moore leg VOIDS and Dalton Kincaid freerolls). Pair Option 2 (Void Freeroll): DJ Moore Over 56.5 Receiving Yards + Dalton Kincaid Over 46.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "beneficiaries": [
+        {
+          "player": "Dalton Kincaid",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 0.8,
+          "d_ca": 0.0,
+          "d_td": 0.031,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 4.8
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 5.0
+          },
+          "shift_summary": "+0.8 targets/g (4.8 \u2192 5.0 tgt/g in 2G w/o)",
+          "prop": {
+            "aid": "4385690",
+            "market": "Receiving Yards",
+            "line": 46.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              4,
+              10,
+              47.4
+            ]
+          },
+          "est_line_bump": "Line o46.5 \u2192 projects to steam to 50.7 if Moore sits (+4.2 yds unpriced)"
+        },
+        {
+          "player": "Keon Coleman",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.6,
+          "d_ca": 0.0,
+          "d_td": 0.026,
+          "with": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 4.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 1.0,
+            "tg": 4.0
+          },
+          "shift_summary": "+0.6 targets/g (4.0 \u2192 4.0 tgt/g in 2G w/o)",
+          "prop": {
+            "aid": "4635008",
+            "market": "Receiving Yards",
+            "line": 31.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              37.8
+            ]
+          },
+          "est_line_bump": "Line o31.5 \u2192 projects to steam to 34.6 if Moore sits (+3.1 yds unpriced)"
+        },
+        {
+          "player": "Dawson Knox",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 0.4,
+          "d_ca": -0.1,
+          "d_td": 0.015,
+          "with": {
+            "ca": 0.2,
+            "g": 4,
+            "td": 0.25,
+            "tg": 1.5
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 2.0
+          },
+          "shift_summary": "+0.4 targets/g (1.5 \u2192 2.0 tgt/g in 2G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Tre Harris",
+      "team": "LAC",
+      "opp": "LAR",
+      "matchup": "LAC vs LAR",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR1",
+      "status": "Questionable",
+      "injury": "Hamstring",
+      "impact_score": 5.7,
+      "note": "questionable",
+      "usage": {
+        "tg_g": 5.0,
+        "tg_share_pct": 18,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 7
+      },
+      "probabilities": {
+        "p_play": 0.58,
+        "p_play_well": 0.33,
+        "p_decoy": 0.25,
+        "p_void": 0.42,
+        "profile": "Soft-Tissue (Hamstring/Quad/Groin) \u2014 42% Void, 25% Snap-Count / Decoy Risk"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Omarion Hampton Anytime TD (Book A) before official inactives drop. Tre Harris has only a 33% full-workload probability (42% Void/Out, 25% Limited), boosting Omarion Hampton by +1.0 targets/g (2.7 \u2192 5.0 tgt/g in 2G w/o).",
+      "beneficiaries": [
+        {
+          "player": "Omarion Hampton",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 1.0,
+          "d_ca": 0.0,
+          "d_td": 0.019,
+          "with": {
+            "ca": 14.2,
+            "g": 13,
+            "td": 0.62,
+            "tg": 2.7
+          },
+          "without": {
+            "ca": 9.5,
+            "g": 2,
+            "td": 0.0,
+            "tg": 5.0
+          },
+          "shift_summary": "+1.0 targets/g (2.7 \u2192 5.0 tgt/g in 2G w/o)",
+          "prop": {
+            "aid": "4685382",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              5,
+              10,
+              0.5
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+2% TD prob) before book reprices"
+        },
+        {
+          "player": "KeAndre Lambert-Smith",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.0,
+          "d_td": 0.065,
+          "with": {
+            "ca": 0.0,
+            "g": 9,
+            "td": 0.11,
+            "tg": 1.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 4.5
+          },
+          "shift_summary": "+1.3 targets/g (1.3 \u2192 4.5 tgt/g in 2G w/o) \u00b7 +6% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Charlie Kolar",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.1,
+          "d_ca": 0.0,
+          "d_td": 0.032,
+          "with": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.0,
+            "tg": 2.3
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 6.0
+          },
+          "shift_summary": "+1.1 targets/g (2.3 \u2192 6.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Theo Wease Jr.",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.5,
+          "d_ca": 0.0,
+          "d_td": 0.015,
+          "with": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 3.0
+          },
+          "shift_summary": "+0.5 targets/g (1.0 \u2192 3.0 tgt/g in 1G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Rashid Shaheed",
+      "team": "SEA",
+      "opp": "CHI",
+      "matchup": "SEA vs CHI",
+      "day": "2026-11-02",
+      "pos": "WR",
+      "role": "WR2",
+      "status": "Questionable",
+      "injury": "Knee",
+      "impact_score": 5.5,
+      "note": "Seahawks coach Mike Macdonald said Monday that the early returns on Shaheed's knee injury are positive, Brady Henderson reports.",
+      "usage": {
+        "tg_g": 4.3,
+        "tg_share_pct": 14,
+        "ca_g": 0.6,
+        "ca_share_pct": 2,
+        "rz_share_pct": 6
+      },
+      "probabilities": {
+        "p_play": 0.74,
+        "p_play_well": 0.54,
+        "p_decoy": 0.2,
+        "p_void": 0.26,
+        "profile": "Trending Active in Practice \u2014 74% Play / 54% Full Workload"
+      },
+      "starter_prop": null,
+      "strategy_code": "BENEFICIARY_FRONT_RUN",
+      "strategy_badge": "\u26a1 Early Beneficiary Front-Run (Pre-Inactive Drop)",
+      "execution_plan": "Front-run Cooper Kupp Anytime TD (Book A) before official inactives drop. Rashid Shaheed has only a 54% full-workload probability (26% Void/Out, 20% Limited), boosting Cooper Kupp by +0.7 targets/g (4.0 \u2192 4.7 tgt/g in 7G w/o).",
+      "beneficiaries": [
+        {
+          "player": "Cooper Kupp",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.7,
+          "d_ca": 0.0,
+          "d_td": 0.019,
+          "with": {
+            "ca": 0.0,
+            "g": 16,
+            "td": 0.12,
+            "tg": 4.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 7,
+            "td": 0.14,
+            "tg": 4.7
+          },
+          "shift_summary": "+0.7 targets/g (4.0 \u2192 4.7 tgt/g in 7G w/o)",
+          "prop": {
+            "aid": "2977187",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              2,
+              10,
+              0.2
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+2% TD prob) before book reprices"
+        },
+        {
+          "player": "Jaxon Smith-Njigba",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 0.5,
+          "d_ca": 0.1,
+          "d_td": 0.014,
+          "with": {
+            "ca": 0.4,
+            "g": 16,
+            "td": 0.88,
+            "tg": 10.1
+          },
+          "without": {
+            "ca": 0.5,
+            "g": 8,
+            "td": 0.5,
+            "tg": 9.9
+          },
+          "shift_summary": "+0.5 targets/g (10.1 \u2192 9.9 tgt/g in 8G w/o)",
+          "prop": {
+            "aid": "4430878",
+            "market": "Receiving Yards",
+            "line": 97.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              7,
+              10,
+              106.6
+            ]
+          },
+          "est_line_bump": "Line o97.5 \u2192 projects to steam to 100.1 if Shaheed sits (+2.6 yds unpriced)"
+        },
+        {
+          "player": "Sam Darnold",
+          "pos": "QB",
+          "depth": null,
+          "d_tg": 0.0,
+          "d_ca": -0.6,
+          "d_td": -0.017,
+          "with": {
+            "ca": 2.3,
+            "g": 15,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "without": {
+            "ca": 1.2,
+            "g": 8,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "shift_summary": "+44 pass yds/g",
+          "prop": {
+            "aid": "3912547",
+            "market": "Rushing Yards",
+            "line": 4.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              8,
+              10,
+              7.5
+            ]
+          },
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Terrance Ferguson",
+      "team": "LAR",
+      "opp": "LAC",
+      "matchup": "LAR vs LAC",
+      "day": "2026-11-01",
+      "pos": "TE",
+      "role": "TE (rotation)",
+      "status": "Injured Reserve",
+      "injury": "Ankle",
+      "impact_score": 4.1,
+      "note": "Ferguson (ankle), who is eligible to come off injured reserve next week, isn't expected to be ready at that time.",
+      "usage": {
+        "tg_g": 4.0,
+        "tg_share_pct": 11,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 1
+      },
+      "probabilities": {
+        "p_play": 0.0,
+        "p_play_well": 0.0,
+        "p_decoy": 0.0,
+        "p_void": 1.0,
+        "profile": "Confirmed Out / IR \u2014 Beneficiary Boost Locked In"
+      },
+      "starter_prop": null,
+      "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
+      "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
+      "execution_plan": "Take Puka Nacua Anytime TD (Book A) \u2014 Terrance Ferguson is Injured Reserve (Ankle), locking in +2.2 targets/g (9.6 \u2192 12.2 tgt/g in 10G w/o) \u00b7 +6% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "Puka Nacua",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 2.2,
+          "d_ca": 0.0,
+          "d_td": 0.059,
+          "with": {
+            "ca": 0.3,
+            "g": 11,
+            "td": 0.73,
+            "tg": 9.6
+          },
+          "without": {
+            "ca": 1.2,
+            "g": 10,
+            "td": 0.6,
+            "tg": 12.2
+          },
+          "shift_summary": "+2.2 targets/g (9.6 \u2192 12.2 tgt/g in 10G w/o) \u00b7 +6% TD rate",
+          "prop": {
+            "aid": "4426515",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              7,
+              10,
+              0.8
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+6% TD prob) before book reprices"
+        },
+        {
+          "player": "Kyren Williams",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.0,
+          "d_td": 0.026,
+          "with": {
+            "ca": 14.6,
+            "g": 14,
+            "td": 0.86,
+            "tg": 3.1
+          },
+          "without": {
+            "ca": 15.0,
+            "g": 10,
+            "td": 0.7,
+            "tg": 4.7
+          },
+          "shift_summary": "+1.3 targets/g (3.1 \u2192 4.7 tgt/g in 10G w/o)",
+          "prop": {
+            "aid": "4430737",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              8,
+              10,
+              1.0
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+3% TD prob) before book reprices"
+        },
+        {
+          "player": "Blake Corum",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.7,
+          "d_ca": 0.0,
+          "d_td": 0.018,
+          "with": {
+            "ca": 9.2,
+            "g": 14,
+            "td": 0.36,
+            "tg": 0.8
+          },
+          "without": {
+            "ca": 8.0,
+            "g": 10,
+            "td": 0.4,
+            "tg": 1.7
+          },
+          "shift_summary": "+0.7 targets/g (0.8 \u2192 1.7 tgt/g in 10G w/o)",
+          "prop": {
+            "aid": "4429096",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              3,
+              10,
+              0.3
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+2% TD prob) before book reprices"
+        },
+        {
+          "player": "Colby Parkinson",
+          "pos": "TE",
+          "depth": 2,
+          "d_tg": 1.0,
+          "d_ca": 0.0,
+          "d_td": 0.0,
+          "with": {
+            "g": 0
+          },
+          "without": {
+            "g": 0
+          },
+          "shift_summary": "+1.0 targets/g",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Alec Pierce",
+      "team": "IND",
+      "opp": "JAX",
+      "matchup": "IND vs JAX",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR (rotation)",
+      "status": "Injured Reserve",
+      "injury": "Heel",
+      "impact_score": 3.7,
+      "note": "Colts head coach Shane Steichen said Monday that Pierce (heel) will \"most likely not\" have his 21-day practice window opened in Week 8, Jake Arthur of Roundtable.io reports.",
+      "usage": {
+        "tg_g": 3.5,
+        "tg_share_pct": 12,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 2
+      },
+      "probabilities": {
+        "p_play": 0.0,
+        "p_play_well": 0.0,
+        "p_decoy": 0.0,
+        "p_void": 1.0,
+        "profile": "Confirmed Out / IR \u2014 Beneficiary Boost Locked In"
+      },
+      "starter_prop": null,
+      "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
+      "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
+      "execution_plan": "Target Laquon Treadwell (WR) Overs as soon as books post (+2.4 targets/g (0.5 \u2192 4.4 tgt/g in 5G w/o) \u00b7 +7% TD rate).",
+      "beneficiaries": [
+        {
+          "player": "Laquon Treadwell",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 2.4,
+          "d_ca": 0.0,
+          "d_td": 0.068,
+          "with": {
+            "ca": 0.0,
+            "g": 8,
+            "td": 0.0,
+            "tg": 0.5
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 5,
+            "td": 0.0,
+            "tg": 4.4
+          },
+          "shift_summary": "+2.4 targets/g (0.5 \u2192 4.4 tgt/g in 5G w/o) \u00b7 +7% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Keenan Allen",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.046,
+          "with": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 5.5
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 4,
+            "td": 0.25,
+            "tg": 8.0
+          },
+          "shift_summary": "+1.6 targets/g (5.5 \u2192 8.0 tgt/g in 4G w/o) \u00b7 +5% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Ashton Dulin",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.0,
+          "d_td": 0.039,
+          "with": {
+            "ca": 0.2,
+            "g": 11,
+            "td": 0.0,
+            "tg": 0.5
+          },
+          "without": {
+            "ca": 0.2,
+            "g": 4,
+            "td": 0.0,
+            "tg": 3.0
+          },
+          "shift_summary": "+1.3 targets/g (0.5 \u2192 3.0 tgt/g in 4G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Will Mallory",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 1.3,
+          "d_ca": 0.0,
+          "d_td": 0.037,
+          "with": {
+            "ca": 0.0,
+            "g": 1,
+            "td": 0.0,
+            "tg": 1.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 0.0,
+            "tg": 4.5
+          },
+          "shift_summary": "+1.3 targets/g (1.0 \u2192 4.5 tgt/g in 2G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Jack Bech",
+      "team": "LV",
+      "opp": "NYJ",
+      "matchup": "LV vs NYJ",
+      "day": "2026-11-01",
+      "pos": "WR",
+      "role": "WR (rotation)",
+      "status": "Injured Reserve",
+      "injury": "Forearm",
+      "impact_score": 3.3,
+      "note": "The Raiders designated Bech (forearm) for return from injured reserve Monday.",
+      "usage": {
+        "tg_g": 3.0,
+        "tg_share_pct": 10,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 3
+      },
+      "probabilities": {
+        "p_play": 0.0,
+        "p_play_well": 0.0,
+        "p_decoy": 0.0,
+        "p_void": 1.0,
+        "profile": "Confirmed Out / IR \u2014 Beneficiary Boost Locked In"
+      },
+      "starter_prop": null,
+      "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
+      "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
+      "execution_plan": "Take Brock Bowers Anytime TD (Book A) \u2014 Jack Bech is Injured Reserve (Forearm), locking in +2.0 targets/g (6.9 \u2192 9.7 tgt/g in 7G w/o) \u00b7 +6% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "Brock Bowers",
+          "pos": "TE",
+          "depth": null,
+          "d_tg": 2.0,
+          "d_ca": 0.0,
+          "d_td": 0.057,
+          "with": {
+            "ca": 0.2,
+            "g": 10,
+            "td": 0.7,
+            "tg": 6.9
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 7,
+            "td": 0.43,
+            "tg": 9.7
+          },
+          "shift_summary": "+2.0 targets/g (6.9 \u2192 9.7 tgt/g in 7G w/o) \u00b7 +6% TD rate",
+          "prop": {
+            "aid": "4432665",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              0.7
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+6% TD prob) before book reprices"
+        },
+        {
+          "player": "Ashton Jeanty",
+          "pos": "RB",
+          "depth": null,
+          "d_tg": 0.9,
+          "d_ca": 0.0,
+          "d_td": 0.015,
+          "with": {
+            "ca": 16.6,
+            "g": 16,
+            "td": 0.69,
+            "tg": 4.5
+          },
+          "without": {
+            "ca": 13.2,
+            "g": 8,
+            "td": 0.38,
+            "tg": 5.6
+          },
+          "shift_summary": "+0.9 targets/g (4.5 \u2192 5.6 tgt/g in 8G w/o)",
+          "prop": {
+            "aid": "4890973",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              4,
+              10,
+              0.6
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+2% TD prob) before book reprices"
+        },
+        {
+          "player": "Kirk Cousins",
+          "pos": "QB",
+          "depth": null,
+          "d_tg": 0.0,
+          "d_ca": 0.0,
+          "d_td": 0.0,
+          "with": {
+            "ca": 4.5,
+            "g": 2,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "without": {
+            "ca": 1.2,
+            "g": 5,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "shift_summary": "+86 pass yds/g",
+          "prop": {
+            "aid": "14880",
+            "market": "Passing Yards",
+            "line": 236.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              238.0
+            ]
+          },
+          "est_line_bump": ""
+        },
+        {
+          "player": "Tre Tucker",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.9,
+          "d_ca": 0.0,
+          "d_td": 0.074,
+          "with": {
+            "ca": 0.5,
+            "g": 16,
+            "td": 0.38,
+            "tg": 4.9
+          },
+          "without": {
+            "ca": 0.6,
+            "g": 8,
+            "td": 0.38,
+            "tg": 7.5
+          },
+          "shift_summary": "+1.9 targets/g (4.9 \u2192 7.5 tgt/g in 8G w/o) \u00b7 +7% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    },
+    {
+      "player": "Erick All",
+      "team": "CIN",
+      "opp": "TEN",
+      "matchup": "CIN vs TEN",
+      "day": "2026-11-01",
+      "pos": "TE",
+      "role": "TE (rotation)",
+      "status": "Injured Reserve",
+      "injury": "Knee - ACL",
+      "impact_score": 3.2,
+      "note": "The Bengals placed All (knee) on injured reserve Tuesday.",
+      "usage": {
+        "tg_g": 3.0,
+        "tg_share_pct": 10,
+        "ca_g": 0.0,
+        "ca_share_pct": 0,
+        "rz_share_pct": 2
+      },
+      "probabilities": {
+        "p_play": 0.0,
+        "p_play_well": 0.0,
+        "p_decoy": 0.0,
+        "p_void": 1.0,
+        "profile": "Confirmed Out / IR \u2014 Beneficiary Boost Locked In"
+      },
+      "starter_prop": null,
+      "strategy_code": "CONFIRMED_OUT_FRONT_RUN",
+      "strategy_badge": "\u2705 Confirmed Out \u2014 Beneficiary Line Front-Run",
+      "execution_plan": "Take Tee Higgins Over 65.5 Receiving Yards (Book A) \u2014 Erick All is Injured Reserve (Knee - ACL), locking in +1.6 targets/g (7.0 \u2192 9.7 tgt/g in 3G w/o) \u00b7 +5% TD rate.",
+      "beneficiaries": [
+        {
+          "player": "Tee Higgins",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.052,
+          "with": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.33,
+            "tg": 7.0
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.33,
+            "tg": 9.7
+          },
+          "shift_summary": "+1.6 targets/g (7.0 \u2192 9.7 tgt/g in 3G w/o) \u00b7 +5% TD rate",
+          "prop": {
+            "aid": "4239993",
+            "market": "Receiving Yards",
+            "line": 65.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              6,
+              10,
+              84.2
+            ]
+          },
+          "est_line_bump": "Line o65.5 \u2192 projects to steam to 73.8 if All sits (+8.3 yds unpriced)"
+        },
+        {
+          "player": "Joe Burrow",
+          "pos": "QB",
+          "depth": null,
+          "d_tg": 0.0,
+          "d_ca": 0.0,
+          "d_td": 0.0,
+          "with": {
+            "ca": 2.3,
+            "g": 3,
+            "td": 0.0,
+            "tg": 0.0
+          },
+          "without": {
+            "ca": 3.3,
+            "g": 3,
+            "td": 0.33,
+            "tg": 0.0
+          },
+          "shift_summary": "+92 pass yds/g",
+          "prop": {
+            "aid": "3915511",
+            "market": "Anytime TD",
+            "line": 0.5,
+            "price": -110,
+            "book": "Book A",
+            "l10": [
+              1,
+              10,
+              0.1
+            ]
+          },
+          "est_line_bump": "Red-zone & touch share jump (+0% TD prob) before book reprices"
+        },
+        {
+          "player": "Dohnte Meyers",
+          "pos": "WR",
+          "depth": null,
+          "d_tg": 1.6,
+          "d_ca": 0.0,
+          "d_td": 0.047,
+          "with": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 0.0,
+            "tg": 1.7
+          },
+          "without": {
+            "ca": 0.3,
+            "g": 3,
+            "td": 0.0,
+            "tg": 5.0
+          },
+          "shift_summary": "+1.6 targets/g (1.7 \u2192 5.0 tgt/g in 3G w/o) \u00b7 +5% TD rate",
+          "prop": null,
+          "est_line_bump": ""
+        },
+        {
+          "player": "Mike Gesicki",
+          "pos": "TE",
+          "depth": 1,
+          "d_tg": 1.7,
+          "d_ca": 0.0,
+          "d_td": 0.035,
+          "with": {
+            "ca": 0.0,
+            "g": 2,
+            "td": 1.0,
+            "tg": 1.5
+          },
+          "without": {
+            "ca": 0.0,
+            "g": 3,
+            "td": 1.0,
+            "tg": 5.0
+          },
+          "shift_summary": "+1.7 targets/g (1.5 \u2192 5.0 tgt/g in 3G w/o)",
+          "prop": null,
+          "est_line_bump": ""
+        }
+      ]
+    }
+  ],
+  "line_opportunities": [
+    {
+      "game_id": "401873023",
+      "key": "CAR@GB",
+      "matchup": "CAR @ GB",
+      "window": "Thursday Night Football \u00b7 Thu Oct 29, 8:15 PM ET",
+      "spread_open": "GB -3.5",
+      "spread_current": "GB -3.5",
+      "spread_delta": 0.0,
+      "total_open": 47.5,
+      "total_current": 47.5,
+      "line_status": "UNADJUSTED (0.0 pt move from open)",
+      "action_side": "CAR ML (+154 / +160) \u00b7 Lean Carolina Panthers Win (also CAR +3.5 -106)",
+      "action_type": "Moneyline & Underdog Bounce-Back Lean",
+      "unpriced_edge_pts": "+1.5 pts toward CAR (Fair Line GB -2.0 if Golden sits/limited)",
+      "key_unresolved_players": [
+        {
+          "player": "Matthew Golden",
+          "team": "GB",
+          "pos": "WR1",
+          "status": "Questionable (Shoulder/Foot \u00b7 DNP Tue)",
+          "p_play": 0.48,
+          "p_play_well": 0.22,
+          "p_decoy": 0.26,
+          "p_void": 0.52,
+          "impact_note": "9.9 tgt/g (26% share, 18% RZ share); Jordan Love averages -69.1 pass yds/g without Golden (3G sample)"
+        },
+        {
+          "player": "Micah Parsons & Zaire Franklin",
+          "team": "GB",
+          "pos": "EDGE / LB",
+          "status": "Out (Knee) / Doubtful-Out (Shin)",
+          "p_play": 0.05,
+          "p_play_well": 0.02,
+          "p_decoy": 0.03,
+          "p_void": 0.95,
+          "impact_note": "GB missing top pass rusher & tackling LB plus 3 OL starters (Sean Rhyan Out, Jacob Monk IR, Travis Glover Q)"
+        }
+      ],
+      "why_take_now": "Market remains frozen at GB -3.5 despite GB WR1 Matthew Golden missing Tuesday's walkthrough (48% Play / 22% Play Well), GB missing Micah Parsons, Zaire Franklin, and 3 OL starters (6th pct run-blocking OL), and GB going 0-8-1 ATS in its last 9 games after a loss. Meanwhile, Carolina is 10-5 SU (66.7%) in its last 15 games after a loss and 15-0 ATS (100%) in its last 15 after a loss as an underdog\u2014including a 16-13 outright win at Lambeau Field in 2025 Week 9 right after a blowout home loss.",
+      "complementary_props": [
+        "Tucker Kraft (GB TE) Over 45.5 Rec Yds / Over 4.5 Recs (+2.5 tgt/g if Golden sits)",
+        "Josh Jacobs (GB RB) Over 78.5 Rush + Rec Yds & Anytime TD (+105 Book A)",
+        "Tetairoa McMillan (CAR WR) Over 71.5 Rec Yds (-108 Exchange C)"
+      ]
+    },
+    {
+      "game_id": "401873026",
+      "key": "BAL@BUF",
+      "matchup": "BAL @ BUF",
+      "window": "Sun Nov 1, 1:00 PM ET",
+      "spread_open": "BUF -3.0",
+      "spread_current": "BUF -3.0",
+      "spread_delta": 0.0,
+      "total_open": 54.5,
+      "total_current": 54.5,
+      "line_status": "UNADJUSTED (Sitting on key number -3.0)",
+      "action_side": "BUF -3.0 (-110) / BUF ML (-162) \u00b7 Opposing Team Front-Run",
+      "action_type": "Opposing Team Spread Front-Run Before Official Out",
+      "unpriced_edge_pts": "+2.5 to +4.0 pts toward BUF (Projects BUF -5.5 to -7.0 if Lamar sits)",
+      "key_unresolved_players": [
+        {
+          "player": "Lamar Jackson",
+          "team": "BAL",
+          "pos": "QB1",
+          "status": "Questionable (Ankle)",
+          "p_play": 0.65,
+          "p_play_well": 0.4,
+          "p_decoy": 0.25,
+          "p_void": 0.35,
+          "impact_note": "35% Inactive risk + 25% limited ankle mobility; Derrick Henry drops -17.8 rush yds/g without Lamar"
+        },
+        {
+          "player": "Olaivavega Ioane",
+          "team": "BAL",
+          "pos": "LG (Starter)",
+          "status": "Doubtful (Knee - MCL)",
+          "p_play": 0.16,
+          "p_play_well": 0.06,
+          "p_decoy": 0.1,
+          "p_void": 0.84,
+          "impact_note": "Starting interior OL Doubtful alongside pending LB Roquan Smith & SAF Jaylinn Hawkins (Questionable)"
+        }
+      ],
+      "why_take_now": "Consensus opened BUF -3.0 and has not moved a single half-point despite BAL QB1 Lamar Jackson (Questionable, ankle) and starting LG Olaivavega Ioane (Doubtful, MCL) on the report, while Buffalo comes off a 14-day bye week (+7d rest edge). Taking BUF -3.0 now locks in the key number 3: if Lamar is downgraded Friday/Sunday, the spread jumps to BUF -6.0+; even if Lamar plays, he has only a 40% full-mobility probability.",
+      "complementary_props": [
+        "Josh Allen (BUF QB) Over 37.2 Rush Yds / Anytime TD (1.0 rush TD/g in 22G)",
+        "Dalton Kincaid (BUF TE) Over 46.5 Rec Yds (+0.8 tgt/g with DJ Moore Questionable [AC Joint])"
+      ]
+    },
+    {
+      "game_id": "401873030",
+      "key": "MIN@DET",
+      "matchup": "MIN @ DET",
+      "window": "Sun Nov 1, 1:00 PM ET",
+      "spread_open": "DET -3.0",
+      "spread_current": "DET -3.0",
+      "spread_delta": 0.0,
+      "total_open": 46.5,
+      "total_current": 46.5,
+      "line_status": "UNADJUSTED (0.0 pt move from open)",
+      "action_side": "DET -3.0 (-110) / DET ML (-158) \u00b7 Opposing Team Front-Run",
+      "action_type": "Opposing Team Spread Front-Run",
+      "unpriced_edge_pts": "+1.5 pts toward DET (Projects DET -4.5 if Aaron Jones sits/limited)",
+      "key_unresolved_players": [
+        {
+          "player": "Aaron Jones",
+          "team": "MIN",
+          "pos": "RB1",
+          "status": "Questionable (Left Knee \u2014 Forced out Wk 7)",
+          "p_play": 0.54,
+          "p_play_well": 0.29,
+          "p_decoy": 0.25,
+          "p_void": 0.46,
+          "impact_note": "#1 NFL cascade impact (24.1): 17.5 car/g (58% share), 3.2 tgt/g, 34% RZ share + MIN starting G Donovan Jackson on IR"
+        },
+        {
+          "player": "Amon-Ra St. Brown",
+          "team": "DET",
+          "pos": "WR1",
+          "status": "Questionable (Ankle \u2014 Expected to practice Thu)",
+          "p_play": 0.82,
+          "p_play_well": 0.68,
+          "p_decoy": 0.14,
+          "p_void": 0.18,
+          "impact_note": "82% Play / 68% Play Well; if unexpectedly scratched, Sam LaPorta (+2.9 tgt/g) & Jahmyr Gibbs (+3.0 tgt/g) absorb 31% target share"
+        }
+      ],
+      "why_take_now": "Line sits flat at DET -3.0 despite Minnesota RB1 Aaron Jones leaving Week 7 with a left knee injury (only 29% full-workload probability) and starting G Donovan Jackson on IR (meniscus), whereas Detroit HC Dan Campbell confirmed Amon-Ra St. Brown is expected to practice Thursday (82% P(Play)).",
+      "complementary_props": [
+        "Jordan Mason (MIN RB) Anytime TD (+9.8 car/g & 0.80 TD/g in 5G without Aaron Jones)",
+        "Dual-Over Void Freeroll: Amon-Ra St. Brown o75.5 Rec Yds + Sam LaPorta o50.5 Rec Yds"
+      ]
+    },
+    {
+      "game_id": "401873029",
+      "key": "LV@NYJ",
+      "matchup": "LV @ NYJ",
+      "window": "Sun Nov 1, 1:00 PM ET",
+      "spread_open": "NYJ -1.5",
+      "spread_current": "NYJ -1.5",
+      "spread_delta": 0.0,
+      "total_open": 45.5,
+      "total_current": 45.5,
+      "line_status": "UNADJUSTED (0.0 pt move from open)",
+      "action_side": "LV +1.5 (-110) / LV ML (+105) \u00b7 Opposing Team Front-Run",
+      "action_type": "Opposing Team ML / Spread Front-Run",
+      "unpriced_edge_pts": "+1.5 to +2.0 pts toward LV (Flips to LV -1.0 if Breece Hall sits)",
+      "key_unresolved_players": [
+        {
+          "player": "Breece Hall",
+          "team": "NYJ",
+          "pos": "RB1",
+          "status": "Questionable (Quadriceps)",
+          "p_play": 0.56,
+          "p_play_well": 0.31,
+          "p_decoy": 0.25,
+          "p_void": 0.44,
+          "impact_note": "#2 NFL cascade impact (22.0): 60% carry share; Geno Smith passing drops -51.0 yds/g in 4G without Hall"
+        },
+        {
+          "player": "Dylan Parham & Max Mitchell",
+          "team": "NYJ",
+          "pos": "G / OT",
+          "status": "Questionable (Knee / Concussion)",
+          "p_play": 0.55,
+          "p_play_well": 0.35,
+          "p_decoy": 0.2,
+          "p_void": 0.45,
+          "impact_note": "Two NYJ offensive linemen + RB2 Braelon Allen (Questionable, ankle) & RB3 Kene Nwangwu (Questionable, knee)"
+        }
+      ],
+      "why_take_now": "The Jets are still priced as -1.5 home favorites despite RB1 Breece Hall (Quadriceps, 31% full-workload probability), RB2 Braelon Allen (Ankle), G Dylan Parham (Knee), and OT Max Mitchell (Concussion) all carrying Questionable tags. Without Breece Hall, NYJ's offense loses 51.0 passing yds/g in historical splits\u2014grabbing LV +1.5 / ML (+105) front-runs a potential flip to Raiders favorite.",
+      "complementary_props": [
+        "Braelon Allen (NYJ RB) Over Carries / Rush Yds (18.0 car/g in 4G without Breece Hall)",
+        "Brock Bowers (LV TE) Anytime TD (+2.0 tgt/g with LV WR Jack Bech on IR)"
+      ]
+    },
+    {
+      "game_id": "401873035",
+      "key": "PHI@WSH",
+      "matchup": "PHI @ WSH",
+      "window": "Sun Nov 1, 8:20 PM ET (SNF)",
+      "spread_open": "WSH -5.5",
+      "spread_current": "WSH -5.5",
+      "spread_delta": 0.0,
+      "total_open": 40.5,
+      "total_current": 40.5,
+      "line_status": "UNADJUSTED (0.0 pt move from open)",
+      "action_side": "WSH -5.5 (-110) \u00b7 Opposing Team Front-Run",
+      "action_type": "Opposing Team Spread Front-Run",
+      "unpriced_edge_pts": "+2.0 pts toward WSH (Projects WSH -7.0 / -7.5 if PHI skill cluster sits)",
+      "key_unresolved_players": [
+        {
+          "player": "Lane Johnson",
+          "team": "PHI",
+          "pos": "RT (All-Pro Starter)",
+          "status": "Out",
+          "p_play": 0.0,
+          "p_play_well": 0.0,
+          "p_decoy": 0.0,
+          "p_void": 1.0,
+          "impact_note": "All-Pro RT already ruled Out on short week after Monday Night loss"
+        },
+        {
+          "player": "DeVonta Smith & Dontayvion Wicks",
+          "team": "PHI",
+          "pos": "WR1 / WR2",
+          "status": "Questionable (Hamstring / Ankle)",
+          "p_play": 0.6,
+          "p_play_well": 0.34,
+          "p_decoy": 0.26,
+          "p_void": 0.4,
+          "impact_note": "Combined 50% target share (Smith 33% [10.2 tgt/g] + Wicks 17% [5.3 tgt/g]) Questionable"
+        },
+        {
+          "player": "Dameon Pierce & Saquon Barkley",
+          "team": "PHI",
+          "pos": "RB1 / RB2",
+          "status": "Questionable (Undisclosed / Back)",
+          "p_play": 0.58,
+          "p_play_well": 0.34,
+          "p_decoy": 0.24,
+          "p_void": 0.42,
+          "impact_note": "Both RBs exited or missed the 4th quarter of Monday Night Football vs DAL"
+        }
+      ],
+      "why_take_now": "Philadelphia comes off a Monday Night blowout loss on 6 days rest with All-Pro RT Lane Johnson already Out and 4 core skill starters (DeVonta Smith, Dontayvion Wicks, Dameon Pierce, Saquon Barkley) plus CB Michael Carter II all Questionable. Yet the spread hasn't moved off the WSH -5.5 opener.",
+      "complementary_props": [
+        "Dallas Goedert (PHI TE) Over Receptions / Rec Yds (+2.2 tgt/g without DeVonta Smith, +1.3 tgt/g without Barkley)",
+        "Stefon Diggs / Antonio Williams (WSH WRs) Over Rec Yds (+1.6 tgt/g with Terry McLaurin Out)"
+      ]
+    },
+    {
+      "game_id": "401873032",
+      "key": "LAC@LAR",
+      "matchup": "LAC @ LAR",
+      "window": "Sun Nov 1, 4:05 PM ET",
+      "spread_open": "LAR -6.5",
+      "spread_current": "LAR -6.5",
+      "spread_delta": 0.0,
+      "total_open": 45.5,
+      "total_current": 45.5,
+      "line_status": "UNADJUSTED (0.0 pt move from open)",
+      "action_side": "LAR -6.5 (-110) \u00b7 Opposing Team Front-Run before key -7.0",
+      "action_type": "Opposing Team Spread Front-Run",
+      "unpriced_edge_pts": "+1.5 pts toward LAR (Crosses key number -7.0 if McConkey/Alt sit)",
+      "key_unresolved_players": [
+        {
+          "player": "Ladd McConkey & Tre Harris",
+          "team": "LAC",
+          "pos": "WR1 / WR2",
+          "status": "Questionable (Concussion / Hamstring)",
+          "p_play": 0.55,
+          "p_play_well": 0.38,
+          "p_decoy": 0.17,
+          "p_void": 0.45,
+          "impact_note": "Top two LAC receivers + FB Alec Ingold (IR) on report"
+        },
+        {
+          "player": "Joe Alt, Kayode Awosika & Derwin James",
+          "team": "LAC",
+          "pos": "OT / G / FS",
+          "status": "Questionable (OL x2 + Hamstring)",
+          "p_play": 0.58,
+          "p_play_well": 0.34,
+          "p_decoy": 0.24,
+          "p_void": 0.42,
+          "impact_note": "2 starting OL + All-Pro FS Derwin James + CB Donte Jackson (Hamstring) Questionable"
+        }
+      ],
+      "why_take_now": "Spread sits at LAR -6.5 (just under the key number 7) despite LAC having WR Ladd McConkey (Concussion), WR Tre Harris (Hamstring), OT Joe Alt, G Kayode Awosika, FS Derwin James (Hamstring), and CB Donte Jackson (Hamstring) all Questionable.",
+      "complementary_props": [
+        "Omarion Hampton (LAC RB) Receiving Overs (+1.0 tgt/g if Tre Harris/McConkey sit)",
+        "Puka Nacua (LAR WR) Anytime TD / Rec Yds (+2.2 tgt/g with TE Terrance Ferguson on IR)"
+      ]
+    },
+    {
+      "game_id": "401873036",
+      "key": "CHI@SEA",
+      "matchup": "CHI @ SEA",
+      "window": "Mon Nov 2, 8:15 PM ET (MNF)",
+      "spread_open": "SEA -3.0",
+      "spread_current": "SEA -3.0",
+      "spread_delta": 0.0,
+      "total_open": 46.5,
+      "total_current": 46.5,
+      "line_status": "UNADJUSTED (Sitting on key number -3.0)",
+      "action_side": "SEA -3.0 (-110) / SEA ML (-166) \u00b7 Trench & Skill Front-Run",
+      "action_type": "Opposing Team Spread Front-Run",
+      "unpriced_edge_pts": "+1.5 pts toward SEA (Projects SEA -4.5)",
+      "key_unresolved_players": [
+        {
+          "player": "Kyle Monangai & Cole Kmet",
+          "team": "CHI",
+          "pos": "RB / TE1",
+          "status": "Questionable (Toe) / IR (Knee)",
+          "p_play": 0.55,
+          "p_play_well": 0.3,
+          "p_decoy": 0.25,
+          "p_void": 0.45,
+          "impact_note": "Monangai vacates 15.0 car/g (38% share, 17.7 impact) while Kmet is on IR + LB T.J. Edwards pending"
+        },
+        {
+          "player": "Quenton Nelson + Anthony Bradford (SEA OL Upgrade)",
+          "team": "SEA",
+          "pos": "LG / RG",
+          "status": "Active \u2014 Acquired 8x Pro Bowl LG + Activated RG",
+          "p_play": 1.0,
+          "p_play_well": 0.92,
+          "p_decoy": 0.08,
+          "p_void": 0.0,
+          "impact_note": "Major interior OL upgrade for Seattle's ground game & Sam Darnold pass protection"
+        }
+      ],
+      "why_take_now": "Line remains frozen at SEA -3.0 even after Seattle acquired 8x Pro Bowl LG Quenton Nelson and activated RG Anthony Bradford, while Chicago's 15-carry/g RB Kyle Monangai (Toe, 30% Play Well) and TE Cole Kmet (IR) leave Chicago leaning on condensed looks.",
+      "complementary_props": [
+        "D'Andre Swift (CHI RB) Anytime TD (+7.6 car/g & 1.33 TD/g without Monangai)",
+        "Colston Loveland (CHI TE) Over 42.5 Rec Yds / Over 4.5 Recs (8.0 tgt/g without Monangai/Kmet)"
+      ]
+    }
+  ]
+}
