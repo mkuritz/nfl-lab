@@ -72,16 +72,17 @@ def books_obj(d, k=None):
 # ---- reporter / outlet attributions in public text (standing rule: no data-source names). Generic patterns, not a name list,
 # so player names (e.g. a kicker who shares a reporter's surname) are never touched. Logs/history are never rewritten.
 _N = r"[A-Z][\w'.-]+(?:\s+[A-Z]\.)*(?:\s+[A-Z][\w'.-]+){1,2}"
-_OUT = r"(?:the\s+)?[A-Z][\w'.&-]*(?:\s+(?:[A-Z0-9][\w'.&-]*|of|the|and))*"
+_OUT = r"(?:the\s+)?[A-Z][\w'&-]*(?:\.com)?(?:\s+(?:[A-Z0-9][\w'&-]*(?:\.com)?|of|the|and))*"
 RR = [(re.compile(a), b) for a, b in [
     (r",?\s*%s\s+of\s+[^,.;]*?\s+report(?:s|ed)\b" % _N, ""),                          # ", Jane Doe of The Outlet reports"
-    (r",?\s*(?:a\s+(?:team\s+|league\s+)?source|sources?)\s+told\s+%s(?=[.;,]|$)" % _OUT, ""),   # ", sources told NFL Network"
-    (r",?\s*(?:according to|per)\s+(?!a source\b)%s(?:'s\s+%s)?(?=[.;,]|$)" % (_OUT, _N), ""),
+    (r",?\s*(?:a\s+(?:team\s+|league\s+)?source|(?:team\s+|league\s+)?sources?)\s+told\s+%s(?=[.;,]|$)" % _OUT, ""),   # ", sources told NFL Network"
+    (r"\btold\s+%s\s+of\s+%s\s+(?=that\b)" % (_N, _OUT), "said "),
+    (r",?\s*\b(?:according to|per)\s+(?!a source\b)%s(?:'s\s+%s)?(?=[.;,]|$)" % (_OUT, _N), ""),
     (r"\s+and\s+%s's\s+%s(?=[.;]|$)" % (_OUT, _N), ""),                                 # "from the Titans and NFL Network's Ian Rapoport."
     (r"\s+from\s+(?:%s,\s+)+%s,?\s+and\s+%s(?=[.;]|$)" % (_N, _N, _N), ""),             # "rankings from A, B, C and D."
     (r"^%s\s+reports\s+on\s+" % _N, "Report on "),
     (r"^%s\s+reports\s+(?:that\s+)?" % _N, "Report: "),
-    (r"^%s\s+details\s+" % _N, "Breakdown: "),
+    (r"^%s\s+details\s+(?!(?:his|her|their|how he|how she|why he|why she)\b)" % _N, "Breakdown: "),
     (r"([?.!])\s*%s\s+(?:weighs in|reacts|explains|breaks it down)\s*$" % _N, r"\1"),
     (r",?\s*%s\s+report(?:s|ed)\s*(?=[.;]|$)" % _N, ""),                                # trailing ", Jane Doe reports."
 ]]
