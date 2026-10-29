@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-29T15:08-04:00",
-  "updated_et": "Oct 29, 2026 \u00b7 3:08 PM ET",
+  "updated": "2026-10-29T17:01-04:00",
+  "updated_et": "Oct 29, 2026 \u00b7 5:01 PM ET",
   "week": 8,
   "season": 2026,
   "title": "Early Injury Line Adjustment",
@@ -50,7 +50,7 @@
   "summary_counts": {
     "prop_cascades": 39,
     "unadjusted_game_lines": 8,
-    "featured_tnf_lean": "CAR ML (+160) & Tucker Kraft o46.5 Rec Yds (Matthew Golden Q - Shoulder/Foot)"
+    "featured_tnf_lean": "CAR ML (+154) lean, reduced: Matthew Golden (Q) trending toward playing; CAR CB Akayleb Evans on IR"
   },
   "prop_freerolls": [
     {
@@ -61,11 +61,11 @@
       "day": "2026-10-29",
       "pos": "WR",
       "role": "WR1",
-      "status": "Questionable",
-      "unconfirmed": false,
+      "status": "Questionable \u00b7 trending toward playing (unconfirmed report)",
+      "unconfirmed": true,
       "injury": "Shoulder",
       "impact_score": 11.8,
-      "note": "The Packers expect Golden (shoulder/foot), who is listed as questionable for Thursday night's game against the Panthers, to suit up.",
+      "note": "Unconfirmed report: still Questionable but trending toward playing tonight. The Packers expect Golden (shoulder/foot), who is listed as questionable for Thursday night's game against the Panthers, to suit up.",
       "usage": {
         "tg_g": 9.9,
         "tg_share_pct": 26,
@@ -74,11 +74,12 @@
         "rz_share_pct": 18
       },
       "probabilities": {
-        "p_play": 0.48,
-        "p_play_well": 0.22,
-        "p_decoy": 0.26,
-        "p_void": 0.52,
-        "profile": "Short-Week DNP (Shoulder/Foot) \u2014 High Void (52%) or Snap-Count (26%) Risk"
+        "p_play": 0.78,
+        "p_play_well": 0.55,
+        "p_decoy": 0.23,
+        "p_void": 0.22,
+        "profile": "Trending Toward Playing (unconfirmed report) \u2014 78% Play / 55% Full Workload / 22% Inactive",
+        "unconfirmed_report": true
       },
       "starter_prop": {
         "aid": "4701936",
@@ -87,9 +88,9 @@
         "price": -113,
         "book": "Book B"
       },
-      "strategy_code": "DECOY_SNAP_HEDGE",
-      "strategy_badge": "\ud83d\udee1\ufe0f Decoy / Snap-Count Hedge + Void Freeroll",
-      "execution_plan": "Primary: Tucker Kraft Over 44.5 Receiving Yards (+2.5 targets/g \u00b7 +8% TD rate). Pair Option 1 (Decoy Hedge): Matthew Golden Under 59.5 Receiving Yards + Tucker Kraft Over 44.5 Receiving Yards (wins 2-0 if Matthew Golden suits up on a 26% pitch count; if Inactive [52%], Matthew Golden leg VOIDS and Tucker Kraft freerolls). Pair Option 2 (Void Freeroll): Matthew Golden Over 59.5 Receiving Yards + Tucker Kraft Over 44.5 Receiving Yards if pre-game reports confirm full workload vs. scratch.",
+      "strategy_code": "WATCH_TRENDING_IN",
+      "strategy_badge": "\ud83d\udc40 Watch: Starter Trending Toward Playing",
+      "execution_plan": "Matthew Golden is trending toward playing (78% Play / 55% full workload, unconfirmed). The Tucker Kraft front-run is downgraded: wait for inactives; only act if Matthew Golden is ruled out.",
       "beneficiaries": [
         {
           "player": "Tucker Kraft",
@@ -6179,7 +6180,7 @@
       "line_status": "UNADJUSTED (0.0 pt move from open)",
       "action_side": "CAR ML (+154 consensus) \u00b7 Lean Carolina Panthers Win (also CAR +3.5)",
       "action_type": "Moneyline & Bounce-Back Lean (dog)",
-      "unpriced_edge_pts": "+1.5 pts toward CAR (Fair Line GB -2.0 if Golden sits/limited)",
+      "unpriced_edge_pts": "+0.5 to +1.0 pts toward CAR (Fair Line GB -2.5 to -3.0 with Golden trending toward playing and a thinner CAR secondary)",
       "key_unresolved_players": [
         {
           "player": "Keisean Nixon",
@@ -6194,6 +6195,30 @@
           "impact_note": "Reported questionable for tonight vs CAR (shoulder). No backup confirmed; inactives about 6:45 PM ET."
         },
         {
+          "player": "Matthew Golden",
+          "team": "GB",
+          "pos": "WR",
+          "status": "Questionable (Shoulder/Foot) \u00b7 trending toward playing (unconfirmed report)",
+          "unconfirmed": true,
+          "p_play": 0.78,
+          "p_play_well": 0.55,
+          "p_decoy": 0.23,
+          "p_void": 0.22,
+          "impact_note": "Unconfirmed report: still Questionable but trending toward playing tonight."
+        },
+        {
+          "player": "Akayleb Evans",
+          "team": "CAR",
+          "pos": "CB",
+          "status": "Injured Reserve (Triceps)",
+          "unconfirmed": false,
+          "p_play": 0.0,
+          "p_play_well": 0.0,
+          "p_decoy": 0.0,
+          "p_void": 1.0,
+          "impact_note": "Confirmed: placed on IR (was already Out for tonight). CAR signed CB Malcolm DeWalt IV and elevated CB Marco Wilson and OL Jake Curhan, leaving a thinner CAR secondary; small, unquantified lift for GB pass catchers (no model adjustment to prop prices)."
+        },
+        {
           "player": "Micah Parsons & Zaire Franklin",
           "team": "GB",
           "pos": "EDGE / LB",
@@ -6203,20 +6228,9 @@
           "p_decoy": 0.03,
           "p_void": 0.95,
           "impact_note": "GB missing top pass rusher & tackling LB plus 3 OL starters (Sean Rhyan Out, Jacob Monk IR, Travis Glover Q)"
-        },
-        {
-          "player": "Matthew Golden",
-          "team": "GB",
-          "pos": "WR1",
-          "status": "Questionable (Shoulder/Foot \u00b7 DNP Tue)",
-          "p_play": 0.48,
-          "p_play_well": 0.22,
-          "p_decoy": 0.26,
-          "p_void": 0.52,
-          "impact_note": "9.9 tgt/g (26% share, 18% RZ share); Jordan Love averages -69.1 pass yds/g without Golden (3G sample)"
         }
       ],
-      "why_take_now": "Market remains frozen at GB -3.5 despite GB WR1 Matthew Golden missing Tuesday's walkthrough (48% Play / 22% Play Well), GB missing Micah Parsons, Zaire Franklin, and 3 OL starters (6th pct run-blocking OL), and GB going 0-8-1 ATS in its last 9 games after a loss. Meanwhile, Carolina is 10-5 SU (66.7%) in its last 15 games after a loss and 15-0 ATS (100%) in its last 15 after a loss as an underdog\u2014including a 16-13 outright win at Lambeau Field in 2025 Week 9 right after a blowout home loss.",
+      "why_take_now": "Market remains frozen at GB -3.5. GB WR1 Matthew Golden is still Questionable but now trending toward playing (78% Play / 55% Play Well, unconfirmed), which trims the CAR case; CAR also lost CB Akayleb Evans to IR and is leaning on newly signed/elevated corners, a small plus for GB pass catchers. Still: GB missing Micah Parsons, Zaire Franklin, and 3 OL starters (6th pct run-blocking OL), and GB going 0-8-1 ATS in its last 9 games after a loss. Meanwhile, Carolina is 10-5 SU (66.7%) in its last 15 games after a loss and 15-0 ATS (100%) in its last 15 after a loss as an underdog\u2014including a 16-13 outright win at Lambeau Field in 2025 Week 9 right after a blowout home loss.",
       "complementary_props": [
         "Tucker Kraft (GB TE) Over 46.5 Rec Yds (-113 Book A) / Over 4.5 Recs (-105 Book G) (+2.5 tgt/g if Golden sits)",
         "Josh Jacobs (GB RB) Over 80.5 Rush + Rec Yds (-111 Book B) & Anytime TD (-120 Book W)",
@@ -6226,7 +6240,7 @@
         "CAR": 154,
         "GB": -185
       },
-      "unconfirmed_reports": 1
+      "unconfirmed_reports": 3
     },
     {
       "game_id": "401873026",
