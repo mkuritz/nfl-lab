@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><script src="https://sportslabshq.com/sl/ds.js?v=1"></script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css?v=1029b"><script src="https://sportslabshq.com/sl/sl-sports.js?v=2"></script><script src="navcfg-v2.js"></script><script src="v2.js?v=1030s"></script><title>Matchups · NFL Hub</title><style>
+.mu{margin:10px 0}.mu>summary{list-style:none;cursor:pointer;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 14px}.mu>summary::-webkit-details-marker{display:none}.mu>summary .lg{width:26px;height:26px}.mu>summary b{font-size:16px}.mu>summary .mut{margin-left:auto}.mu[open]>summary{border-bottom:1px solid #23314f}.mub{padding:4px 14px 14px}
+.mub h4{margin:14px 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:#38d0f0}.ed{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:640px){.ed{grid-template-columns:1fr}}
+.eb{background:#111a2e;border-radius:10px;padding:8px 10px}.er{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin:6px 0;font-size:13px}.er .bar{grid-column:1/3;display:flex;height:6px;border-radius:3px;overflow:hidden;background:#23314f}.er .bar i{display:block}.pos{color:#8ee04a}.neg{color:#ff5d6c}.nav-na{color:#94a3b8;font-style:italic}.pl{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}.mub ul{margin:4px 0;padding-left:18px}.mub li{margin:3px 0}
+</style><script src="https://sportslabshq.com/sl/sl.js?v=12" defer></script></head><body><div class="w">
+<h2 style="margin-top:14px">Matchups</h2><p class="mut sm" id="sub">Loading this week's games…</p><div id="out"></div>
+<footer>Unit grades are Sports Labs ratings (0–100 percentile vs the league) built from play-by-play efficiency, sack and pressure rates. Position defense ranks are per-game production allowed (1 = stingiest). Game plans are rule-based summaries of these inputs, not film study or coach statements. Sections without inputs show "not available yet".</footer></div>
+<script>
+(function(){
+var BL="https://betlab.sportslabshq.com/";
+function E(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function J(u){return fetch(u).then(function(r){return r.ok?r.json():null}).catch(function(){return null})}
+function K(t){return t=="LAR"?"LA":t=="WSH"?"WAS":t}           // teams_v2 keys
+function V(t){return t=="LA"?"LAR":t=="WAS"?"WSH":t}           // hub keys
+var v=Math.floor(Date.now()/6e5);
+Promise.all([J("data/v2.json?v="+v),J("data/teams_v2.json?v="+v),J("data/nfl_dvp.json?v="+v),J(BL+"data/golden_source.json?v="+v),J(BL+"data/injuries_nfl.json?v="+v),J("data/trends.json?v="+v),J("data/pindex.json?v="+v)]).then(function(R){
+ var D=R[0]||{},T=R[1]||{},DV=(R[2]||{}).teams||{},GS=R[3],GI=R[4]||{},TR=R[5]||{},PI=(R[6]||{}).p||[];
+ var gsList=[];if(GS&&GS.game_scripts){var g=GS.game_scripts;gsList=((g.scripts_by_sport||g).nfl)||[]}
+ var byGid={};gsList.forEach(function(s){byGid[String(s.game_id)]=s});
+ var today=new Date().toLocaleDateString("en-CA",{timeZone:"America/New_York"});var games=(TR.upcoming||[]).filter(function(u){return !u.day||u.day>=today}).filter(function(u,i,A){return u.week==Math.min.apply(null,A.map(function(x){return x.week}))}).map(function(u){return{id:String(u.espn||""),away:V(u.away),home:V(u.home),day:u.day,time:u.time,total:u.total,sh:u.spread_home,div:u.div}});
+ if(!games.length)games=gsList.map(function(s){return{id:String(s.game_id),away:V(s.away),home:V(s.home),day:(s.time||"").slice(0,10)}});
+ var U=T.units||{};function u(unit,t){var x=U[unit];return x&&x[K(t)]!=null?x[K(t)]:null}
+ var pidByName={};PI.forEach(function(p){pidByName[p[1]+"|"+V(p[2])]=p[0]});
+ var snap={};Object.keys(GI).forEach(function(t){(GI[t]||[]).forEach(function(p){snap[p.name+"|"+V(t)]=p.snap})});
+ var feat={};(D.rows||[]).forEach(function(r){feat[r.name+"|"+r.team]=1});
+ function pl(n,t,id){id=id||pidByName[n+"|"+t];return id?'<span class="pl" data-pid="'+E(id)+'">'+E(n)+'</span>':E(n)}
+ function tm(t){return '<span data-nflteam="'+E(t)+'">'+E(t)+'</span>'}
+ function logo(t){return (D.logos||{})[t]||""}
+ function edgeRow(lb,ot,ov,dt,dv){if(ov==null||dv==null)return '';var d=ov-dv,a=Math.round(ov/(ov+dv||1)*100);return '<div class="er"><span>'+lb+'</span><b class="'+(d>=15?"pos":d<=-15?"neg":"")+'">'+(d>0?"+":"")+d+'</b><span class="mut sm" style="grid-column:1/3">'+E(ot)+' '+ov+' vs '+E(dt)+' '+dv+'</span><div class="bar"><i style="width:'+a+'%;background:#38d0f0"></i><i style="width:'+(100-a)+'%;background:#ff8a5b"></i></div></div>'}
+ function edges(o,d){var h=edgeRow("O-line pass block vs pass rush",o,u("Pass block",o),d,u("Pass rush",d))+edgeRow("Run game vs run defense",o,u("Rush",o),d,u("Run defense",d))+edgeRow("Pass game vs coverage",o,u("Pass",o),d,u("Coverage",d))+edgeRow("Receivers vs coverage",o,u("Receiving",o),d,u("Coverage",d));
+  return '<div class="eb"><b>'+tm(o)+' offense vs '+tm(d)+' defense</b>'+(h||'<div class="nav-na">Unit grades not available yet.</div>')+'</div>'}
+ var BAD=/^(Out|Doubtful|Injured Reserve|Suspension)/i;
+ function crucial(t){var L=((D.inj||{})[t]||[]).filter(function(p){if(!(BAD.test(p.st)||/^Questionable/i.test(p.st)))return false;var k=p.n+"|"+t,s=snap[k];var recent=!/Injured Reserve/i.test(p.st)||(p.dt&&(Date.now()-Date.parse(p.dt))<12*864e5);if(!recent)return false;return p.pos=="QB"||(s!=null&&s>=50)||feat[k]});return L}
+ function exploit(p,opp){var pos=p.pos,x;
+  if(pos=="QB")return 'Starting-QB absence: '+tm(opp)+' defense faces a backup, so expect a run-heavier, shorter passing plan from '+tm(p.team)+'.';
+  if(/^(OT|T|G|OG|C|OL)$/.test(pos)){x=u("Pass rush",opp);return 'Line hole: '+tm(opp)+' pass rush grades '+(x==null?'(n/a)':x)+(x!=null&&x>=60?', so pressure up front is a real threat.':'.')}
+  if(/^(CB|S|SAF|FS|SS|DB)$/.test(pos)){x=u("Pass",opp);return 'Secondary hole: '+tm(opp)+' pass game grades '+(x==null?'(n/a)':x)+(x!=null&&x>=60?', so expect them to attack downfield.':'.')}
+  if(/^(DT|DE|DL|NT|EDGE|LB|ILB|OLB|MLB)$/.test(pos)){x=u("Rush",opp);var y=u("Pass block",opp);return 'Front-seven hole: '+tm(opp)+' run game grades '+(x==null?'(n/a)':x)+' and pass block '+(y==null?'(n/a)':y)+'.'}
+  if(/^(WR|TE)$/.test(pos))return 'Fewer targets to spread: '+tm(opp)+' coverage (grade '+(u("Coverage",opp)==null?'n/a':u("Coverage",opp))+') can tilt help toward the remaining receivers.';
+  if(pos=="RB")return tm(p.team)+' loses a ball-carrier against a run defense graded '+(u("Run defense",opp)==null?'n/a':u("Run defense",opp))+'.';
+  return ''}
+ function personnel(t,opp){var L=crucial(t);if(!L.length)return '<div class="eb"><b>'+tm(t)+'</b><div class="mut sm">No key players listed out or questionable.</div></div>';
+  return '<div class="eb"><b>'+tm(t)+'</b><ul>'+L.map(function(p){p.team=t;var s=snap[p.n+"|"+t];return '<li>'+pl(p.n,t,p.id)+' <span class="mut sm">'+E(p.pos)+' · '+E(p.st)+(p.d?' ('+E(p.d)+')':'')+(s!=null?' · '+s+'% snaps':'')+'</span><div class="sm">'+exploit(p,opp)+'</div></li>'}).join("")+'</ul></div>'}
+ function wrs(t){var by={};(D.rows||[]).forEach(function(r){if(r.team==t&&r.pos=="WR"&&r.market=="Receiving Yards"&&!BAD.test((r.inj||{}).st||""))by[r.name]=r});return Object.values(by).sort(function(a,b){return(b.line||0)-(a.line||0)}).slice(0,2)}
+ function coverage(o,d){var w=wrs(o),dv=(DV[d]||{}).WR,cv=u("Coverage",d);
+  var h='<div class="eb"><b>'+tm(o)+' WR1/WR2 vs '+tm(d)+' secondary</b>';
+  if(!w.length&&!dv)return h+'<div class="nav-na">Not available yet.</div></div>';
+  h+='<ul>'+w.map(function(r,i){return '<li>WR'+(i+1)+': '+pl(r.name,o,r.aid)+'</li>'}).join("")+'</ul>';
+  if(dv)h+='<div class="sm">'+tm(d)+' vs WRs: #'+dv.r+' of 32 · '+dv.yds+' yds, '+dv.rec+' rec, '+dv.td+' TD per game allowed'+(cv!=null?' · coverage grade '+cv:'')+'.'+(dv.r<=8?' A defense that can lock down outside receivers.':dv.r>=25?' Receivers have room here.':'')+'</div>';
+  return h+'<div class="nav-na sm" style="margin-top:4px">Individual corner-on-receiver assignments: not available yet.</div></div>'}
+ function lean(o,d){var rd=u("Run defense",d),cv=u("Coverage",d),rb=(DV[d]||{}).RB,qb=(DV[d]||{}).QB;if(rd==null&&!rb)return '<div class="eb"><b>'+tm(o)+' offense</b><div class="nav-na">Not available yet.</div></div>';
+  var force=rd!=null&&cv!=null&&rd>=60&&rd-cv>=20,stack=rd!=null&&cv!=null&&cv>=60&&cv-rd>=20,soft=rd!=null&&cv!=null&&rd<40&&cv<40;
+  return '<div class="eb"><b>'+tm(o)+' offense into '+tm(d)+' defense</b><div class="sm">Run defense grade '+(rd==null?'n/a':rd)+(rb?' (#'+rb.r+' vs RBs, '+rb.yds+' yds/g)':'')+' · coverage grade '+(cv==null?'n/a':cv)+(qb?' (#'+qb.r+' vs QBs, '+qb.yds+' pass yds/g)':'')+'.</div><div class="sm" style="margin-top:4px"><b>'+(force?'Run is stopped, throw is forced.':stack?'Coverage holds, run lane opens.':soft?'Both phases are exposed: no need to force either.':'No strong tilt.')+'</b></div></div>'}
+ function plan(o,d){var r=[],why=[];var pb=u("Pass block",o),pr=u("Pass rush",d),ru=u("Rush",o),rd=u("Run defense",d),pa=u("Pass",o),cv=u("Coverage",d);
+  if(ru!=null&&rd!=null){if(ru-rd>=20){r.push("lean on the run");why.push("run game "+ru+" vs run D "+rd)}else if(rd-ru>=20){r.push("throw early instead of forcing the run");why.push("run D "+rd+" vs run game "+ru)}}
+  if(pb!=null&&pr!=null&&pr-pb>=20){r.push("get the ball out quickly (quick game, screens)");why.push("pass rush "+pr+" vs pass block "+pb)}
+  if(pa!=null&&cv!=null&&pa-cv>=20){r.push("attack through the air");why.push("pass game "+pa+" vs coverage "+cv)}
+  var q=crucial(o).filter(function(p){return p.pos=="QB"&&BAD.test(p.st)});if(q.length){r.push("simplify the passing game around a backup QB");why.push(q[0].n+" "+q[0].st)}
+  return '<div class="eb"><b>'+tm(o)+'</b><div class="sm">'+(r.length?'Likely to '+r.join(", ")+'.':'Balanced plan: no unit gap of 20+ points.')+'</div>'+(why.length?'<div class="mut sm">Driven by: '+E(why.join("; "))+'.</div>':'')+'</div>'}
+ function script(s){if(!s)return '<div class="nav-na">Game script not available yet.</div>';var f=(s.flow||[]).filter(function(x){return /Situational|Strategic/.test(x.phase)});
+  return '<div class="sm"><b>'+E(s.headline)+'</b></div><div class="sm mut">'+E(s.pace_tempo||"")+'</div>'+f.map(function(x){return '<div class="sm" style="margin-top:4px"><b>'+E(x.phase.replace(/ & Why/,""))+':</b> '+E(x.text)+'</div>'}).join("")}
+ function card(g){var a=g.away,h=g.home,s=byGid[g.id],id=a+"@"+h,when=g.day?new Date(g.day+"T"+(g.time||"12:00")+":00-05:00"):null;
+  return '<details class="card mu" id="g-'+E(id)+'"><summary><img class="lg" src="'+E(logo(a))+'" alt=""><b>'+tm(a)+' @ '+tm(h)+'</b><img class="lg" src="'+E(logo(h))+'" alt=""><span class="mut sm">'+(when?when.toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit",timeZone:"America/New_York"})+' ET':'')+(g.div?' · Division':'')+'</span></summary><div class="mub">'+
+  '<h4>Game script</h4>'+script(s)+
+  '<h4>Key edges</h4><div class="ed">'+edges(a,h)+edges(h,a)+'</div>'+
+  '<h4>Personnel impact</h4><div class="ed">'+personnel(a,h)+personnel(h,a)+'</div>'+
+  '<h4>Coverage matchups</h4><div class="ed">'+coverage(a,h)+coverage(h,a)+'</div>'+
+  '<h4>Run vs pass lean</h4><div class="ed">'+lean(a,h)+lean(h,a)+'</div>'+
+  '<h4>Likely game plan</h4><div class="ed">'+plan(a,h)+plan(h,a)+'</div></div></details>'}
+ document.getElementById("sub").textContent=games.length?"Week "+(D.week||"")+" · "+games.length+" games. Tap a game for the full breakdown; tap a team or player for their profile.":"No games scheduled yet.";
+ document.getElementById("out").innerHTML=games.map(card).join("");
+ function openHash(){var m=/#g=([A-Z]+@[A-Z]+)/.exec(location.hash);if(m){var el=document.getElementById("g-"+m[1]);if(el){el.open=true;el.scrollIntoView({block:"start"})}}}openHash();window.addEventListener("hashchange",openHash);
+ document.addEventListener("click",function(e){var p=e.target.closest("[data-pid]");if(p&&window.NFLProfile){e.preventDefault();NFLProfile(p.dataset.pid)}});
+});
+})();
+</script><script src="nflteam.js?v=2"></script><script src="nflprofile.js?v=3"></script><script src="propintel.js?v=1" defer></script></body></html>
