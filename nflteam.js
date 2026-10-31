@@ -1,0 +1,28 @@
+/* NFL Hub team profiles: any element with data-nflteam="BUF" opens a team profile built from data/teams_v2.json (real numbers only). */
+(function(){"use strict";if(window.NFLTeam)return;
+var T=null,P=null,OV=null,LAST=null;
+function E(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function K(t){t=String(t||"").toUpperCase();return t=="LAR"?"LA":t=="WSH"?"WAS":t}
+function load(){if(P)return P;P=fetch("data/teams_v2.json?v="+Math.floor(Date.now()/6e5)).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){T=d;return d}).catch(function(){P=null;return null});return P}
+var css=document.createElement("style");css.textContent='[data-nflteam]{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}#nftpo{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px 10px}#nftpd{background:#0f172a;color:#e5e7eb;border:1px solid #23314f;border-radius:14px;max-width:560px;width:100%;padding:16px 18px;position:relative;font-size:14px}#nftpd h2{margin:0 0 4px;font-size:20px}#nftpd h3{margin:14px 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:#38d0f0}#nftpd .x{position:absolute;right:10px;top:8px;background:none;border:0;color:#e5e7eb;font-size:24px;cursor:pointer}#nftpd .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}#nftpd .c{background:#16213a;border-radius:8px;padding:6px 8px}#nftpd .c small{display:block;color:#94a3b8;font-size:11px}#nftpd .bar{height:6px;background:#23314f;border-radius:3px;margin-top:4px}#nftpd .bar i{display:block;height:6px;border-radius:3px;background:#38d0f0}#nftpd .m{color:#94a3b8;font-size:12px}';document.head.appendChild(css);
+function pct(x){return x==null?"—":(x*100).toFixed(x<0.1?1:0)+"%"}
+function render(t){var k=K(t),d=T||{};var pw=(d.power||[]).filter(function(p){return p.t==k})[0];var rank=pw?(d.power.indexOf(pw)+1):null;
+ if(!pw&&!(d.units&&d.units.Pass&&d.units.Pass[k]!=null))return '<button class="x" aria-label="Close" data-x>×</button><h2>'+E(t)+'</h2><p class="m">Team profile not available yet for '+E(t)+'.</p>';
+ var dv=Object.keys(d.div||{}).filter(function(n){return(" "+d.div[n]+" ").indexOf(" "+k+" ")>=0})[0];
+ var h='<button class="x" aria-label="Close" data-x>×</button><h2>'+E(t)+(pw&&pw.rec?' <span class="m">('+E(pw.rec)+')</span>':'')+'</h2><div class="m">'+(dv?E(dv)+' · ':'')+(d.season?E(d.season)+' season':'')+(d.thru?' · through Week '+E(d.thru):'')+'</div>';
+ if(pw){h+='<h3>Power Index</h3><div class="g">'+[["Power rank",rank+" of "+d.power.length],["Rating",(pw.rat>0?"+":"")+pw.rat],["QB rating adj.",pw.qb!=null?(pw.qb>0?"+":"")+pw.qb:"—"],["Projected wins",pw.w!=null?pw.w.toFixed(1):"—"],["Games left",pw.left!=null?pw.left:"—"],["Playoff odds",pct(pw.po)],["Division odds",pct(pw.div)],["Conference odds",pct(pw.conf)],["Title odds",pct(pw.sb)]].map(function(x){return '<div class="c"><small>'+x[0]+'</small><b>'+E(x[1])+'</b></div>'}).join("")+'</div>'}
+ var U=d.units||{},un=Object.keys(U).filter(function(u){return U[u]&&U[u][k]!=null});
+ if(un.length)h+='<h3>Unit grades <span class="m">(percentile vs league, 100 = best)</span></h3><div class="g">'+un.map(function(u){var v=U[u][k];return '<div class="c"><small>'+E(u)+'</small><b>'+v+'</b><div class="bar"><i style="width:'+Math.max(2,Math.min(100,v))+'%"></i></div></div>'}).join("")+'</div>';
+ var ol=(d.ol||[]).filter(function(x){return x.t==k})[0],dl=(d.dl||[]).filter(function(x){return x.t==k})[0];
+ if(ol||dl){h+='<h3>Trenches</h3><div class="g">'+(ol?[["Sacks allowed",ol.sk],["Pressure rate allowed",pct(ol.qhr)],["Adj. line yards",ol.aly],["Stuff rate allowed",pct(ol.stuff)]]:[]).concat(dl?[["Sacks",dl.dsk],["Pressure rate",pct(dl.dqhr)],["Stuff rate",pct(dl.dstuff)]]:[]).map(function(x){return '<div class="c"><small>'+x[0]+'</small><b>'+E(x[1]==null?"—":x[1])+'</b></div>'}).join("")+'</div>';
+  [ol&&ol.avail?["OL availability",ol.avail]:null,dl&&dl.avail?["DL availability",dl.avail]:null].filter(Boolean).forEach(function(x){h+='<div class="m" style="margin-top:6px"><b>'+x[0]+':</b> '+E(x[1])+'</div>'})}
+ var tr=(d.trades||[]).filter(function(x){return x.from==k||x.to==k});
+ if(tr.length)h+='<h3>Recent trades</h3>'+tr.map(function(x){return '<div class="c" style="margin-bottom:6px"><b>'+E(x.player)+' ('+E(x.pos)+')</b> '+E(x.from)+' → '+E(x.to)+' <span class="m">'+E(x.date)+'</span>'+(x.impact?'<div class="m">'+E(x.impact)+'</div>':'')+'</div>'}).join("");
+ return h}
+function close(){if(OV){OV.remove();OV=null}if(LAST&&LAST.focus)LAST.focus()}
+function open(t){LAST=document.activeElement;if(OV)OV.remove();OV=document.createElement("div");OV.id="nftpo";OV.innerHTML='<div id="nftpd" role="dialog" aria-modal="true" aria-label="Team profile"><button class="x" aria-label="Close" data-x>×</button><p class="m">Loading team profile…</p></div>';document.body.appendChild(OV);
+ OV.addEventListener("click",function(e){if(e.target==OV||e.target.hasAttribute("data-x"))close()});
+ load().then(function(){if(OV)OV.firstChild.innerHTML=T?render(t):'<button class="x" aria-label="Close" data-x>×</button><p class="m">Team profile not available yet.</p>'})}
+document.addEventListener("click",function(e){var el=e.target&&e.target.closest&&e.target.closest("[data-nflteam]");if(!el)return;e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();open(el.getAttribute("data-nflteam"))},true);
+document.addEventListener("keydown",function(e){if(e.key=="Escape"&&OV)close()});
+window.NFLTeam=open;})();
