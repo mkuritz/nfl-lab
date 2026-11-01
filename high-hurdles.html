@@ -9,19 +9,26 @@
 </style><script src="/sl-neutral.js?v=2" defer></script></head><body><div class="w">
 <header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">High Hurdles</span></header>
 <div class="card"><h2>🚀 High Hurdles <span class="mut sm" id="meta"></span></h2>
-<div class="mut sm">Overs that can clear their line by a lot: rushing yards, receiving yards, 2+ TDs and interceptions thrown. Each one shows a "smash" mark well above the line, our chance to reach it, and the book's price for it. Only spots that pass our full review show, so some days the list is short or empty.</div>
-<div id="b"><div class="mut">Loading…</div></div>
-<div class="mut sm" id="na" style="margin-top:8px"></div></div>
+<div class="mut sm">Players most likely to clear their line by a lot. Each section is ranked by our chance of reaching the "smash" mark, not by price. Book prices are shown when posted. Only spots that pass our full review show, so a section can be short or empty.</div></div>
+<div id="secs"><div class="card"><div class="mut">Loading…</div></div></div>
+<div class="mut sm" id="na" style="margin:8px 0"></div>
 <footer>Sports Labs model. Prices are the best available at listed books. Not betting advice. 21+.</footer></div>
 <script>
 const B="https://betlab.sportslabshq.com/data/",esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),pc=x=>x==null?"–":Math.round(x*100)+"%",ET={timeZone:"America/New_York"},
 tm=t=>new Date(t).toLocaleString("en-US",{...ET,weekday:"short",hour:"numeric",minute:"2-digit"})+" ET",LB={"Rushing Yards":"Rush yds","Receiving Yards":"Rec yds","2+ TDs":"TDs","Passing Interceptions":"INTs thrown"};
-fetch(B+"nfl_high_hurdles.json?t="+Date.now()).then(r=>r.json()).then(d=>{
- const R=(d.rows||[]).sort((a,b)=>b.score-a.score);
- document.getElementById("meta").textContent=`${R.length} Highlighted · updated ${new Date(d.updated).toLocaleTimeString("en-US",{...ET,hour:"numeric",minute:"2-digit"})} ET`;
- document.getElementById("b").innerHTML=R.length?R.map((r,i)=>`<div class="hh"><div class="t"><span><span class="tag">#${i+1}</span> <span class="n">${esc(r.player)}</span> <span class="m">${esc(r.team)} ${esc(r.pos)} ${esc(r.opp)} · ${tm(r.time)}</span></span><span><b>${esc(r.smash)}+ ${esc(LB[r.market]||r.market)}</b> <b>${esc(r.price)}</b> <span class="m">${esc(r.book)}</span></span></div>
- <div class="g"><div><span>Line</span><b>o${esc(r.line)}</b></div><div><span>Our median (L10)</span><b>${esc(r.proj??"–")}</b></div><div><span>Ceiling (90th pct)</span><b>${esc(r.p90??"–")}</b></div><div><span>Smash chance</span><b>${pc(r.p_smash)}</b></div><div><span>Book implies</span><b>${pc(r.p_book)}</b></div></div>
- <ul>${(r.reasons||[]).map(x=>`<li>${esc(x)}</li>`).join("")}${r.review&&r.review.strategic_matchup?`<li>${esc(r.review.strategic_matchup)}</li>`:""}</ul></div>`).join(""):'<div class="mut" style="margin-top:8px">No High Hurdles cleared every check for the current slate yet.</div>';
- document.getElementById("na").textContent=(d.unavailable||[]).map(x=>x.replace(/ \(.*\)/,"")+": not available yet").join(" · ");
-}).catch(()=>{document.getElementById("b").innerHTML='<div class="mut">High Hurdles not available yet.</div>'});
+const HD={rush:"🏃 Rushing yards",rec:"🙌 Receiving yards",td2:"🔥 2+ TDs",def:"🛡️ Defense: sacks & interceptions"},SM={rush:"Rush yds",rec:"Rec yds",td2:"TDs",sack:"sack",dint:"INT"};
+const card=(r,i,sec)=>{const d=sec=="sack"||sec=="dint",mk=d?(sec=="sack"?"Records a sack":"Records an INT"):`${esc(r.smash)}+ ${SM[sec]}`;
+ const px=r.price?`<b>${esc(r.price)}</b> <span class="m">${esc(r.book)}</span>`:`<span class="m">no book price yet</span>`;
+ const cells=d?[["Our chance",pc(r.p_smash)],["Our fair odds",esc(r.fair??"–")],["Games with one",pc(r.proj)],["Book price",r.price?esc(r.price):"–"],["Book implies",r.p_book?pc(r.p_book):"–"]]
+  :sec=="td2"?[["Our 2+ TD chance",pc(r.p_smash)],["Our fair odds",esc(r.fair??"–")],["Our anytime TD",pc(r.proj)],["Book price",r.price?esc(r.price):"–"],["Book implies",r.p_book?pc(r.p_book):"–"]]
+  :[["Line","o"+esc(r.line)],["Our median (L10)",esc(r.proj??"–")],["Ceiling (90th pct)",esc(r.p90??"–")],["Smash chance",pc(r.p_smash)],["Our fair / book",esc(r.fair??"–")+" / "+(r.price?esc(r.price):"–")]];
+ return `<div class="hh"><div class="t"><span><span class="tag">#${i+1}</span> <span class="n">${esc(r.player)}</span> <span class="m">${esc(r.team)} ${esc(r.pos)} vs ${esc(String(r.opp).replace(/^(vs |@)/,""))} · ${tm(r.time)}</span></span><span><b>${mk}</b> ${px}</span></div>
+ <div class="g">${cells.map(c=>`<div><span>${c[0]}</span><b>${c[1]}</b></div>`).join("")}</div><ul>${(r.reasons||[]).map(x=>`<li>${esc(x)}</li>`).join("")}${r.review&&r.review.note?`<li>${esc(r.review.note)}</li>`:""}</ul></div>`};
+fetch(B+"nfl_high_hurdles.json?t="+Date.now()).then(r=>r.json()).then(d=>{const S=d.sections||{};let n=0;
+ const blk=(k,rows,sec)=>{n+=rows.length;return rows.length?rows.map((r,i)=>card(r,i,sec)).join(""):`<div class="mut" style="margin-top:6px">Nothing cleared every check for the current slate yet.</div>`};
+ const def=["sack","dint"].map(s=>`<h3 style="margin:10px 0 2px;font-size:14px">${s=="sack"?"Sacks":"Interceptions"}</h3>`+blk(s,S[s]||[],s)).join("");
+ document.getElementById("secs").innerHTML=["rush","rec","td2"].map(s=>`<div class="card"><h2>${HD[s]}</h2>${blk(s,S[s]||[],s)}</div>`).join("")+`<div class="card"><h2>${HD.def}</h2>${def}</div>`;
+ document.getElementById("meta").textContent=`${n} Highlighted · updated ${new Date(d.updated).toLocaleTimeString("en-US",{...ET,hour:"numeric",minute:"2-digit"})} ET`;
+ document.getElementById("na").textContent=(d.unavailable||[]).map(x=>x+": not available yet").join(" · ");
+}).catch(()=>{document.getElementById("secs").innerHTML='<div class="card"><div class="mut">High Hurdles not available yet.</div></div>'});
 </script><script src="navcfg.js"></script><script src="side.js"></script></body></html>
