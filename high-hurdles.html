@@ -9,7 +9,7 @@
 </style><script src="/sl-neutral.js?v=2" defer></script></head><body><div class="w">
 <header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">High Hurdles</span></header>
 <div class="card"><h2>🚀 High Hurdles <span class="mut sm" id="meta"></span></h2>
-<div class="mut sm">Players most likely to clear their line by a lot. Each section is ranked by our chance of reaching the "smash" mark, not by price. Book prices are shown when posted. Only spots that pass our full review show, so a section can be short or empty.</div></div>
+<div class="mut sm">Players most likely to clear their line by a lot. Every play is plus money (book price +100 or longer; where no book has posted yet, our fair odds are plus money). Each section is ranked by our chance of hitting. Book prices are shown when posted. High-conviction spots are on top; spots we like with a caution note follow. Spots flagged as traps, injured players and anything without real data are left out.</div></div>
 <div id="secs"><div class="card"><div class="mut">Loading…</div></div></div>
 <div class="mut sm" id="na" style="margin:8px 0"></div>
 <footer>Sports Labs model. Prices are the best available at listed books. Not betting advice. 21+.</footer></div>
@@ -17,12 +17,12 @@
 const B="https://betlab.sportslabshq.com/data/",esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),pc=x=>x==null?"–":Math.round(x*100)+"%",ET={timeZone:"America/New_York"},
 tm=t=>new Date(t).toLocaleString("en-US",{...ET,weekday:"short",hour:"numeric",minute:"2-digit"})+" ET",LB={"Rushing Yards":"Rush yds","Receiving Yards":"Rec yds","2+ TDs":"TDs","Passing Interceptions":"INTs thrown"};
 const HD={rush:"🏃 Rushing yards",rec:"🙌 Receiving yards",td2:"🔥 2+ TDs",def:"🛡️ Defense: sacks & interceptions"},SM={rush:"Rush yds",rec:"Rec yds",td2:"TDs",sack:"sack",dint:"INT"};
-const card=(r,i,sec)=>{const d=sec=="sack"||sec=="dint",mk=d?(sec=="sack"?"Records a sack":"Records an INT"):`${esc(r.smash)}+ ${SM[sec]}`;
+const card=(r,i,sec)=>{const d=sec=="sack"||sec=="dint",mk=d?(sec=="sack"?(r.smash>=2?"2+ sacks":"Records a sack"):"Records an INT"):`${esc(r.smash)}+ ${SM[sec]}`;
  const px=r.price?`<b>${esc(r.price)}</b> <span class="m">${esc(r.book)}</span>`:`<span class="m">no book price yet</span>`;
- const cells=d?[["Our chance",pc(r.p_smash)],["Our fair odds",esc(r.fair??"–")],["Games with one",pc(r.proj)],["Book price",r.price?esc(r.price):"–"],["Book implies",r.p_book?pc(r.p_book):"–"]]
+ const cells=d?[["Our chance",pc(r.p_smash)],["Our fair odds",esc(r.fair??"–")],["Season games hit",pc(r.proj)],["Book price",r.price?esc(r.price):"–"],["Book implies",r.p_book?pc(r.p_book):"–"]]
   :sec=="td2"?[["Our 2+ TD chance",pc(r.p_smash)],["Our fair odds",esc(r.fair??"–")],["Our anytime TD",pc(r.proj)],["Book price",r.price?esc(r.price):"–"],["Book implies",r.p_book?pc(r.p_book):"–"]]
   :[["Line","o"+esc(r.line)],["Our median (L10)",esc(r.proj??"–")],["Ceiling (90th pct)",esc(r.p90??"–")],["Smash chance",pc(r.p_smash)],["Our fair / book",esc(r.fair??"–")+" / "+(r.price?esc(r.price):"–")]];
- return `<div class="hh"><div class="t"><span><span class="tag">#${i+1}</span> <span class="n">${esc(r.player)}</span> <span class="m">${esc(r.team)} ${esc(r.pos)} vs ${esc(String(r.opp).replace(/^(vs |@)/,""))} · ${tm(r.time)}</span></span><span><b>${mk}</b> ${px}</span></div>
+ return `<div class="hh"><div class="t"><span><span class="tag">#${i+1}</span> ${r.tier=="confirmed"?'<span class="tag" style="background:#ffc857">✔ High conviction</span>':`<span class="tag" style="background:#ffffff18;color:#ffd58a">Caution: ${esc(r.caution||"")}</span>`} <span class="n">${esc(r.player)}</span> <span class="m">${esc(r.team)} ${esc(r.pos)} vs ${esc(String(r.opp).replace(/^(vs |@)/,""))} · ${tm(r.time)}</span></span><span><b>${mk}</b> ${px}</span></div>
  <div class="g">${cells.map(c=>`<div><span>${c[0]}</span><b>${c[1]}</b></div>`).join("")}</div><ul>${(r.reasons||[]).map(x=>`<li>${esc(x)}</li>`).join("")}${r.review&&r.review.note?`<li>${esc(r.review.note)}</li>`:""}</ul></div>`};
 fetch(B+"nfl_high_hurdles.json?t="+Date.now()).then(r=>r.json()).then(d=>{const S=d.sections||{};let n=0;
  const blk=(k,rows,sec)=>{n+=rows.length;return rows.length?rows.map((r,i)=>card(r,i,sec)).join(""):`<div class="mut" style="margin-top:6px">Nothing cleared every check for the current slate yet.</div>`};
