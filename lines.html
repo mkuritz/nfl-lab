@@ -24,7 +24,28 @@ function draw(){gsel.innerHTML='<button class="chip'+(sel?"":" on")+'" data-k=""
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[data-aid]");if(a){e.preventDefault();var id=a.dataset.aid;NFLV2.open(id,function(i){window.NFLProfile&&NFLProfile(i)})}});
 
 fetch("https://betlab.sportslabshq.com/data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(function(r){return r.ok?r.json():null}).catch(function(){return null}).then(function(j){return j||fetch("data/early_injury_adjust.json?v="+Math.floor(Date.now()/180000)).then(function(r){return r.ok?r.json():null})}).then(function(E0){
- if(!E0)return;var tab="props",showAll=false,box=document.getElementById("eia-mount");
+ if(!E0)return;var tab="props",showAll=false,box=document.getElementById("eia-mount"),H2H=null,hT=null,hOpen={};
+ fetch("data/h2h.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.ok?r.json():null}).catch(function(){return null}).then(function(j){if(j&&j.teams){H2H=j;hT=Object.keys(j.teams)[0];drawEia()}});
+ function hRow(p,t){var s=p.summary,G=p.games,stat;
+  if(p.def){stat='<span class="mut">'+s.g+' G · '+s.tk+' tkl · '+s.sk+' sk · '+s.int+' INT</span>'}
+  else{var bits=[];if(p.pos=="QB")bits.push(s.py_g+' pass yds/g · '+s.td+' pass TD · '+s.int+' INT · 300+: '+s.p300+'/'+s.g);
+   if(s.ry_g>=5||p.pos=="RB")bits.push(s.ry_g+' rush yds/g');if(p.pos!="QB")bits.push(s.rec_g+' rec · '+s.recy_g+' rec yds/g');
+   if(p.pos!="QB")bits.push('80+: <b>'+s.scr80+'/'+s.g+'</b> · 100+: <b class="up">'+s.scr100+'/'+s.g+'</b>');bits.push(s.skill_td+' rush/rec TD');stat=bits.join(' · ')}
+  var k=t+p.name,op=hOpen[k];
+  var gl=G.map(function(g){var c=g.season+' '+(g.stage?g.stage:'Wk '+g.week);
+   var l=p.def?(g.tk+' tkl'+(g.sk?' · '+g.sk+' sk':'')+(g.int?' · '+g.int+' INT':'')+(g.pd?' · '+g.pd+' PD':'')):
+    [g.att?g.cmp+'/'+g.att+', '+g.py+' yds, '+g.ptd+' TD, '+g.pint+' INT':'',g.car?g.car+'-'+g.ry+(g.rtd?'-'+g.rtd+' TD':'')+' rush':'',(g.tgt||g.rec)?g.rec+'-'+g.recy+(g.rectd?'-'+g.rectd+' TD':'')+' rec ('+g.tgt+' tgt)':''].filter(Boolean).join(' · ')||'—';
+   var big=!p.def&&p.pos!="QB"&&(g.ry+g.recy)>=100;
+   return '<tr><td>'+E(g.date)+'</td><td>'+E(c)+'</td><td>'+E(g.team)+'</td><td'+(big?' class="up"':'')+'>'+l+'</td></tr>'}).join("");
+  return '<div class="card" style="margin:0;background:var(--panel2)"><div style="display:flex;justify-content:space-between;gap:6px;align-items:baseline;flex-wrap:wrap"><b>'+(p.pid?'<a href="#" data-pid="'+E(p.pid)+'">'+E(p.name)+'</a>':E(p.name))+' <span class="mut">'+E(t)+' '+E(p.pos)+' · vs '+E(H2H.teams[t].opp)+'</span></b><span class="tag">'+s.g+' G vs '+E(H2H.teams[t].opp)+'</span></div>'+
+   '<div class="sm" style="margin-top:4px">'+stat+'</div>'+
+   '<div class="wrap" style="margin-top:6px"><table><tr><th>Date</th><th>Game</th><th>Team</th><th>Line</th></tr>'+(op?gl:gl.split('</tr>').slice(0,3).join('</tr>'))+'</table></div>'+
+   (G.length>3?'<button class="chip" style="margin-top:6px" data-ho="'+E(k)+'">'+(op?'Show fewer':'Show all '+G.length+' games')+'</button>':'')+'</div>'}
+ function hHtml(){if(!H2H)return '<p class="mut sm">Head-to-head history is not available for this slate yet.</p>';
+  var T=H2H.teams[hT],P=T.players,o=P.filter(function(p){return!p.def}),d=P.filter(function(p){return p.def});
+  return '<p class="mut sm" style="grid-column:1/-1;margin:0">'+E(H2H.game)+' · '+E(H2H.kick)+' · every current '+E(hT)+' player with games vs '+E(T.opp)+' (regular season and playoffs since '+H2H.since+'), any team. Sorted by 2026 role. Green rows = 100+ scrimmage yards.</p>'+
+   '<div class="chips" style="grid-column:1/-1;margin:0">'+Object.keys(H2H.teams).map(function(t){return '<button class="chip '+(t==hT?"on":"")+'" data-ht="'+E(t)+'">'+E(t)+' vs '+E(H2H.teams[t].opp)+' ('+H2H.teams[t].players.length+')</button>'}).join("")+'</div>'+
+   o.map(function(p){return hRow(p,hT)}).join("")+(d.length?'<h3 style="grid-column:1/-1;margin:6px 0 0">DEFENDERS WITH SACKS OR INTs VS '+E(T.opp)+'</h3>'+d.map(function(p){return hRow(p,hT)}).join(""):'')}
  function pc(x){return Math.round((x||0)*100)+"%"}
  function am(p){return p==null?"":p>0?"+"+p:""+p}
  function drawEia(){
@@ -56,9 +77,13 @@ fetch("https://betlab.sportslabshq.com/data/early_injury_adjust.json?v="+Math.fl
    '<div class="chips" style="margin-bottom:10px">'+
     '<button class="chip '+(tab=="props"?"on":"")+'" data-et="props">🔄 Prop Void-Freerolls &amp; Beneficiaries ('+PF.length+')</button>'+
     '<button class="chip '+(tab=="lines"?"on":"")+'" data-et="lines">📈 Unadjusted Spread &amp; ML Front-Runs ('+LO.length+')</button>'+
+    '<button class="chip '+(tab=="h2h"?"on":"")+'" data-et="h2h">🤝 Head-to-Head'+(H2H?' ('+E(H2H.game)+')':'')+'</button>'+
     (tab=="props"&&PF.length>8?'<button class="chip '+(showAll?"on":"")+'" data-ea="1">'+(showAll?"Show Top 8":"Show All "+PF.length+" Cascades")+'</button>':'')+
    '</div>'+
-   '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:10px">'+(tab=="props"?pHtml:lHtml)+'</div></div>';
+   '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:10px">'+(tab=="props"?pHtml:tab=="h2h"?hHtml():lHtml)+'</div></div>';
+  box.querySelectorAll("[data-ht]").forEach(function(b){b.onclick=function(){hT=b.dataset.ht;drawEia()}});
+  box.querySelectorAll("[data-ho]").forEach(function(b){b.onclick=function(){hOpen[b.dataset.ho]=!hOpen[b.dataset.ho];drawEia()}});
+  box.querySelectorAll("a[data-pid]").forEach(function(a){a.onclick=function(e){e.preventDefault();e.stopPropagation();window.NFLProfile&&NFLProfile(a.dataset.pid)}});
   box.querySelectorAll("[data-et]").forEach(function(b){b.onclick=function(){tab=b.dataset.et;drawEia()}});
   var ea=box.querySelector("[data-ea]");if(ea)ea.onclick=function(){showAll=!showAll;drawEia()};
  }
