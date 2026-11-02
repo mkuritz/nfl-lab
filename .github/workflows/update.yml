@@ -38,6 +38,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         run: pip install -q pandas pyarrow numpy && bash scripts/v2/run.sh
+      - name: Head-to-Head Prop Advantage (every game on the slate; display only)
+        continue-on-error: true
+        timeout-minutes: 6
+        run: pip install -q pandas pyarrow && python3 scripts/build_h2h.py
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet || (git commit -m "NFL Hub data $(date -u +%FT%TZ)" && git pull --rebase && git push)
