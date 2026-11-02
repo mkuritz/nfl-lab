@@ -11,7 +11,7 @@
 </style><script src="/sl-neutral.js?v=2" defer></script></head><body><div class="w">
 <header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Anytime TD</span></header>
 <div class="card"><h2>🔥 Most bet Anytime TDs</h2><div id="mb"><div class="mut">Loading…</div></div></div>
-<div class="card" id="kp" style="display:none"></div>
+
 <div class="card"><h2>🎯 Anytime TD <span class="mut sm" id="meta"></span></h2>
 <div class="mut sm">Started games stay listed with live results until the next slate. Verified starters only (RB1 or committee RB2 at 35%+ snaps, WR1-3, TE1). Quarterbacks are not listed. <b>Model edge</b> marks players whose TD chance in our model is 8+ points above the fair price. It is tracked on its own and is not a Bet, Lean or Highlighted play.</div>
 <div class="ctl"><input id="q" placeholder="Search player or team…" aria-label="Search"><select id="fg"><option value="">All games</option></select><select id="ft"><option value="">All teams</option></select><select id="fp"><option value="">All positions</option><option>RB</option><option>WR</option><option>TE</option></select><select id="fr"><option value="">All tiers</option><option>Bet</option><option>Lean</option><option>Pass</option></select><select id="fw"><option value="">All windows</option><option>Early</option><option>Late</option><option>Night</option></select>
@@ -53,7 +53,5 @@ Promise.all([fetch(B+"nfl_atd.json?t="+Date.now()).then(r=>r.json()),fetch(B+"nf
   }
  });
  document.getElementById("how").textContent=d.method||""}).catch(()=>{document.getElementById("b").innerHTML='<div class="mut">Board unavailable.</div>'});
-</script><script src="navcfg.js"></script><script src="side.js"></script><script>(function(){const B="https://betlab.sportslabshq.com/data/",e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),a=p=>p>0?"+"+p.toLocaleString():p,t=x=>new Date(x).toLocaleString("en-US",{weekday:"short",hour:"numeric",minute:"2-digit",timeZone:"America/New_York"})+" ET";
-fetch(B+"kyle_play.json?t="+Date.now()).then(r=>r.ok?r.json():null).then(K=>{if(!K||!K.legs.length||Math.max(...K.legs.map(l=>Date.parse(l.start)||0))<Date.now()-864e5)return;/* one-off card: hidden once its last game is a day old */const el=document.getElementById("kp");el.style.display="";
-el.innerHTML=`<h2>🎰 ${e(K.title)} <span class="m" style="font-weight:600">owner play · ${K.legs.length} legs</span></h2><div class="wrap"><table class="mb"><tr><th>Player</th><th class="hm">Game</th><th>Our TD chance</th><th>Price</th></tr>${K.legs.map(l=>`<tr><td><b>${e(l.player)}</b> <span class="m">${e(l.team)}</span></td><td class="hm"><span class="m">${e(l.opp)} · ${t(l.start)}</span></td><td><b>${Math.round(l.p_model*100)}%</b></td><td><b>${a(l.price)}</b> <span class="m">${e(l.book)}</span></td></tr>`).join("")}</table></div><div style="margin-top:8px"><b>Parlay ${a(K.price)}</b> <span class="m">(best leg prices multiplied) · our chance ${(K.p*100).toFixed(3)}% (about 1 in ${Math.round(1/K.p).toLocaleString()}) · a longshot for fun, graded on Overnight</span></div>`})})();</script>
+</script><script src="navcfg.js"></script><script src="side.js"></script>
 <script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=1" defer></script></body></html>
