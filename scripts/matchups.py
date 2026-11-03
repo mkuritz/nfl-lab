@@ -29,6 +29,15 @@ try:
     for t,L in jload('injuries_nfl.json').items():
         for r in L: inj.setdefault(r['aid'],('',r['status']))
 except Exception as e: print('betlab injuries unavailable',e)
+try:   # live injury feed, newest timestamp wins (smart refresh, Nov 3)
+    with urllib.request.urlopen('https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries',timeout=30) as r: _lf=json.load(r)
+    for tm in _lf.get('injuries',[]):
+        for i in tm.get('injuries',[]):
+            h=((i.get('athlete') or {}).get('links') or [{}])[0].get('href','')
+            if '/id/' not in h: continue
+            aid=h.split('/id/')[1].split('/')[0]; d=(i.get('date') or '')
+            if aid not in inj or d[:16]>inj[aid][0][:16]: inj[aid]=(d,i.get('status') or '')
+except Exception as e: print('live injury feed unavailable',e)
 def athlete(aid):
     try:
         with urllib.request.urlopen(f'https://site.web.api.espn.com/apis/common/v3/sports/football/nfl/athletes/{aid}',timeout=20) as r: a=json.load(r)['athlete']

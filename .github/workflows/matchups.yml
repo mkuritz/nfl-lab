@@ -1,0 +1,34 @@
+name: Matchup Board smart refresh
+# Dispatched by sl-scheduler: every 15 min from 4h before an NFL kickoff, every 30 min on NFL game days from 8 AM ET,
+# every 2h 8 AM-10 PM ET on off days. Rebuilds only when injury statuses (newest status wins) or lines / O-U prices changed;
+# commits only when the board itself changed. GitHub-hosted runner.
+on:
+  workflow_dispatch:
+    inputs:
+      force: { description: "rebuild even if inputs unchanged", type: boolean, default: false }
+concurrency: { group: nfl-hub-data, cancel-in-progress: false }
+permissions: {}
+jobs:
+  board:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - id: fp
+        env: { FORCE: "${{ inputs.force }}" }
+        run: python3 scripts/matchups_smart.py check
+      - if: steps.fp.outputs.changed == 'true'
+        continue-on-error: true
+        env:
+          SL_BACKUP_KEY: ${{ secrets.SL_BACKUP_KEY }}
+        run: python scripts/fetch.py nfl; python3 scripts/matchups.py
+      - if: steps.fp.outputs.changed == 'true'
+        id: st
+        run: python3 scripts/matchups_smart.py settle
+      - if: steps.fp.outputs.changed == 'true' && steps.st.outputs.board == 'changed'
+        run: |
+          git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
+          python3 scripts/srcscrub.py data; git add data/matchups.json data/matchups_fp.json; git checkout -- . ; git clean -fdq -e data/matchups_fp.json
+          git diff --cached --quiet || (git commit -m "Matchup Board $(date -u +%FT%TZ)" && git pull --rebase && git push)
