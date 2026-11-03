@@ -38,6 +38,9 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         run: pip install -q pandas pyarrow numpy && bash scripts/v2/run.sh
+      - name: Matchup Board (display only)
+        continue-on-error: true
+        run: python3 scripts/matchups.py
       - name: Head-to-Head Prop Advantage (every game on the slate; display only)
         continue-on-error: true
         timeout-minutes: 6
