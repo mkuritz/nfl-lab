@@ -110,6 +110,13 @@ def cols(c,pos,o):
     if c=='rush': return [('Rush yds/g',m['rush_g'],R('rush_g')),('Yds/car',m['ypc'],R('ypc')),('20+ yd runs/g',m['r20'],R('r20'))]
     if c=='rec': return [(f'Rec yds to {pos}/g',m['rec_'+pos],R('rec_'+pos)),('Pass yds/g',m['pass_g'],R('pass_g')),('Air yds/att',m['adot'],R('adot'))]
     return [('Pass yds/g',m['pass_g'],R('pass_g')),('Yds/att',m['ypa'],R('ypa')),('Pass rate faced %',m['passrate'],R('passrate'))]
+# league TD-game rate by position (2026, depth-chart regulars with 4+ games) - shrink target for TD chance (4 extra average games)
+_lt=collections.defaultdict(list)
+for _a,_d in P.items():
+    if _d.get('pos') in ('RB','WR','TE') and (_d.get('depth') or {}).get('rank') in (1,2):
+        _g=[g for g in plogs.get(_a,[]) if g['d']>='2026-09-01']
+        if len(_g)>=4: _lt[_d['pos']]+= [1 if g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0)>0 else 0 for g in _g]
+LGTD={k:st.mean(v) for k,v in _lt.items()}; print('league TD-game rate',{k:round(v,3) for k,v in LGTD.items()})
 GR=['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
 out={}
 for c,cfg in CAT.items():
@@ -132,7 +139,7 @@ for c,cfg in CAT.items():
         score=(proj-line)/sd if c!='td' else proj
         rows.append(dict(aid=aid,name=d['name'],team=t,opp=opp[t],site=site[t],pos=pos,inj=st_ if st_ not in('','Active') else '',
             line=line,src=src,book=((lp or {}).get('book') or ('Book A' if (lp or {}).get('ov') else None)),price=(lp or {}).get('ov'),l5=l5,hits=sum(v>line for v in l5),l5avg=round(st.mean(l5),2 if c=='td' else 1),
-            proj=round(proj*100 if c=='td' else proj,1),td_chance=(round(100*(1-(1-min(base,0.95))**f)) if c=='td' else None),szn_hits=sum(v>line for v in vals),szn_n=len(vals),szn_avg=round(st.mean(vals),2 if c=='td' else 1),
+            proj=round(proj*100 if c=='td' else proj,1),td_chance=(round(100*(1-(1-min((len(vals)*(0.4*st.mean(l5)+0.6*st.mean(vals))+4*LGTD.get(pos,0.3))/(len(vals)+4),0.95))**f)) if c=='td' else None),szn_hits=sum(v>line for v in vals),szn_n=len(vals),szn_avg=round(st.mean(vals),2 if c=='td' else 1),
             **({} if c!='td' else (lambda T:dict(td2_szn=round(100*sum(x>=2 for x in T)/len(T)),td3_szn=round(100*sum(x>=3 for x in T)/len(T)),td2_l5=sum(x>=2 for x in T[-5:]),td3_l5=sum(x>=3 for x in T[-5:])))([g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0) for g in G])),mf=round(f,2),score=score,time=gtime[t],
             cols=[(a,(round(b,1 if b>3 else 2) if b else None),(r if b else None)) for a,b,r in cols(c,pos,opp[t])]))
     rows.sort(key=lambda r:-r['score']); n=len(rows)
