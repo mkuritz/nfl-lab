@@ -85,10 +85,12 @@ RR = [(re.compile(a), b) for a, b in [
     (r"^%s\s+details\s+(?!(?:his|her|their|how he|how she|why he|why she)\b)" % _N, "Breakdown: "),
     (r"([?.!])\s*%s\s+(?:weighs in|reacts|explains|breaks it down)\s*$" % _N, r"\1"),
     (r",?\s*%s\s+report(?:s|ed)\s*(?=[.;]|$)" % _N, ""),                                # trailing ", Jane Doe reports."
+    (r",?\s*%s\s+of\s+%s\s+r(?:e(?:p(?:o(?:r(?:t(?:s|ed)?)?)?)?)?)?$" % (_N, _OUT), ""),   # truncated ", Jane Doe of The Outlet rep"
+    (r"(^|(?<=[.!?]\s))[Aa]ccording to %s(?:\s+of\s+%s)?,\s*(\w)" % (_N.replace("{1,2}", "{0,2}"), _OUT), lambda m: m.group(1) + m.group(2).upper()),   # "According to Wacker, Minter added ..."
 ]]
 def strip_reporters(v):
     if not isinstance(v, str) or not v or v.startswith(("http://", "https://")): return v
-    if not re.search(r"report|told|according|per |'s |details|weighs|reacts|explains|breaks it down|from ", v): return v
+    if not re.search(r"report|told|[Aa]ccording|per |'s |details|weighs|reacts|explains|breaks it down|from ", v): return v
     o = v
     for a, b in RR: v = a.sub(b, v)
     if v == o: return v

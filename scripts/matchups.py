@@ -65,7 +65,10 @@ for _t,L in _tq.items():
     # only when a team's top QB(s) by recent starts are out: a QB who started 1+ 2026 game and is now unavailable
     _o=[x for x in _o if any(g['d']>='2026-09-01' and g['s'].get('passingAttempts',0)>=10 for g in plogs.get(next(a_ for a_,d_ in P.items() if d_['name']==x[1] and d_.get('team')==_t),[]))]
     if _o: QBN[_t]='QB-out: '+' · '.join(f'{n} {s_}' for _,n,s_ in _o)+(f'; next up {_nx[1]}'+(f' ({_nx[2]})' if _nx[2]!='Active' else '') if _nx and len(_o)>=2 else '')
-print('QB-out notes',QBN)
+try: QBO={a:r['text'] for a,r in (jload('nfl_qb_out.json').get('players') or {}).items()}   # shared QB-out flag (with/without split)
+except Exception as e: QBO={}; print('qb_out unavailable',e)
+if QBO: QBN={}   # shared file is the source of truth when present
+print('QB-out notes',QBN,len(QBO))
 OUT={'Out','Injured Reserve','Doubtful','Suspended','Physically Unable to Perform','Reserve'}
 def season(aid,team):
     return [g for g in plogs.get(aid,[]) if g['d']>='2026-09-01' and g['t']==team]
@@ -129,7 +132,29 @@ for _a,_d in P.items():
         _g=[g for g in plogs.get(_a,[]) if g['d']>='2026-09-01']
         if len(_g)>=4: _lt[_d['pos']]+= [1 if g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0)>0 else 0 for g in _g]
 LGTD={k:st.mean(v) for k,v in _lt.items()}; print('league TD-game rate',{k:round(v,3) for k,v in LGTD.items()})
-GR=['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','F']
+# ---- Advanced stats (display only; grades/rankings untouched) ----
+U={}
+for _p in props:
+    if _p.get('u') and _p['aid'] not in U: U[_p['aid']]=_p['u']
+try: RZ={e['aid']:e.get('rz') or {} for e in jload('analyst_nfl.json').get('td_all',[])}
+except Exception as e: RZ={}; print('rz unavailable',e)
+def adv(aid,G):
+    u=U.get(aid) or {}; z=RZ.get(aid) or {}; o={}
+    sn=u.get('sn') or {}; tg=u.get('tg') or {}; ca=u.get('ca') or {}
+    if sn.get('szn') is not None: o['snap']=[round(sn['szn']),round(sn.get('l3') or sn['szn'])]
+    if tg.get('szn') is not None: o['tgt']=[round(tg['szn'],1),round(tg.get('l5') or tg['szn'],1)]
+    if ca.get('szn') is not None and ca['szn']>=1: o['car']=[round(ca['szn'],1),round(ca.get('l5') or ca['szn'],1)]
+    rec=sum(g['s'].get('receptions',0) for g in G); ry=sum(g['s'].get('receivingYards',0) for g in G)
+    ra=sum(g['s'].get('rushingAttempts',0) for g in G); rush=sum(g['s'].get('rushingYards',0) for g in G)
+    pa=sum(g['s'].get('passingAttempts',0) for g in G); py=sum(g['s'].get('passingYards',0) for g in G)
+    if rec>=5: o['ypr']=round(ry/rec,1)
+    if ra>=10: o['ypc']=round(rush/ra,1)
+    if pa>=30: o['ypa']=round(py/pa,1)
+    if tg.get('szn') and len(G): o['ypt']=round(ry/(tg['szn']*len(G)),1)
+    if z.get('opp') is not None: o['rz']=[z['opp'],z.get('share')]
+    return o
+GR=['A+'
+,'A','A-','B+','B','B-','C+','C','C-','D+','D','F']
 out={}
 for c,cfg in CAT.items():
     rows=[]
@@ -149,10 +174,10 @@ for c,cfg in CAT.items():
         base=0.6*st.mean(l5)+0.4*st.mean(vals); f=mfac(c,pos,opp[t]); proj=base*f
         sd=max(st.pstdev(vals),1 if c!='td' else .1)
         score=(proj-line)/sd if c!='td' else proj
-        rows.append(dict(aid=aid,name=d['name'],team=t,opp=opp[t],site=site[t],pos=pos,inj=st_ if st_ not in('','Active') else '',**({'qb':QBN[t]} if t in QBN and pos in('WR','TE','RB') and c in('rec','td') else {}),
+        rows.append(dict(aid=aid,name=d['name'],team=t,opp=opp[t],site=site[t],pos=pos,inj=st_ if st_ not in('','Active') else '',**({'qb':QBO[aid]} if aid in QBO and c in('rec','td') else {'qb':QBN[t]} if t in QBN and pos in('WR','TE','RB') and c in('rec','td') else {}),
             line=line,src=src,book=((lp or {}).get('book') or ('Book A' if (lp or {}).get('ov') else None)),price=(lp or {}).get('ov'),l5=l5,hits=sum(v>line for v in l5),l5avg=round(st.mean(l5),2 if c=='td' else 1),
             proj=round(proj*100 if c=='td' else proj,1),td_chance=(round(100*(1-(1-min((len(vals)*(0.4*st.mean(l5)+0.6*st.mean(vals))+4*LGTD.get(pos,0.3))/(len(vals)+4),0.95))**f)) if c=='td' else None),szn_hits=sum(v>line for v in vals),szn_n=len(vals),szn_avg=round(st.mean(vals),2 if c=='td' else 1),
-            **({} if c!='td' else (lambda T:dict(td2_szn=round(100*sum(x>=2 for x in T)/len(T)),td3_szn=round(100*sum(x>=3 for x in T)/len(T)),td2_l5=sum(x>=2 for x in T[-5:]),td3_l5=sum(x>=3 for x in T[-5:])))([g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0) for g in G])),mf=round(f,2),score=score,time=gtime[t],
+            **({} if c!='td' else (lambda T:dict(td2_szn=round(100*sum(x>=2 for x in T)/len(T)),td3_szn=round(100*sum(x>=3 for x in T)/len(T)),td2_l5=sum(x>=2 for x in T[-5:]),td3_l5=sum(x>=3 for x in T[-5:])))([g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0) for g in G])),mf=round(f,2),score=score,adv=adv(aid,G),time=gtime[t],
             cols=[(a,(round(b,1 if b>3 else 2) if b else None),(r if b else None)) for a,b,r in cols(c,pos,opp[t])]))
     rows.sort(key=lambda r:-r['score']); n=len(rows)
     def pct(key):  # 0-10 within this category's slate (10 = best in category)
