@@ -132,10 +132,17 @@ for c,cfg in CAT.items():
         score=(proj-line)/sd if c!='td' else proj
         rows.append(dict(aid=aid,name=d['name'],team=t,opp=opp[t],site=site[t],pos=pos,inj=st_ if st_ not in('','Active') else '',
             line=line,src=src,book=((lp or {}).get('book') or ('Book A' if (lp or {}).get('ov') else None)),price=(lp or {}).get('ov'),l5=l5,hits=sum(v>line for v in l5),l5avg=round(st.mean(l5),2 if c=='td' else 1),
-            proj=round(proj*100 if c=='td' else proj,1),mf=round(f,2),score=score,time=gtime[t],
+            proj=round(proj*100 if c=='td' else proj,1),td_chance=(round(100*(1-(1-min(base,0.95))**f)) if c=='td' else None),szn_hits=sum(v>line for v in vals),szn_n=len(vals),szn_avg=round(st.mean(vals),2 if c=='td' else 1),
+            **({} if c!='td' else (lambda T:dict(td2_szn=round(100*sum(x>=2 for x in T)/len(T)),td3_szn=round(100*sum(x>=3 for x in T)/len(T)),td2_l5=sum(x>=2 for x in T[-5:]),td3_l5=sum(x>=3 for x in T[-5:])))([g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0) for g in G])),mf=round(f,2),score=score,time=gtime[t],
             cols=[(a,(round(b,1 if b>3 else 2) if b else None),(r if b else None)) for a,b,r in cols(c,pos,opp[t])]))
     rows.sort(key=lambda r:-r['score']); n=len(rows)
-    for i,r in enumerate(rows): r['grade']=GR[min(11,int(i/n*12))]; r.pop('score')
+    def pct(key):  # 0-10 within this category's slate (10 = best in category)
+        v=sorted(key(r) for r in rows); m=len(v)-1 or 1
+        return lambda r: round(10*sum(x<key(r) for x in v)/m,1)
+    comp=[('Defense matchup',pct(lambda r:r['mf'])),('Last 5 form',pct(lambda r:(r['hits']/max(1,len(r['l5'])),r['l5avg']-r['line'] if c!='td' else r['l5avg']))),
+          ('Season hit rate',pct(lambda r:r['szn_hits']/max(1,r['szn_n']))),('Projection vs line',pct(lambda r:r['score']))]
+    for r in rows: r['parts']=[[k,f(r)] for k,f in comp]
+    for i,r in enumerate(rows): r['grade']=GR[min(11,int(i/n*12))]; r['g10']=round(10*(n-1-i)/max(1,n-1),1); r.pop('score')
     out[c]=dict(best=rows,worst=rows[::-1],n=n)
 json.dump(dict(week=nfl['week'],updated=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'),cats={c:dict(best=v['best'],n=v['n']) for c,v in out.items()}),open(NL+'/matchups.json','w'),separators=(',',':'))
 for c in out:
