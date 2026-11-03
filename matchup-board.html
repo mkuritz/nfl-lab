@@ -17,7 +17,7 @@ function mbProj(r,c){if(c=='td')return `TD chance <b>${r.td_chance}%</b>`;const 
 function mbParts(r){return `<details class="gd"><summary><span class="g g${r.grade[0]}">${r.grade} ${r.g10.toFixed(1)}</span></summary><div class="gp">${(r.parts||[]).map(p=>`<div><span>${p[0]}</span><b>${p[1].toFixed(1)}</b></div>`).join('')}<div class="mut2">Each part is scored 0–10 against this week's other ${MBC[mbCur]} players.</div></div></details>`}
 function mbRow(r,c){const bars=r.l5.map(v=>`<span class="${v>r.line?'h':'m'}"></span>`).join('');const odds=r.price!=null?(r.price>0?'+':'')+r.price+(r.book?' '+r.book:''):'<span class="mut">no price yet</span>';
 const pc=(a,b)=>b?Math.round(100*a/b)+'%':'—';
-return `<tr><td><b>${r.name}</b>${r.inj?` <span class="tag">${r.inj}</span>`:''}<div class="mut">${r.team} ${r.site} ${r.opp} · ${r.pos}</div></td><td>${mbParts(r)}</td>
+return `<tr><td><b>${r.name}</b>${r.inj?` <span class="tag">${r.inj}</span>`:''}${r.qb?`<div class="qbn" style="color:#f0a33a;font-size:11px;font-weight:600">⚠ ${r.qb}</div>`:''}<div class="mut">${r.team} ${r.site} ${r.opp} · ${r.pos}</div></td><td>${mbParts(r)}</td>
 <td>${c=='td'?'Yes 0.5':'O/U '+r.line} <span class="tag">${r.src}</span><div class="mut">${odds}</div></td><td class="bars">${bars} <span class="mut">${r.hits}/${r.l5.length}</span></td><td>${c=='td'?pc(r.l5.filter(v=>v>0).length,r.l5.length):r.l5avg}</td>
 <td>${r.szn_hits}/${r.szn_n} <span class="mut">${pc(r.szn_hits,r.szn_n)}</span></td>${c=='td'?'':`<td>${r.szn_avg}</td>`}
 ${c=='td'?`<td>${r.td2_szn}% <span class="mut">· L5 ${r.td2_l5}/${r.l5.length}</span></td><td>${r.td3_szn}% <span class="mut">· L5 ${r.td3_l5}/${r.l5.length}</span></td>`:''}<td>${mbProj(r,c)}</td>
