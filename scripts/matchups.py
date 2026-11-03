@@ -11,6 +11,10 @@ opp={};site={};gtime={}
 for g in games:
     a,h=g['away']['abbr'],g['home']['abbr']; opp[a]=h;opp[h]=a;site[a]='@';site[h]='vs';gtime[a]=gtime[h]=g['date']
 plogs=jload('plogs_nfl.json')
+try:   # complete box scores for games finished in the last 10 days (logs can lag a day or two)
+    sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); import adjdef
+    print('recent box scores merged:',adjdef.fill_recent(plogs))
+except Exception as e: print('recent box scores unavailable',e)
 props=jload('props_nfl.json')
 # players: team,pos,depth,inj
 P={}
@@ -101,6 +105,17 @@ for t in teams:
       **{f'rec_{p}':per(t,'rec_'+p) for p in('WR','TE','RB')},**{f'td_{p}':per(t,'td_'+p) for p in('WR','TE','RB')})
 def rank(key,hi_bad=True):  # rank 32 = most allowed (best for offense), like screenshots
     s=sorted(teams,key=lambda t:M[t][key]); return {t:i+1 for i,t in enumerate(s)}
+RKR={k:rank(k) for k in M[teams[0]]}   # raw ranks (Advanced stats view)
+MR={t:dict(M[t]) for t in teams}
+# opponent- and personnel-adjusted defense (Nov 3): replaces raw values where we can adjust; display only
+try:
+    sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); import adjdef
+    ADJ,ADJI,_,_,ADJSTR=adjdef.build(plogs,P,inj,cache=os.environ.get('SNAP_CACHE'))
+    for t in teams:
+        for k,v in (ADJ.get(t) or {}).items():
+            if k in M[t] and v is not None: M[t][k]=v
+    ADJK={k for t in teams for k in (ADJ.get(t) or {}) if k in M[t]}
+except Exception as e: ADJ,ADJI,ADJK={},{},set(); print('adjusted defense unavailable',e)
 RK={k:rank(k) for k in M[teams[0]]}
 lg={k:st.mean(M[t][k] for t in teams) for k in M[teams[0]]}
 # ---- lines ----
@@ -120,7 +135,9 @@ def mfac(c,pos,o):
     if c=='rec': return m['rec_'+pos]/lg['rec_'+pos]
     return 0.5*m['td_'+pos]/lg['td_'+pos]+0.5*m['td_g']/lg['td_g']
 def cols(c,pos,o):
-    m=M[o];R=lambda k:RK[k][o]
+    return [(a,b,rk[0],(RKR[rk[1]][o] if rk[1] in ADJK else None),(round(MR[o][rk[1]],1 if MR[o][rk[1]]>3 else 2) if rk[1] in ADJK else None)) for a,b,rk in cols0(c,pos,o)]
+def cols0(c,pos,o):
+    m=M[o];R=lambda k:(RK[k][o],k)
     if c=='td': return [('Opp TDs/g',m['td_g'],R('td_g')),(f'TDs to {pos}/g',m['td_'+pos],R('td_'+pos)),(f'Rec yds to {pos}/g',m['rec_'+pos],R('rec_'+pos))]
     if c=='rush': return [('Rush yds/g',m['rush_g'],R('rush_g')),('Yds/car',m['ypc'],R('ypc')),('20+ yd runs/g',m['r20'],R('r20'))]
     if c=='rec': return [(f'Rec yds to {pos}/g',m['rec_'+pos],R('rec_'+pos)),('Pass yds/g',m['pass_g'],R('pass_g')),('Air yds/att',m['adot'],R('adot'))]
@@ -178,7 +195,7 @@ for c,cfg in CAT.items():
             line=line,src=src,book=((lp or {}).get('book') or ('Book A' if (lp or {}).get('ov') else None)),price=(lp or {}).get('ov'),l5=l5,hits=sum(v>line for v in l5),l5avg=round(st.mean(l5),2 if c=='td' else 1),
             proj=round(proj*100 if c=='td' else proj,1),td_chance=(round(100*(1-(1-min((len(vals)*(0.4*st.mean(l5)+0.6*st.mean(vals))+4*LGTD.get(pos,0.3))/(len(vals)+4),0.95))**f)) if c=='td' else None),szn_hits=sum(v>line for v in vals),szn_n=len(vals),szn_avg=round(st.mean(vals),2 if c=='td' else 1),
             **({} if c!='td' else (lambda T:dict(td2_szn=round(100*sum(x>=2 for x in T)/len(T)),td3_szn=round(100*sum(x>=3 for x in T)/len(T)),td2_l5=sum(x>=2 for x in T[-5:]),td3_l5=sum(x>=3 for x in T[-5:])))([g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0) for g in G])),mf=round(f,2),score=score,adv=adv(aid,G),time=gtime[t],
-            cols=[(a,(round(b,1 if b>3 else 2) if b else None),(r if b else None)) for a,b,r in cols(c,pos,opp[t])]))
+            cols=[(a,(round(b,1 if b>3 else 2) if b else None),(r if b else None),rr,rv) for a,b,r,rr,rv in cols(c,pos,opp[t])]))
     rows.sort(key=lambda r:-r['score']); n=len(rows)
     def pct(key):  # 0-10 within this category's slate (10 = best in category)
         v=sorted(key(r) for r in rows); m=len(v)-1 or 1
@@ -188,7 +205,9 @@ for c,cfg in CAT.items():
     for r in rows: r['parts']=[[k,f(r)] for k,f in comp]
     for i,r in enumerate(rows): r['grade']=GR[min(11,int(i/n*12))]; r['g10']=round(10*(n-1-i)/max(1,n-1),1); r.pop('score')
     out[c]=dict(best=rows,worst=rows[::-1],n=n)
-json.dump(dict(week=nfl['week'],updated=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'),cats={c:dict(best=v['best'],n=v['n']) for c,v in out.items()}),open(NL+'/matchups.json','w'),separators=(',',':'))
+json.dump(dict(adj=bool(ADJK),week=nfl['week'],updated=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'),cats={c:dict(best=v['best'],n=v['n']) for c,v in out.items()}),open(NL+'/matchups.json','w'),separators=(',',':'))
 for c in out:
     print(c,out[c]['n']);
     for r in out[c]['best'][:3]+out[c]['worst'][:3]: print(' ',r['grade'],r['name'],r['pos'],r['team'],r['site'],r['opp'],r['line'],r['src'],r['hits'],r['l5avg'],r['mf'],r['cols'])
+if os.environ.get('ADJ_REPORT'):   # private QA dump (never written into the site)
+    json.dump(dict(starters=ADJSTR,raw=RKR,adj=RK,MR=MR,M=M,info=ADJI,keys=sorted(ADJK)),open(os.environ['ADJ_REPORT'],'w'),default=str)
