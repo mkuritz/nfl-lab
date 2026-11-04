@@ -69,5 +69,5 @@ fetch("https://betlab.sportslabshq.com/data/early_injury_adjust.json?v="+Math.fl
  drawEia();
 });
 
-fetch("data/line_impact.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.json()}).then(function(j){D=j;sub.textContent=j.slate+" · all "+j.games.length+" Sunday/Monday games · updated "+j.updated_et;draw()})})();</script>
+fetch("data/line_impact.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.ok?r.json():null}).catch(function(){return null}).then(function(j){if(!j||!j.games){sub.textContent="No line-impact board for this week yet.";return}D=j;sub.textContent=j.slate+" · all "+j.games.length+" Sunday/Monday games · updated "+j.updated_et;draw()})})();</script>
 <script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="propintel.js?v=1" defer></script><script src="https://betlab.sportslabshq.com/eiaslip.js?v=1"></script></body></html>
