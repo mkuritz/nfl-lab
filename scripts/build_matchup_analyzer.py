@@ -1,7 +1,8 @@
 """Matchup Analyzer data (display only). Reads existing NFL Hub data only: data/players/*.json game logs,
 data/v2.json (injuries, kickoff weather, posted lines), data/nfl.json (schedule). Writes data/matchup_an.json.
 Nothing is estimated: a stat with no logged games is omitted, and the page hides that tile."""
-import json, glob, os, collections, datetime as dt
+import json, glob, os, collections, datetime as dt, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 D = os.path.join(os.path.dirname(__file__), "..", "data")
 def L(f): return json.load(open(os.path.join(D, f)))
 nfl, v2 = L("nfl.json"), L("v2.json")
@@ -47,6 +48,39 @@ for p in P.values():
         if g["s"] != SEASON: continue
         c = allow[g["o"]][grp][(g["w"], g["g"])]
         for k in FIELDS: c[k] += G(g, k)
+# ---- athlete game logs: count every game he appeared in, including zero-stat appearances ----
+UA = {"User-Agent": "Mozilla/5.0"}
+def jget(u):
+    try: return json.load(urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=20))
+    except Exception: return None
+def gamelog(pid):
+    d = jget("https://site.web.api.espn.com/apis/common/v3/sports/football/nfl/athletes/%s/gamelog?season=%s" % (pid, SEASON))
+    if not d: return None
+    ev = d.get("events") or {}
+    out = {}
+    for st in d.get("seasonTypes") or []:
+        if "Regular" not in (st.get("displayName") or ""): continue
+        for c in st.get("categories") or []:
+            for e in c.get("events") or []:
+                x = ev.get(e.get("eventId")) or {}
+                if x.get("week"): out[int(x["week"])] = {"date": (x.get("gameDate") or "")[:10], "opp": ((x.get("opponent") or {}).get("abbreviation"))}
+    return out
+OFF = [pid for pid, p in P.items() if p["grp"] in STATS]
+with ThreadPoolExecutor(16) as ex: GL = dict(zip(OFF, ex.map(gamelog, OFF)))
+GL = {k: v for k, v in GL.items() if v is not None}
+ABBR = {"WSH": "WAS", "LAR": "LA"}
+stubs = 0
+for pid, gl in GL.items():
+    p = P[pid]
+    have = {g["w"] for g in p["log"] if g["s"] == SEASON}
+    for w, x in gl.items():
+        if w in have: continue
+        p["log"].append({"s": SEASON, "w": w, "o": ABBR.get(x["opp"], x["opp"]), "t": p["team"], "g": "%s_%02d_zero" % (SEASON, w), "zero": 1, "date": x["date"]})
+        stubs += 1
+    for g in p["log"]:
+        if g["s"] == SEASON and g["w"] in gl: g["date"] = gl[g["w"]]["date"]
+    p["log"].sort(key=lambda g: (g["s"], g["w"]), reverse=True)
+print("gamelogs", len(GL), "zero-stat games added", stubs)
 def team_allow(t, grp, last=None):
     wk = sorted(allow[t][grp], reverse=True)
     if last: wk = wk[:last]
@@ -68,8 +102,8 @@ def pctile(x, arr):
     return round(100 * sum(1 for a in arr if a < x) / len(arr) + 50 * sum(1 for a in arr if a == x) / len(arr))
 # ---- player pools by window (qualified usage, 2026 + last season for L10 tails) ----
 def pwin(p, w):
-    lg = [g for g in p["log"] if g["s"] == SEASON] if w == "All" else p["log"][: {"L3":3,"L6":6,"L10":10}[w]]
-    return lg
+    cur = [g for g in p["log"] if g["s"] == SEASON]  # current season only; prior-season games never mix into a window
+    return cur if w == "All" else cur[: {"L3":3,"L6":6,"L10":10}[w]]
 PW = ("L3","L6","L10","All")
 pool = {grp: {w: collections.defaultdict(list) for w in PW} for grp in STATS}
 pstat = {}
@@ -106,6 +140,33 @@ def injsum(t):
             c[k] += 1
             out.append({"n": x.get("n"), "pos": x.get("pos"), "st": s, "d": x.get("d") or ""})
     return {"counts": dict(c), "list": out}
+# ---- athlete-level status (catches players the league injury feed leaves out) ----
+BAD = ("Out", "Injured Reserve", "Doubtful", "Suspended", "Physically Unable to Perform", "Non-Football Injury")
+def athstat(pid):
+    d = jget("https://site.web.api.espn.com/apis/common/v3/sports/football/nfl/athletes/%s" % pid)
+    if not d: return None
+    a = d.get("athlete") or {}
+    s = ((a.get("status") or {}).get("name") or "")
+    ij = (a.get("injuries") or [{}])[0]
+    st = ij.get("status") or ""
+    if "Suspend" in s: st = "Suspended"
+    if not st: return {"st": s or "Active"}
+    return {"st": st, "d": ((ij.get("details") or {}).get("type") or ""), "dt": (ij.get("date") or "")[:10]}
+SLATE = [pid for pid, p in P.items() if p.get("team") in games and (p["grp"] in STATS or p["grp"] == "DEF")]
+with ThreadPoolExecutor(16) as ex: AS = {k: v for k, v in zip(SLATE, ex.map(athstat, SLATE)) if v}
+def badge(st):
+    st = st or ""
+    if "Reserve" in st or st.startswith("Physically") or st.startswith("Non-Football"): return "IR"
+    for k in ("Out", "Doubtful", "Suspended", "Questionable"):
+        if st.startswith(k): return k
+    return None
+for pid, a in AS.items():
+    p = P[pid]
+    if badge(a["st"]) and not (p.get("inj") or {}).get("status"):
+        p["inj"] = {"status": a["st"], "detail": a.get("d", ""), "date": a.get("dt", "")}
+        if not any(x.get("id") == pid for x in inj.setdefault(p["team"], [])):
+            inj[p["team"]].append({"n": p["name"], "pos": p["pos"], "st": a["st"], "d": a.get("d", ""), "id": pid})
+print("athlete status checked", len(AS), "flagged", sum(1 for pid, a in AS.items() if badge(a["st"])))
 starters = {}
 for p in P.values():
     d = p.get("depth") or {}
@@ -154,7 +215,8 @@ for pid, p in P.items():
     if len(cur) < 2 or sum(1 for g in cur if USE[grp](g)) < 2: continue
     gm = games[p["team"]]; o = gm["opp"]
     if o not in allow: continue
-    rec = {"grp": grp, "team": p["team"], "opp": o, "home": gm["home"], "date": gm["date"], "venue": gm["venue"],
+    ast = (AS.get(pid) or {}).get("st") or (p.get("inj") or {}).get("status") or "Active"
+    rec = {"st": ast, "bdg": badge(ast), "stx": (AS.get(pid) or {}).get("d") or (p.get("inj") or {}).get("detail") or "", "grp": grp, "team": p["team"], "opp": o, "home": gm["home"], "date": gm["date"], "venue": gm["venue"],
            "wx": wx.get(gm["opp"] if not gm["home"] else p["team"]) or wx.get(p["team"]), "inj": {p["team"]: injsum(p["team"]), o: injsum(o)},
            "qbout": {k: v for k, v in ((p["team"], qbflag(p["team"])), (o, qbflag(o))) if v}, "win": {}, "owin": {}}
     for w in PW:
@@ -180,7 +242,7 @@ for pid, p in P.items():
             if not qa or abs(qa - me) / me > 0.30: continue
             for g in q["log"]:
                 if g["s"] == SEASON and g["o"] == o and USE[grp](g):
-                    sim.append({"w": g["w"], "id": qid, "n": q["name"], "t": g["t"], "res": round(G(g, spec[3]), 1), "avg": round(qa, 1)})
+                    sim.append({"w": g["w"], "d": g.get("date") or "", "id": qid, "n": q["name"], "t": g["t"], "res": round(G(g, spec[3]), 1), "avg": round(qa, 1)})
     sim.sort(key=lambda r: -r["w"])
     rec["sim"] = {"stat": KEY[grp][1], "me": round(me, 1) if me else None, "bench": bm, "rows": sim[:15]}
     out["players"][pid] = rec
