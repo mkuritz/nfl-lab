@@ -31,4 +31,4 @@ fetch(B+"nfl_high_hurdles.json?t="+Date.now()).then(r=>r.json()).then(d=>{const 
  document.getElementById("meta").textContent=`${n} Highlighted · updated ${new Date(d.updated).toLocaleTimeString("en-US",{...ET,hour:"numeric",minute:"2-digit"})} ET`;
  document.getElementById("na").textContent=(d.unavailable||[]).map(x=>x+": not available yet").join(" · ");
 }).catch(()=>{document.getElementById("secs").innerHTML='<div class="card"><div class="mut">High Hurdles not available yet.</div></div>'});
-</script><script src="navcfg.js"></script><script src="side.js"></script></body></html>
+</script><script src="navcfg.js"></script><script src="side.js"></script><script src="nflteam.js?v=3"></script></body></html>

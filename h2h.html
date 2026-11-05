@@ -10,4 +10,4 @@ function draw(){gsel.innerHTML=D.games.map(function(g){var a=0;Object.keys(g.tea
  gsel.querySelectorAll("button").forEach(function(b){b.onclick=function(){G=D.games.filter(function(g){return g.key==b.dataset.k})[0];T=Object.keys(G.teams)[0];draw()}});
  H2H.render(box,G,T,{onTeam:function(t){T=t;draw()}})}
 fetch("data/h2h.json?v="+Math.floor(Date.now()/3e5)).then(function(r){return r.json()}).then(function(j){D=j;var q=(location.hash.match(/g=([^&]+)/)||[])[1];G=D.games.filter(function(g){return g.game.replace(/ @ /,"-")==q})[0]||H2H.pickGame(D);T=Object.keys(G.teams)[0];sub.textContent="Week "+(j.week||"")+" · "+j.games.length+" games · updated "+j.updated;draw()})})();</script>
-<script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script></body></html>
+<script src="navcfg.js"></script><script src="side.js"></script><script src="nflprofile.js?v=3" defer></script><script src="nflteam.js?v=3"></script></body></html>
