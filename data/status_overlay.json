@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-05T22:59:15Z",
-  "updated_et": "Nov 5, 2026 \u00b7 5:59 PM ET",
+  "updated": "2026-11-05T23:06:05Z",
+  "updated_et": "Nov 5, 2026 \u00b7 6:06 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-06T04:59:15Z",
+  "expires": "2026-11-06T05:06:05Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -62,9 +62,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Toe/thumb, another DNP; reported unlikely back until after the bye (unconfirmed report). Not ruled out.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Toe/thumb, another DNP; reported unlikely back until after the bye (unconfirmed report). Not ruled out. Monangai (thumb/toe) didn't practice Thursday.",
+      "as_of": "2026-11-05T20:40:00Z",
+      "expires": "2026-11-06T02:40:00Z",
       "p_inactive": 0.2
     },
     {
@@ -78,9 +78,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) remained sidelined from practice Thursday, per reports.",
+      "as_of": "2026-11-05T18:10:00Z",
+      "expires": "2026-11-06T00:10:00Z",
       "p_inactive": 0.2
     },
     {
@@ -152,9 +152,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:38:00Z",
+      "expires": "2026-11-06T03:38:00Z",
       "p_inactive": 0.2
     },
     {
@@ -168,9 +168,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) wasn't spotted at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T19:37:00Z",
+      "expires": "2026-11-06T01:37:00Z",
       "p_inactive": 0.2
     },
     {
@@ -197,11 +197,11 @@
         "Watch"
       ],
       "watch": true,
-      "unconfirmed": true,
+      "unconfirmed": false,
       "confirmed": false,
-      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out.",
-      "as_of": "2026-11-05T21:52:00Z",
-      "expires": "2026-11-06T03:52:00Z",
+      "note": "Skattebo (hamstring) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:29:00Z",
+      "expires": "2026-11-06T03:29:00Z",
       "p_inactive": 0.38
     },
     {
@@ -230,10 +230,42 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report).",
-      "as_of": "2026-11-05T17:59:00Z",
-      "expires": "2026-11-05T23:59:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Wilson (concussion) did not practice Thursday.",
+      "as_of": "2026-11-05T21:07:00Z",
+      "expires": "2026-11-06T03:07:00Z",
       "p_inactive": 0.2
+    },
+    {
+      "aid": "3126486",
+      "player": "Deebo Samuel Sr.",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "trending out (unconfirmed)"
+      ],
+      "watch": false,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable. Samuel (hamstring) did not participate in the portion of Thursday's practice open to the media, per reports.",
+      "as_of": "2026-11-05T21:17:00Z",
+      "expires": "2026-11-06T03:17:00Z",
+      "p_inactive": 0.55
+    },
+    {
+      "aid": "16737",
+      "player": "Mike Evans",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "trending out (unconfirmed)"
+      ],
+      "watch": false,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable. Evans (Achilles) did not participate in the portion of Thursday's practice open to the media, per reports.",
+      "as_of": "2026-11-05T21:12:00Z",
+      "expires": "2026-11-06T03:12:00Z",
+      "p_inactive": 0.55
     },
     {
       "aid": "4240589",
@@ -304,9 +336,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Toe/thumb, another DNP; reported unlikely back until after the bye (unconfirmed report). Not ruled out.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Toe/thumb, another DNP; reported unlikely back until after the bye (unconfirmed report). Not ruled out. Monangai (thumb/toe) didn't practice Thursday.",
+      "as_of": "2026-11-05T20:40:00Z",
+      "expires": "2026-11-06T02:40:00Z",
       "p_inactive": 0.2
     },
     "3122840": {
@@ -320,9 +352,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) remained sidelined from practice Thursday, per reports.",
+      "as_of": "2026-11-05T18:10:00Z",
+      "expires": "2026-11-06T00:10:00Z",
       "p_inactive": 0.2
     },
     "5083076": {
@@ -394,9 +426,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:38:00Z",
+      "expires": "2026-11-06T03:38:00Z",
       "p_inactive": 0.2
     },
     "3046439": {
@@ -410,9 +442,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) wasn't spotted at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T19:37:00Z",
+      "expires": "2026-11-06T01:37:00Z",
       "p_inactive": 0.2
     },
     "4432710": {
@@ -439,11 +471,11 @@
         "Watch"
       ],
       "watch": true,
-      "unconfirmed": true,
+      "unconfirmed": false,
       "confirmed": false,
-      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out.",
-      "as_of": "2026-11-05T21:52:00Z",
-      "expires": "2026-11-06T03:52:00Z",
+      "note": "Skattebo (hamstring) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:29:00Z",
+      "expires": "2026-11-06T03:29:00Z",
       "p_inactive": 0.38
     },
     "4595348": {
@@ -472,10 +504,42 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report).",
-      "as_of": "2026-11-05T17:59:00Z",
-      "expires": "2026-11-05T23:59:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Wilson (concussion) did not practice Thursday.",
+      "as_of": "2026-11-05T21:07:00Z",
+      "expires": "2026-11-06T03:07:00Z",
       "p_inactive": 0.2
+    },
+    "3126486": {
+      "aid": "3126486",
+      "player": "Deebo Samuel Sr.",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "trending out (unconfirmed)"
+      ],
+      "watch": false,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable. Samuel (hamstring) did not participate in the portion of Thursday's practice open to the media, per reports.",
+      "as_of": "2026-11-05T21:17:00Z",
+      "expires": "2026-11-06T03:17:00Z",
+      "p_inactive": 0.55
+    },
+    "16737": {
+      "aid": "16737",
+      "player": "Mike Evans",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "trending out (unconfirmed)"
+      ],
+      "watch": false,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable. Evans (Achilles) did not participate in the portion of Thursday's practice open to the media, per reports.",
+      "as_of": "2026-11-05T21:12:00Z",
+      "expires": "2026-11-06T03:12:00Z",
+      "p_inactive": 0.55
     },
     "4240589": {
       "aid": "4240589",
@@ -546,9 +610,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Toe/thumb, another DNP; reported unlikely back until after the bye (unconfirmed report). Not ruled out.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Toe/thumb, another DNP; reported unlikely back until after the bye (unconfirmed report). Not ruled out. Monangai (thumb/toe) didn't practice Thursday.",
+      "as_of": "2026-11-05T20:40:00Z",
+      "expires": "2026-11-06T02:40:00Z",
       "p_inactive": 0.2
     },
     "deshaun watson": {
@@ -562,9 +626,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) remained sidelined from practice Thursday, per reports.",
+      "as_of": "2026-11-05T18:10:00Z",
+      "expires": "2026-11-06T00:10:00Z",
       "p_inactive": 0.2
     },
     "harold fannin jr.": {
@@ -636,9 +700,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:38:00Z",
+      "expires": "2026-11-06T03:38:00Z",
       "p_inactive": 0.2
     },
     "hunter henry": {
@@ -652,9 +716,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB.",
-      "as_of": "2026-11-05T20:53:00Z",
-      "expires": "2026-11-06T02:53:00Z",
+      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) wasn't spotted at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T19:37:00Z",
+      "expires": "2026-11-06T01:37:00Z",
       "p_inactive": 0.2
     },
     "treveyon henderson": {
@@ -681,11 +745,11 @@
         "Watch"
       ],
       "watch": true,
-      "unconfirmed": true,
+      "unconfirmed": false,
       "confirmed": false,
-      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out.",
-      "as_of": "2026-11-05T21:52:00Z",
-      "expires": "2026-11-06T03:52:00Z",
+      "note": "Skattebo (hamstring) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:29:00Z",
+      "expires": "2026-11-06T03:29:00Z",
       "p_inactive": 0.38
     },
     "malik nabers": {
@@ -714,10 +778,42 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report).",
-      "as_of": "2026-11-05T17:59:00Z",
-      "expires": "2026-11-05T23:59:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Wilson (concussion) did not practice Thursday.",
+      "as_of": "2026-11-05T21:07:00Z",
+      "expires": "2026-11-06T03:07:00Z",
       "p_inactive": 0.2
+    },
+    "deebo samuel sr.": {
+      "aid": "3126486",
+      "player": "Deebo Samuel Sr.",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "trending out (unconfirmed)"
+      ],
+      "watch": false,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable. Samuel (hamstring) did not participate in the portion of Thursday's practice open to the media, per reports.",
+      "as_of": "2026-11-05T21:17:00Z",
+      "expires": "2026-11-06T03:17:00Z",
+      "p_inactive": 0.55
+    },
+    "mike evans": {
+      "aid": "16737",
+      "player": "Mike Evans",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "trending out (unconfirmed)"
+      ],
+      "watch": false,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable. Evans (Achilles) did not participate in the portion of Thursday's practice open to the media, per reports.",
+      "as_of": "2026-11-05T21:12:00Z",
+      "expires": "2026-11-06T03:12:00Z",
+      "p_inactive": 0.55
     },
     "tristan wirfs": {
       "aid": "4240589",
