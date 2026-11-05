@@ -35,6 +35,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 4
         run: python3 scripts/player_status.py
+      - name: Status overlay labels (display only; trending-out / Watch)
+        continue-on-error: true
+        timeout-minutes: 2
+        run: python3 scripts/build_status_overlay.py
       - name: Matchup Analyzer data (display only)
         continue-on-error: true
         timeout-minutes: 4
