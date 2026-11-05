@@ -154,6 +154,17 @@ def athstat(pid):
     return {"st": st, "d": ((ij.get("details") or {}).get("type") or ""), "dt": (ij.get("date") or "")[:10]}
 SLATE = [pid for pid, p in P.items() if p.get("team") in games and (p["grp"] in STATS or p["grp"] == "DEF")]
 with ThreadPoolExecutor(16) as ex: AS = {k: v for k, v in zip(SLATE, ex.map(athstat, SLATE)) if v}
+# a status is stale if he has logged a game after its date (team injury list is the fallback when the athlete entry is empty)
+def lastgame(pid):
+    ds = [g.get("date") or "" for g in P[pid]["log"] if g["s"] == SEASON]
+    return max(ds) if ds else ""
+TL = {x.get("id"): x for t in inj.values() for x in t if x.get("id")}
+for pid in SLATE:
+    a = AS.get(pid) or {"st": "Active"}
+    if a["st"] in ("Active", "") and pid in TL and TL[pid].get("st") not in (None, "", "Active"):
+        a = {"st": TL[pid]["st"], "d": TL[pid].get("d") or "", "dt": (TL[pid].get("dt") or "")[:10]}
+    if a.get("dt") and lastgame(pid) > a["dt"]: a = {"st": "Active", "stale": a["st"]}
+    AS[pid] = a
 def badge(st):
     st = st or ""
     if "Reserve" in st or st.startswith("Physically") or st.startswith("Non-Football"): return "IR"
