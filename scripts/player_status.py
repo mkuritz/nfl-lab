@@ -7,9 +7,13 @@ from concurrent.futures import ThreadPoolExecutor
 D = os.path.join(os.path.dirname(__file__), "..", "data")
 UA = {"User-Agent": "Mozilla/5.0"}
 FIX = {"WSH": "WSH", "WAS": "WSH", "LA": "LAR"}
-def js(u):
-    try: return json.load(urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=20))
-    except Exception: return None
+def js(u, tries=3):   # retried: one dropped request used to leave a player on his older, less complete status (Rickert, Nov 5)
+    import time
+    for k in range(tries):
+        try: return json.load(urllib.request.urlopen(urllib.request.Request(u, headers=UA), timeout=20))
+        except Exception:
+            if k < tries - 1: time.sleep(0.6 * (k + 1))
+    return None
 P = {}
 for f in glob.glob(os.path.join(D, "players", "*.json")):
     p = json.load(open(f))
@@ -46,7 +50,7 @@ def own(pid):
         m = __import__("re").search(r"(?:reserve/|on the )(PUP|non-football injury|NFI)\b", lc, __import__("re").I)
         if m and st == "Out": res = "Reserve/PUP" if m.group(1).upper() == "PUP" else "Reserve/NFI"
     _ret = (ij.get("details") or {}).get("returnDate") or ""
-    _cur = bool(_ret) and _ret[:10] > dt.date.today().isoformat()   # official return date still ahead = current status, whatever its post date
+    _cur = bool(_ret) and _ret[:10] > dt.date.today().isoformat() and st not in ("Questionable", "Doubtful", "Probable")   # a game status is judged by its own date   # official return date still ahead = current status, whatever its post date
     return {"current": _cur, "status": res or st, "note": ij.get("longComment") or ij.get("shortComment"), "date": ij.get("date"), "detail": ((ij.get("details") or {}).get("type") or ""),
             "reserve": bool(res), "ret": (ij.get("details") or {}).get("returnDate")}
 ids = list(P)
@@ -61,7 +65,7 @@ for pid, (f, p) in P.items():
     if pick and pick.get("status") == "Active": pick = None
     dd = (pick or {}).get("date") or ""
     if pick and new and not pick.get("reserve") and not pick.get("current") and (dd[:10] < "%d-08-01" % SEASON or (pick["status"] in ("Questionable", "Probable") and dd[:10] < (dt.date.today() - dt.timedelta(days=10)).isoformat())):
-        pick = cur if cur is not new else None   # old preseason or week-old game-status entry: not current
+        pick = cur if (cur is not new and cur and (cur.get("date") or "") != dd and not (cur.get("status") in ("Questionable", "Probable", "Doubtful") and (cur.get("date") or "")[:10] < (dt.date.today() - dt.timedelta(days=10)).isoformat())) else None   # old preseason or week-old game-status entry: not current
     if (pick or None) != (cur or None):
         if pick and not cur: added += 1; print("status added:", p["name"], p["team"], pick["status"])
         p["inj"] = pick
@@ -165,6 +169,8 @@ for f in glob.glob(os.path.join(D, "players", "*.json")):
     if ij.get("note"):
         s = scrub(ij["note"]); ch |= s != ij["note"]; ij["note"] = s
     _r = (ij.get("ret") or "")[:10]
+    if ij.get("season") and ij.get("status") in ("Questionable", "Doubtful", "Probable"):
+        ij.pop("season", None); ij.pop("label", None); ch = True
     if _r and ij.get("season") and _r < "%d-02-01" % (SEASON + 1):   # official return date inside this season: not season-ending
         ij.pop("season", None); ij.pop("label", None); ch = True; print("return date in season, not season-ending:", q["name"], _r)
     elif _r and _r >= "%d-02-01" % (SEASON + 1) and ij.get("status") in ("Out", "Injured Reserve", "Reserve/PUP", "Reserve/NFI") and not ij.get("season"):
