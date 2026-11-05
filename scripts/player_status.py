@@ -62,11 +62,13 @@ print("player status: checked", len(ids), "own entries", sum(1 for v in OWN.valu
 # transactions is "reported, pending": the player stays on his official team, with a pending note. A season-ending
 # out comes from the newest status note or team news ("rest of the season", "season-ending", "out for the season").
 import re
-SCRUB = re.compile(r"\b(?:ESPN(?:'s)?|NFL Network(?:'s)?|Rotoworld|PFT|ProFootballTalk|KFAN|Adam Schefter|Schefter|Ian Rapoport|Rapoport|Tom Pelissero|Pelissero|Field Yates|Yates)\b('s)?", re.I)
+SCRUB = re.compile(r"\b(?:ESPN(?:'s)?|NFL Network(?:'s)?|Rotoworld|PFT|ProFootballTalk|KFAN|Adam Schefter|Schefter|Ian Rapoport|Rapoport|Tom Pelissero|Pelissero|Field Yates|Yates|The Athletic|Athletic|Wacker)\b('s)?", re.I)
 def scrub(t):
     if not t: return t
     t = re.sub(r"(^|(?<=[.!?]\s))[Aa]ccording to (?:[A-Z][\w'.]+\s?){1,4},\s*(\w)", lambda m: m.group(1) + m.group(2).upper(), t)
     t = re.sub(r",?\s*(?:according to|per|sources told)\s+(?:[A-Z][\w'.]+\s?){1,4}(?:and\s+(?:[A-Z][\w'.]+\s?){1,4})?(?=[,.;])", "", t)
+    t = re.sub(r"(?:[A-Z][\w'.-]+\s){1,3}(?:and\s(?:[A-Z][\w'.-]+\s){1,3})?of\s(?:The\s)?(?:Athletic|NFL Network|ESPN|CBS Sports|NBC Sports|Fox Sports|SI|Yahoo Sports|USA Today|[A-Z][\w.]+\s(?:Post|Times|Tribune|Sun|Star|Herald|Journal|Globe|News)|)\s?", "reporters ", t)
+    t = re.sub(r"reporters (reports|relays|says|notes|adds)\b", lambda m: "reporters " + m.group(1)[:-1], t).replace("reporters report that", "reports say that")
     t = SCRUB.sub("", t); t = re.sub(r"\s{2,}", " ", t).replace(" 's", "").replace(" ,", ",").replace(" .", ".")
     return re.sub(r"\b(\w+) report suggests", "reports suggest", t).strip()
 SEASON_END = re.compile(r"(rest of the (?:20\d\d )?season|season[- ]ending|out for the season|miss (?:the )?(?:rest|remainder) of)", re.I)
