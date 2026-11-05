@@ -45,7 +45,9 @@ def own(pid):
         lc = (ij.get("longComment") or "") + " " + (ij.get("shortComment") or "")
         m = __import__("re").search(r"(?:reserve/|on the )(PUP|non-football injury|NFI)\b", lc, __import__("re").I)
         if m and st == "Out": res = "Reserve/PUP" if m.group(1).upper() == "PUP" else "Reserve/NFI"
-    return {"status": res or st, "note": ij.get("longComment") or ij.get("shortComment"), "date": ij.get("date"), "detail": ((ij.get("details") or {}).get("type") or ""),
+    _ret = (ij.get("details") or {}).get("returnDate") or ""
+    _cur = bool(_ret) and _ret[:10] > dt.date.today().isoformat()   # official return date still ahead = current status, whatever its post date
+    return {"current": _cur, "status": res or st, "note": ij.get("longComment") or ij.get("shortComment"), "date": ij.get("date"), "detail": ((ij.get("details") or {}).get("type") or ""),
             "reserve": bool(res), "ret": (ij.get("details") or {}).get("returnDate")}
 ids = list(P)
 with ThreadPoolExecutor(24) as ex: OWN = dict(zip(ids, ex.map(own, ids)))
@@ -54,11 +56,11 @@ for pid, (f, p) in P.items():
     cur = p.get("inj")
     new = OWN.get(pid)
     pick = new if new else cur          # own entry first, team list (already on profile) as fallback
-    if pick and not pick.get("reserve") and pick.get("status") and (pick.get("date") or "")[:10] and last_game(p) > (pick.get("date") or "")[:10]:
+    if pick and not pick.get("reserve") and not pick.get("current") and pick.get("status") and (pick.get("date") or "")[:10] and last_game(p) > (pick.get("date") or "")[:10]:
         pick = None; stale += 1          # played since the status date
     if pick and pick.get("status") == "Active": pick = None
     dd = (pick or {}).get("date") or ""
-    if pick and new and not pick.get("reserve") and (dd[:10] < "%d-08-01" % SEASON or (pick["status"] in ("Questionable", "Probable") and dd[:10] < (dt.date.today() - dt.timedelta(days=10)).isoformat())):
+    if pick and new and not pick.get("reserve") and not pick.get("current") and (dd[:10] < "%d-08-01" % SEASON or (pick["status"] in ("Questionable", "Probable") and dd[:10] < (dt.date.today() - dt.timedelta(days=10)).isoformat())):
         pick = cur if cur is not new else None   # old preseason or week-old game-status entry: not current
     if (pick or None) != (cur or None):
         if pick and not cur: added += 1; print("status added:", p["name"], p["team"], pick["status"])
@@ -117,6 +119,14 @@ for _src, arts in NEWS.items():
         if nm in MOVES and MOVES[nm]["to"] == ab: continue
         if "finaliz" in h.lower() or "sources" in h.lower():
             MOVES.setdefault(nm, {"to": ab, "state": "pending", "date": (a.get("published") or "")[:10]})
+def _depth_on(ab, pid):
+    tid = next((t["team"]["id"] for t in teams_js if FIX.get(t["team"]["abbreviation"], t["team"]["abbreviation"]) == ab), None)
+    d = js("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/%s/depthcharts" % tid) if tid else None
+    for f in (d or {}).get("depthchart", []):
+        for k, v in (f.get("positions") or {}).items():
+            for i, a in enumerate(v.get("athletes") or []):
+                if str(a.get("id")) == str(pid): return {"pos": (v.get("position") or {}).get("abbreviation") or k.upper(), "rank": i + 1, "unit": f.get("name"), "team": ab}
+    return None
 season_out = 0; moved = 0
 NEXT = {}   # team -> next game, from players whose team was not moved
 for f in glob.glob(os.path.join(D, "players", "*.json")):
@@ -137,6 +147,7 @@ for nm, mv in MOVES.items():
             q["team"] = mv["to"]
         # next game follows the official team (copy from a teammate's profile)
         if NEXT.get(q["team"]): q["next"] = NEXT[q["team"]]
+        q["depth"] = _depth_on(q["team"], q["id"])   # slot on his official team's depth chart (None if not listed)
         moved += 1; print("roster move:", q["name"], q["move"]["label"], "official team", q["team"])
         json.dump(q, open(f, "w"), separators=(",", ":"))
         try:   # player index (search, team lists) uses the official team too
@@ -153,7 +164,12 @@ for f in glob.glob(os.path.join(D, "players", "*.json")):
     ij = q.get("inj") or {}
     if ij.get("note"):
         s = scrub(ij["note"]); ch |= s != ij["note"]; ij["note"] = s
-    if ij.get("status") in ("Out", "Injured Reserve", "Doubtful") and not ij.get("season"):
+    _r = (ij.get("ret") or "")[:10]
+    if _r and ij.get("season") and _r < "%d-02-01" % (SEASON + 1):   # official return date inside this season: not season-ending
+        ij.pop("season", None); ij.pop("label", None); ch = True; print("return date in season, not season-ending:", q["name"], _r)
+    elif _r and _r >= "%d-02-01" % (SEASON + 1) and ij.get("status") in ("Out", "Injured Reserve", "Reserve/PUP", "Reserve/NFI") and not ij.get("season"):
+        ij["season"] = True; ij["label"] = "Out for season"; ch = True; season_out += 1
+    if ij.get("status") in ("Out", "Injured Reserve", "Doubtful") and not ij.get("season") and not (_r and _r < "%d-02-01" % (SEASON + 1)):
         nm = (q.get("name") or "").lower(); last = nm.split()[-1] if nm else "~"
         txts = [ij.get("note") or ""] + [(a.get("headline") or "") + " " + (a.get("description") or "") for a in NEWS.get(q.get("team"), []) if last in ((a.get("headline") or "") + (a.get("description") or "")).lower()]
         def _hit(x):   # sentence-level, and not hedged ("potentially season-ending" stays a plain Out)
@@ -184,3 +200,41 @@ try:
                 if isinstance(r.get(k), str): r[k] = scrub(r[k])
     json.dump(v2, open(V2, "w"), separators=(",", ":")); print("v2.json team lists: season-ending marked", n2)
 except Exception as e: print("v2.json patch skipped:", e)
+# ---- v3 (Nov 5): reconcile with the 32 official rosters ----
+# - active-roster players with no profile get a minimal one (name/team/pos/status), so they can be searched and shown
+# - a profile whose player is on no roster at all (released / unsigned) shows team "FA" instead of his old team
+# - practice-squad players stay out (no profile by design: no NFL snaps to show) unless they already have one
+# - pindex.json is rebuilt from the profile files so the two always match
+try:
+    ROS = {}
+    def _ro(t):
+        ab = FIX.get(t["team"]["abbreviation"], t["team"]["abbreviation"])
+        r = js("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/%s/roster" % t["team"]["id"]) or {}
+        return ab, [a for g in r.get("athletes", []) for a in g.get("items", [])]
+    with ThreadPoolExecutor(8) as ex:
+        for ab, L in ex.map(_ro, teams_js):
+            for a in L: ROS[str(a["id"])] = (ab, a)
+    if len(ROS) < 1500: raise RuntimeError("roster pull incomplete (%d)" % len(ROS))
+    files = {}
+    for f in glob.glob(os.path.join(D, "players", "*.json")):
+        q = json.load(open(f)); files[str(q["id"])] = (f, q)
+    made = fa = 0
+    for pid, (ab, a) in ROS.items():
+        if pid in files or (a.get("status") or {}).get("name") == "Practice Squad": continue
+        pos = (a.get("position") or {}).get("abbreviation") or ""
+        grp = "QB" if pos == "QB" else "RB" if pos in ("RB", "FB") else "WR" if pos == "WR" else "TE" if pos == "TE" else "K" if pos in ("K", "PK", "P") else "DEF"
+        ij = (a.get("injuries") or [{}])[0]
+        q = {"id": pid, "name": a.get("fullName"), "team": ab, "pos": pos, "grp": grp, "num": a.get("jersey"), "head": "https://a.espncdn.com/i/headshots/nfl/players/full/%s.png" % pid,
+             "age": a.get("age"), "exp": str((a.get("experience") or {}).get("years", "")), "college": (a.get("college") or {}).get("name"), "draft": None, "depth": None,
+             "inj": ({"status": ij["status"], "date": ij.get("date"), "detail": ""} if ij.get("status") else None), "next": NEXT.get(ab), "dvp": None, "news": [], "log": [], "season": SEASON}
+        fp = os.path.join(D, "players", "%s.json" % pid); json.dump(q, open(fp, "w"), separators=(",", ":")); files[pid] = (fp, q); made += 1
+    for pid, (f, q) in files.items():
+        if pid not in ROS and q.get("team") not in ("FA", None) and not q.get("move"):
+            q["team"] = "FA"; q["depth"] = None; q["next"] = None; json.dump(q, open(f, "w"), separators=(",", ":")); fa += 1
+        elif pid in ROS and q.get("team") == "FA":
+            q["team"] = ROS[pid][0]; json.dump(q, open(f, "w"), separators=(",", ":"))
+    PI = os.path.join(D, "pindex.json"); pi = json.load(open(PI))
+    pi["p"] = sorted([[pid, q["name"], q["team"], q.get("pos")] for pid, (f, q) in files.items() if q.get("name")], key=lambda x: x[1])
+    json.dump(pi, open(PI, "w"), separators=(",", ":"))
+    print("v3 rosters: on rosters", len(ROS), "practice squad", sum(1 for _, a in ROS.values() if (a.get("status") or {}).get("name") == "Practice Squad"), "profiles made", made, "set FA (on no roster)", fa, "pindex", len(pi["p"]))
+except Exception as e: print("v3 roster reconcile skipped:", e)
