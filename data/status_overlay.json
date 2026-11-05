@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-05T19:56:18Z",
-  "updated_et": "Nov 5, 2026 \u00b7 7:56 PM ET",
+  "updated": "2026-11-05T20:00:28Z",
+  "updated_et": "Nov 5, 2026 \u00b7 3:00 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-06T01:56:18Z",
+  "expires": "2026-11-06T02:00:28Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -10,6 +10,22 @@
     "hub_player_status"
   ],
   "players": [
+    {
+      "aid": "3122840",
+      "player": "Deshaun Watson",
+      "team": "CLE",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) remained sidelined from practice Thursday, per reports.",
+      "as_of": "2026-11-05T18:10:00Z",
+      "expires": "2026-11-06T00:10:00Z",
+      "p_inactive": 0.2
+    },
     {
       "aid": "3917315",
       "player": "Kyler Murray",
@@ -39,6 +55,22 @@
       "as_of": "2026-11-05T18:03:00Z",
       "expires": "2026-11-06T00:03:00Z",
       "p_inactive": 0.2
+    },
+    {
+      "aid": "4428850",
+      "player": "Dontayvion Wicks",
+      "team": "PHI",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Wicks (ankle) was a non-participant at Wednesday's practice.",
+      "as_of": "2026-11-05T19:33:00Z",
+      "expires": "2026-11-06T01:33:00Z",
+      "p_inactive": 0.38
     },
     {
       "aid": "3126486",
@@ -74,6 +106,22 @@
     }
   ],
   "by_aid": {
+    "3122840": {
+      "aid": "3122840",
+      "player": "Deshaun Watson",
+      "team": "CLE",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) remained sidelined from practice Thursday, per reports.",
+      "as_of": "2026-11-05T18:10:00Z",
+      "expires": "2026-11-06T00:10:00Z",
+      "p_inactive": 0.2
+    },
     "3917315": {
       "aid": "3917315",
       "player": "Kyler Murray",
@@ -103,6 +151,22 @@
       "as_of": "2026-11-05T18:03:00Z",
       "expires": "2026-11-06T00:03:00Z",
       "p_inactive": 0.2
+    },
+    "4428850": {
+      "aid": "4428850",
+      "player": "Dontayvion Wicks",
+      "team": "PHI",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Wicks (ankle) was a non-participant at Wednesday's practice.",
+      "as_of": "2026-11-05T19:33:00Z",
+      "expires": "2026-11-06T01:33:00Z",
+      "p_inactive": 0.38
     },
     "3126486": {
       "aid": "3126486",
@@ -138,6 +202,22 @@
     }
   },
   "by_name": {
+    "deshaun watson": {
+      "aid": "3122840",
+      "player": "Deshaun Watson",
+      "team": "CLE",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": true,
+      "confirmed": false,
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) remained sidelined from practice Thursday, per reports.",
+      "as_of": "2026-11-05T18:10:00Z",
+      "expires": "2026-11-06T00:10:00Z",
+      "p_inactive": 0.2
+    },
     "kyler murray": {
       "aid": "3917315",
       "player": "Kyler Murray",
@@ -167,6 +247,22 @@
       "as_of": "2026-11-05T18:03:00Z",
       "expires": "2026-11-06T00:03:00Z",
       "p_inactive": 0.2
+    },
+    "dontayvion wicks": {
+      "aid": "4428850",
+      "player": "Dontayvion Wicks",
+      "team": "PHI",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Wicks (ankle) was a non-participant at Wednesday's practice.",
+      "as_of": "2026-11-05T19:33:00Z",
+      "expires": "2026-11-06T01:33:00Z",
+      "p_inactive": 0.38
     },
     "deebo samuel sr.": {
       "aid": "3126486",

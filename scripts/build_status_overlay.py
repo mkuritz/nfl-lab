@@ -199,6 +199,56 @@ def parse_eia_status(status: str):
     return base, tags, watch, unconfirmed
 
 
+
+WATCH_NOTE = re.compile(
+    r"concussion|sidelined from practice|missed (?:thursday|wednesday|friday) practice|"
+    r"wasn'?t seen at .*practice|dnp|non-participant|limited thursday|limited wednesday|"
+    r"protocol",
+    re.I,
+)
+
+
+def infer_watch_from_note(base, tags, watch, unconfirmed, note):
+    """Promote plain Questionable EIA rows to Watch when the note is a live availability watch."""
+    if watch or OFFICIAL.match(base or ""):
+        return base, tags, watch, unconfirmed
+    if not re.match(r"^Questionable", base or "", re.I):
+        return base, tags, watch, unconfirmed
+    if note and WATCH_NOTE.search(note):
+        tags = list(dict.fromkeys((tags or []) + ["Watch"]))
+        return base, tags, True, unconfirmed
+    return base, tags, watch, unconfirmed
+
+
+def load_prior_overlay():
+    """Carry forward non-expired Watch / trending tags from the last committed overlay (CI has no private reports)."""
+    fp = DATA / "status_overlay.json"
+    if not fp.exists():
+        return {}
+    try:
+        prior = json.loads(fp.read_text())
+    except Exception:
+        return {}
+    nnow = now_utc()
+    out = {}
+    for row in prior.get("players") or []:
+        exp = parse_ts(row.get("expires"))
+        if exp and exp < nnow:
+            continue
+        as_of = parse_ts(row.get("as_of"))
+        if as_of and nnow - as_of > timedelta(hours=TTL_H):
+            continue
+        tags = row.get("tags") or []
+        if not tags and not row.get("watch") and not row.get("confirmed"):
+            continue
+        aid = row.get("aid")
+        key = aid or nm(row.get("player"))
+        if not key:
+            continue
+        out[key] = row
+    return out
+
+
 def load_hub_status(by_name):
     """Official hub statuses from player files + v2.inj."""
     out = {}
@@ -298,10 +348,11 @@ def main():
                         base = base or "Questionable"
                     else:
                         continue
+                note = scrub((r.get("note") or r.get("public_note") or "")[:280])
+                base, tags, watch, unconfirmed = infer_watch_from_note(base, tags, watch, unconfirmed, note)
                 if not tags and not unconfirmed and not watch:
                     # plain Questionable with no extra chrome — skip (hub already shows status)
                     continue
-                note = scrub((r.get("note") or r.get("public_note") or "")[:280])
                 as_of = parse_ts(r.get("status_ts") or r.get("updated")) or eia_as_of
                 p_inactive = r.get("p_inactive")
                 if p_inactive is None:
@@ -363,6 +414,38 @@ def main():
             upsert(by, aid, player, team, status=prev.get("status") or "Questionable",
                    tags=tags, watch=True, unconfirmed=not confirmed, confirmed=False,
                    note=note or prev.get("note"), as_of=as_of or prev.get("as_of"), source="report")
+
+    # 2b) Carry forward last known non-expired Watch / trending / confirmed labels.
+    # CI often lacks the private reports jsonl; Bet Lab public EIA + this prior keep Watson Watch
+    # (and peer-pushed Murray Out rows) visible until the 6h staleness guard expires them.
+    prior = load_prior_overlay()
+    for key, row in prior.items():
+        cur = by.get(key)
+        if cur and cur.get("confirmed") and (cur.get("status") or "").lower() in ("out", "doubtful"):
+            continue  # live confirmed Out already wins
+        if cur and (cur.get("tags") or cur.get("watch") or cur.get("confirmed")):
+            # Prefer freshly built chrome; still fill missing Watch from prior
+            if row.get("watch") and not cur.get("watch") and not cur.get("confirmed"):
+                tags = list(dict.fromkeys((cur.get("tags") or []) + (row.get("tags") or []) + ["Watch"]))
+                upsert(by, cur.get("aid") or row.get("aid"), cur.get("player") or row.get("player"),
+                       cur.get("team") or row.get("team"),
+                       status=cur.get("status") or row.get("status") or "Questionable",
+                       tags=tags, watch=True, unconfirmed=True, confirmed=False,
+                       note=cur.get("note") or row.get("note"),
+                       as_of=cur.get("as_of") or row.get("as_of"),
+                       source="prior_watch")
+            continue
+        # No fresh chrome for this player — carry the prior row forward
+        upsert(by, row.get("aid"), row.get("player"), row.get("team"),
+               status=row.get("status") or "Questionable",
+               tags=list(row.get("tags") or []),
+               watch=bool(row.get("watch")),
+               unconfirmed=bool(row.get("unconfirmed")),
+               confirmed=bool(row.get("confirmed")),
+               note=row.get("note") or "",
+               as_of=row.get("as_of"),
+               p_inactive=row.get("p_inactive"),
+               source="prior_overlay")
 
     # 3) official hub statuses override unconfirmed chrome
     hub = load_hub_status(by_name)
@@ -428,7 +511,7 @@ def main():
     players.sort(key=lambda r: (r.get("team") or "", r.get("player") or ""))
     out = {
         "updated": nnow.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "updated_et": nnow.astimezone().strftime("%b %-d, %Y · %-I:%M %p ET"),
+        "updated_et": nnow.astimezone(__import__("zoneinfo").ZoneInfo("America/New_York")).strftime("%b %-d, %Y · %-I:%M %p ET"),
         "ttl_hours": TTL_H,
         "expires": (nnow + ttl).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
