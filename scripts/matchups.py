@@ -1,4 +1,4 @@
-import json,glob,os,statistics as st,collections
+import datetime as dt_, json,glob,os,statistics as st,collections
 import urllib.request,concurrent.futures as cf,datetime,sys
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); NL=ROOT+'/data'
 BL=os.environ.get('BETLAB_DATA','https://betlab.sportslabshq.com/data')
@@ -114,6 +114,15 @@ for _t,W in _starts.items():
             wl=sum(1 for w in wk if res[w][0]>res[w][1]); ll=sum(1 for w in wk if res[w][0]<res[w][1]); tt=len(wk)-wl-ll
             txt+=f" {_t} is {wl}-{ll}"+(f"-{tt}" if tt else '')+f" {lab} this season, {sum(res[w][0] for w in wk)/len(wk):.1f} pts/game"+(" (small sample)" if len(wk)<3 else '')+'.'
         else: txt+=f" {_t} hasn't played a game without {P[s1]['name'].split()[-1]} this season."
+    if (P[s1].get('inj') or {}).get('season'): txt=txt.replace(f"{P[s1]['name']} {i1}",f"{P[s1]['name']} out for season",1)
+    # other recent starters who are out (e.g. the top backup), with season-ending flag
+    _oth=[a_ for a_ in st_ if a_ not in(s1,nxt) and (((P[a_].get('inj') or {}).get('status') or '') in('Out','Doubtful','Suspended') or ((P[a_].get('inj') or {}).get('status') or '').startswith('Injured Reserve'))]
+    for a_ in _oth: txt+=f" {P[a_]['name']} also "+('out for season.' if (P[a_].get('inj') or {}).get('season') else f"{(P[a_].get('inj') or {}).get('status')}.")
+    # incoming QBs from roster moves (pending = reported, not official, so not available for this game)
+    for a_,d_ in P.items():
+        mv=d_.get('move') or {}
+        if d_.get('pos')=='QB' and mv.get('to')==_t and d_.get('team')!=_t and mv.get('state')=='pending': txt+=f" Trade for {d_['name']} reported, not yet official, so he is not available for this game."
+        elif d_.get('pos')=='QB' and mv.get('to')==_t and mv.get('state')=='official' and mv.get('date','')>=(dt_.date.today()-dt_.timedelta(days=7)).isoformat(): txt+=f" {d_['name']} acquired {mv['date'][5:].replace('-','/')}."
     QBX[_t]=txt
 print('season-starter QB-out notes',QBX)
 OUT={'Out','Injured Reserve','Doubtful','Suspended','Physically Unable to Perform','Reserve'}
