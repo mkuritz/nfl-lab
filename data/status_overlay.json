@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-05T22:21:16Z",
-  "updated_et": "Nov 5, 2026 \u00b7 5:21 PM ET",
+  "updated": "2026-11-05T22:31:51Z",
+  "updated_et": "Nov 5, 2026 \u00b7 5:31 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-06T04:21:16Z",
+  "expires": "2026-11-06T04:31:51Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -96,9 +96,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) isn't present for the portion of Thursday's practice open to media viewing, per reports.",
-      "as_of": "2026-11-05T19:32:00Z",
-      "expires": "2026-11-06T01:32:00Z",
+      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:38:00Z",
+      "expires": "2026-11-06T03:38:00Z",
       "p_inactive": 0.2
     },
     {
@@ -131,6 +131,22 @@
       "note": "Illness, not present Thursday and no practice since last Wednesday (unconfirmed report). Not ruled out for Sunday vs GB.",
       "as_of": "2026-11-05T20:53:00Z",
       "expires": "2026-11-06T02:53:00Z"
+    },
+    {
+      "aid": "4696981",
+      "player": "Cam Skattebo",
+      "team": "NYG",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Skattebo (hamstring) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:29:00Z",
+      "expires": "2026-11-06T03:29:00Z",
+      "p_inactive": 0.38
     },
     {
       "aid": "4569618",
@@ -268,9 +284,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) isn't present for the portion of Thursday's practice open to media viewing, per reports.",
-      "as_of": "2026-11-05T19:32:00Z",
-      "expires": "2026-11-06T01:32:00Z",
+      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:38:00Z",
+      "expires": "2026-11-06T03:38:00Z",
       "p_inactive": 0.2
     },
     "3046439": {
@@ -303,6 +319,22 @@
       "note": "Illness, not present Thursday and no practice since last Wednesday (unconfirmed report). Not ruled out for Sunday vs GB.",
       "as_of": "2026-11-05T20:53:00Z",
       "expires": "2026-11-06T02:53:00Z"
+    },
+    "4696981": {
+      "aid": "4696981",
+      "player": "Cam Skattebo",
+      "team": "NYG",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Skattebo (hamstring) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:29:00Z",
+      "expires": "2026-11-06T03:29:00Z",
+      "p_inactive": 0.38
     },
     "4569618": {
       "aid": "4569618",
@@ -440,9 +472,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) isn't present for the portion of Thursday's practice open to media viewing, per reports.",
-      "as_of": "2026-11-05T19:32:00Z",
-      "expires": "2026-11-06T01:32:00Z",
+      "note": "Knee, second straight DNP and fourth missed practice (unconfirmed report). Not ruled out for Sunday vs GB. Brown (ankle/knee) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:38:00Z",
+      "expires": "2026-11-06T03:38:00Z",
       "p_inactive": 0.2
     },
     "hunter henry": {
@@ -475,6 +507,22 @@
       "note": "Illness, not present Thursday and no practice since last Wednesday (unconfirmed report). Not ruled out for Sunday vs GB.",
       "as_of": "2026-11-05T20:53:00Z",
       "expires": "2026-11-06T02:53:00Z"
+    },
+    "cam skattebo": {
+      "aid": "4696981",
+      "player": "Cam Skattebo",
+      "team": "NYG",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Skattebo (hamstring) was a non-participant at Thursday's practice, per reports.",
+      "as_of": "2026-11-05T21:29:00Z",
+      "expires": "2026-11-06T03:29:00Z",
+      "p_inactive": 0.38
     },
     "garrett wilson": {
       "aid": "4569618",
