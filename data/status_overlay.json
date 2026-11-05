@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-05T19:41:06Z",
-  "updated_et": "Nov 5, 2026 \u00b7 2:41 PM ET",
+  "updated": "2026-11-05T19:44:59Z",
+  "updated_et": "Nov 5, 2026 \u00b7 7:44 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-06T01:41:06Z",
+  "expires": "2026-11-06T01:44:59Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -10,51 +10,6 @@
     "hub_player_status"
   ],
   "players": [
-    {
-      "aid": "4241474",
-      "player": "Brian Robinson Jr.",
-      "team": "ATL",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Unconfirmed, low-impact note: limited Thursday after a limited Wednesday (hamstring).",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z"
-    },
-    {
-      "aid": "3122840",
-      "player": "Deshaun Watson",
-      "team": "CLE",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z"
-    },
-    {
-      "aid": "12483",
-      "player": "Matthew Stafford",
-      "team": "LAR",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Unconfirmed, low-impact note: elbow worth monitoring after Sunday; full practice Wednesday and expected to play.",
-      "as_of": "2026-11-05T15:53:00Z",
-      "expires": "2026-11-05T21:53:00Z"
-    },
     {
       "aid": "3917315",
       "player": "Kyler Murray",
@@ -64,25 +19,10 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "Confirmed Out for Monday vs BUF (hamstring strain, week-to-week, not IR). Carson Wentz is QB1; Max Brosmer is QB2.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z",
+      "note": "Not expected to start; Carson Wentz starting (unconfirmed report). Murray (hamstring) won't play Monday against the Bills, per reports.",
+      "as_of": "2026-11-05T18:36:00Z",
+      "expires": "2026-11-06T00:36:00Z",
       "p_inactive": 0.95
-    },
-    {
-      "aid": "4573398",
-      "player": "Max Brosmer",
-      "team": "MIN",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": false,
-      "confirmed": false,
-      "note": "Confirmed QB2 for Monday vs BUF with Murray Out and Wentz at QB1.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z"
     },
     {
       "aid": "4569618",
@@ -95,9 +35,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report).",
-      "as_of": "2026-11-05T17:59:00Z",
-      "expires": "2026-11-05T23:59:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Wilson, who is in the NFL's concussion protocol, wasn't seen at Thursday's practice,, per reports.",
+      "as_of": "2026-11-05T18:03:00Z",
+      "expires": "2026-11-06T00:03:00Z",
       "p_inactive": 0.2
     },
     {
@@ -111,9 +51,9 @@
       "watch": false,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable.",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z",
+      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable. Samuel (hamstring) is unlikely to be available for Sunday's game against the Raiders, per reports.",
+      "as_of": "2026-11-05T16:44:00Z",
+      "expires": "2026-11-05T22:44:00Z",
       "p_inactive": 0.55
     },
     {
@@ -127,58 +67,13 @@
       "watch": false,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable.",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z",
+      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable. questionable",
+      "as_of": "2026-11-05T16:51:00Z",
+      "expires": "2026-11-05T22:51:00Z",
       "p_inactive": 0.55
     }
   ],
   "by_aid": {
-    "4241474": {
-      "aid": "4241474",
-      "player": "Brian Robinson Jr.",
-      "team": "ATL",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Unconfirmed, low-impact note: limited Thursday after a limited Wednesday (hamstring).",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z"
-    },
-    "3122840": {
-      "aid": "3122840",
-      "player": "Deshaun Watson",
-      "team": "CLE",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z"
-    },
-    "12483": {
-      "aid": "12483",
-      "player": "Matthew Stafford",
-      "team": "LAR",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Unconfirmed, low-impact note: elbow worth monitoring after Sunday; full practice Wednesday and expected to play.",
-      "as_of": "2026-11-05T15:53:00Z",
-      "expires": "2026-11-05T21:53:00Z"
-    },
     "3917315": {
       "aid": "3917315",
       "player": "Kyler Murray",
@@ -188,25 +83,10 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "Confirmed Out for Monday vs BUF (hamstring strain, week-to-week, not IR). Carson Wentz is QB1; Max Brosmer is QB2.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z",
+      "note": "Not expected to start; Carson Wentz starting (unconfirmed report). Murray (hamstring) won't play Monday against the Bills, per reports.",
+      "as_of": "2026-11-05T18:36:00Z",
+      "expires": "2026-11-06T00:36:00Z",
       "p_inactive": 0.95
-    },
-    "4573398": {
-      "aid": "4573398",
-      "player": "Max Brosmer",
-      "team": "MIN",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": false,
-      "confirmed": false,
-      "note": "Confirmed QB2 for Monday vs BUF with Murray Out and Wentz at QB1.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z"
     },
     "4569618": {
       "aid": "4569618",
@@ -219,9 +99,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report).",
-      "as_of": "2026-11-05T17:59:00Z",
-      "expires": "2026-11-05T23:59:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Wilson, who is in the NFL's concussion protocol, wasn't seen at Thursday's practice,, per reports.",
+      "as_of": "2026-11-05T18:03:00Z",
+      "expires": "2026-11-06T00:03:00Z",
       "p_inactive": 0.2
     },
     "3126486": {
@@ -235,9 +115,9 @@
       "watch": false,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable.",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z",
+      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable. Samuel (hamstring) is unlikely to be available for Sunday's game against the Raiders, per reports.",
+      "as_of": "2026-11-05T16:44:00Z",
+      "expires": "2026-11-05T22:44:00Z",
       "p_inactive": 0.55
     },
     "16737": {
@@ -251,58 +131,13 @@
       "watch": false,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable.",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z",
+      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable. questionable",
+      "as_of": "2026-11-05T16:51:00Z",
+      "expires": "2026-11-05T22:51:00Z",
       "p_inactive": 0.55
     }
   },
   "by_name": {
-    "brian robinson jr.": {
-      "aid": "4241474",
-      "player": "Brian Robinson Jr.",
-      "team": "ATL",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Unconfirmed, low-impact note: limited Thursday after a limited Wednesday (hamstring).",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z"
-    },
-    "deshaun watson": {
-      "aid": "3122840",
-      "player": "Deshaun Watson",
-      "team": "CLE",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z"
-    },
-    "matthew stafford": {
-      "aid": "12483",
-      "player": "Matthew Stafford",
-      "team": "LAR",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": true,
-      "confirmed": false,
-      "note": "Unconfirmed, low-impact note: elbow worth monitoring after Sunday; full practice Wednesday and expected to play.",
-      "as_of": "2026-11-05T15:53:00Z",
-      "expires": "2026-11-05T21:53:00Z"
-    },
     "kyler murray": {
       "aid": "3917315",
       "player": "Kyler Murray",
@@ -312,25 +147,10 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "Confirmed Out for Monday vs BUF (hamstring strain, week-to-week, not IR). Carson Wentz is QB1; Max Brosmer is QB2.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z",
+      "note": "Not expected to start; Carson Wentz starting (unconfirmed report). Murray (hamstring) won't play Monday against the Bills, per reports.",
+      "as_of": "2026-11-05T18:36:00Z",
+      "expires": "2026-11-06T00:36:00Z",
       "p_inactive": 0.95
-    },
-    "max brosmer": {
-      "aid": "4573398",
-      "player": "Max Brosmer",
-      "team": "MIN",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": false,
-      "confirmed": false,
-      "note": "Confirmed QB2 for Monday vs BUF with Murray Out and Wentz at QB1.",
-      "as_of": "2026-11-05T18:56:00Z",
-      "expires": "2026-11-06T00:56:00Z"
     },
     "garrett wilson": {
       "aid": "4569618",
@@ -343,9 +163,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report).",
-      "as_of": "2026-11-05T17:59:00Z",
-      "expires": "2026-11-05T23:59:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Wilson, who is in the NFL's concussion protocol, wasn't seen at Thursday's practice,, per reports.",
+      "as_of": "2026-11-05T18:03:00Z",
+      "expires": "2026-11-06T00:03:00Z",
       "p_inactive": 0.2
     },
     "deebo samuel sr.": {
@@ -359,9 +179,9 @@
       "watch": false,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable.",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z",
+      "note": "Unconfirmed report: described as doubtful for Sunday vs LV (hamstring). Not an official designation; official status still Questionable. Samuel (hamstring) is unlikely to be available for Sunday's game against the Raiders, per reports.",
+      "as_of": "2026-11-05T16:44:00Z",
+      "expires": "2026-11-05T22:44:00Z",
       "p_inactive": 0.55
     },
     "mike evans": {
@@ -375,9 +195,9 @@
       "watch": false,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable.",
-      "as_of": "2026-11-05T16:59:00Z",
-      "expires": "2026-11-05T22:59:00Z",
+      "note": "Unconfirmed report: described as unlikely for Sunday vs LV (Achilles). Not an official designation; official status still Questionable. questionable",
+      "as_of": "2026-11-05T16:51:00Z",
+      "expires": "2026-11-05T22:51:00Z",
       "p_inactive": 0.55
     }
   }
