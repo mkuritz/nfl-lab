@@ -101,11 +101,14 @@ function nfl(el,pid,name){el.innerHTML='<div class="ma"><div class="ma-hd"><h3>M
   var opp={title:p.opp+" defenders vs "+peer+"s",tip:"The "+p.opp+" starters and top backups who usually line up against "+peer+"s. Colors compare each defender with others at his position league-wide.",cols:dcols,
    rows:p.unit.map(function(u){var cells={};dcols.forEach(function(c){var k=c[0],pc=u.pct[k],out=/out|reserve|doubt/i.test(u.st);cells[k]={v:u[k]==null?null:(k=="snap"?u[k]+"%":u[k]),c:out||k=="snap"?"":pc==null?"":pc>=67?"cr":pc<=33?"cg":""}});return{name:u.n,sub:u.pos+(u.dr?" · #"+u.dr:""),status:u.st,cells:cells}}),
    week:{label:p.opp+": "+key.toLowerCase()+" allowed to "+peer+"s by week",tip:"Total "+key.toLowerCase()+" by all "+peer+"s against "+p.opp+" in each 2026 game.",pts:p.oweek}};
-  var bd=p.bdg,status=bd&&(SBAD[bd]||bd=="Questionable")?{badge:bd=="IR"?"IR":bd.toUpperCase(),dim:!!SBAD[bd],text:(name||"This player")+" is listed "+(p.st||bd)+(p.stx?" ("+p.stx+")":"")+(SBAD[bd]?". He isn't expected to play this week. His numbers below are kept for reference.":". Check his status closer to kickoff.")}:null;
+  var bd0=p.bdg,st0=p.st,stx0=p.stx;
+  function paintStatus(){var bd=bd0,st=st0,stx=stx0;if(window.SLStatus){try{var r=SLStatus.resolve(st0,pid,name);if(r&&r.st){st=r.st;if(/^Out$/i.test(r.st))bd="Out";else if(/Injured Reserve|Reserve\/|Physically|Non-Football/i.test(r.st))bd="IR";else if(/^Doubt/i.test(r.st))bd="Doubtful";else if(/^Quest/i.test(r.st))bd=bd||"Questionable";if(r.o&&r.o.note&&!stx){var m=/\(([^)]+)\)/.exec(r.o.note);if(m)stx=m[1]}}}catch(e){}}return bd&&(SBAD[bd]||bd=="Questionable")?{badge:bd=="IR"?"IR":String(bd).toUpperCase(),dim:!!SBAD[bd],text:(name||"This player")+" is listed "+(st||bd)+(stx?" ("+stx+")":"")+(SBAD[bd]?". He isn't expected to play this week. His numbers below are kept for reference.":". Check his status closer to kickoff.")}:null}
+  var status=paintStatus();
+  function doMount(status){
   mount(el,{key:"nfl"+pid,status:status,player:name||"Player",opp:p.opp,sub:(p.home?"vs ":"@ ")+p.opp+" · Week "+D.week+" · 2026 season",strip:strip,flags:flags,
    radar:{title:"Matchup radar: "+peer+" vs "+p.opp,tip:"Each spoke is a stat. Green shape = where he ranks among "+peer+"s (outer edge = best). Dashed gold = how much "+p.opp+" allows to "+peer+"s compared with other defenses (outer edge = allows the most).",axes:axes},
    splits:{pw:["L3","L6","L10","All"],ow:["L3","L6","All"],peer:peer,ptip:"His per-game numbers over the chosen span. Every span counts only 2026 games he played, including games where he didn't record a stat. All = 2026 season.",otip:"What "+p.opp+" allowed to "+peer+"s per game over its chosen span of 2026 games.",
     get:function(pw,ow){var a=p.win[pw],b=p.owin[ow];return{pn:a.n+" game"+(a.n==1?"":"s"),on:b.n+" game"+(b.n==1?"":"s"),rows:ks.filter(function(k){return a.v[k]!=null||b.v[k]!=null}).map(function(k){return{label:lab[k],tip:TIP[k],pv:a.v[k],pp:iv(k,a.p[k]),ov:b.v[k],op:iv(k,b.p[k]),dec:DEC[k]||0}})}}},
-   unit:opp,sim:sim})})}
+   unit:opp,sim:sim})}doMount(status);if(window.SLStatus&&SLStatus.load)SLStatus.load().then(function(){var s2=paintStatus();if(s2&&(!status||s2.badge!==status.badge)){status=s2;doMount(status)}})})}
 window.SLMatchup={mount:mount,nfl:nfl,load:load};
 })();

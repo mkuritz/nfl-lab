@@ -178,6 +178,47 @@ for pid, a in AS.items():
         if not any(x.get("id") == pid for x in inj.setdefault(p["team"], [])):
             inj[p["team"]].append({"n": p["name"], "pos": p["pos"], "st": a["st"], "d": a.get("d", ""), "id": pid})
 print("athlete status checked", len(AS), "flagged", sum(1 for pid, a in AS.items() if badge(a["st"])))
+# status_overlay.json (built just before this step): confirmed Out/IR overrides feed Q/D so the
+# Matchup Analyzer badge matches hub pills. Display only — no grade or probability change.
+try:
+    OV = json.load(open(os.path.join(D, "status_overlay.json")))
+    by = OV.get("by_aid") or {}
+    n_ov = 0
+    for aid, row in by.items():
+        if not row.get("confirmed"):
+            continue
+        st = (row.get("status") or "").strip()
+        if not st.startswith(("Out", "Injured", "Doubtful", "Suspended")):
+            continue
+        pid = str(aid)
+        if pid not in P:
+            continue
+        detail = ""
+        note = row.get("note") or ""
+        if "hamstring" in note.lower():
+            detail = "Hamstring"
+        elif "thumb" in note.lower():
+            detail = "Thumb"
+        AS[pid] = {"st": st, "d": detail or (AS.get(pid) or {}).get("d") or "", "dt": (row.get("as_of") or "")[:10], "overlay": True}
+        p = P[pid]
+        p["inj"] = {**(p.get("inj") or {}), "status": st, "detail": detail or (p.get("inj") or {}).get("detail") or "", "date": (row.get("as_of") or "")[:10], "note": note or (p.get("inj") or {}).get("note") or ""}
+        # keep team injury list in sync for the analyzer's inj panel
+        L = inj.setdefault(p.get("team"), [])
+        hit = False
+        for x in L:
+            if str(x.get("id") or "") == pid or x.get("n") == p.get("name"):
+                x["st"] = st
+                if detail:
+                    x["d"] = detail
+                x["id"] = pid
+                hit = True
+                break
+        if not hit:
+            L.append({"n": p["name"], "pos": p.get("pos"), "st": st, "d": detail, "id": pid})
+        n_ov += 1
+    print("status_overlay confirmed applied", n_ov)
+except Exception as e:
+    print("status_overlay skip", e)
 starters = {}
 for p in P.values():
     d = p.get("depth") or {}
