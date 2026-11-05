@@ -15,7 +15,8 @@ def slim_board(j):
         out.append({"id":e["id"],"date":e["date"],"name":e.get("shortName"),"status":c["status"]["type"].get("shortDetail"),
             "state":c["status"]["type"].get("state"),"venue":(c.get("venue") or {}).get("fullName"),
             "home":side(t["home"]),"away":side(t["away"]),"line":o.get("details"),"total":o.get("overUnder"),
-            "odds_src":(o.get("provider") or {}).get("name"),"bc":[(b.get("names") or [None])[0] for b in c.get("broadcasts",[])][:2]})
+            "odds_src":"Book A" if __import__("re").search(r"draft\s*kings",((o.get("provider") or {}).get("name") or ""),__import__("re").I) else None,   # same letter as Bet Lab (DraftKings = Book A); any other provider: no label   # never a sportsbook name on public data
+            "bc":[(b.get("names") or [None])[0] for b in c.get("broadcasts",[])][:2]})
     return out
 def slim_news(j):
     from srcscrub import strip_reporters   # no reporter/outlet names in public news text

@@ -54,17 +54,27 @@ BOOK_L = [("DraftKings Sportsbook", "Book A"), ("DraftKings", "Book A"), ("FanDu
           ("Unibet", "Book Q"), ("WynnBET", "Book R"), ("Borgata", "Book S"), ("BetPARX", "Book V"), ("betPARX", "Book V"), ("Bally Bet", "Book W"), ("Bally", "Book W"), ("MyBookie", "Book Z"), ("LowVig", "Book X"), ("Circa Sports", "Book Y"), ("Circa", "Book Y"),
           ("Kalshi", "Exchange A"), ("Polymarket", "Exchange B"), ("Novig", "Exchange C"), ("ProphetX", "Exchange D"), ("Sporttrade", "Exchange E"), ("Betfair", "Exchange F"), ("BetOpenly", "Exchange H"),
           ("Pinnacle", "sharp book")]
-_BRE = re.compile(r"(?<![A-Za-z])(" + "|".join(re.escape(a) for a, _ in BOOK_L) + r")(?:'s)?(?![A-Za-z])")
-_BMAP = dict(BOOK_L)
+# spaced/unspaced variants too ("Draft Kings", "Fan Duel", "Bet MGM", "Bet Rivers", "Points Bet"...): optional space at every
+# camel-case or Bet/bet boundary, matched case-insensitively for multi-part names (Nov 5: ESPN's provider name flips to "Draft Kings").
+def _flex(a):
+    p = re.sub(r"(?<=[a-z])(?=[A-Z0-9])", "\x00", a); p = re.sub(r"(?i)(?<=bet)(?=[a-z])|(?<=[a-z])(?=bet)", "\x00", p)
+    p = re.escape(p).replace("\x00", r"\s?").replace(r"\ ", r"\s+")
+    return ("(?i:" + p + ")") if r"\s?" in p else p
+_norm = lambda a: re.sub(r"\s+", "", a).lower()
+_lowid = lambda x: x == x.lower() and not re.search(r"\s", x)   # "draftkings" = lookup id, left alone
+_BRE = re.compile(r"(?<![A-Za-z])(" + "|".join(_flex(a) for a, _ in BOOK_L) + r")(?:'s)?(?![A-Za-z])")
+_BMAP0 = dict(BOOK_L); _BN = {}
+for a, b in BOOK_L: _BN.setdefault(_norm(a), b)
+_BMAP = type("BM", (dict,), {"__getitem__": lambda self, k: _BN[_norm(k)], "__contains__": lambda self, k: isinstance(k, str) and _norm(k) in _BN})(_BMAP0)
 _ABR = re.compile(r"\b(DK|FD|MGM|CZR)(?= [+-]?\d)|^(DK|FD|MGM|CZR|PIN)$")
 _AMAP = {"DK": "Book A", "FD": "Book B", "MGM": "Book C", "CZR": "Book D", "PIN": "sharp book"}
 BOOK_SKIP_KEYS = {"url", "src_url", "link", "href", "img", "logo", "id", "aid", "espn_id", "ticker", "event_ticker", "slug"}
 def books_s(v):
     if not v or v.startswith(("http://", "https://")): return v
-    v = _BRE.sub(lambda m: _BMAP[m.group(1)], v)
+    v = _BRE.sub(lambda m: m.group(0) if _lowid(m.group(1)) else _BMAP[m.group(1)], v)
     return _ABR.sub(lambda m: _AMAP[m.group(1) or m.group(2)], v)
 def books_obj(d, k=None):
-    if isinstance(d, dict): return {(books_s(kk) if kk in _BMAP else kk): (vv if kk in BOOK_SKIP_KEYS else books_obj(vv, kk)) for kk, vv in d.items()}
+    if isinstance(d, dict): return {(books_s(kk) if kk in _BMAP and not _lowid(kk) else kk): (vv if kk in BOOK_SKIP_KEYS else books_obj(vv, kk)) for kk, vv in d.items()}
     if isinstance(d, list): return [books_obj(x, k) for x in d]
     if isinstance(d, str): return books_s(d)
     return d
