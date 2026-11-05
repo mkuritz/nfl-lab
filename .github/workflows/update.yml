@@ -31,6 +31,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 8
         run: python scripts/profiles.py
+      - name: Per-player status check (display only)
+        continue-on-error: true
+        timeout-minutes: 4
+        run: python3 scripts/player_status.py
       - name: Matchup Analyzer data (display only)
         continue-on-error: true
         timeout-minutes: 4

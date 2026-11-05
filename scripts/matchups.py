@@ -73,6 +73,49 @@ try: QBO={a:r['text'] for a,r in (jload('nfl_qb_out.json').get('players') or {})
 except Exception as e: QBO={}; print('qb_out unavailable',e)
 if QBO: QBN={}   # shared file is the source of truth when present
 print('QB-out notes',QBN,len(QBO))
+# Season-starter out (display only, no grade change): who is out, who starts instead, and how the team has done in the
+# replacement's starts (or without the starter). Status comes from the player file (own entry first, team list fallback).
+QBX={}
+def _team_results(t):
+    try:
+        with urllib.request.urlopen(urllib.request.Request('https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/%s/schedule?season=2026&seasontype=2'%t.lower(),headers={'User-Agent':'Mozilla/5.0'}),timeout=20) as r: d=json.load(r)
+    except Exception: return {}
+    out={}
+    for e in d.get('events',[]):
+        c=e['competitions'][0]
+        if not c.get('status',{}).get('type',{}).get('completed'): continue
+        me=[x for x in c['competitors'] if x['team']['abbreviation']==t]; op=[x for x in c['competitors'] if x['team']['abbreviation']!=t]
+        if not me or not op: continue
+        sc=lambda x:int(float((x.get('score') or {}).get('value') or 0)) if isinstance(x.get('score'),dict) else int(x.get('score') or 0)
+        out[(e.get('week') or {}).get('number')]=(sc(me[0]),sc(op[0]))
+    return out
+_starts=collections.defaultdict(lambda:collections.defaultdict(list))   # team -> week -> [(att,aid)]
+for _a,_d in P.items():
+    if _d.get('pos')!='QB': continue
+    for g in _d.get('log',[]):
+        if g.get('s')==2026 and g.get('attempts',0)>=1: _starts[g['t'] if g['t']!='WAS' else 'WSH'][g['w']].append((g.get('attempts',0),_a))
+for _t,W in _starts.items():
+    st_=collections.Counter(max(v)[1] for v in W.values())
+    if not st_: continue
+    s1,n1=st_.most_common(1)[0]
+    i1=(P[s1].get('inj') or {}).get('status') or ''
+    if not (i1 in('Out','Doubtful','Suspended') or i1.startswith('Injured Reserve')): continue
+    qbs=sorted([(d_.get('depth') or {}).get('rank') or 99,a_] for a_,d_ in P.items() if d_.get('pos')=='QB' and d_.get('team')==_t)
+    nxt=next((a_ for _,a_ in qbs if a_!=s1 and not (((P[a_].get('inj') or {}).get('status') or '') in('Out','Doubtful','Suspended') or ((P[a_].get('inj') or {}).get('status') or '').startswith('Injured Reserve'))),None)
+    res=_team_results(_t)
+    det=(P[s1].get('inj') or {}).get('detail') or ''
+    txt=f"QB-out: {P[s1]['name']} {i1}"+(f" ({det})" if det else '')+'.'
+    if nxt:
+        txt+=f" {P[nxt]['name']} expected to start."
+        wk=[w for w,v in W.items() if max(v)[1]==nxt and w in res]
+        if not wk: wk=[w for w,v in W.items() if max(v)[1]!=s1 and w in res]; lab=f"without {P[s1]['name'].split()[-1]}"
+        else: lab=f"with {P[nxt]['name'].split()[-1]} throwing most of the passes"
+        if wk:
+            wl=sum(1 for w in wk if res[w][0]>res[w][1]); ll=sum(1 for w in wk if res[w][0]<res[w][1]); tt=len(wk)-wl-ll
+            txt+=f" {_t} is {wl}-{ll}"+(f"-{tt}" if tt else '')+f" {lab} this season, {sum(res[w][0] for w in wk)/len(wk):.1f} pts/game"+(" (small sample)" if len(wk)<3 else '')+'.'
+        else: txt+=f" {_t} hasn't played a game without {P[s1]['name'].split()[-1]} this season."
+    QBX[_t]=txt
+print('season-starter QB-out notes',QBX)
 OUT={'Out','Injured Reserve','Doubtful','Suspended','Physically Unable to Perform','Reserve'}
 def season(aid,team):
     return [g for g in plogs.get(aid,[]) if g['d']>='2026-09-01' and g['t']==team]
@@ -191,7 +234,7 @@ for c,cfg in CAT.items():
         base=0.6*st.mean(l5)+0.4*st.mean(vals); f=mfac(c,pos,opp[t]); proj=base*f
         sd=max(st.pstdev(vals),1 if c!='td' else .1)
         score=(proj-line)/sd if c!='td' else proj
-        rows.append(dict(aid=aid,name=d['name'],team=t,opp=opp[t],site=site[t],pos=pos,inj=st_ if st_ not in('','Active') else '',**({'qb':QBO[aid]} if aid in QBO and c in('rec','td') else {'qb':QBN[t]} if t in QBN and pos in('WR','TE','RB') and c in('rec','td') else {}),
+        rows.append(dict(aid=aid,name=d['name'],team=t,opp=opp[t],site=site[t],pos=pos,inj=st_ if st_ not in('','Active') else '',**({'qb':QBX[t]} if t in QBX and pos in('WR','TE','RB') and c in('rec','td') else {'qb':QBO[aid]} if aid in QBO and c in('rec','td') else {'qb':QBN[t]} if t in QBN and pos in('WR','TE','RB') and c in('rec','td') else {}),
             line=line,src=src,book=((lp or {}).get('book') or ('Book A' if (lp or {}).get('ov') else None)),price=(lp or {}).get('ov'),l5=l5,hits=sum(v>line for v in l5),l5avg=round(st.mean(l5),2 if c=='td' else 1),
             proj=round(proj*100 if c=='td' else proj,1),td_chance=(round(100*(1-(1-min((len(vals)*(0.4*st.mean(l5)+0.6*st.mean(vals))+4*LGTD.get(pos,0.3))/(len(vals)+4),0.95))**f)) if c=='td' else None),szn_hits=sum(v>line for v in vals),szn_n=len(vals),szn_avg=round(st.mean(vals),2 if c=='td' else 1),
             **({} if c!='td' else (lambda T:dict(td2_szn=round(100*sum(x>=2 for x in T)/len(T)),td3_szn=round(100*sum(x>=3 for x in T)/len(T)),td2_l5=sum(x>=2 for x in T[-5:]),td3_l5=sum(x>=3 for x in T[-5:])))([g['s'].get('rushingTouchdowns',0)+g['s'].get('receivingTouchdowns',0) for g in G])),mf=round(f,2),score=score,adv=adv(aid,G),time=gtime[t],
