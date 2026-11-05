@@ -31,4 +31,10 @@ jobs:
         run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data/matchups.json data/matchups_fp.json; git checkout -- . ; git clean -fdq -e data/matchups_fp.json
-          git diff --cached --quiet || (git commit -m "Matchup Board $(date -u +%FT%TZ)" && git pull --rebase && git push)
+          git diff --cached --quiet && exit 0
+          git commit -m "Matchup Board $(date -u +%FT%TZ)"
+          for i in 1 2 3 4; do
+            git pull --rebase -X theirs && git push && exit 0
+            git rebase --abort 2>/dev/null || true; sleep $((i*10))
+          done
+          exit 1
