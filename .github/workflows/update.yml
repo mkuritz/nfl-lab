@@ -50,6 +50,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         run: pip install -q pandas pyarrow numpy && bash scripts/v2/run.sh
+      - name: Advanced analytics (display only; team/player Advanced + travel/rest)
+        continue-on-error: true
+        timeout-minutes: 5
+        run: pip install -q pandas pyarrow numpy && python3 scripts/build_advanced_analytics.py
       - name: Matchup Board (display only)
         continue-on-error: true
         run: python3 scripts/matchups.py

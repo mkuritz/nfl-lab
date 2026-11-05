@@ -1,8 +1,8 @@
 /* NFL Hub team profiles (preview). Any element with data-nflteam="BUF", or any NFL team logo image, opens a full team profile:
-   Momentum · Depth Chart · Roster · Injuries & Updates · Season. Built only from published NFL Hub data files
+   Momentum · Advanced · Depth Chart · Roster · Injuries & Updates · Season. Built only from published NFL Hub data files
    (teams_v2, pbp_v2 team-weeks, trends, standings, pindex + player files). Display only: nothing here feeds models or Highlighted logic.
    Charts are inline SVG/CSS. A chart or reason with no real data behind it is hidden. */
-(function(){"use strict";if(window.NFLTeam&&window.NFLTeam.v3)return;
+(function(){"use strict";if(window.NFLTeam&&window.NFLTeam.v4)return;
 /* ---- Momentum weights (display only). Score = sum of reason points, clamped per reason as noted. ---- */
 var MW={
  RETURN:1.5,        // per returning player who averaged 50%+ snaps before his injury (cap 3 players)
@@ -15,6 +15,7 @@ var MW={
  SCHED_NEXT:1/5,    // x (team rating − next opponent rating), clamp ±1.5
  SCHED_LAST3:1/5,   // x (avg rating of last-3 opponents − earlier opponents), clamp ±1  (tougher recent slate = credit)
  LOSS:-1.5,         // per new key loss (Out/IR/Doubtful/Suspended in last 14 days, 50%+ snaps); QB counts double; cap −6
+ TRAVEL:1.0,        // display-only travel & rest reason from advanced.json (already scored there); clamp ±2
  RANGE:8            // gauge maps −8..+8 onto Cooling..Heating; label Heating ≥ +2, Cooling ≤ −2, else Steady
 };
 /* Trend tag rule (Season tab sparklines): last 3 games vs season average.
@@ -27,7 +28,7 @@ function V(t){t=String(t||"").toUpperCase();return t=="LA"?"LAR":t=="WAS"?"WSH":
 function G(u){return fetch(u+(u.indexOf("?")<0?"?":"&")+"v="+Math.floor(Date.now()/6e5)).then(function(r){return r.ok?r.json():null}).catch(function(){return null})}
 var SCRUB=/\b(?:per|according to|via|told|reports?|reported by)\s+(?:ESPN|NFL Network|The Athletic|[A-Z][a-z]+ [A-Z][a-z]+(?: of [A-Z][\w ]+)?)[,.]?\s*/g,OUT=/\b(ESPN|NFL Network|The Athletic|Rotowire|RotoWire|Underdog|PFT|ProFootballTalk|Yahoo|CBS Sports|Fox Sports|SI\.com|Bleacher Report)('s)?\b/g;
 function scrub(s){return String(s||"").replace(SCRUB,"").replace(OUT,"").replace(/\s{2,}/g," ").trim()}
-function load(){if(P)return P;P=Promise.all([G("data/teams_v2.json"),G("data/v2.json"),G("data/pindex.json"),G("data/trends.json"),G("data/pbp_v2.json"),G("data/nfl.json")]).then(function(a){T=a[0];X.v2=a[1]||{};X.pi=(a[2]||{}).p||[];X.tr=a[3]||{};X.pb=a[4]||{};X.nfl=a[5]||{};if(!T)P=null;X.S=leagueStats();return T});return P}
+function load(){if(P)return P;P=Promise.all([G("data/teams_v2.json"),G("data/v2.json"),G("data/pindex.json"),G("data/trends.json"),G("data/pbp_v2.json"),G("data/nfl.json"),G("data/advanced.json")]).then(function(a){T=a[0];X.v2=a[1]||{};X.pi=(a[2]||{}).p||[];X.tr=a[3]||{};X.pb=a[4]||{};X.nfl=a[5]||{};X.adv=a[6]||null;if(!T)P=null;X.S=leagueStats();return T});return P}
 function injMap(t){var m={};(((X.v2||{}).inj||{})[V(t)]||[]).forEach(function(p){if(p.st&&p.st!="Active")m[p.id||p.n]=p});return m}
 function ij(p){var m=injMap(p.team);return m[p.id]||m[p.name]||null}
 function players(t){var k=V(t);if(PL[k])return PL[k];var ids=(X.pi||[]).filter(function(p){return V(p[2])==k}).map(function(p){return p[0]});
@@ -101,6 +102,9 @@ function momentum(t,P){var k=V(t),W=weeks(t),s=X.S.S[k]||{},R=[],now=Date.now(),
  var RT={};(T.power||[]).forEach(function(p){RT[V(p.t)]=p.rat});var me=RT[k];
  if(W.length>=5&&me!=null){var or=W.map(function(g){return RT[V(g.opp)]}).filter(function(v){return v!=null});if(or.length>=5){var r3=avg(or.slice(-3)),re=avg(or.slice(0,-3)),ps=clamp((r3-re)*MW.SCHED_LAST3,1);add(ps>=0?1:-1,ps,ps>=0?'Recent results came against tougher opponents':'Recent results came against softer opponents','Avg opponent rating L3 '+r3.toFixed(1)+' vs earlier '+re.toFixed(1))}}
  var up=((X.tr||{}).upcoming||[]).filter(function(g){return V(g.home)==k||V(g.away)==k})[0];if(up&&me!=null){var op=V(up.home)==k?V(up.away):V(up.home);if(RT[op]!=null){var pn=clamp((me-RT[op])*MW.SCHED_NEXT,1.5);add(pn>=0?1:-1,pn,(pn>=0?'Next opponent is weaker on paper: ':'Next opponent is stronger on paper: ')+(V(up.home)==k?'vs ':'@ ')+op,'Rating '+me.toFixed(1)+' vs '+RT[op].toFixed(1))}}
+ // travel & rest (display only; from precomputed advanced.json — never feeds models)
+ var trv=(X.adv&&X.adv.travel||{})[k];
+ if(trv&&trv.detail){var tp=clamp((trv.pts||0)*MW.TRAVEL,2);add(tp>=0?1:-1,tp,trv.label+(trv.short_week?' · short week':trv.off_bye?' · off a bye':trv.home?' · home':''),trv.detail)}
  // key losses
  var lossPts=0;P.map(function(p){return [p,ij(p)]}).filter(function(x){var i=x[1];return i&&/^(Out|Injured Reserve|Doubtful|Suspen)/i.test(i.st||"")&&i.dt&&now-Date.parse(i.dt)<14*D&&(snapAvg(x[0],null)||0)>=50}).sort(function(a,b){return (b[0].pos=="QB")-(a[0].pos=="QB")}).forEach(function(x){var p=x[0],i=x[1],w=MW.LOSS*(p.pos=="QB"?2:1);if(lossPts+w<-6)return;lossPts+=w;
   add(-1,w,E(p.name)+' ('+E(p.pos)+') '+E(i.st)+(i.d?' ('+E(i.d)+')':''),Math.round(snapAvg(p,null)||0)+'% snaps this season · listed '+new Date(i.dt).toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"America/New_York"}))});
@@ -111,6 +115,59 @@ function gauge(M,small){var p=Math.round((clamp(M.score,MW.RANGE)+MW.RANGE)/(2*M
 function reasons(M,n){var L=M.reasons.slice(0,n||99);if(!L.length)return '<div class="m sm">No reasons with enough data this week.</div>';
  return '<ul class="mor">'+L.map(function(r){return '<li><span class="'+(r.p>=0?"up":"dn")+'">'+(r.p>=0?"▲":"▼")+' '+(r.p>0?"+":"")+r.p.toFixed(1)+'</span> <b>'+r.t+'</b><div class="m sm">'+r.n+'</div></li>'}).join("")+'</ul>'}
 /* ---------- tabs ---------- */
+
+/* ---------- Advanced analytics (display only; data/advanced.json) ---------- */
+var ADV_WIN="season", ADV_SIDE="off";
+function advTeam(t){return (X.adv&&X.adv.teams||{})[V(t)]||null}
+function advLg(win,side){return ((X.adv&&X.adv.league||{})[win]||{})[side]||{}}
+function advOpp(t){var n=((X.adv&&X.adv.next)||{})[V(t)];return n?n.opp:null}
+function advFmt(k,v){if(v==null||!isFinite(v))return"—";if(/suc|rate|skr|qhr/.test(k))return(v*100).toFixed(1)+"%";if(/epa|pepa|repa/.test(k))return(v>=0?"+":"")+v.toFixed(3);return v.toFixed(2)}
+function advDelta(a,b){if(a==null||b==null)return"";var d=a-b;return'<span class="'+(d>0?"up":d<0?"dn":"m")+'">'+(d>0?"+":"")+(/suc|rate|skr|qhr/.test(arguments[2]||"")?(d*100).toFixed(1)+" pts":d.toFixed(3))+'</span>'}
+function advSpark(vals,col,lbls,fmtk){vals=vals.filter(function(v){return v!=null});if(vals.length<2)return"";
+ var all=arguments[0],w=280,h=56,nums=all.map(function(v){return v==null?null:+v}),ok=nums.filter(function(v){return v!=null});
+ if(ok.length<2)return"";var mn=Math.min.apply(null,ok),mx=Math.max.apply(null,ok);if(mx===mn){mx+=0.01;mn-=0.01}
+ var pts=[],dots="";nums.forEach(function(v,i){if(v==null)return;var x=Math.round(i/Math.max(1,nums.length-1)*(w-10)+5),y=Math.round(h-6-(v-mn)/(mx-mn)*(h-12));pts.push(x+","+y);dots+='<circle cx="'+x+'" cy="'+y+'" r="3.5" fill="'+col+'"><title>'+E((lbls||[])[i]||"")+' · '+advFmt(fmtk||"epa",v)+'</title></circle>'});
+ return '<svg class="adv-svg" viewBox="0 0 '+w+' '+h+'" width="100%" height="'+h+'" preserveAspectRatio="none" role="img"><polyline fill="none" stroke="'+col+'" stroke-width="2.5" points="'+pts.join(" ")+'"/>'+dots+'</svg>'}
+function advCompareRow(label,key,mine,oppV,lgV,inv){if(mine==null)return"";
+ var r='',cls=inv?"dn-better":"";
+ r+='<div class="adv-row"><div class="adv-lab">'+E(label)+'</div>';
+ r+='<div class="adv-val"><b>'+advFmt(key,mine)+'</b></div>';
+ if(lgV!=null){var d=mine-lgV,show=inv?-d:d;var txt;if(/suc|rate|skr|qhr/.test(key))txt=(d>=0?"+":"")+(d*100).toFixed(1)+" pts";else if(/epa|pepa|repa/.test(key))txt=(d>=0?"+":"")+d.toFixed(3);else txt=(d>=0?"+":"")+d.toFixed(2);r+='<div class="adv-cmp"><span class="m sm">vs league</span> <b class="'+(show>0.0005?"up":show<-0.0005?"dn":"m")+'">'+txt+'</b><div class="adv-mini"><i style="width:'+Math.max(4,Math.min(100,50+show*(/epa/.test(key)?400:200)))+'%;background:'+(show>0?"#8ee04a":show<0?"#ff5d6c":"#38d0f0")+'"></i></div></div>'}
+ else r+='<div class="adv-cmp"></div>';
+ if(oppV!=null){var better=inv?(mine<oppV):(mine>oppV);r+='<div class="adv-cmp"><span class="m sm">vs opp</span> <b class="'+(better?"up":"dn")+'">'+advFmt(key,oppV)+'</b></div>'}
+ else r+='<div class="adv-cmp m sm">—</div>';
+ return r+'</div>'}
+function tabAdvanced(t){var A=advTeam(t);if(!A||!A.g)return '<p class="m">Advanced team numbers need more play-by-play before they show up.</p>';
+ var win=ADV_WIN, side=ADV_SIDE, W=A.windows[win]||{}, mine=(W||{})[side], oppAb=advOpp(t), Opp=oppAb?advTeam(oppAb):null, oppW=Opp&&Opp.windows[win]?Opp.windows[win][side]:null, lg=advLg(win,side);
+ var chips='<div class="adv-chips"><span class="m sm">Window</span>'+[["l3","Last 3"],["l5","Last 5"],["season","Season"]].map(function(x){return '<button type="button" class="adv-chip'+(win==x[0]?" on":"")+'" data-adv-win="'+x[0]+'">'+x[1]+'</button>'}).join("")+'<span class="m sm" style="margin-left:8px">Side</span>'+[["off","Offense"],["def","Defense"]].map(function(x){return '<button type="button" class="adv-chip'+(side==x[0]?" on":"")+'" data-adv-side="'+x[0]+'">'+x[1]+'</button>'}).join("")+(oppAb?'<span class="m sm" style="margin-left:auto">vs <b data-nflteam="'+E(oppAb)+'">'+E(oppAb)+'</b> this week</span>':"")+'</div>';
+ if(!mine)return chips+'<p class="m" style="margin-top:10px">Not enough plays in this window yet (need roughly 25–40). Try Season or a longer span.</p>';
+ var inv=side==="def"; // for defense, lower EPA/success allowed is better — handled per metric
+ var rows="";
+ rows+=advCompareRow("EPA per play","epa",mine.epa,oppW&&oppW.epa,lg.epa,inv);
+ rows+=advCompareRow("Success rate","suc",mine.suc,oppW&&oppW.suc,lg.suc,inv);
+ if(mine.pepa!=null)rows+=advCompareRow("Pass EPA / dropback","pepa",mine.pepa,oppW&&oppW.pepa,lg.pepa,inv);
+ if(mine.repa!=null)rows+=advCompareRow("Rush EPA / carry","repa",mine.repa,oppW&&oppW.repa,lg.repa,inv);
+ if(side==="off"&&mine.pass_rate!=null)rows+=advCompareRow("Pass rate","pass_rate",mine.pass_rate,oppW&&oppW.pass_rate,lg.pass_rate,0);
+ if(side==="off"&&mine.early_pass_rate!=null)rows+=advCompareRow("Early-down pass rate","early_pass_rate",mine.early_pass_rate,oppW&&oppW.early_pass_rate,lg.early_pass_rate,0);
+ if(mine.skr!=null)rows+=advCompareRow(side==="off"?"Sack rate allowed":"Sack rate","skr",mine.skr,oppW&&oppW.skr,lg.skr,side==="off");
+ if(mine.qhr!=null)rows+=advCompareRow(side==="off"?"QB-hit rate allowed":"QB-hit rate","qhr",mine.qhr,oppW&&oppW.qhr,lg.qhr,side==="off");
+ if(side==="off"&&mine.rz_suc!=null)rows+=advCompareRow("Red-zone success rate","rz_suc",mine.rz_suc,oppW&&oppW.rz_suc,lg.rz_suc,0);
+ if(side==="off"&&mine.rz_td_rate!=null)rows+=advCompareRow("Red-zone TD rate","rz_td_rate",mine.rz_td_rate,oppW&&oppW.rz_td_rate,lg.rz_td_rate,0);
+ var h=chips+'<div class="adv-grid">'+rows+'</div><div class="m sm" style="margin-top:6px">'+E(side==="off"?"Offense":"Defense")+' · '+({l3:"last 3 games",l5:"last 5 games",season:"season"}[win])+' · '+mine.g+' game'+(mine.g>1?"s":"")+', '+mine.n+' plays. Bars = gap vs league average (green = better for this side). A row stays hidden until the window has enough volume.</div>';
+ // charts
+ var ser=A.weeks||[], lbls=ser.map(function(g){return "Wk "+g.wk+(g.opp?" vs "+g.opp:"")});
+ var cEpa=advSpark(ser.map(function(g){return side==="off"?g.o_epa:g.d_epa}),side==="off"?"#8ee04a":"#f472b6",lbls,"epa");
+ var cSuc=advSpark(ser.map(function(g){return side==="off"?g.o_suc:g.d_suc}),"#38d0f0",lbls,"suc");
+ var charts="";
+ if(cEpa)charts+='<div class="adv-card"><div class="lbt"><span>'+(side==="off"?"Offense":"Defense")+' EPA/play by week</span><b>hover points for detail</b></div>'+cEpa+'</div>';
+ if(cSuc)charts+='<div class="adv-card"><div class="lbt"><span>Success rate by week</span><b></b></div>'+cSuc+'</div>';
+ if(side==="off"){var cPr=advSpark(ser.map(function(g){return g.pass_rate}),"#a78bfa",lbls,"pass_rate");if(cPr)charts+='<div class="adv-card"><div class="lbt"><span>Pass rate by week</span></div>'+cPr+'</div>';
+  var cEp=advSpark(ser.map(function(g){return g.early_pass_rate}),"#f5b83d",lbls,"early_pass_rate");if(cEp)charts+='<div class="adv-card"><div class="lbt"><span>Early-down pass rate</span></div>'+cEp+'</div>';
+  var cRz=advSpark(ser.map(function(g){return g.rz_suc}),"#ff8a5b",lbls,"rz_suc");if(cRz)charts+='<div class="adv-card"><div class="lbt"><span>Red-zone success by week</span></div>'+cRz+'</div>'}
+ if(charts)h+='<h3 style="margin-top:14px">Week-by-week</h3><div class="adv-charts">'+charts+'</div>';
+ else h+='<p class="m sm">Week charts hide until at least two games are logged.</p>';
+ return h}
+
 var ORD=["QB","RB","FB","WR","TE","LT","LG","C","RG","RT","OT","G","OL","DE","DT","NT","EDGE","LDE","RDE","LB","WLB","MLB","SLB","ILB","OLB","CB","LCB","RCB","NB","S","FS","SS","SAF","K","PK","P","LS","H","PR","KR"];
 function oi(x){var i=ORD.indexOf(x);return i<0?99:i}
 function badge(p){var i=ij(p);var r=window.SLStatus?SLStatus.fromInj(i,p.id,p.name):null;if(!i&&!(r&&r.st))return "";var st=(r&&r.st)||(i&&i.st)||"";if(!st||st=="Active")return "";var c=/Out|Reserve|Suspen/i.test(st)?"o":/Doubt/i.test(st)?"d":"q";var h=' <span class="ib '+c+'">'+E(st)+'</span>';(r&&r.tags||i&&i.tags||[]).forEach(function(tg){var k=/watch/i.test(tg)?"w":/trending|unconfirmed/i.test(tg)?"u":"q";h+=' <span class="ib '+k+'">'+E(tg)+'</span>'});return h}
@@ -155,20 +212,20 @@ var css=document.createElement("style");css.textContent='[data-nflteam],img.nfl-
 '.nftx .ed2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:640px){.nftx .ed2{grid-template-columns:1fr}}.nftx .lb{margin:7px 0}.nftx .lbt{display:flex;justify-content:space-between;gap:6px;font-size:12.5px}.nftx .lbt small{color:#94a3b8;font-weight:400}.nftx .lbb{position:relative;height:8px;background:#23314f;border-radius:4px;margin-top:3px}.nftx .lbb i{display:block;height:8px;border-radius:4px}.nftx .lbb u{position:absolute;left:50%;top:-3px;width:2px;height:14px;background:#e5e7eb;opacity:.7}.nftx .tbs{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:640px){.nftx .tbs{grid-template-columns:1fr}}.nftx .tb{background:#111a2e;border-radius:10px;padding:8px 10px}.nftx .ttg{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;margin-top:2px}.nftx .ttg.up{background:#4a2a10;color:#fb923c}.nftx .ttg.dn{background:#13284a;color:#60a5fa}.nftx .ttg.st{background:#1e293b;color:#cbd5e1}'+
 '.nftx .ha{display:grid;grid-template-columns:110px 1fr 48px;gap:8px;align-items:center;margin:6px 0;font-size:13px}.nftx .hab{position:relative;height:12px;background:#1e293b;border-radius:6px}.nftx .hab i{position:absolute;top:0;height:12px;border-radius:6px}.nftx .hab u{position:absolute;left:50%;top:-3px;width:2px;height:18px;background:#94a3b8}'+
 '.nftx .hhs{margin:6px 0}.nftx .hh{display:grid;grid-template-columns:78px 1fr minmax(92px,150px) 1fr 78px;gap:6px;align-items:center;margin:5px 0;font-size:12.5px}.nftx .hh .h2l{text-align:center;color:#cbd5e1;font-size:11.5px}.nftx .hh .r{text-align:right}.nftx .hh .hv.w{color:#8ee04a;font-weight:800}.nftx .hh small{color:#94a3b8}.nftx .hh .hv{white-space:nowrap}.nftx .hhb{height:9px;background:#23314f;border-radius:5px;display:flex}.nftx .hhb.l{justify-content:flex-end}.nftx .hhb i{display:block;height:9px;border-radius:5px;background:#38d0f0}.nftx .hhb.r i{background:#ff8a5b}@media(max-width:640px){.nftx .hh{grid-template-columns:62px 1fr 72px 1fr 62px;font-size:11.5px}.nftx .hh .h2l{font-size:10.5px}}'+
-'@media(max-width:640px){#nftpo{align-items:flex-end;padding:0}#nftpd{border-radius:16px 16px 0 0;max-height:92vh;overflow:auto;padding:14px 12px}#nftpd .tt{top:-14px}#nftpd table.ro td:nth-child(4),#nftpd table.ro th:nth-child(4){display:none}}';document.head.appendChild(css);
-var TABS=[["mo","Momentum"],["dc","Depth Chart"],["ro","Roster"],["in","Injuries & Updates"],["se","Season"]];
+'.nftx .adv-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 10px}.nftx .adv-chip{background:#16213a;border:1px solid #23314f;color:#cbd5e1;border-radius:999px;padding:6px 12px;font-weight:800;font-size:12px;cursor:pointer}.nftx .adv-chip.on{background:#38d0f0;color:#0b1220;border-color:#38d0f0}.nftx .adv-grid{display:flex;flex-direction:column;gap:8px}.nftx .adv-row{display:grid;grid-template-columns:minmax(110px,1.1fr) 72px 1fr 1fr;gap:8px;align-items:center;background:#111a2e;border-radius:10px;padding:8px 10px}.nftx .adv-lab{font-size:12.5px;font-weight:700;color:#cbd5e1}.nftx .adv-val b{font-size:15px}.nftx .adv-cmp{font-size:12px}.nftx .adv-mini{height:6px;background:#23314f;border-radius:3px;margin-top:3px;overflow:hidden}.nftx .adv-mini i{display:block;height:6px;border-radius:3px}.nftx .adv-charts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.nftx .adv-card{background:#111a2e;border-radius:10px;padding:8px 10px}.nftx .adv-svg circle{cursor:crosshair}@media(max-width:640px){.nftx .adv-row{grid-template-columns:1fr 64px;grid-template-areas:"lab val" "lg lg" "opp opp"}.nftx .adv-lab{grid-area:lab}.nftx .adv-val{grid-area:val;text-align:right}.nftx .adv-cmp:nth-child(3){grid-area:lg}.nftx .adv-cmp:nth-child(4){grid-area:opp}.nftx .adv-charts{grid-template-columns:1fr}}@media(max-width:640px){#nftpo{align-items:flex-end;padding:0}#nftpd{border-radius:16px 16px 0 0;max-height:92vh;overflow:auto;padding:14px 12px}#nftpd .tt{top:-14px}#nftpd table.ro td:nth-child(4),#nftpd table.ro th:nth-child(4){display:none}}';document.head.appendChild(css);
+var TABS=[["mo","Momentum"],["ad","Advanced"],["dc","Depth Chart"],["ro","Roster"],["in","Injuries & Updates"],["se","Season"]];
 function logoOf(t){var g=(X.nfl.games||[]).map(function(g){return [g.home,g.away]}).reduce(function(a,b){return a.concat(b)},[]).filter(function(x){return V(x.abbr)==V(t)})[0];if(g)return g.logo;var s=(X.nfl.standings||[]).filter(function(r){return V(r.team)==V(t)})[0];return s?s.logo:""}
 function head(t){var k=K(t),st=stand(t),pw=(T.power||[]).filter(function(p){return p.t==k})[0],dv=Object.keys(T.div||{}).filter(function(n){return(" "+T.div[n]+" ").indexOf(" "+k+" ")>=0})[0];var name=((X.nfl.standings||[]).filter(function(r){return V(r.team)==V(t)})[0]||{}).name;
  var up=((X.tr||{}).upcoming||[]).filter(function(g){return V(g.home)==V(t)||V(g.away)==V(t)})[0];
  return '<button class="x" aria-label="Close" data-x>×</button><h2>'+(logoOf(t)?'<img src="'+E(logoOf(t))+'" alt="">':'')+E(name||V(t))+' <span class="m" style="font-size:14px">'+E(st?st.overall:(pw&&pw.rec)||"")+'</span></h2><div class="m sm">'+(dv?E(dv)+' · ':'')+E(seasonKey())+' season'+(T.thru?' · through Week '+E(T.thru):'')+'</div>'+
  (up?'<div class="sm" style="margin-top:6px">Next: <b>'+E(V(up.away))+' @ '+E(V(up.home))+'</b> · <a href="#" data-nflmatch="'+E(V(up.away)+'@'+V(up.home))+'" style="color:#38d0f0;font-weight:700">Head-to-head & matchup breakdown →</a></div>':'')}
-function body(t,P){var tab=render.tab||"mo";if(tab=="mo"){var M=momentum(t,P);return '<h3>Momentum</h3>'+gauge(M)+reasons(M)+'<div class="m sm">Score = weighted sum of the reasons above (weights listed in the page code). Heating ≥ +2, Cooling ≤ −2. Display only.</div>'}
- if(tab=="dc")return '<h3>Depth chart</h3>'+tabDepth(P);if(tab=="ro")return '<h3>Roster</h3>'+tabRoster(P);if(tab=="in")return tabInj(t,P);return tabSeason(t)}
+function body(t,P){var tab=render.tab||"mo";if(tab=="mo"){var M=momentum(t,P);return '<h3>Momentum</h3>'+gauge(M)+reasons(M)+'<div class="m sm">Score = weighted sum of the reasons above (weights listed in the page code). Heating ≥ +2, Cooling ≤ −2. Display only — including travel & rest.</div>'}
+ if(tab=="ad")return '<h3>Advanced</h3>'+tabAdvanced(t);if(tab=="dc")return '<h3>Depth chart</h3>'+tabDepth(P);if(tab=="ro")return '<h3>Roster</h3>'+tabRoster(P);if(tab=="in")return tabInj(t,P);return tabSeason(t)}
 function render(t,P){return head(t)+'<div class="tt">'+TABS.map(function(x){return '<button data-ttab="'+x[0]+'" class="'+(x[0]==(render.tab||"mo")?"on":"")+'">'+x[1]+'</button>'}).join("")+'</div><div class="tbody">'+body(t,P)+'</div>'}
 function close(){if(OV){OV.remove();OV=null}if(LAST&&LAST.focus)LAST.focus()}
 var CUR=null,CP=[];function draw(){if(OV)OV.firstChild.innerHTML=T?render(CUR,CP):'<button class="x" aria-label="Close" data-x>×</button><p class="m">Team profile not available yet.</p>'}
 function open(t,tab){t=V(t);CUR=t;render.tab=tab||"mo";LAST=document.activeElement;if(OV)OV.remove();OV=document.createElement("div");OV.id="nftpo";OV.className="nftx";OV.innerHTML='<div id="nftpd" role="dialog" aria-modal="true" aria-label="Team profile"><button class="x" aria-label="Close" data-x>×</button><p class="m">Loading team profile…</p></div>';document.body.appendChild(OV);
- OV.addEventListener("click",function(e){if(e.target==OV||e.target.hasAttribute("data-x"))return close();var b=e.target.closest("[data-ttab]");if(b){render.tab=b.dataset.ttab;draw();return}var m=e.target.closest("[data-nflmatch]");if(m){e.preventDefault();close();if(window.NFLMatchPop)NFLMatchPop(m.dataset.nflmatch);else location.href="matchup.html#g="+m.dataset.nflmatch;return}var p=e.target.closest("[data-tpid]");if(p){var id=p.dataset.tpid;close();if(window.NFLProfile)NFLProfile(id);else if(window.NFLV2)NFLV2.open(id)}});
+ OV.addEventListener("click",function(e){if(e.target==OV||e.target.hasAttribute("data-x"))return close();var b=e.target.closest("[data-ttab]");if(b){render.tab=b.dataset.ttab;draw();return}var aw=e.target.closest("[data-adv-win]");if(aw){ADV_WIN=aw.dataset.advWin;draw();return}var as=e.target.closest("[data-adv-side]");if(as){ADV_SIDE=as.dataset.advSide;draw();return}var m=e.target.closest("[data-nflmatch]");if(m){e.preventDefault();close();if(window.NFLMatchPop)NFLMatchPop(m.dataset.nflmatch);else location.href="matchup.html#g="+m.dataset.nflmatch;return}var p=e.target.closest("[data-tpid]");if(p){var id=p.dataset.tpid;close();if(window.NFLProfile)NFLProfile(id);else if(window.NFLV2)NFLV2.open(id)}});
  load().then(function(){if(!T)return draw();return players(t).then(function(P){if(CUR!=t)return;CP=P;draw()})})}
 function logoTeam(img){var u="";try{u=decodeURIComponent(img.src||"")}catch(e){u=img.src||""}var m=/teamlogos\/nfl\/500(?:\/scoreboard)?\/([a-z]+)\.png/i.exec(u);return m?V(m[1]):null}
 document.addEventListener("click",function(e){if(!e.target||!e.target.closest)return;if(e.target.closest("#nftpd")&&!e.target.closest("[data-nflteam]"))return;var el=e.target.closest("[data-nflteam]"),t=el&&el.getAttribute("data-nflteam");
@@ -176,5 +233,5 @@ document.addEventListener("click",function(e){if(!e.target||!e.target.closest)re
 document.addEventListener("keydown",function(e){if(e.key=="Escape"&&OV)return close();var el=e.target.closest&&e.target.closest("[data-nflteam]");if(el&&(e.key=="Enter"||e.key==" ")){e.preventDefault();open(el.getAttribute("data-nflteam"))}});
 // mark team logos clickable
 new MutationObserver(function(){document.querySelectorAll('img[src*="teamlogos"]:not(.nfl-tlogo)').forEach(function(i){if(logoTeam(i)){i.classList.add("nfl-tlogo");i.title=i.title||"Open team profile"}})}).observe(document.documentElement,{childList:true,subtree:true});
-window.NFLTeam=open;window.NFLTeam.v3=1;window.NFLTeam.api={load:load,players:players,momentum:momentum,gauge:gauge,reasons:reasons,h2h:h2h,V:V,X:X};
+window.NFLTeam=open;window.NFLTeam.v4=1;window.NFLTeam.api={load:load,players:players,momentum:momentum,gauge:gauge,reasons:reasons,h2h:h2h,V:V,X:X};
 })();
