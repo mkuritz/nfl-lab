@@ -232,7 +232,7 @@ for c,cfg in CAT.items():
         if t not in opp or opp[t] not in M or pos not in cfg['pos'] or not dep or dep>max(cfg['depth']): continue
         if c=='rush' and pos=='QB' and dep!=1: continue
         st_=inj.get(aid,('',''))[1]
-        if st_ in OUT or st_.startswith('Injured Reserve') or 'Out' in st_.split(): continue
+        if st_ in OUT or st_.startswith('Injured Reserve') or st_.startswith('Reserve') or 'Out' in st_.split(): continue
         G=sorted(season(aid,t),key=lambda g:g['d'])
         if len(G)<4: continue
         vals=[cfg['stat'](g['s']) for g in G]; l5=vals[-5:]

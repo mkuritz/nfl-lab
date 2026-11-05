@@ -13,7 +13,7 @@ def js(u):
 P = {}
 for f in glob.glob(os.path.join(D, "players", "*.json")):
     p = json.load(open(f))
-    if p.get("grp") in ("QB", "RB", "WR", "TE") and p.get("team") and p["team"] != "FA": P[p["id"]] = (f, p)
+    if p.get("grp") in ("QB", "RB", "WR", "TE", "K", "DEF") and p.get("team") and p["team"] != "FA": P[p["id"]] = (f, p)   # every position (Nov 5: Malone, reserve/PUP)
 SEASON = next((p["season"] for _, p in P.values() if p.get("season")), dt.date.today().year)
 # (team, week) -> game date, for the stale check
 WD = {}
@@ -37,19 +37,28 @@ def own(pid):
     st = ij.get("status") or ""
     if "Suspend" in ((a.get("status") or {}).get("name") or ""): st = "Suspended"
     if not st: return {}
-    return {"status": st, "note": ij.get("longComment") or ij.get("shortComment"), "date": ij.get("date"), "detail": ((ij.get("details") or {}).get("type") or "")}
+    # reserve lists (PUP / NFI / IR / suspended) come as a fantasy-status code; they are season-long designations, not game statuses
+    fs = (((ij.get("details") or {}).get("fantasyStatus") or {}).get("abbreviation") or "").upper()
+    RES = {"PUP-R": "Reserve/PUP", "PUP": "Reserve/PUP", "NFI-R": "Reserve/NFI", "NFI": "Reserve/NFI", "IR": "Injured Reserve", "SUSP": "Suspended", "COV": "Reserve/COVID"}
+    res = RES.get(fs) if fs != "IR" else None   # IR is already a status; PUP/NFI/suspension are reserve-list labels
+    if not res:
+        lc = (ij.get("longComment") or "") + " " + (ij.get("shortComment") or "")
+        m = __import__("re").search(r"(?:reserve/|on the )(PUP|non-football injury|NFI)\b", lc, __import__("re").I)
+        if m and st == "Out": res = "Reserve/PUP" if m.group(1).upper() == "PUP" else "Reserve/NFI"
+    return {"status": res or st, "note": ij.get("longComment") or ij.get("shortComment"), "date": ij.get("date"), "detail": ((ij.get("details") or {}).get("type") or ""),
+            "reserve": bool(res), "ret": (ij.get("details") or {}).get("returnDate")}
 ids = list(P)
-with ThreadPoolExecutor(16) as ex: OWN = dict(zip(ids, ex.map(own, ids)))
+with ThreadPoolExecutor(24) as ex: OWN = dict(zip(ids, ex.map(own, ids)))
 added = stale = 0
 for pid, (f, p) in P.items():
     cur = p.get("inj")
     new = OWN.get(pid)
     pick = new if new else cur          # own entry first, team list (already on profile) as fallback
-    if pick and pick.get("status") and (pick.get("date") or "")[:10] and last_game(p) > (pick.get("date") or "")[:10]:
+    if pick and not pick.get("reserve") and pick.get("status") and (pick.get("date") or "")[:10] and last_game(p) > (pick.get("date") or "")[:10]:
         pick = None; stale += 1          # played since the status date
     if pick and pick.get("status") == "Active": pick = None
     dd = (pick or {}).get("date") or ""
-    if pick and new and (dd[:10] < "%d-08-01" % SEASON or (pick["status"] in ("Questionable", "Probable") and dd[:10] < (dt.date.today() - dt.timedelta(days=10)).isoformat())):
+    if pick and new and not pick.get("reserve") and (dd[:10] < "%d-08-01" % SEASON or (pick["status"] in ("Questionable", "Probable") and dd[:10] < (dt.date.today() - dt.timedelta(days=10)).isoformat())):
         pick = cur if cur is not new else None   # old preseason or week-old game-status entry: not current
     if (pick or None) != (cur or None):
         if pick and not cur: added += 1; print("status added:", p["name"], p["team"], pick["status"])
@@ -109,6 +118,10 @@ for _src, arts in NEWS.items():
         if "finaliz" in h.lower() or "sources" in h.lower():
             MOVES.setdefault(nm, {"to": ab, "state": "pending", "date": (a.get("published") or "")[:10]})
 season_out = 0; moved = 0
+NEXT = {}   # team -> next game, from players whose team was not moved
+for f in glob.glob(os.path.join(D, "players", "*.json")):
+    x = json.load(open(f))
+    if x.get("next") and x.get("team") and not x.get("move") and x.get("grp") == "QB": NEXT.setdefault(x["team"], x["next"])
 for nm, mv in MOVES.items():
     for f, q in byname.get(nm, []):
         espn_team = None
@@ -122,8 +135,18 @@ for nm, mv in MOVES.items():
         else:
             q["move"] = {"to": mv["to"], "state": "official", "date": mv["date"], "label": "Acquired by %s" % mv["to"]}
             q["team"] = mv["to"]
+        # next game follows the official team (copy from a teammate's profile)
+        if NEXT.get(q["team"]): q["next"] = NEXT[q["team"]]
         moved += 1; print("roster move:", q["name"], q["move"]["label"], "official team", q["team"])
         json.dump(q, open(f, "w"), separators=(",", ":"))
+        try:   # player index (search, team lists) uses the official team too
+            PI = os.path.join(D, "pindex.json"); pi = json.load(open(PI))
+            for r in pi.get("p", []):
+                if isinstance(r, list) and str(r[0]) == str(q["id"]):
+                    for k, v in enumerate(r):
+                        if v == mv["to"] and q["team"] != mv["to"]: r[k] = q["team"]
+            json.dump(pi, open(PI, "w"), separators=(",", ":"))
+        except Exception as e: print("pindex patch skipped:", e)
 scrubbed = 0
 for f in glob.glob(os.path.join(D, "players", "*.json")):
     q = json.load(open(f)); ch = False

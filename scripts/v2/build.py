@@ -33,7 +33,7 @@ for f in os.listdir(NL+'/players'):
   p=L(f'{NL}/players/{f}')
   if p.get('inj') and p['grp']!='DEF' or (p.get('inj') and p['pos'] in('QB','RB','WR','TE','K')):
     pass
-  if p.get('inj'): teams_inj[p['team']].append({'n':p['name'],'pos':p['pos'],'st':p['inj']['status'],'d':p['inj'].get('detail'),'dt':p['inj'].get('date'),'id':p['id']})
+  if p.get('inj'): teams_inj[p['team']].append({'n':p['name'],'pos':p['pos'],'st':p['inj'].get('label') or p['inj']['status'],'d':p['inj'].get('detail'),'dt':p['inj'].get('date'),'id':p['id']})
 for r in props:
   if r['market'] not in MK or r['pos'] not in ('QB','RB','WR','TE'): continue
   p=player(r['aid'])

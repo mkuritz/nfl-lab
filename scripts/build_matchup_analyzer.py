@@ -136,7 +136,7 @@ def injsum(t):
     for x in inj.get(t, []):
         s = x.get("st") or ""
         if s and s != "Active":
-            k = "IR" if "Reserve" in s else s
+            k = "IR" if "Reserve" in s or s.startswith("Physically") or s.startswith("Non-Football") else "Out" if s.startswith("Out") else s
             c[k] += 1
             out.append({"n": x.get("n"), "pos": x.get("pos"), "st": s, "d": x.get("d") or ""})
     return {"counts": dict(c), "list": out}
@@ -182,11 +182,21 @@ starters = {}
 for p in P.values():
     d = p.get("depth") or {}
     if p["grp"] == "QB" and d.get("rank") == 1: starters[p["team"]] = p
+# season starter = the team's QB with the most 2026 games of 10+ attempts (the depth chart already moves the backup to #1
+# once the starter is hurt, so rank 1 alone missed Lamar on Nov 5); flag him when out, naming the depth-chart next man up
+_bad = lambda s: s in ("Out", "Doubtful", "Suspended") or "Reserve" in s
+season_qb = {}
+for p in P.values():
+    if p["grp"] != "QB" or not p.get("team"): continue
+    n = sum(1 for g in p.get("log", []) if g.get("s") == SEASON and G(g, "attempts") >= 10)
+    if n and n > season_qb.get(p["team"], (0, None))[0]: season_qb[p["team"]] = (n, p)
 def qbflag(t):
-    p = starters.get(t)
+    p = (season_qb.get(t) or (0, None))[1] or starters.get(t)
     if not p: return None
     s = (p.get("inj") or {}).get("status") or ""
-    return {"name": p["name"], "st": s} if s in ("Out", "Doubtful") or "Reserve" in s else None
+    if not _bad(s): return None
+    nxt = sorted([q for q in P.values() if q["grp"] == "QB" and q.get("team") == t and q["id"] != p["id"] and not _bad((q.get("inj") or {}).get("status") or "")], key=lambda q: (q.get("depth") or {}).get("rank") or 99)
+    return {"name": p["name"], "st": s, **({"next": nxt[0]["name"]} if nxt else {})}
 # opposing defensive unit for the position
 UNIT = {"QB": ("DE","DT","NT","LB","OLB","ILB","CB","SAF","S","FS","SS"), "RB": ("DE","DT","NT","LB","OLB","ILB","MLB"), "WR": ("CB","SAF","S","FS","SS","NB"), "TE": ("LB","OLB","ILB","MLB","SAF","S","FS","SS")}
 DSTATS = [("tkl","Tackles"),("tfl","TFL"),("sk","Sacks"),("qbh","QB hits"),("pd","Passes defended"),("int","INT"),("snap","Snap %")]
