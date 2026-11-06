@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script src="https://sportslabshq.com/sl/ds.js?v=1"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0b1220">
+<title>Low Hurdles · NFL Hub · Sports Labs</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css?v=1029b"><script src="https://sportslabshq.com/sl/sl-sports.js?v=2"></script><script src="navcfg-v2.js?v=1106lh"></script><script src="tailcard.js?v=1"></script><script src="matchup-analyzer.js?v=4"></script><script src="status-labels.js?v=2"></script><script src="rb-expected.js?v=1"></script><script src="v2.js?v=1106rbex"></script><script src="https://sportslabshq.com/sl/sl.js?v=13" defer></script><script src="https://betlab.sportslabshq.com/football-live.js?v=4"></script><script src="injlive.js?v=3"></script>
+<style>
+.lh-intro{font-size:13px;line-height:1.5;color:#8b97b0;margin:4px 0 0;max-width:860px}
+.lh-note{font-size:12px;color:#8b97b0;margin-top:10px;max-width:860px}
+.lh-sec{margin-top:14px}
+.lh-sec h2{font-size:16px;margin:0 0 4px}
+.lh-sec .meth{font-size:12.5px;color:#8b97b0;margin:0 0 10px;line-height:1.45}
+.lh-row{border:1px solid #ffffff14;border-radius:12px;background:#ffffff06;padding:10px 12px;margin-top:8px}
+.lh-row .t{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between}
+.lh-row .n{font-size:15px;font-weight:800}
+.lh-g{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 0}
+.lh-g div{background:#0b1326;border:1px solid #243556;border-radius:8px;padding:6px 8px}
+.lh-g b{display:block;font-size:15px;color:#e6e9ef}
+.lh-g span{font-size:11px;opacity:.65}
+.lh-totals{margin-top:6px;font-size:12.5px;color:#aab4c8}
+.lh-totals b{color:#53e3a6}
+.lh-tag{font-size:10px;font-weight:900;border-radius:5px;padding:1px 6px;background:#ffffff18;color:#c9d0e0}
+.lh-tag.hit{background:#53e3a6;color:#06120c}
+.lh-empty{padding:10px 12px;border:1px dashed #ffffff22;border-radius:10px;color:#8b97b0;font-size:12.5px;margin-top:6px}
+@media(max-width:720px){.lh-g{grid-template-columns:repeat(2,1fr)}}
+</style><script src="/sl-neutral.js?v=2" defer></script></head><body><div class="w">
+<header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Low Hurdles</span></header>
+<div class="card"><h2>Low Hurdles <span class="mut sm" id="meta"></span></h2>
+<div class="lh-intro">Active no-miss streaks against this week&rsquo;s published number. The floor is the integer that clears the line (24.5 → 25+). Streak length, opponent, kickoff (ET), and the recent totals in the run are shown on every row. Display-only — not a change to Highlighted plays or model weights.</div>
+<div class="lh-note" id="note"></div>
+</div>
+<div id="secs"><div class="card"><div class="mut">Loading…</div></div></div>
+<footer>Sports Labs. Streaks are labeled. Not betting advice. 21+.</footer></div>
+<script>
+const ET={timeZone:"America/New_York"};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tm=t=>{if(!t)return"–";return new Date(t).toLocaleString("en-US",{...ET,weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})+" ET"};
+function card(r){
+  const cells=[
+    ["Published line", r.line!=null?esc(r.line):"–"],
+    ["Floor", esc(r.floor_label||((r.floor!=null?r.floor+"+":"–")))],
+    ["Streak", esc(r.streak)+" / "+esc(r.streak)+" games"],
+    ["Opponent", esc(r.opp||"–")],
+    ["Kickoff", tm(r.time)]
+  ];
+  const totals=(r.recent_totals||[]).map(v=>{
+    const n=Number(v);
+    return Number.isInteger(n)?String(n):String(n);
+  }).join(", ");
+  const games=(r.recent_games||[]).map(g=>{
+    const site=g.home?"vs":"@";
+    return "W"+esc(g.week)+" "+site+" "+esc(g.opp)+": "+esc(g.total);
+  }).join(" · ");
+  return `<div class="lh-row"><div class="t"><span>${r.played?'<span class="lh-tag">Played</span> ':''}<span class="lh-tag hit">${esc(r.streak)}/${esc(r.streak)}</span> <span class="n">${esc(r.player)}</span> <span class="m">${esc(r.team)} ${esc(r.pos||"")} ${esc(r.opp||"")} · ${tm(r.time)}</span></span><span><b>${esc(r.floor_label)}</b></span></div>
+ <div class="lh-g">${cells.map(c=>`<div><span>${c[0]}</span><b>${c[1]}</b></div>`).join("")}</div>
+ <div class="lh-totals"><b>Cleared:</b> ${esc(totals)}${games?` <span class="m">(${esc(games)})</span>`:""}</div></div>`;
+}
+function section(title, rows, cov, minN){
+  const head=`${esc(title)}<span class="mut sm"> · ${rows.length} Highlighted · min ${esc(minN)}-game streak · ${esc((cov&&cov.candidates)||0)} lines checked</span>`;
+  if(!rows.length){
+    const ex=(cov&&cov.excluded)||{};
+    return `<div class="card lh-sec"><h2>${head}</h2><div class="lh-empty">No active streaks meet the floor for this slate. Excluded: ${esc(ex.short_streak||0)} short streak · ${esc(ex.missing_logs||0)} missing logs · ${esc(ex.missing_line||0)} missing line · ${esc(ex.missing_player_file||0)} missing player file.</div></div>`;
+  }
+  return `<div class="card lh-sec"><h2>${head}</h2><p class="meth">Published line this week is the hurdle. Floor shown with a + suffix. Sorted by streak length.</p>${rows.map(card).join("")}</div>`;
+}
+fetch("data/low_hurdles.json?v="+Math.floor(Date.now()/6e5)).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+  const order=d.order||[];
+  const titles=d.titles||{};
+  const cov=d.coverage||{};
+  const mins=(d.definition&&d.definition.minimum_streaks)||{};
+  const marketBySec={rec_yds:"Receiving Yards",receptions:"Receptions",rush_yds:"Rushing Yards",pass_yds:"Passing Yards",rush_rec:"Rushing Plus Receiving Yards"};
+  const blocks=order.map(sec=>{
+    const rows=(d.sections&&d.sections[sec])||[];
+    const minN=mins[marketBySec[sec]]||mins[titles[sec]]||5;
+    return section(titles[sec]||sec, rows, cov[sec], minN);
+  });
+  document.getElementById("secs").innerHTML=blocks.length?blocks.join(""):`<div class="card"><div class="mut">Low Hurdles data not available yet.</div></div>`;
+  let stamp=d.built_et||d.built_at||d.updated||"";
+  if(stamp&&!String(stamp).includes("ET")){
+    stamp=new Date(stamp).toLocaleString("en-US",{...ET,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})+" ET";
+  }
+  document.getElementById("meta").textContent=(d.week!=null?`Week ${d.week} · `:"")+(d.total_highlighted||0)+" Highlighted"+(stamp?` · ${stamp}`:"");
+  const noteParts=[];
+  if(d.definition&&d.definition.minimum_note)noteParts.push(d.definition.minimum_note);
+  if(d.definition&&d.definition.omitted_sections&&d.definition.omitted_sections.length){
+    noteParts.push("Omitted: "+d.definition.omitted_sections.join(" "));
+  }
+  document.getElementById("note").textContent=noteParts.join(" ");
+}).catch(()=>{document.getElementById("secs").innerHTML='<div class="card"><div class="mut">Low Hurdles not available yet.</div></div>'});
+</script><script src="navcfg.js?v=1106lh"></script><script src="side.js"></script><script src="status-labels.js?v=2"></script><script src="nflteam.js?v=5"></script><script src="nflprofile.js?v=5"></script></body></html>

@@ -1,0 +1,1061 @@
+{
+  "updated": "2026-11-06T20:30Z",
+  "built_at": "2026-11-06T20:48Z",
+  "built_et": "Nov 6 \u00b7 3:48 PM ET",
+  "week": 9,
+  "season": 2026,
+  "definition": {
+    "tonight_number": "Published NFL Hub prop line for that player/market on this week's slate (data/v2.json).",
+    "clear": "Completed-game total must be strictly greater than a half-line (24.5\u219225), or \u2265 an integer threshold. Display floor is that integer with a + suffix.",
+    "active_streak": "Count of consecutive most-recent current-season completed games (snap > 0) before this slate week that cleared the same published number; stop at first miss. No skipped games inside the run. Bye weeks are absent from logs. No prior season.",
+    "minimum_streaks": {
+      "Receiving Yards": 5,
+      "Receptions": 5,
+      "Rushing Yards": 3,
+      "Passing Yards": 2,
+      "Rushing Plus Receiving Yards": 3
+    },
+    "minimum_note": "Receiving yards and Receptions use a minimum of 5 (aligned with the NBA Low Hurdles board and the skill-position reference boards). Rushing yards and Rush + Rec use 3 because published main lines leave the board empty at 5 this early in the season. Passing yards uses 2 to match the thinner reference passing board (and because min 5 qualifies nobody against published pass-yard lines).",
+    "display_only": true,
+    "omitted_sections": [
+      "Kicking points \u2014 no published kicking-points (or FG) prop lines in this week's Hub data."
+    ]
+  },
+  "order": [
+    "rec_yds",
+    "receptions",
+    "rush_yds",
+    "pass_yds",
+    "rush_rec"
+  ],
+  "titles": {
+    "rec_yds": "Receiving yards",
+    "receptions": "Receptions",
+    "rush_yds": "Rushing yards",
+    "pass_yds": "Passing yards",
+    "rush_rec": "Alternate \u00b7 Rush + Rec yards"
+  },
+  "sections": {
+    "rec_yds": [
+      {
+        "aid": "4890973",
+        "player": "Ashton Jeanty",
+        "team": "LV",
+        "pos": "RB",
+        "opp": "@SF",
+        "oa": "SF",
+        "home": false,
+        "game": "401873047",
+        "time": "2026-11-08T21:25Z",
+        "time_et": "Sun Nov 8 \u00b7 4:25 PM ET",
+        "played": false,
+        "market": "Receiving Yards",
+        "market_label": "Receiving yards",
+        "line": 35.5,
+        "floor": 36,
+        "floor_label": "36+ Rec Yards",
+        "streak": 6,
+        "min_required": 5,
+        "recent_totals": [
+          64.0,
+          61.0,
+          36.0,
+          50.0,
+          68.0,
+          37.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "NYJ",
+            "home": false,
+            "total": 64.0
+          },
+          {
+            "week": 7,
+            "opp": "LAR",
+            "home": true,
+            "total": 61.0
+          },
+          {
+            "week": 6,
+            "opp": "BUF",
+            "home": true,
+            "total": 36.0
+          },
+          {
+            "week": 5,
+            "opp": "NE",
+            "home": false,
+            "total": 50.0
+          },
+          {
+            "week": 4,
+            "opp": "KC",
+            "home": true,
+            "total": 68.0
+          },
+          {
+            "week": 3,
+            "opp": "NO",
+            "home": false,
+            "total": 37.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4890973.png"
+      },
+      {
+        "aid": "4240472",
+        "player": "Noah Gray",
+        "team": "KC",
+        "pos": "TE",
+        "opp": "vs NYJ",
+        "oa": "NYJ",
+        "home": true,
+        "game": "401873045",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Receiving Yards",
+        "market_label": "Receiving yards",
+        "line": 12.5,
+        "floor": 13,
+        "floor_label": "13+ Rec Yards",
+        "streak": 5,
+        "min_required": 5,
+        "recent_totals": [
+          15.0,
+          44.0,
+          53.0,
+          17.0,
+          39.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "DEN",
+            "home": false,
+            "total": 15.0
+          },
+          {
+            "week": 7,
+            "opp": "SEA",
+            "home": false,
+            "total": 44.0
+          },
+          {
+            "week": 6,
+            "opp": "LAC",
+            "home": true,
+            "total": 53.0
+          },
+          {
+            "week": 4,
+            "opp": "LV",
+            "home": false,
+            "total": 17.0
+          },
+          {
+            "week": 3,
+            "opp": "MIA",
+            "home": false,
+            "total": 39.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4240472.png"
+      }
+    ],
+    "receptions": [
+      {
+        "aid": "4426844",
+        "player": "Elijah Higgins",
+        "team": "ARI",
+        "pos": "TE",
+        "opp": "@SEA",
+        "oa": "SEA",
+        "home": false,
+        "game": "401873048",
+        "time": "2026-11-08T21:25Z",
+        "time_et": "Sun Nov 8 \u00b7 4:25 PM ET",
+        "played": false,
+        "market": "Receptions",
+        "market_label": "Receptions",
+        "line": 1.5,
+        "floor": 2,
+        "floor_label": "2+ Receptions",
+        "streak": 6,
+        "min_required": 5,
+        "recent_totals": [
+          2.0,
+          3.0,
+          3.0,
+          3.0,
+          2.0,
+          3.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "DAL",
+            "home": false,
+            "total": 2.0
+          },
+          {
+            "week": 7,
+            "opp": "DEN",
+            "home": true,
+            "total": 3.0
+          },
+          {
+            "week": 6,
+            "opp": "LAR",
+            "home": false,
+            "total": 3.0
+          },
+          {
+            "week": 5,
+            "opp": "DET",
+            "home": true,
+            "total": 3.0
+          },
+          {
+            "week": 4,
+            "opp": "NYG",
+            "home": false,
+            "total": 2.0
+          },
+          {
+            "week": 3,
+            "opp": "SF",
+            "home": false,
+            "total": 3.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4426844.png"
+      },
+      {
+        "aid": "3043275",
+        "player": "Austin Hooper",
+        "team": "ATL",
+        "pos": "TE",
+        "opp": "vs CIN",
+        "oa": "CIN",
+        "home": true,
+        "game": "401873038",
+        "time": "2026-11-08T14:30Z",
+        "time_et": "Sun Nov 8 \u00b7 9:30 AM ET",
+        "played": false,
+        "market": "Receptions",
+        "market_label": "Receptions",
+        "line": 0.5,
+        "floor": 1,
+        "floor_label": "1+ Receptions",
+        "streak": 6,
+        "min_required": 5,
+        "recent_totals": [
+          1.0,
+          2.0,
+          1.0,
+          1.0,
+          2.0,
+          2.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "TB",
+            "home": false,
+            "total": 1.0
+          },
+          {
+            "week": 7,
+            "opp": "SF",
+            "home": true,
+            "total": 2.0
+          },
+          {
+            "week": 6,
+            "opp": "CHI",
+            "home": true,
+            "total": 1.0
+          },
+          {
+            "week": 4,
+            "opp": "NO",
+            "home": false,
+            "total": 1.0
+          },
+          {
+            "week": 3,
+            "opp": "GB",
+            "home": false,
+            "total": 2.0
+          },
+          {
+            "week": 2,
+            "opp": "CAR",
+            "home": true,
+            "total": 2.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/3043275.png"
+      },
+      {
+        "aid": "4240472",
+        "player": "Noah Gray",
+        "team": "KC",
+        "pos": "TE",
+        "opp": "vs NYJ",
+        "oa": "NYJ",
+        "home": true,
+        "game": "401873045",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Receptions",
+        "market_label": "Receptions",
+        "line": 1.5,
+        "floor": 2,
+        "floor_label": "2+ Receptions",
+        "streak": 5,
+        "min_required": 5,
+        "recent_totals": [
+          2.0,
+          3.0,
+          3.0,
+          2.0,
+          3.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "DEN",
+            "home": false,
+            "total": 2.0
+          },
+          {
+            "week": 7,
+            "opp": "SEA",
+            "home": false,
+            "total": 3.0
+          },
+          {
+            "week": 6,
+            "opp": "LAC",
+            "home": true,
+            "total": 3.0
+          },
+          {
+            "week": 4,
+            "opp": "LV",
+            "home": false,
+            "total": 2.0
+          },
+          {
+            "week": 3,
+            "opp": "MIA",
+            "home": false,
+            "total": 3.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4240472.png"
+      }
+    ],
+    "rush_yds": [
+      {
+        "aid": "4429795",
+        "player": "Jahmyr Gibbs",
+        "team": "DET",
+        "pos": "RB",
+        "opp": "@MIA",
+        "oa": "MIA",
+        "home": false,
+        "game": "401873042",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Rushing Yards",
+        "market_label": "Rushing yards",
+        "line": 98.5,
+        "floor": 99,
+        "floor_label": "99+ Rush Yards",
+        "streak": 3,
+        "min_required": 3,
+        "recent_totals": [
+          153.0,
+          116.0,
+          151.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "MIN",
+            "home": true,
+            "total": 153.0
+          },
+          {
+            "week": 7,
+            "opp": "GB",
+            "home": true,
+            "total": 116.0
+          },
+          {
+            "week": 5,
+            "opp": "ARI",
+            "home": false,
+            "total": 151.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4429795.png"
+      },
+      {
+        "aid": "3915511",
+        "player": "Joe Burrow",
+        "team": "CIN",
+        "pos": "QB",
+        "opp": "@ATL",
+        "oa": "ATL",
+        "home": false,
+        "game": "401873038",
+        "time": "2026-11-08T14:30Z",
+        "time_et": "Sun Nov 8 \u00b7 9:30 AM ET",
+        "played": false,
+        "market": "Rushing Yards",
+        "market_label": "Rushing yards",
+        "line": 6.5,
+        "floor": 7,
+        "floor_label": "7+ Rush Yards",
+        "streak": 3,
+        "min_required": 3,
+        "recent_totals": [
+          10.0,
+          12.0,
+          10.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "TEN",
+            "home": true,
+            "total": 10.0
+          },
+          {
+            "week": 7,
+            "opp": "BAL",
+            "home": false,
+            "total": 12.0
+          },
+          {
+            "week": 5,
+            "opp": "MIA",
+            "home": false,
+            "total": 10.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/3915511.png"
+      },
+      {
+        "aid": "2577417",
+        "player": "Dak Prescott",
+        "team": "DAL",
+        "pos": "QB",
+        "opp": "@IND",
+        "oa": "IND",
+        "home": false,
+        "game": "401873040",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Rushing Yards",
+        "market_label": "Rushing yards",
+        "line": 5.5,
+        "floor": 6,
+        "floor_label": "6+ Rush Yards",
+        "streak": 3,
+        "min_required": 3,
+        "recent_totals": [
+          20.0,
+          8.0,
+          7.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "ARI",
+            "home": true,
+            "total": 20.0
+          },
+          {
+            "week": 7,
+            "opp": "PHI",
+            "home": false,
+            "total": 8.0
+          },
+          {
+            "week": 6,
+            "opp": "GB",
+            "home": false,
+            "total": 7.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/2577417.png"
+      }
+    ],
+    "pass_yds": [
+      {
+        "aid": "4036378",
+        "player": "Jordan Love",
+        "team": "GB",
+        "pos": "QB",
+        "opp": "@NE",
+        "oa": "NE",
+        "home": false,
+        "game": "401873049",
+        "time": "2026-11-08T21:25Z",
+        "time_et": "Sun Nov 8 \u00b7 4:25 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 272.5,
+        "floor": 273,
+        "floor_label": "273+ Pass Yards",
+        "streak": 4,
+        "min_required": 2,
+        "recent_totals": [
+          288.0,
+          274.0,
+          276.0,
+          367.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "CAR",
+            "home": true,
+            "total": 288.0
+          },
+          {
+            "week": 7,
+            "opp": "DET",
+            "home": false,
+            "total": 274.0
+          },
+          {
+            "week": 6,
+            "opp": "DAL",
+            "home": true,
+            "total": 276.0
+          },
+          {
+            "week": 5,
+            "opp": "CHI",
+            "home": true,
+            "total": 367.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4036378.png"
+      },
+      {
+        "aid": "15864",
+        "player": "Geno Smith",
+        "team": "NYJ",
+        "pos": "QB",
+        "opp": "@KC",
+        "oa": "KC",
+        "home": false,
+        "game": "401873045",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 212.5,
+        "floor": 213,
+        "floor_label": "213+ Pass Yards",
+        "streak": 3,
+        "min_required": 2,
+        "recent_totals": [
+          290.0,
+          287.0,
+          252.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "LV",
+            "home": true,
+            "total": 290.0
+          },
+          {
+            "week": 7,
+            "opp": "MIA",
+            "home": true,
+            "total": 287.0
+          },
+          {
+            "week": 6,
+            "opp": "NE",
+            "home": false,
+            "total": 252.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/15864.png"
+      },
+      {
+        "aid": "3915511",
+        "player": "Joe Burrow",
+        "team": "CIN",
+        "pos": "QB",
+        "opp": "@ATL",
+        "oa": "ATL",
+        "home": false,
+        "game": "401873038",
+        "time": "2026-11-08T14:30Z",
+        "time_et": "Sun Nov 8 \u00b7 9:30 AM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 272.5,
+        "floor": 273,
+        "floor_label": "273+ Pass Yards",
+        "streak": 2,
+        "min_required": 2,
+        "recent_totals": [
+          462.0,
+          292.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "TEN",
+            "home": true,
+            "total": 462.0
+          },
+          {
+            "week": 7,
+            "opp": "BAL",
+            "home": false,
+            "total": 292.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/3915511.png"
+      },
+      {
+        "aid": "4361741",
+        "player": "Brock Purdy",
+        "team": "SF",
+        "pos": "QB",
+        "opp": "vs LV",
+        "oa": "LV",
+        "home": true,
+        "game": "401873047",
+        "time": "2026-11-08T21:25Z",
+        "time_et": "Sun Nov 8 \u00b7 4:25 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 250.5,
+        "floor": 251,
+        "floor_label": "251+ Pass Yards",
+        "streak": 2,
+        "min_required": 2,
+        "recent_totals": [
+          288.0,
+          264.0
+        ],
+        "recent_games": [
+          {
+            "week": 7,
+            "opp": "ATL",
+            "home": false,
+            "total": 288.0
+          },
+          {
+            "week": 6,
+            "opp": "WSH",
+            "home": true,
+            "total": 264.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4361741.png"
+      },
+      {
+        "aid": "3918298",
+        "player": "Josh Allen",
+        "team": "BUF",
+        "pos": "QB",
+        "opp": "@MIN",
+        "oa": "MIN",
+        "home": false,
+        "game": "401873051",
+        "time": "2026-11-10T01:15Z",
+        "time_et": "Mon Nov 9 \u00b7 8:15 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 236.5,
+        "floor": 237,
+        "floor_label": "237+ Pass Yards",
+        "streak": 2,
+        "min_required": 2,
+        "recent_totals": [
+          289.0,
+          255.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "BAL",
+            "home": true,
+            "total": 289.0
+          },
+          {
+            "week": 6,
+            "opp": "LV",
+            "home": false,
+            "total": 255.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/3918298.png"
+      },
+      {
+        "aid": "4426338",
+        "player": "Bo Nix",
+        "team": "DEN",
+        "pos": "QB",
+        "opp": "@CAR",
+        "oa": "CAR",
+        "home": false,
+        "game": "401873041",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 210.5,
+        "floor": 211,
+        "floor_label": "211+ Pass Yards",
+        "streak": 2,
+        "min_required": 2,
+        "recent_totals": [
+          222.0,
+          222.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "KC",
+            "home": true,
+            "total": 222.0
+          },
+          {
+            "week": 7,
+            "opp": "ARI",
+            "home": false,
+            "total": 222.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4426338.png"
+      },
+      {
+        "aid": "4433970",
+        "player": "J.J. McCarthy",
+        "team": "NYG",
+        "pos": "QB",
+        "opp": "@PHI",
+        "oa": "PHI",
+        "home": false,
+        "game": "401873044",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 208.5,
+        "floor": 209,
+        "floor_label": "209+ Pass Yards",
+        "streak": 2,
+        "min_required": 2,
+        "recent_totals": [
+          252.0,
+          243.0
+        ],
+        "recent_games": [
+          {
+            "week": 7,
+            "opp": "HOU",
+            "home": false,
+            "total": 252.0
+          },
+          {
+            "week": 6,
+            "opp": "NO",
+            "home": true,
+            "total": 243.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4433970.png"
+      },
+      {
+        "aid": "4242512",
+        "player": "Malik Willis",
+        "team": "MIA",
+        "pos": "QB",
+        "opp": "vs DET",
+        "oa": "DET",
+        "home": true,
+        "game": "401873042",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Passing Yards",
+        "market_label": "Passing yards",
+        "line": 207.5,
+        "floor": 208,
+        "floor_label": "208+ Pass Yards",
+        "streak": 2,
+        "min_required": 2,
+        "recent_totals": [
+          211.0,
+          208.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "NE",
+            "home": true,
+            "total": 211.0
+          },
+          {
+            "week": 7,
+            "opp": "NYJ",
+            "home": false,
+            "total": 208.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4242512.png"
+      }
+    ],
+    "rush_rec": [
+      {
+        "aid": "4429795",
+        "player": "Jahmyr Gibbs",
+        "team": "DET",
+        "pos": "RB",
+        "opp": "@MIA",
+        "oa": "MIA",
+        "home": false,
+        "game": "401873042",
+        "time": "2026-11-08T18:00Z",
+        "time_et": "Sun Nov 8 \u00b7 1:00 PM ET",
+        "played": false,
+        "market": "Rushing Plus Receiving Yards",
+        "market_label": "Rush + Rec yards",
+        "line": 133.5,
+        "floor": 134,
+        "floor_label": "134+ Rush + Rec Yards",
+        "streak": 3,
+        "min_required": 3,
+        "recent_totals": [
+          168.0,
+          143.0,
+          207.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "MIN",
+            "home": true,
+            "total": 168.0
+          },
+          {
+            "week": 7,
+            "opp": "GB",
+            "home": true,
+            "total": 143.0
+          },
+          {
+            "week": 5,
+            "opp": "ARI",
+            "home": false,
+            "total": 207.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4429795.png"
+      },
+      {
+        "aid": "4379399",
+        "player": "James Cook III",
+        "team": "BUF",
+        "pos": "RB",
+        "opp": "@MIN",
+        "oa": "MIN",
+        "home": false,
+        "game": "401873051",
+        "time": "2026-11-10T01:15Z",
+        "time_et": "Mon Nov 9 \u00b7 8:15 PM ET",
+        "played": false,
+        "market": "Rushing Plus Receiving Yards",
+        "market_label": "Rush + Rec yards",
+        "line": 99.5,
+        "floor": 100,
+        "floor_label": "100+ Rush + Rec Yards",
+        "streak": 3,
+        "min_required": 3,
+        "recent_totals": [
+          101.0,
+          153.0,
+          118.0
+        ],
+        "recent_games": [
+          {
+            "week": 8,
+            "opp": "BAL",
+            "home": true,
+            "total": 101.0
+          },
+          {
+            "week": 6,
+            "opp": "LV",
+            "home": false,
+            "total": 153.0
+          },
+          {
+            "week": 5,
+            "opp": "LAR",
+            "home": false,
+            "total": 118.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4379399.png"
+      },
+      {
+        "aid": "4429059",
+        "player": "Woody Marks",
+        "team": "HOU",
+        "pos": "RB",
+        "opp": "@LAC",
+        "oa": "LAC",
+        "home": false,
+        "game": "401873046",
+        "time": "2026-11-08T21:05Z",
+        "time_et": "Sun Nov 8 \u00b7 4:05 PM ET",
+        "played": false,
+        "market": "Rushing Plus Receiving Yards",
+        "market_label": "Rush + Rec yards",
+        "line": 78.5,
+        "floor": 79,
+        "floor_label": "79+ Rush + Rec Yards",
+        "streak": 3,
+        "min_required": 3,
+        "recent_totals": [
+          81.0,
+          81.0,
+          85.0
+        ],
+        "recent_games": [
+          {
+            "week": 7,
+            "opp": "NYG",
+            "home": true,
+            "total": 81.0
+          },
+          {
+            "week": 6,
+            "opp": "JAX",
+            "home": false,
+            "total": 81.0
+          },
+          {
+            "week": 5,
+            "opp": "TEN",
+            "home": false,
+            "total": 85.0
+          }
+        ],
+        "head": "https://a.espncdn.com/i/headshots/nfl/players/full/4429059.png"
+      }
+    ]
+  },
+  "coverage": {
+    "rec_yds": {
+      "candidates": 102,
+      "qualify": 2,
+      "excluded": {
+        "missing_line": 0,
+        "missing_logs": 0,
+        "short_streak": 100,
+        "missing_player_file": 0
+      },
+      "short_streak_breakdown": {
+        "streak_0": 54,
+        "streak_1": 18,
+        "streak_2": 19,
+        "streak_3": 4,
+        "streak_4": 5
+      }
+    },
+    "receptions": {
+      "candidates": 105,
+      "qualify": 3,
+      "excluded": {
+        "missing_line": 0,
+        "missing_logs": 0,
+        "short_streak": 102,
+        "missing_player_file": 0
+      },
+      "short_streak_breakdown": {
+        "streak_0": 52,
+        "streak_1": 27,
+        "streak_2": 15,
+        "streak_3": 3,
+        "streak_4": 5
+      }
+    },
+    "rush_yds": {
+      "candidates": 53,
+      "qualify": 3,
+      "excluded": {
+        "missing_line": 0,
+        "missing_logs": 0,
+        "short_streak": 50,
+        "missing_player_file": 0
+      },
+      "short_streak_breakdown": {
+        "streak_0": 35,
+        "streak_1": 11,
+        "streak_2": 4
+      }
+    },
+    "pass_yds": {
+      "candidates": 27,
+      "qualify": 8,
+      "excluded": {
+        "missing_line": 0,
+        "missing_logs": 0,
+        "short_streak": 19,
+        "missing_player_file": 0
+      },
+      "short_streak_breakdown": {
+        "streak_0": 15,
+        "streak_1": 4
+      }
+    },
+    "rush_rec": {
+      "candidates": 20,
+      "qualify": 3,
+      "excluded": {
+        "missing_line": 0,
+        "missing_logs": 0,
+        "short_streak": 17,
+        "missing_player_file": 0
+      },
+      "short_streak_breakdown": {
+        "streak_0": 11,
+        "streak_1": 4,
+        "streak_2": 2
+      }
+    }
+  },
+  "total_highlighted": 19
+}
