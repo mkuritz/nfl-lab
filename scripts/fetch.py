@@ -30,6 +30,52 @@ def slim_stand(j):
             rows.append({"grp":grp,"team":e["team"].get("abbreviation") or e["team"].get("shortDisplayName"),"name":e["team"].get("displayName"),"logo":(e["team"].get("logos") or [{}])[0].get("href"),"st":st})
     if j: walk(j,j.get("name"))
     return rows
+
+def overlay_football_live(games):
+    """Copy in-progress/final scores (and clock when still pre) from the shared 5-min football_live feed.
+    Display only. ESPN remains the slate source; this only heals score/state lag between Hub publishes."""
+    fl = get("https://betlab.sportslabshq.com/data/football_live.json")
+    if not fl or not isinstance(fl.get("games"), dict):
+        return 0
+    n = 0
+    for g in games or []:
+        m = fl["games"].get(str(g.get("id")))
+        if not m:
+            continue
+        st = m.get("state")
+        if st not in ("in", "post"):
+            continue
+        teams = m.get("teams") or {}
+        changed = False
+        score_healed = False
+        if g.get("state") == "pre" or (st == "post" and g.get("state") != "post"):
+            g["state"] = st
+            if m.get("detail"):
+                g["status"] = m["detail"] if st != "post" else (m.get("detail") or "Final")
+            changed = True
+        for side in ("home", "away"):
+            side_o = g.get(side) or {}
+            abbr = side_o.get("abbr")
+            if not abbr or abbr not in teams:
+                continue
+            sc = teams[abbr].get("score")
+            if sc is None:
+                continue
+            scs = str(sc)
+            if side_o.get("score") != scs:
+                side_o["score"] = scs
+                changed = True
+                score_healed = True
+        # Only borrow live clock when we just healed scores (keeps a fresher ESPN clock otherwise)
+        if score_healed and st == "in" and m.get("detail"):
+            g["status"] = m["detail"]
+            changed = True
+        if changed:
+            n += 1
+    if n:
+        print("football_live overlay applied to", n, "game(s)")
+    return n
+
 def main(sport):
     now=datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
     if sport=="nfl":
@@ -55,6 +101,8 @@ def main(sport):
         n=get(f"https://site.api.espn.com/apis/site/v2/sports/{p}/news?limit=30")
         s=get(f"https://site.api.espn.com/apis/v2/sports/{p}/standings")
         games=slim_board(b)
+        if sport=="nfl":
+            overlay_football_live(games)
         if b is None:   # primary scoreboard down: keep last published games, refresh score/state from the backup feed
             try:
                 import sl_backup as BK
