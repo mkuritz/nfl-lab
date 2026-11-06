@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-06T19:26:06Z",
-  "updated_et": "Nov 6, 2026 \u00b7 2:26 PM ET",
+  "updated": "2026-11-06T19:41:25Z",
+  "updated_et": "Nov 6, 2026 \u00b7 2:41 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-07T01:26:06Z",
+  "expires": "2026-11-07T01:41:25Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -21,9 +21,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) was present for practice Friday, per reports.",
-      "as_of": "2026-11-06T17:19:00Z",
-      "expires": "2026-11-06T23:19:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) is listed as questionable for Sunday's game against the Saints, but Shedeur Sanders will start even if Watson is active, per reports.",
+      "as_of": "2026-11-06T18:27:00Z",
+      "expires": "2026-11-07T00:27:00Z",
       "p_inactive": 0.2
     },
     {
@@ -37,9 +37,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Groin, limited (unconfirmed report). Not ruled out. Fannin (groin) is practicing Friday, per reports.",
-      "as_of": "2026-11-06T17:20:00Z",
-      "expires": "2026-11-06T23:20:00Z",
+      "note": "Groin, limited (unconfirmed report). Not ruled out. Fannin (groin) will play Sunday against the Saints, per reports.",
+      "as_of": "2026-11-06T18:28:00Z",
+      "expires": "2026-11-07T00:28:00Z",
       "p_inactive": 0.2
     },
     {
@@ -67,9 +67,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) is present for the media-access portion of Friday's practice, per reports.",
-      "as_of": "2026-11-06T17:02:00Z",
-      "expires": "2026-11-06T23:02:00Z",
+      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) is listed as questionable for Sunday's game against the Packers, per reports.",
+      "as_of": "2026-11-06T18:25:00Z",
+      "expires": "2026-11-07T00:25:00Z",
       "p_inactive": 0.2
     },
     {
@@ -83,9 +83,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out. Skattebo (hamstring) was in uniform but not participating at the start of Friday's practice, per reports.",
-      "as_of": "2026-11-06T17:23:00Z",
-      "expires": "2026-11-06T23:23:00Z",
+      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out. Head coach John Harbaugh said Skattebo (hamstring) didn't practice Friday, but the Giants are \"keeping the door open\" for the running back to play Sunday at Philadelphia, per reports.",
+      "as_of": "2026-11-06T18:30:00Z",
+      "expires": "2026-11-07T00:30:00Z",
       "p_inactive": 0.2
     },
     {
@@ -179,9 +179,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) was present for practice Friday, per reports.",
-      "as_of": "2026-11-06T17:19:00Z",
-      "expires": "2026-11-06T23:19:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) is listed as questionable for Sunday's game against the Saints, but Shedeur Sanders will start even if Watson is active, per reports.",
+      "as_of": "2026-11-06T18:27:00Z",
+      "expires": "2026-11-07T00:27:00Z",
       "p_inactive": 0.2
     },
     "5083076": {
@@ -195,9 +195,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Groin, limited (unconfirmed report). Not ruled out. Fannin (groin) is practicing Friday, per reports.",
-      "as_of": "2026-11-06T17:20:00Z",
-      "expires": "2026-11-06T23:20:00Z",
+      "note": "Groin, limited (unconfirmed report). Not ruled out. Fannin (groin) will play Sunday against the Saints, per reports.",
+      "as_of": "2026-11-06T18:28:00Z",
+      "expires": "2026-11-07T00:28:00Z",
       "p_inactive": 0.2
     },
     "4047646": {
@@ -225,9 +225,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) is present for the media-access portion of Friday's practice, per reports.",
-      "as_of": "2026-11-06T17:02:00Z",
-      "expires": "2026-11-06T23:02:00Z",
+      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) is listed as questionable for Sunday's game against the Packers, per reports.",
+      "as_of": "2026-11-06T18:25:00Z",
+      "expires": "2026-11-07T00:25:00Z",
       "p_inactive": 0.2
     },
     "4696981": {
@@ -241,9 +241,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out. Skattebo (hamstring) was in uniform but not participating at the start of Friday's practice, per reports.",
-      "as_of": "2026-11-06T17:23:00Z",
-      "expires": "2026-11-06T23:23:00Z",
+      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out. Head coach John Harbaugh said Skattebo (hamstring) didn't practice Friday, but the Giants are \"keeping the door open\" for the running back to play Sunday at Philadelphia, per reports.",
+      "as_of": "2026-11-06T18:30:00Z",
+      "expires": "2026-11-07T00:30:00Z",
       "p_inactive": 0.2
     },
     "4595348": {
@@ -337,9 +337,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) was present for practice Friday, per reports.",
-      "as_of": "2026-11-06T17:19:00Z",
-      "expires": "2026-11-06T23:19:00Z",
+      "note": "Concussion, missed Thursday practice (unconfirmed report). Friday designation pending; not ruled out. Watson (concussion) is listed as questionable for Sunday's game against the Saints, but Shedeur Sanders will start even if Watson is active, per reports.",
+      "as_of": "2026-11-06T18:27:00Z",
+      "expires": "2026-11-07T00:27:00Z",
       "p_inactive": 0.2
     },
     "harold fannin jr.": {
@@ -353,9 +353,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Groin, limited (unconfirmed report). Not ruled out. Fannin (groin) is practicing Friday, per reports.",
-      "as_of": "2026-11-06T17:20:00Z",
-      "expires": "2026-11-06T23:20:00Z",
+      "note": "Groin, limited (unconfirmed report). Not ruled out. Fannin (groin) will play Sunday against the Saints, per reports.",
+      "as_of": "2026-11-06T18:28:00Z",
+      "expires": "2026-11-07T00:28:00Z",
       "p_inactive": 0.2
     },
     "a.j. brown": {
@@ -383,9 +383,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) is present for the media-access portion of Friday's practice, per reports.",
-      "as_of": "2026-11-06T17:02:00Z",
-      "expires": "2026-11-06T23:02:00Z",
+      "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) is listed as questionable for Sunday's game against the Packers, per reports.",
+      "as_of": "2026-11-06T18:25:00Z",
+      "expires": "2026-11-07T00:25:00Z",
       "p_inactive": 0.2
     },
     "cam skattebo": {
@@ -399,9 +399,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out. Skattebo (hamstring) was in uniform but not participating at the start of Friday's practice, per reports.",
-      "as_of": "2026-11-06T17:23:00Z",
-      "expires": "2026-11-06T23:23:00Z",
+      "note": "Hamstring, second straight DNP (unconfirmed report). Not ruled out. Head coach John Harbaugh said Skattebo (hamstring) didn't practice Friday, but the Giants are \"keeping the door open\" for the running back to play Sunday at Philadelphia, per reports.",
+      "as_of": "2026-11-06T18:30:00Z",
+      "expires": "2026-11-07T00:30:00Z",
       "p_inactive": 0.2
     },
     "malik nabers": {
