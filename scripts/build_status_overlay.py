@@ -414,6 +414,16 @@ def main():
             upsert(by, aid, player, team, status=prev.get("status") or "Questionable",
                    tags=tags, watch=True, unconfirmed=not confirmed, confirmed=False,
                    note=note or prev.get("note"), as_of=as_of or prev.get("as_of"), source="report")
+        elif trend == "trending_in" and confirmed:
+            # Confirmed Active / upgrade: drop Watch and trending-out chrome (display only).
+            key = aid or nm(player)
+            upsert(by, aid, player, team, status="Active", tags=[], watch=False,
+                   unconfirmed=False, confirmed=True, note=note, as_of=as_of, source="confirmed_active")
+            if key in by:
+                by[key]["tags"] = []
+                by[key]["watch"] = False
+                by[key]["status"] = "Active"
+                by[key]["confirmed"] = True
 
     # 2b) Carry forward last known non-expired Watch / trending / confirmed labels.
     # CI often lacks the private reports jsonl; Bet Lab public EIA + this prior keep Watson Watch
@@ -421,8 +431,8 @@ def main():
     prior = load_prior_overlay()
     for key, row in prior.items():
         cur = by.get(key)
-        if cur and cur.get("confirmed") and (cur.get("status") or "").lower() in ("out", "doubtful"):
-            continue  # live confirmed Out already wins
+        if cur and cur.get("confirmed") and (cur.get("status") or "").lower() in ("out", "doubtful", "active"):
+            continue  # live confirmed Out/Active already wins (Active clears stale Watch)
         if cur and (cur.get("tags") or cur.get("watch") or cur.get("confirmed")):
             # Prefer freshly built chrome; still fill missing Watch from prior
             if row.get("watch") and not cur.get("watch") and not cur.get("confirmed"):
@@ -486,9 +496,13 @@ def main():
         # drop already-expired rows
         if expires < nnow:
             continue
-        # only keep rows with tags, watch, or confirmed official override worth showing
+        # only keep rows with tags, watch, or confirmed Out/IR worth showing.
+        # Confirmed Active upgrades clear chrome and are omitted (no pill).
         tags = p.get("tags") or []
+        st = (p.get("status") or "").strip()
         if not tags and not p.get("watch") and not p.get("confirmed"):
+            continue
+        if p.get("confirmed") and st.lower() == "active" and not tags and not p.get("watch"):
             continue
         # public-facing: never include private source URLs / reporter fields
         row = {
