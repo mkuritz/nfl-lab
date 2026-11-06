@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-06T01:21:29Z",
-  "updated_et": "Nov 5, 2026 \u00b7 8:21 PM ET",
+  "updated": "2026-11-06T01:31:25Z",
+  "updated_et": "Nov 5, 2026 \u00b7 8:31 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-06T07:21:29Z",
+  "expires": "2026-11-06T07:31:25Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -172,9 +172,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, DNP (unconfirmed report). Player said he expects to play Sunday. Nabers didn't practice Thursday due to a knee injury, per reports.",
-      "as_of": "2026-11-05T21:23:00Z",
-      "expires": "2026-11-06T03:23:00Z",
+      "note": "Knee, DNP (unconfirmed report). Player said he expects to play Sunday. Nabers (undisclosed) said Thursday, \"I'll be good,\" for Sunday's game at Philadelphia, per reports.",
+      "as_of": "2026-11-05T20:30:00Z",
+      "expires": "2026-11-06T02:30:00Z",
       "p_inactive": 0.2
     },
     {
@@ -468,9 +468,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, DNP (unconfirmed report). Player said he expects to play Sunday. Nabers didn't practice Thursday due to a knee injury, per reports.",
-      "as_of": "2026-11-05T21:23:00Z",
-      "expires": "2026-11-06T03:23:00Z",
+      "note": "Knee, DNP (unconfirmed report). Player said he expects to play Sunday. Nabers (undisclosed) said Thursday, \"I'll be good,\" for Sunday's game at Philadelphia, per reports.",
+      "as_of": "2026-11-05T20:30:00Z",
+      "expires": "2026-11-06T02:30:00Z",
       "p_inactive": 0.2
     },
     "4569618": {
@@ -764,9 +764,9 @@
       "watch": true,
       "unconfirmed": true,
       "confirmed": false,
-      "note": "Knee, DNP (unconfirmed report). Player said he expects to play Sunday. Nabers didn't practice Thursday due to a knee injury, per reports.",
-      "as_of": "2026-11-05T21:23:00Z",
-      "expires": "2026-11-06T03:23:00Z",
+      "note": "Knee, DNP (unconfirmed report). Player said he expects to play Sunday. Nabers (undisclosed) said Thursday, \"I'll be good,\" for Sunday's game at Philadelphia, per reports.",
+      "as_of": "2026-11-05T20:30:00Z",
+      "expires": "2026-11-06T02:30:00Z",
       "p_inactive": 0.2
     },
     "garrett wilson": {
