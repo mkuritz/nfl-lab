@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script src="https://sportslabshq.com/sl/ds.js?v=1"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0b1220">
-<title>NFL Betting Trends · Sports Labs</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css?v=1029b"><script src="https://sportslabshq.com/sl/sl-sports.js?v=2"></script><script src="navcfg-v2.js"></script><script src="matchup-analyzer.js?v=4"></script><script src="status-labels.js?v=2"></script><script src="v2.js?v=1105st"></script>
+<title>NFL Betting Trends · Sports Labs</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css?v=1029b"><script src="https://sportslabshq.com/sl/sl-sports.js?v=2"></script><script src="navcfg-v2.js"></script><script src="matchup-analyzer.js?v=4"></script><script src="status-labels.js?v=2"></script><script src="rb-expected.js?v=1"></script><script src="v2.js?v=1106rbex"></script>
 <style>
 .tb{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tb button,.tb select,.tb input{background:var(--panel2);border:1px solid var(--line);color:var(--txt);border-radius:999px;padding:8px 14px;font-weight:700;font-size:15px;min-height:42px;cursor:pointer}
 .tb button.on{border-color:var(--acc);color:var(--acc)}.tb input{border-radius:10px;cursor:text;min-width:120px}
@@ -71,4 +71,4 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(
 (async()=>{[T,AN]=await Promise.all([j("data/trends.json",null),j("https://betlab.sportslabshq.com/data/analyst_nfl.json",{})]);
  if(!T||!T.records){$("meta").textContent="Trends data is rebuilding; check back after the next refresh.";return}
  $("meta").innerHTML=`All 32 teams · seasons ${T.seasons.join(", ")} (pick one; current season is the default) · updated ${ago(T.updated)}, refreshed after every game day. Tap a column header to sort.`;draw()})();
-</script><script src="navcfg.js"></script><script src="side.js"></script><script src="status-labels.js?v=2"></script><script src="nflprofile.js?v=4" defer></script><script src="propintel.js?v=3" defer></script><script src="nflteam.js?v=5"></script></body></html>
+</script><script src="navcfg.js"></script><script src="side.js"></script><script src="status-labels.js?v=2"></script><script src="nflprofile.js?v=5" defer></script><script src="propintel.js?v=3" defer></script><script src="nflteam.js?v=5"></script></body></html>
