@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-06T22:06:39Z",
-  "updated_et": "Nov 6, 2026 \u00b7 5:06 PM ET",
+  "updated": "2026-11-06T22:21:31Z",
+  "updated_et": "Nov 6, 2026 \u00b7 5:21 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-07T04:06:39Z",
+  "expires": "2026-11-07T04:21:31Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -119,20 +119,6 @@
       "p_inactive": 0.2
     },
     {
-      "aid": "4569618",
-      "player": "Garrett Wilson",
-      "team": "NYJ",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "With Wilson set to miss the contest, the Jets will be without their top wide receiver as he remains in concussion protocol. His absence leaves targets available to Adonai Mitchell and Omar Cooper, who get significant boosts to their respective Week 9 fantasy stocks, while Isaiah ",
-      "as_of": "2026-11-06T16:16:00Z",
-      "expires": "2026-11-06T22:16:00Z",
-      "p_inactive": 0.2
-    },
-    {
       "aid": "4241478",
       "player": "DeVonta Smith",
       "team": "PHI",
@@ -185,9 +171,9 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "With Samuel absent from the initial stage of practice Friday after sitting out Wednesday and Thursday's sessions, he's trending toward an absence Sunday against the Raiders, as is fellow WR Mike Evans (Achilles). reporters the duo's status is set to arrive later Friday once the 4",
-      "as_of": "2026-11-06T21:06:00Z",
-      "expires": "2026-11-07T03:06:00Z",
+      "note": "Neither Samuel nor Mike Evans (Achilles) made a serious bid to play in San Francisco's first game after a Week 8 bye. Jordan Watkins, Brandin Cooks and Jacob Cowing are the healthy WRs on the active roster, with Demarcus Robinson (ankle) a candidate to come off injured reserve th",
+      "as_of": "2026-11-06T22:00:00Z",
+      "expires": "2026-11-07T04:00:00Z",
       "p_inactive": 0.55
     },
     {
@@ -199,9 +185,9 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "With Evans now having been absent from the media-viewing portion of practice again Friday, his status for Sunday's game against the Raiders remains in serious doubt. After a round of likely DNPs, Evans' return may have to wait until Week 10, though the veteran wideout has been kn",
-      "as_of": "2026-11-06T20:50:00Z",
-      "expires": "2026-11-07T02:50:00Z",
+      "note": "GM John Lynch said on KNBR radio Thursday that Evans is unlikely to play in Week 9 due to the right Achilles injury he aggravated in Week 6 against the Commanders, per reporters Bay Area. After not practicing in any capacity Wednesday and Thursday, Evans indeed will miss a third ",
+      "as_of": "2026-11-06T22:05:00Z",
+      "expires": "2026-11-07T04:05:00Z",
       "p_inactive": 0.55
     }
   ],
@@ -314,20 +300,6 @@
       "expires": "2026-11-06T23:19:00Z",
       "p_inactive": 0.2
     },
-    "4569618": {
-      "aid": "4569618",
-      "player": "Garrett Wilson",
-      "team": "NYJ",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "With Wilson set to miss the contest, the Jets will be without their top wide receiver as he remains in concussion protocol. His absence leaves targets available to Adonai Mitchell and Omar Cooper, who get significant boosts to their respective Week 9 fantasy stocks, while Isaiah ",
-      "as_of": "2026-11-06T16:16:00Z",
-      "expires": "2026-11-06T22:16:00Z",
-      "p_inactive": 0.2
-    },
     "4241478": {
       "aid": "4241478",
       "player": "DeVonta Smith",
@@ -381,9 +353,9 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "With Samuel absent from the initial stage of practice Friday after sitting out Wednesday and Thursday's sessions, he's trending toward an absence Sunday against the Raiders, as is fellow WR Mike Evans (Achilles). reporters the duo's status is set to arrive later Friday once the 4",
-      "as_of": "2026-11-06T21:06:00Z",
-      "expires": "2026-11-07T03:06:00Z",
+      "note": "Neither Samuel nor Mike Evans (Achilles) made a serious bid to play in San Francisco's first game after a Week 8 bye. Jordan Watkins, Brandin Cooks and Jacob Cowing are the healthy WRs on the active roster, with Demarcus Robinson (ankle) a candidate to come off injured reserve th",
+      "as_of": "2026-11-06T22:00:00Z",
+      "expires": "2026-11-07T04:00:00Z",
       "p_inactive": 0.55
     },
     "16737": {
@@ -395,9 +367,9 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "With Evans now having been absent from the media-viewing portion of practice again Friday, his status for Sunday's game against the Raiders remains in serious doubt. After a round of likely DNPs, Evans' return may have to wait until Week 10, though the veteran wideout has been kn",
-      "as_of": "2026-11-06T20:50:00Z",
-      "expires": "2026-11-07T02:50:00Z",
+      "note": "GM John Lynch said on KNBR radio Thursday that Evans is unlikely to play in Week 9 due to the right Achilles injury he aggravated in Week 6 against the Commanders, per reporters Bay Area. After not practicing in any capacity Wednesday and Thursday, Evans indeed will miss a third ",
+      "as_of": "2026-11-06T22:05:00Z",
+      "expires": "2026-11-07T04:05:00Z",
       "p_inactive": 0.55
     }
   },
@@ -510,20 +482,6 @@
       "expires": "2026-11-06T23:19:00Z",
       "p_inactive": 0.2
     },
-    "garrett wilson": {
-      "aid": "4569618",
-      "player": "Garrett Wilson",
-      "team": "NYJ",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "With Wilson set to miss the contest, the Jets will be without their top wide receiver as he remains in concussion protocol. His absence leaves targets available to Adonai Mitchell and Omar Cooper, who get significant boosts to their respective Week 9 fantasy stocks, while Isaiah ",
-      "as_of": "2026-11-06T16:16:00Z",
-      "expires": "2026-11-06T22:16:00Z",
-      "p_inactive": 0.2
-    },
     "devonta smith": {
       "aid": "4241478",
       "player": "DeVonta Smith",
@@ -577,9 +535,9 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "With Samuel absent from the initial stage of practice Friday after sitting out Wednesday and Thursday's sessions, he's trending toward an absence Sunday against the Raiders, as is fellow WR Mike Evans (Achilles). reporters the duo's status is set to arrive later Friday once the 4",
-      "as_of": "2026-11-06T21:06:00Z",
-      "expires": "2026-11-07T03:06:00Z",
+      "note": "Neither Samuel nor Mike Evans (Achilles) made a serious bid to play in San Francisco's first game after a Week 8 bye. Jordan Watkins, Brandin Cooks and Jacob Cowing are the healthy WRs on the active roster, with Demarcus Robinson (ankle) a candidate to come off injured reserve th",
+      "as_of": "2026-11-06T22:00:00Z",
+      "expires": "2026-11-07T04:00:00Z",
       "p_inactive": 0.55
     },
     "mike evans": {
@@ -591,9 +549,9 @@
       "watch": false,
       "unconfirmed": false,
       "confirmed": true,
-      "note": "With Evans now having been absent from the media-viewing portion of practice again Friday, his status for Sunday's game against the Raiders remains in serious doubt. After a round of likely DNPs, Evans' return may have to wait until Week 10, though the veteran wideout has been kn",
-      "as_of": "2026-11-06T20:50:00Z",
-      "expires": "2026-11-07T02:50:00Z",
+      "note": "GM John Lynch said on KNBR radio Thursday that Evans is unlikely to play in Week 9 due to the right Achilles injury he aggravated in Week 6 against the Commanders, per reporters Bay Area. After not practicing in any capacity Wednesday and Thursday, Evans indeed will miss a third ",
+      "as_of": "2026-11-06T22:05:00Z",
+      "expires": "2026-11-07T04:05:00Z",
       "p_inactive": 0.55
     }
   }
