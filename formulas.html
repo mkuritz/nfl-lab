@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script src="https://sportslabshq.com/sl/ds.js?v=1"></script><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0b1220">
+<title>Formulas · NFL Hub · Sports Labs</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css?v=1029b"><script src="https://sportslabshq.com/sl/sl-sports.js?v=2"></script><script src="navcfg-v2.js?v=1106form"></script><script src="tailcard.js?v=1"></script><script src="matchup-analyzer.js?v=4"></script><script src="status-labels.js?v=2"></script><script src="rb-expected.js?v=1"></script><script src="v2.js?v=1106rbex"></script><script src="https://sportslabshq.com/sl/sl.js?v=13" defer></script><script src="https://betlab.sportslabshq.com/football-live.js?v=4"></script><script src="injlive.js?v=3"></script>
+<style>
+.fx-intro{font-size:13px;line-height:1.5;color:#8b97b0;margin:4px 0 0}
+.fx-sec{margin-top:14px}
+.fx-sec h2{font-size:16px;margin:0 0 4px}
+.fx-sec .meth{font-size:12.5px;color:#8b97b0;margin:0 0 10px;line-height:1.45}
+.fx-row{border:1px solid #ffffff14;border-radius:12px;background:#ffffff06;padding:10px 12px;margin-top:8px}
+.fx-row .t{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between}
+.fx-row .n{font-size:15px;font-weight:800}
+.fx-g{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0 0}
+.fx-g div{background:#0b1326;border:1px solid #243556;border-radius:8px;padding:6px 8px}
+.fx-g b{display:block;font-size:15px;color:#e6e9ef}
+.fx-g span{font-size:11px;opacity:.65}
+.fx-math{margin-top:6px;font-size:12.5px;color:#aab4c8}
+.fx-math b{color:#a78bfa}
+.fx-tag{font-size:10px;font-weight:900;border-radius:5px;padding:1px 6px;background:#ffffff18;color:#c9d0e0}
+.fx-note{font-size:12px;color:#8b97b0;margin-top:10px}
+@media(max-width:720px){.fx-g{grid-template-columns:repeat(2,1fr)}}
+</style><script src="/sl-neutral.js?v=2" defer></script></head><body><div class="w">
+<header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Formulas</span></header>
+<div class="card"><h2>📐 Formulas <span class="mut sm" id="meta"></span></h2>
+<div class="fx-intro">Transparent matchup math: a player’s own average volume × the opponent’s allowed rate for that same stat. Each estimate is shown beside the existing Sports Labs projection and any published line. These estimates do not replace those other estimators, and they do not change Highlighted plays.</div>
+<div class="fx-note" id="more">Layout is sectioned by position and market so more formulas can be added later from the same published Hub data.</div>
+</div>
+<div id="secs"><div class="card"><div class="mut">Loading…</div></div></div>
+<footer>Sports Labs model. Estimates are labeled. Not betting advice. 21+.</footer></div>
+<script>
+const ET={timeZone:"America/New_York"};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const tm=t=>{if(!t)return"–";return new Date(t).toLocaleString("en-US",{...ET,weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})+" ET"};
+const NOW=Date.now();
+function normRB(r){
+  return {
+    id:r.id,name:r.name,team:r.team,pos:r.pos||"RB",opp:r.opp,home:r.home,kickoff:r.kickoff,
+    avg_vol:r.avg_att,vol_label:"avg att",opp_rate:r.opp_ypc,opp_rate_label:"yds allowed/att",
+    expected:r.expected,formula:r.formula,label:r.label,line:r.line,line_src:r.line_src,sl_proj:r.sl_proj
+  };
+}
+function sortRows(rows){
+  return rows.slice().sort((a,b)=>{
+    const ka=a.kickoff||"",kb=b.kickoff||"";
+    const ua=ka?(Date.parse(ka)>=NOW-3*3600e3?0:1):2;
+    const ub=kb?(Date.parse(kb)>=NOW-3*3600e3?0:1):2;
+    if(ua!==ub)return ua-ub;
+    if(ka!==kb)return ka<kb?-1:ka>kb?1:0;
+    return (b.avg_vol||0)-(a.avg_vol||0);
+  });
+}
+function lineLabel(r){
+  if(r.line==null)return null;
+  return r.line_src==="model"?"Model line":"Published line";
+}
+function card(r){
+  const site=r.home?"vs":"@";
+  const cells=[
+    [r.vol_label||"Avg volume", esc(r.avg_vol??"–")],
+    [r.opp_rate_label||"Opp rate", esc(r.opp_rate??"–")],
+    ["Expected yds", esc(r.expected??"–")],
+    [lineLabel(r)||"Published line", r.line!=null?esc(r.line):"–"],
+    ["Sports Labs proj", r.sl_proj!=null?esc(Math.round(r.sl_proj*10)/10):"–"]
+  ];
+  const past=r.kickoff&&Date.parse(r.kickoff)<NOW-3*3600e3;
+  return `<div class="fx-row"><div class="t"><span>${past?'<span class="fx-tag">Played</span> ':''}<span class="n">${esc(r.name)}</span> <span class="m">${esc(r.team)} ${esc(r.pos||"")} ${site} ${esc(r.opp)} · ${tm(r.kickoff)}</span></span><span class="m">${esc(r.label||"Volume × opponent rate estimate")}</span></div>
+ <div class="fx-g">${cells.map(c=>`<div><span>${c[0]}</span><b>${c[1]}</b></div>`).join("")}</div>
+ <div class="fx-math"><b>${esc(r.expected??"–")}</b> expected yds · ${esc(r.formula||((r.avg_vol??"?")+" × "+(r.opp_rate??"?")+" = "+(r.expected??"?")))}</div></div>`;
+}
+function section(title, method, rows, cov){
+  const sorted=sortRows(rows);
+  const body=sorted.length?sorted.map(card).join(""):`<div class="mut" style="margin-top:6px">No rows cleared the checks for this slate yet.</div>`;
+  const meta=cov?` · ${cov.shown!=null?cov.shown+" shown":sorted.length+" rows"}`:"";
+  return `<div class="card fx-sec"><h2>${esc(title)}<span class="mut sm">${meta}</span></h2><p class="meth">${esc(method)}</p>${body}</div>`;
+}
+Promise.all([
+  fetch("data/rb_expected_rush.json?v="+Math.floor(Date.now()/6e5)).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch("data/formulas_expected.json?v="+Math.floor(Date.now()/6e5)).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([rb,fx])=>{
+  const blocks=[];
+  let week=null, updated=null, total=0;
+  if(rb&&rb.players){
+    week=rb.week; updated=rb.built_et||rb.updated;
+    const rows=Object.values(rb.players).map(normRB);
+    total+=rows.length;
+    blocks.push(section("RB · Rushing yards", rb.method||"RB average rush attempts × opponent rush yards allowed per rush attempt", rows, rb.coverage));
+  }
+  if(fx&&fx.sections){
+    week=week||fx.week; updated=updated||fx.built_et||fx.updated;
+    const order=["qb_pass","wr_rec","te_rec"];
+    order.forEach(id=>{
+      const s=fx.sections[id]; if(!s)return;
+      const rows=Object.values(s.players||{});
+      total+=rows.length;
+      blocks.push(section(s.title, s.method, rows, s.coverage));
+    });
+  }
+  document.getElementById("secs").innerHTML=blocks.length?blocks.join(""):`<div class="card"><div class="mut">Formulas data not available yet.</div></div>`;
+  let stamp="";
+  if(updated){
+    stamp=String(updated).includes("ET")?String(updated):new Date(updated).toLocaleString("en-US",{...ET,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})+" ET";
+  }
+  document.getElementById("meta").textContent=(week!=null?`Week ${week} · `:"")+total+" estimates"+(stamp?` · ${stamp}`:"");
+}).catch(()=>{document.getElementById("secs").innerHTML='<div class="card"><div class="mut">Formulas not available yet.</div></div>'});
+</script><script src="navcfg.js?v=1106form"></script><script src="side.js"></script><script src="status-labels.js?v=2"></script><script src="nflteam.js?v=5"></script><script src="nflprofile.js?v=5"></script></body></html>
