@@ -11,3 +11,7 @@ body{font-size:16px;line-height:1.55}.mut,.sm,.pv-foot,.pv-provenance p{font-siz
 
 /* Keep modal actions clear of the native bottom access banner. */
 dialog{max-height:calc(100dvh - 144px);margin:20px auto auto;padding-bottom:32px;scroll-padding-bottom:32px;overscroll-behavior:contain}@media(max-width:600px){dialog{max-height:calc(100dvh - 160px);margin-top:12px}}
+
+/* Recorded-route integration only: keep shared account, plans and access gates.
+   Do not present unrelated entry timing/live modules above snapshot visualizations. */
+body[data-view] #sl-top10,body[data-view] #sl-lab-inline-intel,body[data-view] .sl-intel-pill,body[data-view] .sl-intel-hdr-btn,body[data-view] #v2bar{display:none!important}

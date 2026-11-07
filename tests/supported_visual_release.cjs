@@ -2,11 +2,21 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {JSDOM}=require('jsdom');const roots=(process.env.HUB_RELEASE_ROOTS||path.resolve(__dirname,'..')).split(':');let checks=0;
 const ok=(v,m)=>{assert.ok(v,m);checks++},tick=()=>new Promise(r=>setTimeout(r,15));
 async function load(root,page,query=''){
- const dom=new JSDOM(fs.readFileSync(path.join(root,page),'utf8'),{url:'https://test.sportslabshq.com/'+page+query,runScripts:'outside-only'}),w=dom.window,requests=[];
+ const dom=new JSDOM(fs.readFileSync(path.join(root,page),'utf8'),{url:'https://test.sportslabshq.com/'+page+query,runScripts:'outside-only'}),w=dom.window,requests=[],runtimeErrors=[];w.addEventListener('error',e=>runtimeErrors.push(String(e.error||e.message)));w.addEventListener('unhandledrejection',e=>runtimeErrors.push(String(e.reason)));
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'))};
  w.fetch=async u=>{requests.push(String(u));const p=path.resolve(root,String(u));assert.ok(p.startsWith(root+path.sep));return {ok:fs.existsSync(p),status:fs.existsSync(p)?200:404,json:async()=>JSON.parse(fs.readFileSync(p,'utf8'))}};
  for(const e of w.document.querySelectorAll('script[src]')){const src=e.getAttribute('src');if(src.startsWith('https://')){assert.equal(src,'https://sportslabshq.com/sl/sl.js?v=12');continue}w.eval(fs.readFileSync(path.join(root,src.split('?')[0]),'utf8'))}
- await tick();ok(![...w.document.querySelectorAll('#preview-app h2')].some(x=>x.textContent==='Unavailable'),'boot must not render an error card: '+page+' '+w.document.querySelector('#preview-app').textContent);
+ // The actual shared SDK has early-return guards for these exact module IDs.
+ // Hidden sentinels suppress only optional timing content, never the account/gate SDK.
+ const css=w.document.createElement('style');css.textContent=fs.readFileSync(path.join(root,'preview.css'),'utf8');w.document.head.append(css);
+ for(const id of ['sl-top10','sl-lab-inline-intel']){const marker=w.document.getElementById(id);ok(marker?.hidden&&marker.children.length===0,'recorded-route optional-module mount guard '+id);ok(w.getComputedStyle(marker).display==='none','optional module stays suppressed '+id)}
+ for(const cls of ['sl-intel-pill','sl-intel-hdr-btn']){const el=w.document.createElement('button');el.className=cls;w.document.body.append(el);ok(w.getComputedStyle(el).display==='none','unrelated timing launcher suppressed '+cls);el.remove()}
+ for(const cls of ['sl-bar','sl-acct']){const el=w.document.createElement('div');el.className=cls;w.document.body.append(el);ok(w.getComputedStyle(el).display!=='none'&&!el.inert,'shared account/access controls preserved '+cls);el.remove()}
+ const native=w.document.getElementById('v2bar');if(native)ok(w.getComputedStyle(native).display==='none','duplicate native bar suppressed only on recorded visual route');
+ let legacyShortcut=0;w.document.addEventListener('keydown',()=>legacyShortcut++);w.document.dispatchEvent(new w.KeyboardEvent('keydown',{key:'k',ctrlKey:true,bubbles:true,cancelable:true}));ok(w.document.querySelector('.pv-more').open&&legacyShortcut===0,'recorded-route shortcut opens existing core tool links, not live timing desk');w.document.querySelector('.pv-more').open=false;
+ w.document.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));ok(legacyShortcut===1,'unrelated keyboard events remain intact');
+ ok(w.document.querySelector('link[rel=icon]')?.getAttribute('href')==='favicon.ico?v=1106qa4'&&fs.readFileSync(path.join(root,'favicon.ico')).subarray(0,4).equals(Buffer.from([0,0,1,0])),'explicit valid first-party favicon, no missing fallback');
+ await tick();ok(runtimeErrors.length===0,'no first-party DOM runtime errors: '+runtimeErrors.join('; '));ok(![...w.document.querySelectorAll('#preview-app h2')].some(x=>x.textContent==='Unavailable'),'boot must not render an error card: '+page+' '+w.document.querySelector('#preview-app').textContent);
  ok(w.document.querySelector('#preview-app').children.length>0,'actual content rendered');ok(w.document.querySelectorAll('#preview-nav a').length>5,'native navigation preserved');
  return {w,dom,requests};
 }

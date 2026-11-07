@@ -71,5 +71,9 @@ function nav(){
  document.getElementById('preview-nav').replaceChildren(node('div',{class:'pv-nav-primary'},link(['Hub home','index.html','index']),primary.map(link)),node('details',{class:'pv-more'},node('summary',{},'More Hub tools'),node('div',{class:'pv-morelinks'},other.map(link))));
 }
 
+// On recorded visual routes, the shared timing-desk shortcut opens native tool links instead.
+// Capture only this shortcut; account, entitlement, dialogs and other keyboard behavior are untouched.
+document.addEventListener('keydown',e=>{if(document.body?.dataset.view&&(e.metaKey||e.ctrlKey)&&e.key?.toLowerCase()==='k'){const more=document.querySelector('#preview-nav .pv-more');if(more){e.preventDefault();e.stopImmediatePropagation();more.open=true;more.querySelector('summary')?.focus()}}},true);
+
 window.PV={node,text,card,num,pc,table,select,dialog,chart,bars,meter,pitch,json,nav,metrics,controls,status};
 })();

@@ -1,0 +1,262 @@
+{
+  "captured_at_et": "2026-11-06 21:37:42 ET",
+  "sport": "nfl",
+  "sdk_url": "https://sportslabshq.com/sl/sl.js?v=12",
+  "sdk_sha256": "4a97d32a6b8c1dfd1188518b1586d44f9e02ecbfd26c4e603614ba045be2cd92",
+  "sdk_modified": false,
+  "suppression_scope": "Only body[data-view] routes loading preview.css; no core-route or entitlement modification",
+  "source_guard_evidence": {
+    "sl-top10": "mountTop10Board early return at public SDK line679",
+    "sl-lab-inline-intel": "mountLabInlineScriptBar early return at line699"
+  },
+  "aikido": {
+    "scanned_files": 22,
+    "issues": []
+  },
+  "browser_error_message": "not provided / cause unknown",
+  "visual_qa": "pending independent public-browser verification",
+  "pre_fix_favicon_checks": [
+    {
+      "sport": "soccer",
+      "url": "https://soccerlab.sportslabshq.com/favicon.ico",
+      "status": 404,
+      "bytes": 0
+    },
+    {
+      "sport": "cbb",
+      "url": "https://cbblab.sportslabshq.com/favicon.ico",
+      "status": 404,
+      "bytes": 0
+    },
+    {
+      "sport": "cfb",
+      "url": "https://cfblab.sportslabshq.com/favicon.ico",
+      "status": 404,
+      "bytes": 0
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/favicon.ico",
+      "status": 404,
+      "bytes": 0
+    }
+  ],
+  "pre_fix_asset_checks": [
+    {
+      "sport": "soccer",
+      "url": "https://soccerlab.sportslabshq.com/preview.css?v=1106ux3",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 8317
+    },
+    {
+      "sport": "soccer",
+      "url": "https://soccerlab.sportslabshq.com/navcfg.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 947
+    },
+    {
+      "sport": "soccer",
+      "url": "https://soccerlab.sportslabshq.com/preview-dom.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 7191
+    },
+    {
+      "sport": "soccer",
+      "url": "https://soccerlab.sportslabshq.com/soccer-preview.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4439
+    },
+    {
+      "sport": "soccer",
+      "url": "https://sportslabshq.com/sl/sl.js?v=12",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 68260
+    },
+    {
+      "sport": "cfb",
+      "url": "https://cfblab.sportslabshq.com/preview.css?v=1106ux3",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 8317
+    },
+    {
+      "sport": "cfb",
+      "url": "https://cfblab.sportslabshq.com/navcfg.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 1173
+    },
+    {
+      "sport": "cfb",
+      "url": "https://cfblab.sportslabshq.com/preview-dom.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 7520
+    },
+    {
+      "sport": "cfb",
+      "url": "https://cfblab.sportslabshq.com/cfb-preview.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 10572
+    },
+    {
+      "sport": "cfb",
+      "url": "https://sportslabshq.com/sl/sl.js?v=12",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 68260
+    },
+    {
+      "sport": "nfl",
+      "url": "https://sportslabshq.com/sl/ds.js?v=1",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 8185
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/style.css",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 2422
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/v2.css?v=1029b",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 14611
+    },
+    {
+      "sport": "nfl",
+      "url": "https://sportslabshq.com/sl/sl-sports.js?v=2",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 12849
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/navcfg-v2.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 1267
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/tailcard.js?v=1",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 5788
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/matchup-analyzer.js?v=4",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 25183
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/status-labels.js?v=2",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4850
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/rb-expected.js?v=1",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4659
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/v2.js?v=1106rbex",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 20942
+    },
+    {
+      "sport": "nfl",
+      "url": "https://sportslabshq.com/sl/sl.js?v=13",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 68260
+    },
+    {
+      "sport": "nfl",
+      "url": "https://betlab.sportslabshq.com/football-live.js?v=4",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4795
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/injlive.js?v=3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4325
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/sl-neutral.js?v=2",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 11385
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/alternate-hurdles.js?v=1106layout2",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 13795
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/navcfg.js?v=1106ux3",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 1198
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/side.js",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4383
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/status-labels.js?v=2",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 4850
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/nflteam.js?v=5",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 37722
+    },
+    {
+      "sport": "nfl",
+      "url": "https://nfllab.sportslabshq.com/nflprofile.js?v=5",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 17297
+    },
+    {
+      "public_shared_dependency": "golden_source.json",
+      "status": 200,
+      "cors_allow_origin": "*",
+      "content_type": "application/json; charset=utf-8"
+    }
+  ]
+}
