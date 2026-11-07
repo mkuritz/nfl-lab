@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-07T13:11:22Z",
-  "updated_et": "Nov 7, 2026 \u00b7 8:11 AM ET",
+  "updated": "2026-11-07T13:31:19Z",
+  "updated_et": "Nov 7, 2026 \u00b7 8:31 AM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-07T19:11:22Z",
+  "expires": "2026-11-07T19:31:19Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
