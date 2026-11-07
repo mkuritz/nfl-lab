@@ -5,7 +5,7 @@ async function load(root,page,query=''){
  const dom=new JSDOM(fs.readFileSync(path.join(root,page),'utf8'),{url:'https://test.sportslabshq.com/'+page+query,runScripts:'outside-only'}),w=dom.window,requests=[];
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true};w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'))};
  w.fetch=async u=>{requests.push(String(u));const p=path.resolve(root,String(u));assert.ok(p.startsWith(root+path.sep));return {ok:fs.existsSync(p),status:fs.existsSync(p)?200:404,json:async()=>JSON.parse(fs.readFileSync(p,'utf8'))}};
- for(const e of w.document.querySelectorAll('script[src]')){const src=e.getAttribute('src');if(src.startsWith('https://')){assert.equal(src,'https://sportslabshq.com/sl/sl.js?v=12');continue}w.eval(fs.readFileSync(path.join(root,src),'utf8'))}
+ for(const e of w.document.querySelectorAll('script[src]')){const src=e.getAttribute('src');if(src.startsWith('https://')){assert.equal(src,'https://sportslabshq.com/sl/sl.js?v=12');continue}w.eval(fs.readFileSync(path.join(root,src.split('?')[0]),'utf8'))}
  await tick();ok(![...w.document.querySelectorAll('#preview-app h2')].some(x=>x.textContent==='Unavailable'),'boot must not render an error card: '+page+' '+w.document.querySelector('#preview-app').textContent);
  ok(w.document.querySelector('#preview-app').children.length>0,'actual content rendered');ok(w.document.querySelectorAll('#preview-nav a').length>5,'native navigation preserved');
  return {w,dom,requests};
