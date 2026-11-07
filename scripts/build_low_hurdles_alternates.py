@@ -5,9 +5,10 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 D=ROOT/'data'
 def load(n):
- if n not in {'v2.json','nba_hub.json','plogs_nba.json'}:
-  raise ValueError('Unsupported data filename')
- return json.load(open(D/n))
+ if n=='v2.json':return json.loads((D/'v2.json').read_text())
+ if n=='nba_hub.json':return json.loads((D/'nba_hub.json').read_text())
+ if n=='plogs_nba.json':return json.loads((D/'plogs_nba.json').read_text())
+ raise ValueError('Unsupported data filename')
 def build():
  SPORT='nfl'
  rows=[]

@@ -1,0 +1,31 @@
+{
+  "issues": [
+    {
+      "issue_title": "Using document write methods can lead to XSS attacks",
+      "issue_description": "User controlled data in methods like 'innerHTML', 'outerHTML' or 'document.write' is an anti-pattern that can lead to XSS vulnerabilities.",
+      "issue_remediation": "Make sure you do not use user input when you are using these methods and if you do, be sure to sanitize the input.",
+      "issue_severity": 80,
+      "issue_file": "release-nfl-supported-hold-1106/propintel.js",
+      "issue_start_line": 36,
+      "issue_end_line": 36,
+      "issue_start_column": 58,
+      "issue_end_column": 62,
+      "issue_snippet": " if(box.__piHtml!==html){box.__piHtml=html;box.innerHTML=html;}}",
+      "issue_rule_id": "AIK_js_insecure-document-method"
+    },
+    {
+      "issue_title": "Potential file inclusion attack via reading file",
+      "issue_description": "If an attacker can control the input leading into the open function, they might be able to read sensitive files and launch further attacks with that information.",
+      "issue_remediation": "Ignore this issue only after you've verified or sanitized the input going into this function.  ",
+      "issue_severity": 50,
+      "issue_file": "release-nfl-supported-hold-1106/scripts/build_low_hurdles_alternates.py",
+      "issue_start_line": 10,
+      "issue_end_line": 10,
+      "issue_start_column": 24,
+      "issue_end_column": 27,
+      "issue_snippet": " return json.load(open(D/n))",
+      "issue_rule_id": "AIK_py_LFI"
+    }
+  ],
+  "scanned_files": 46
+}
