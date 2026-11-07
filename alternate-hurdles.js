@@ -31,8 +31,8 @@ const time=t=>t?new Date(t).toLocaleString('en-US',{timeZone:'America/New_York',
 const short={Points:'Points',Rebounds:'Rebounds',Assists:'Assists',Threes:'Threes','Receiving yards':'Rec yards','Rushing yards':'Rush yards','Passing yards':'Pass yards','Rush + Rec yards':'Rush + Rec','Kicking points':'Kick points',Receptions:'Receptions'};
 const result=(g,f)=>g.dnp?'DNP':g.value==null?'Missing':g.value>=f?'Clear':'Miss';
 window.mountAlternateHurdles=async function(root,sport){
- if(!root||root.dataset.loaded)return;root.dataset.loaded='1';root.classList.add('lhx');
- if(!document.getElementById('lhx-css')){const link=document.createElement('link');link.id='lhx-css';link.rel='stylesheet';link.href='alternate-hurdles.css?v=1106design';document.head.append(link);}
+ if(!root||root.dataset.loaded)return;root.dataset.loaded='1';root.classList.add('lhx');if(sport==='nfl')document.documentElement.classList.add('lhx-active');
+ if(!document.getElementById('lhx-css')){const link=document.createElement('link');link.id='lhx-css';link.rel='stylesheet';link.href='alternate-hurdles.css?v=1106layout2';document.head.append(link);}
  root.textContent='Loading player history…';
  let d;try{const res=await fetch('data/low_hurdles_alternates.json?v=1106alt',{mode:'same-origin',credentials:'same-origin',redirect:'error'});if(!res.ok)throw Error();d=await res.json();}catch(e){root.textContent='Player logs unavailable. Please try again later. No streaks inferred.';return;}
  const state={category:'',pos:'',floor:'',min:5,sort:'streak'};let page=0;

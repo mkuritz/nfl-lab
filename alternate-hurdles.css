@@ -15,3 +15,20 @@
 
 .lhx .lhx-grid>.sl-cta{grid-column:1/-1;margin:0!important;padding:16px!important;line-height:1.5;flex-wrap:wrap;gap:12px}.lhx .lhx-card{content-visibility:auto;contain-intrinsic-size:auto 290px}
 html.lhx-active .w{max-width:1660px}html.lhx-active #kpi-strip{display:none}html.lhx-active #hub-tabs{flex-wrap:wrap;overflow:visible}html.lhx-active #hub-tabs button{font-size:12px;padding:8px 11px}html.lhx-active .hub-hd{margin-bottom:16px}
+
+/* Layout polish: DOM-derived state also handles previously cached hub engines. */
+html:has(#hub-out .lhx) .w{max-width:1660px}
+html:has(#hub-out .lhx) #kpi-strip{display:none!important}
+html:has(#hub-out .lhx) #hub-tabs{display:flex!important;flex-wrap:wrap!important;overflow:visible!important;gap:8px}
+html:has(#hub-out .lhx) #hub-tabs button{font-size:13px;padding:10px 12px;white-space:normal;text-align:left;max-width:100%;min-height:44px}
+html:has(#hub-out .lhx) .sl-intel-pill{bottom:112px!important;right:18px!important}
+.lhx .lhx-grid>[data-sl-teaser-card]{grid-column:1/-1}
+.lhx .lhx-meta,.lhx .lhx-sub{font-size:13px;line-height:1.55}
+.lhx .lhx-label,.lhx .lhx-tools small,.lhx .lhx-stats small{font-size:13px;line-height:1.5}
+.lhx .lhx-name{font-size:18px;min-height:40px}.lhx .lhx-status{font-size:13px}
+.lhx-dialog{max-height:calc(100dvh - 144px);margin:20px auto auto;padding-bottom:32px;scroll-padding-bottom:32px;overscroll-behavior:contain}
+.lhx-dialog .lhx-log{font-size:14px;line-height:1.6}.lhx-dialog .lhx-value{font-size:12px}
+@media(max-width:600px){.lhx-dialog{max-height:calc(100dvh - 160px);margin-top:12px}.lhx .lhx-history{align-items:start;flex-direction:column}.lhx .lhx-top{gap:12px}}
+
+/* Standalone NFL page uses #secs rather than the multi-sport #hub-out. */
+html.lhx-active .sl-intel-pill{bottom:112px!important;right:18px!important}
