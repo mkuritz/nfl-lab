@@ -1,0 +1,13 @@
+{
+  "source_url": "https://sportslabshq.com/sl/sl.js?v=12",
+  "public_source_sha256": "4a97d32a6b8c1dfd1188518b1586d44f9e02ecbfd26c4e603614ba045be2cd92",
+  "method": "Isolated DOM executed the existing public lock/unlock functions; no authentication/session data or network auth calls",
+  "anonymous": {
+    "teaser": 1,
+    "locked": 285,
+    "total": 286
+  },
+  "reset_sort_and_stale_profile_race_blocked": true,
+  "existing_free_member_allowance": 2,
+  "existing_paid_allowance_unchanged": true
+}
