@@ -25,7 +25,7 @@ const text=(s,cls='mut')=>node('p',{class:cls},s);
 const card=(title,...body)=>node('section',{class:'pv-card'},title?node('h2',{},title):null,...body);
 const num=(v,d=2)=>typeof v==='number'&&Number.isFinite(v)?v.toFixed(d):'—';
 const pc=v=>typeof v==='number'&&Number.isFinite(v)?num(v*100,1)+'%':'Unavailable';
-const table=(labels,rows)=>node('div',{class:'pv-scroll'},node('table',{},node('thead',{},node('tr',{},labels.map(l=>node('th',{},l)))),node('tbody',{},rows.map(r=>node('tr',{},r.map(c=>node('td',{},c)))))));
+const table=(labels,rows)=>node('details',{class:'pv-data'},node('summary',{},'View data · '+rows.length+' rows'),node('div',{class:'pv-scroll'},node('table',{},node('thead',{},node('tr',{},labels.map(l=>node('th',{},l)))),node('tbody',{},rows.map(r=>node('tr',{},r.map(c=>node('td',{},c))))))));
 const select=(label,options,value,fn)=>{const s=node('select',{'aria-label':label},options.map(([id,name])=>node('option',{value:id},name)));if(value!=null)s.value=String(value);s.addEventListener('change',()=>fn(s.value));return node('label',{class:'pv-control'},node('span',{},label),s)};
 function dialog(title,...body){
  const previous=document.activeElement,d=node('dialog',{'aria-label':title},node('div',{class:'pv-dialog-body'},node('button',{'aria-label':'Close profile',click:()=>d.close()},'Close ×'),node('h2',{},title),...body));
@@ -36,7 +36,7 @@ function chart(label,w=640,h=280){return node('svg',{viewBox:`0 0 ${w} ${h}`,rol
 function bars(labels,values,colors=['#7de4c3']){
  const vals=values.map(x=>typeof x==='number'&&Number.isFinite(x)?x:0),lo=Math.min(0,...vals),hi=Math.max(1,...vals),X=v=>165+(v-lo)/(hi-lo)*370,zero=X(0);
  const s=chart('Bar chart: '+labels.join(', '),640,Math.max(120,labels.length*34));
- labels.forEach((l,i)=>{const v=vals[i];s.append(node('text',{x:8,y:i*34+22,fill:'#b4cdc8'},l),node('rect',{x:Math.min(zero,X(v)),y:i*34+9,width:Math.abs(X(v)-zero),height:20,rx:4,fill:colors[i%colors.length]}),node('text',{x:555,y:i*34+23,fill:'#e7f7f2'},num(values[i])))});
+ labels.forEach((l,i)=>{const v=vals[i];s.append(node('text',{x:8,y:i*34+22,fill:'#b4cdc8'},l),node('rect',{x:Math.min(zero,X(v)),y:i*34+9,width:Math.abs(X(v)-zero),height:20,rx:4,fill:colors[i%colors.length]},node('title',{},String(l)+' · '+num(values[i]))),node('text',{x:555,y:i*34+23,fill:'#e7f7f2'},num(values[i])))});
  s.append(node('line',{x1:zero,x2:zero,y1:0,y2:Math.max(120,labels.length*34),stroke:'#a4bfb6'}));return s;
 }
 function meter(label,v,note,color='#7de4c3'){
@@ -61,12 +61,15 @@ async function json(path){
  if(!Object.hasOwn(DATA_READERS,path))throw Error('Unsupported display data file');
  const r=await DATA_READERS[path]();if(!r.ok)throw Error(path+' unavailable ('+r.status+')');return r.json();
 }
+function metrics(items){return node('div',{class:'pv-kpis'},items.map(([label,value])=>node('div',{class:'pv-kpi'},node('small',{},label),node('strong',{},value))))}
+function controls(...items){const root=document.getElementById('preview-controls'),reset=node('button',{type:'button',class:'pv-reset',click:()=>{document.dispatchEvent(new Event('pv-reset'));root.querySelector('.pv-reset')?.focus()}},'Reset filters');root.replaceChildren(...items,reset)}
+function status(summary,detail){const root=document.getElementById('preview-status');root.textContent=summary;root.nextElementSibling?.classList.contains('pv-provenance')&&root.nextElementSibling.remove();root.insertAdjacentElement('afterend',node('details',{class:'pv-provenance'},node('summary',{},'Snapshot & coverage'),text(detail,'mut sm')))}
 function nav(){
- const cur=location.pathname.split('/').pop().replace('.html','');let groups;
- if(window.SLTOP)groups=window.SLTOP.by||[];
- else groups=(window.SLNAV?.groups||[]).flatMap(x=>x[1]);
- const links=groups.filter(x=>!/^https?:/.test(x[1])).map(([label,href,key])=>node('a',{href,'aria-current':key===cur?'page':null},label));
- document.getElementById('preview-nav').replaceChildren(...links);
+ const cur=location.pathname.split('/').pop().replace('.html',''),groups=window.SLTOP?.by||(window.SLNAV?.groups||[]).flatMap(x=>x[1]);
+ const visible=groups.filter(x=>!/^https?:/.test(x[1])),views=new Set(['unit-board.html', 'injury-cascade.html']),primary=visible.filter(x=>views.has(x[1].replace(/^\.\//,'').split('?')[0])),other=visible.filter(x=>!views.has(x[1].replace(/^\.\//,'').split('?')[0])&&!/^\.?\/index.html$|^index.html$/.test(x[1]));
+ const link=([label,href,key])=>node('a',{href,'aria-current':key===cur?'page':null},label);
+ document.getElementById('preview-nav').replaceChildren(node('div',{class:'pv-nav-primary'},link(['Hub home','index.html','index']),primary.map(link)),node('details',{class:'pv-more'},node('summary',{},'More Hub tools'),node('div',{class:'pv-morelinks'},other.map(link))));
 }
-window.PV={node,text,card,num,pc,table,select,dialog,chart,bars,meter,pitch,json,nav};
+
+window.PV={node,text,card,num,pc,table,select,dialog,chart,bars,meter,pitch,json,nav,metrics,controls,status};
 })();

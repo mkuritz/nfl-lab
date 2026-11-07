@@ -25,6 +25,9 @@ for key,row in pbp['tw'][season].items():
     raw_team,week=key.split('|');team=canon(raw_team);week=int(week)
     if team not in VALID or not 1<=week<=18:raise ValueError('Invalid team/week')
     maxweek=max(maxweek,week)
+    required='pepa pn repa rn epa n dpepa dpn drepa drn depa dn sk dsk'.split()
+    if any(type(row.get(k)) not in (int,float) or not math.isfinite(row[k]) for k in required):raise ValueError('Missing/nonfinite metric; never substitute zero')
+    if any(row[k]<0 for k in 'pn rn n dpn drn dn sk dsk'.split()):raise ValueError('Negative source count')
     for field,value in row.items():
         if type(value) in (int,float):
             if not math.isfinite(value):raise ValueError('Nonfinite source value')
