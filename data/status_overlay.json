@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-08T22:36:16Z",
-  "updated_et": "Nov 8, 2026 \u00b7 5:36 PM ET",
+  "updated": "2026-11-08T22:46:44Z",
+  "updated_et": "Nov 8, 2026 \u00b7 5:46 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-09T04:36:16Z",
+  "expires": "2026-11-09T04:46:44Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -10,20 +10,6 @@
     "hub_player_status"
   ],
   "players": [
-    {
-      "aid": "3122840",
-      "player": "Deshaun Watson",
-      "team": "CLE",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Watson, who reported concussion symptoms Tuesday, didn't practice Wednesday or Thursday before being deemed limited Friday and subsequently heading into the weekend with a 'questionable' tag. Though Watson has cleared the NFL's concussion protocol, the Browns have elected to err ",
-      "as_of": "2026-11-08T16:38:00Z",
-      "expires": "2026-11-08T22:38:00Z",
-      "p_inactive": 0.2
-    },
     {
       "aid": "4372016",
       "player": "Jaylen Waddle",
@@ -39,37 +25,9 @@
       "as_of": "2026-11-08T19:52:00Z",
       "expires": "2026-11-09T01:52:00Z",
       "p_inactive": 0.38
-    },
-    {
-      "aid": "4696981",
-      "player": "Cam Skattebo",
-      "team": "NYG",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Skattebo reportedly pushed to play Sunday, but reporters.com reported shortly before inactives were released that Skattebo would not suit up Sunday, and the second-year back was indeed ruled out for Week 9. With fellow running back Tyrone Tracy (hamstring) already sidelined, Devi",
-      "as_of": "2026-11-08T16:40:00Z",
-      "expires": "2026-11-08T22:40:00Z",
-      "p_inactive": 0.2
     }
   ],
   "by_aid": {
-    "3122840": {
-      "aid": "3122840",
-      "player": "Deshaun Watson",
-      "team": "CLE",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Watson, who reported concussion symptoms Tuesday, didn't practice Wednesday or Thursday before being deemed limited Friday and subsequently heading into the weekend with a 'questionable' tag. Though Watson has cleared the NFL's concussion protocol, the Browns have elected to err ",
-      "as_of": "2026-11-08T16:38:00Z",
-      "expires": "2026-11-08T22:38:00Z",
-      "p_inactive": 0.2
-    },
     "4372016": {
       "aid": "4372016",
       "player": "Jaylen Waddle",
@@ -85,37 +43,9 @@
       "as_of": "2026-11-08T19:52:00Z",
       "expires": "2026-11-09T01:52:00Z",
       "p_inactive": 0.38
-    },
-    "4696981": {
-      "aid": "4696981",
-      "player": "Cam Skattebo",
-      "team": "NYG",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Skattebo reportedly pushed to play Sunday, but reporters.com reported shortly before inactives were released that Skattebo would not suit up Sunday, and the second-year back was indeed ruled out for Week 9. With fellow running back Tyrone Tracy (hamstring) already sidelined, Devi",
-      "as_of": "2026-11-08T16:40:00Z",
-      "expires": "2026-11-08T22:40:00Z",
-      "p_inactive": 0.2
     }
   },
   "by_name": {
-    "deshaun watson": {
-      "aid": "3122840",
-      "player": "Deshaun Watson",
-      "team": "CLE",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Watson, who reported concussion symptoms Tuesday, didn't practice Wednesday or Thursday before being deemed limited Friday and subsequently heading into the weekend with a 'questionable' tag. Though Watson has cleared the NFL's concussion protocol, the Browns have elected to err ",
-      "as_of": "2026-11-08T16:38:00Z",
-      "expires": "2026-11-08T22:38:00Z",
-      "p_inactive": 0.2
-    },
     "jaylen waddle": {
       "aid": "4372016",
       "player": "Jaylen Waddle",
@@ -131,20 +61,6 @@
       "as_of": "2026-11-08T19:52:00Z",
       "expires": "2026-11-09T01:52:00Z",
       "p_inactive": 0.38
-    },
-    "cam skattebo": {
-      "aid": "4696981",
-      "player": "Cam Skattebo",
-      "team": "NYG",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Skattebo reportedly pushed to play Sunday, but reporters.com reported shortly before inactives were released that Skattebo would not suit up Sunday, and the second-year back was indeed ruled out for Week 9. With fellow running back Tyrone Tracy (hamstring) already sidelined, Devi",
-      "as_of": "2026-11-08T16:40:00Z",
-      "expires": "2026-11-08T22:40:00Z",
-      "p_inactive": 0.2
     }
   }
 }
