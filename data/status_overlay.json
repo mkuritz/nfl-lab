@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-08T15:32:17Z",
-  "updated_et": "Nov 8, 2026 \u00b7 10:32 AM ET",
+  "updated": "2026-11-08T15:41:15Z",
+  "updated_et": "Nov 8, 2026 \u00b7 10:41 AM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-08T21:32:17Z",
+  "expires": "2026-11-08T21:41:15Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -57,6 +57,20 @@
       "as_of": "2026-11-08T14:22:00Z",
       "expires": "2026-11-08T20:22:00Z",
       "p_inactive": 0.2
+    },
+    {
+      "aid": "4696981",
+      "player": "Cam Skattebo",
+      "team": "NYG",
+      "status": "Doubtful",
+      "tags": [],
+      "watch": false,
+      "unconfirmed": false,
+      "confirmed": true,
+      "note": "It's not common for players listed as doubtful to end up active, but \"as unlikely as it is,\", the running back evidently hasn't closed the door on that possibility. In any case, Skattebo's Week 9 status will arrive when the Giants' inactives are posted ahead of the team's 1:00 pm",
+      "as_of": "2026-11-08T15:26:00Z",
+      "expires": "2026-11-08T21:26:00Z",
+      "p_inactive": 0.2
     }
   ],
   "by_aid": {
@@ -107,6 +121,20 @@
       "as_of": "2026-11-08T14:22:00Z",
       "expires": "2026-11-08T20:22:00Z",
       "p_inactive": 0.2
+    },
+    "4696981": {
+      "aid": "4696981",
+      "player": "Cam Skattebo",
+      "team": "NYG",
+      "status": "Doubtful",
+      "tags": [],
+      "watch": false,
+      "unconfirmed": false,
+      "confirmed": true,
+      "note": "It's not common for players listed as doubtful to end up active, but \"as unlikely as it is,\", the running back evidently hasn't closed the door on that possibility. In any case, Skattebo's Week 9 status will arrive when the Giants' inactives are posted ahead of the team's 1:00 pm",
+      "as_of": "2026-11-08T15:26:00Z",
+      "expires": "2026-11-08T21:26:00Z",
+      "p_inactive": 0.2
     }
   },
   "by_name": {
@@ -156,6 +184,20 @@
       "note": "Foot, back-to-back DNP (unconfirmed report). Not ruled out for Sunday vs GB. Henry (foot) \"has a realistic chance to play\" Sunday against the Packers, per reports.",
       "as_of": "2026-11-08T14:22:00Z",
       "expires": "2026-11-08T20:22:00Z",
+      "p_inactive": 0.2
+    },
+    "cam skattebo": {
+      "aid": "4696981",
+      "player": "Cam Skattebo",
+      "team": "NYG",
+      "status": "Doubtful",
+      "tags": [],
+      "watch": false,
+      "unconfirmed": false,
+      "confirmed": true,
+      "note": "It's not common for players listed as doubtful to end up active, but \"as unlikely as it is,\", the running back evidently hasn't closed the door on that possibility. In any case, Skattebo's Week 9 status will arrive when the Giants' inactives are posted ahead of the team's 1:00 pm",
+      "as_of": "2026-11-08T15:26:00Z",
+      "expires": "2026-11-08T21:26:00Z",
       "p_inactive": 0.2
     }
   }
