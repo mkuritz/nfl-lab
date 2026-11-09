@@ -4,7 +4,7 @@ const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const seasonAt=now=>{const d=new Date(now);return d.getUTCFullYear()-(d.getUTCMonth()<2?1:0)};
 function current(D,N,V,now=Date.now()){
  if(D?.schema!==1||!Number.isFinite(D.max_age_minutes)||D.max_age_minutes<=0||D.max_age_minutes>10080||D.season!==seasonAt(now)||N?.season!==D.season||N.week!==D.week||V?.week!==D.week)return false;
- return [['games',N],['players',V]].every(([key,src])=>{const ts=Date.parse(src.updated);return Number.isFinite(ts)&&src.updated===D.source_updated[key]&&now-ts>=0&&now-ts<=D.max_age_minutes*60000});
+ return [['games',N],['players',V]].every(([key,src])=>{const live=Date.parse(src.updated),snap=Date.parse(D.source_updated[key]);return Number.isFinite(live)&&Number.isFinite(snap)&&live>=snap&&now-live>=0&&now-live<=D.max_age_minutes*60000&&now-snap<=D.max_age_minutes*60000});
 }
 function gameCurrent(g,N,now=Date.now()){const n=N.games?.find(x=>String(x.id)===g.id);return !!n&&n.state==='pre'&&n.date===g.time&&n.away?.abbr===g.away&&n.home?.abbr===g.home&&Date.parse(g.time)>now&&Date.parse(g.time)<now+7*86400000}
 function lineStats(history,line){const a=history.filter(x=>finite(x.value));if(!finite(line))return {n:0,wins:0,pushes:0,losses:0,rate:null,mean:null};const wins=a.filter(x=>x.value>line).length,pushes=a.filter(x=>x.value===line).length,losses=a.length-wins-pushes;return {n:a.length,wins,pushes,losses,rate:wins+losses?wins/(wins+losses):null,mean:a.length?a.reduce((s,x)=>s+x.value,0)/a.length:null}}
