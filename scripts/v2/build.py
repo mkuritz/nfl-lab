@@ -76,7 +76,9 @@ for r in props:
   for i in (r.get('inj') or [])[:2]:
     if i['status'] in ('Out','Injured Reserve','Doubtful'): ins.append({'h':f"{i['name']} {i['status'].lower()}",'t':f"Teammate {i['name']} ({i['pos']}) is listed {i['status']}, which frees up {i['pos']} usage on {r['team']}.",'tone':'up'})
   if rz>=3 and r['market']=='Anytime TD': ins.append({'h':f"{rz} red-zone opportunities",'t':f"He has {rz} red-zone opportunities across {len(s26)} games this season.",'tone':'up'})
-  if a and r['market']=='Anytime TD' and a.get('itt'): ins.append({'h':f"Team total {a['itt']}",'t':f"{r['team']} is implied for {a['itt']} points, vs a slate average of {an['slate_avg_itt']:.1f}.",'tone':'up' if a['itt']>an['slate_avg_itt'] else 'down'}) if (a:=atd.get(r['aid'])) else None
+  a=atd.get(r['aid'])
+  if a and r['market']=='Anytime TD' and a.get('itt'):
+    ins.append({'h':f"Team total {a['itt']}",'t':f"{r['team']} is implied for {a['itt']} points, vs a slate average of {an['slate_avg_itt']:.1f}.",'tone':'up' if a['itt']>an['slate_avg_itt'] else 'down'})
   wx=g.get('wx') or {}
   out.append({'aid':r['aid'],'name':r['player'],'team':r['team'],'pos':pos,'opp':r['opp'],'oa':opp,'home':r['home'],'time':r['time'],'game':r['game'],
    'head':p.get('head'),'num':p.get('num'),'inj':p.get('inj') and {'st':p['inj']['status'],'d':p['inj'].get('detail')},
