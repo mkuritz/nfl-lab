@@ -80,6 +80,12 @@ _js=_player_trench(sc,'TEN','J.Simmons')
 if _js and 'CHI' in A and 'TEN' in A:
   for _k in ('dsk','dqh','dstuff'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]=max(0,A['TEN'][_k]-_js[_k])
   for _k in ('dpepa','drepa'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]-=_js[_k]; A['CHI']['depa']+=_js[_k]; A['TEN']['depa']-=_js[_k]
+# JAX DL upgraded / NO DL downgraded: Jaguars acquired DT Davon Godchaux from NO (Nov 9, 2026).
+# Uses Godchaux's actual 2026 play-by-play involvement, moved NO -> JAX. (Jordan Davis remains PHI; rumor only.)
+_dg=_player_trench(sc,'NO','D.Godchaux')
+if _dg and 'JAX' in A and 'NO' in A:
+  for _k in ('dsk','dqh','dstuff'): A['JAX'][_k]+=_dg[_k]; A['NO'][_k]=max(0,A['NO'][_k]-_dg[_k])
+  for _k in ('dpepa','drepa'): A['JAX'][_k]+=_dg[_k]; A['NO'][_k]-=_dg[_k]; A['JAX']['depa']+=_dg[_k]; A['NO']['depa']-=_dg[_k]
 # Availability: current OL/DL injuries/inactives (scripts/v2/trench_avail.py)
 import sys;sys.path.insert(0,os.path.dirname(__file__));import trench_avail
 AV=trench_avail.apply(A,sc,RAW)
@@ -169,6 +175,8 @@ for r in dl:
   elif r['t']=='IND': r['note']='Traded All-Pro DT DeForest Buckner to SF; placed CB Cam Taylor-Britt on IR (DE Arden Key on IR)'
   elif r['t']=='CHI': r['note']='Acquired All-Pro DT Jeffery Simmons from TEN (4.0 sk, 9 QBH in 2026); pairs with DE Montez Sweat'
   elif r['t']=='TEN': r['note']='Traded All-Pro DT Jeffery Simmons to CHI; Solomon Thomas & John Franklin-Myers rotate at DT'
+  elif r['t']=='JAX': r['note']='Acquired DT Davon Godchaux from NO (Nov 9); DaVon Hamilton on IR (knee)'
+  elif r['t']=='NO': r['note']='Traded DT Davon Godchaux to JAX (Nov 9)'
 def _av(t,k):
   L=[x for x in (AV.get(t) or {}).get(k,[])]
   return ('; '.join(f"{x['n']} ({x['st']})" for x in L)) if L else ''
@@ -187,5 +195,6 @@ trades=[
 ]
 _dlp={r['t']:r for r in dl}
 trades.insert(0,{'date':'2026-10-29','player':'Jeffery Simmons','pos':'DT','from':'TEN','to':'CHI','comp':'2027 & 2028 1st-round picks + 2027 4th-round pick (CHI also gets a 2028 5th)','impact':f"CHI DL upgrade (Pass rush {_dlp['CHI']['pr']}, Run defense {_dlp['CHI']['rd']}, DL {_dlp['CHI']['dl']} pct); TEN DL downgraded (Pass rush {_dlp['TEN']['pr']}, Run defense {_dlp['TEN']['rd']}, DL {_dlp['TEN']['dl']} pct)"})
+trades.insert(0,{'date':'2026-11-09','player':'Davon Godchaux','pos':'DT','from':'NO','to':'JAX','comp':'2028 conditional 6th-round pick','impact':f"JAX DL upgrade (Pass rush {_dlp['JAX']['pr']}, Run defense {_dlp['JAX']['rd']}, DL {_dlp['JAX']['dl']} pct); NO DL downgraded (Pass rush {_dlp['NO']['pr']}, Run defense {_dlp['NO']['rd']}, DL {_dlp['NO']['dl']} pct)"})
 json.dump({'season':y,'thru':out['maxw'][y],'power':pr,'units':U,'ol':ol,'dl':dl,'trades':trades,'div':DIV},open('data/teams_v2.json','w'))
 print(pr[:3],ol[0])
