@@ -6,6 +6,7 @@ from pathlib import Path
 MARKETS = {'TE':['Receiving Yards','Receptions'], 'WR':['Receiving Yards','Receptions'], 'RB':['Rushing Yards','Carries','Receiving Yards','Receptions','Rushing Plus Receiving Yards'], 'QB':['Passing Yards','Pass Completions','Passing Attempts','Rushing Yards']}
 FIELDS={'Receiving Yards':['receiving_yards'],'Receptions':['receptions'],'Rushing Yards':['rushing_yards'],'Carries':['carries'],'Passing Yards':['passing_yards'],'Pass Completions':['completions'],'Passing Attempts':['attempts'],'Rushing Plus Receiving Yards':['rushing_yards','receiving_yards'],'Anytime TD':['rushing_tds','receiving_tds']}
 DEFAULT_AGE_MIN = 90
+OUT_STATUSES=frozenset({'Out','Injured Reserve','Doubtful','Out for season','Reserve/PUP','Reserve/NFI','Reserve/COVID-19','Suspended'})
 
 def number(x): return isinstance(x,(int,float)) and not isinstance(x,bool) and math.isfinite(x)
 def stamp(x):
@@ -46,7 +47,13 @@ def normalize(v,n,profiles,dvp,now,max_age_minutes=DEFAULT_AGE_MIN):
         prob=r.get('prob') if number(r.get('prob')) and 0<=r['prob']<=1 else None
         price=r.get('best') if number(r.get('best')) and abs(r['best'])>=100 else None
         profile=profiles.get(aid,{});native=profile.get('id')==aid and profile.get('team')==r['team'] and profile.get('pos')==pos
-        rows.append({'key':key,'id':aid,'native':native,'name':str(r.get('name') or 'Player unavailable'),'team':r['team'],'opponent':opponent,'position':pos,'game':game['id'],'time':game['time'],'market':market,'line':r['line'],'estimate':prob,'market_blended':'market blend' in str(r.get('src','')).lower(),'price':price,'book':r.get('bbook') if isinstance(r.get('bbook'),str) and (re.fullmatch(r'Book [A-Z]+|Exchange',r['bbook']) is not None) else None,'highlighted':r.get('hl') is True,'injury':r.get('inj') if isinstance(r.get('inj'),str) else None,'history':history})
+        inj=profile.get('inj') if isinstance(profile.get('inj'),dict) else {}
+        st=inj.get('status')
+        if not st and isinstance(r.get('inj'),dict):
+            st=r['inj'].get('status') or r['inj'].get('st')
+        if st in OUT_STATUSES:rejected+=1;continue
+        inj_label=st if st else None
+        rows.append({'key':key,'id':aid,'native':native,'name':str(r.get('name') or 'Player unavailable'),'team':r['team'],'opponent':opponent,'position':pos,'game':game['id'],'time':game['time'],'market':market,'line':r['line'],'estimate':prob,'market_blended':'market blend' in str(r.get('src','')).lower(),'price':price,'book':r.get('bbook') if isinstance(r.get('bbook'),str) and (re.fullmatch(r'Book [A-Z]+|Exchange',r['bbook']) is not None) else None,'highlighted':r.get('hl') is True,'injury':inj_label,'history':history})
     roles=[]
     for aid in sorted(set(r['id'] for r in rows)):
         p=profiles.get(aid,{});base=next(r for r in rows if r['id']==aid);logs=[];weeks=set()
