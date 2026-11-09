@@ -29,7 +29,11 @@ def apply(A,sc,raw):
   feed_names={((i.get('athlete') or {}).get('displayName')) for t in d.get('injuries',[]) for i in t.get('injuries',[])}
   try: ov=json.load(open(os.path.join(os.path.dirname(__file__),'..','..','data','trench_overlay.json'))).get('players',[])
   except Exception: ov=[]
-  extra=[{'status':x.get('status','Questionable'),'_cap':float(x.get('cap_w',0.25)),'athlete':{'displayName':x['name'],'position':{'abbreviation':x['pos']},'team':{'abbreviation':x['team']},'links':[]}} for x in ov if x['name'] not in feed_names]
+  extra=[]
+  for x in ov:
+    if x['name'] in feed_names: continue
+    links=([{'href':f"https://www.espn.com/nfl/player/_/id/{x['espn_id']}/"}] if x.get('espn_id') else [])
+    extra.append({'status':x.get('status','Questionable'),'_cap':float(x.get('cap_w',0.25)),'athlete':{'displayName':x['name'],'position':{'abbreviation':x['pos']},'team':{'abbreviation':x['team']},'links':links}})
   for t in d.get('injuries',[])+[{'injuries':extra}]:
     for i in t.get('injuries',[]):
       a=i.get('athlete') or {}; w=min(SW.get(i.get('status'),0),i.get('_cap',1.0))
@@ -47,6 +51,9 @@ def apply(A,sc,raw):
         out[tm]['ol'].append(rec); out[tm]['L']+=L
       else:
         gid=e2g.get(eid)
+        if not gid and nm and 'display_name' in pl.columns:
+          hit=pl[pl.display_name==nm]
+          if len(hit): gid=str(hit.gsis_id.dropna().iloc[0]) if hit.gsis_id.notna().any() else None
         if not gid: continue
         m=lambda ks:sc[[c for c in idc if any(k in c for k in ks)]].eq(gid).any(axis=1)
         skm=m(('sack',))&(sc.ispass==1); qhm=m(('qb_hit',))&(sc.ispass==1); stm=m(('tackle','sack'))&(sc.isrun==1)&(sc.yards_gained<=0)
