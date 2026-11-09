@@ -62,15 +62,14 @@ function ensureShell(){
  <div id="spot-board" aria-live="polite"></div>
  <details class="spot-method"><summary>Coverage & how to read these views</summary><p>Built from existing Hub snapshots. Current-game offers fail closed after source expiry or kickoff. These are not live prices or new picks.</p><p id="spot-provenance"></p></details>`;
 }
-function loadSpots(){return new Promise((resolve,reject)=>{
- if(window.SpotCore&&window.SpotsApp)return resolve();
- const need=[];
- if(!window.SpotCore)need.push('spots-core.js?v=1109hub1');
- if(!document.querySelector('link[href*="spots.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='spots.css?v=1109hub4';document.head.appendChild(l)}
- if(!window.SpotsApp)need.push('spots.js?v=1109hub1');
- let left=need.length;if(!left)return resolve();
- need.forEach(src=>{const s=document.createElement('script');s.src=src;s.onload=()=>{if(--left===0)resolve()};s.onerror=()=>reject(Error('Spots assets unavailable'));document.head.appendChild(s)});
-})}
+function loadSpots(){return (async()=>{
+ if(window.SpotCore&&window.SpotsApp)return;
+ const load=src=>new Promise((resolve,reject)=>{const s=document.createElement('script');s.src=src;s.onload=resolve;s.onerror=()=>reject(Error('Spots assets unavailable: '+src));document.head.appendChild(s)});
+ if(!document.querySelector('link[href*="spots.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='spots.css?v=1109hub5';document.head.appendChild(l)}
+ if(!window.SpotCore)await load('spots-core.js?v=1109hub5');
+ if(!window.SpotsApp)await load('spots.js?v=1109hub5');
+ if(!window.SpotsApp)throw Error('Spots app failed to load');
+})()}
 async function show(){
  const {on,view}=parse();document.body.classList.toggle('spots-on',on);if(!root&&!on)return;ensureShell();root.hidden=!on;if(!on)return;
  try{await loadSpots();window.SpotsHub={active:true,view};if(window.SpotsApp){if(!booted){booted=true;await window.SpotsApp.boot()}else window.SpotsApp.render()}
