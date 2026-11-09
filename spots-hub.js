@@ -23,6 +23,29 @@ body.spots-on .sl-side{background:#0d191c;border-color:#223438;width:206px;font-
 #spots-root .spot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}#spots-root .spot-card{background:var(--vb);border:1px solid var(--vl);border-radius:6px;padding:16px;box-shadow:0 2px 8px #00000012}#spots-root .spot-empty{border:1px dashed var(--vl);border-radius:6px;padding:28px;color:var(--vs);text-align:center}
 #spots-root .spot-method{margin-top:18px;color:var(--vs);font-size:12px}#spots-root footer{display:none}
 @media(min-width:768px){body.spots-on.sl-open{padding-left:206px}}
+/* Force Soccer-standard controls inside Hub mount */
+#spots-root button,#spots-root input,#spots-root select{
+  appearance:none!important;-webkit-appearance:none!important;color-scheme:dark!important;
+  background:#113d36!important;color:#eefaf5!important;border:1px solid #3a675c!important;
+  min-height:44px!important;font:inherit!important;
+  transition:background .15s,border-color .15s,color .15s,box-shadow .15s}
+#spots-root select{
+  border-radius:10px!important;padding:10px 36px 10px 14px!important;
+  background:#113d36 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239dbfbb' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") right 14px center/12px no-repeat!important}
+#spots-root input{border-radius:10px!important;padding:10px 14px!important}
+#spots-root .spot-view-group button{border-radius:999px!important;background:transparent!important;border-color:transparent!important;color:#b7d0cb!important;min-height:40px!important}
+#spots-root .spot-view-group button[aria-pressed=true],#spots-root button[aria-pressed=true]{
+  background:#32c9b5!important;color:#06241e!important;border-color:#32c9b5!important;font-weight:800!important}
+#spots-root #spot-games button{border-radius:12px!important;background:#0f2c27!important;border:1px solid #355950!important;min-height:48px!important;color:#d5ebe5!important}
+#spots-root #spot-games button[aria-pressed=true]{background:#176269!important;border-color:#32c9b5!important;color:#e6fffa!important}
+#spots-root .spot-reset{border-radius:999px!important;background:#174e40!important;border-color:#2f7a68!important;color:#b5ffe4!important;font-weight:750!important;padding:0 18px!important}
+#spots-root .spot-more-ctl>summary{
+  list-style:none;appearance:none;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;justify-content:center;
+  padding:0 16px;border-radius:999px;border:1px solid #2c4c46;background:#0f2c27;color:#9db1b3;font-size:13px;font-weight:650}
+#spots-root .spot-more-ctl>summary::-webkit-details-marker{display:none}
+#spots-root .spot-ghost{border-radius:10px!important;width:100%}
+#spots-root .spot-player,#spots-root .spot-team{background:transparent!important;border:0!important;min-height:40px!important;color:inherit!important}
+#spots-root .spot-controls{background:#0d221f;border:1px solid #2c4c46;border-radius:14px;padding:14px 16px}
 @media(max-width:600px){body.spots-on .w{padding:12px}#spots-root .vz-heading{flex-direction:column;gap:8px}#spots-root .vz-heading h2{font-size:21px}#spots-root #spot-views button{flex:1 1 auto;padding:10px 12px;font-size:13px;min-height:44px}#spots-root .spot-heading{flex-direction:column;align-items:start}}</style>`;
 
 function parse(){const h=location.hash.slice(1);if(h==='spots')return {on:true,view:null};const m=/^spots\/([\w-]+)$/.exec(h);if(m&&VIEWS.includes(m[1]))return {on:true,view:m[1]};return {on:false,view:null}}
@@ -43,7 +66,7 @@ function loadSpots(){return new Promise((resolve,reject)=>{
  if(window.SpotCore&&window.SpotsApp)return resolve();
  const need=[];
  if(!window.SpotCore)need.push('spots-core.js?v=1109hub1');
- if(!document.querySelector('link[href*="spots.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='spots.css?v=1109hub3';document.head.appendChild(l)}
+ if(!document.querySelector('link[href*="spots.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='spots.css?v=1109hub4';document.head.appendChild(l)}
  if(!window.SpotsApp)need.push('spots.js?v=1109hub1');
  let left=need.length;if(!left)return resolve();
  need.forEach(src=>{const s=document.createElement('script');s.src=src;s.onload=()=>{if(--left===0)resolve()};s.onerror=()=>reject(Error('Spots assets unavailable'));document.head.appendChild(s)});
