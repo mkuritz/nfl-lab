@@ -11,12 +11,19 @@ body.spots-on .sl-side{background:#0d191c;border-color:#223438;width:206px;font-
 #spots-root #spot-views button{border:1px solid var(--vl);border-right:0;background:#0d1b1e;color:#a8bcbc;padding:9px 14px;min-height:40px;font:650 13px/1.2 inherit;cursor:pointer;white-space:nowrap}#spots-root #spot-views button:first-child{border-radius:5px 0 0 5px}#spots-root #spot-views button:last-child{border-radius:0 5px 5px 0;border-right:1px solid var(--vl)}#spots-root #spot-views button[aria-pressed=true]{background:#176269;color:#e6fffa;border-color:#378e8b}
 #spots-root .section-label{font-size:11px;letter-spacing:.4px;color:#9db5b6;text-transform:uppercase;margin:0 0 8px}#spots-root .section-label span{text-transform:none;letter-spacing:0;color:var(--vs);margin-left:8px;font-weight:500}
 #spots-root #spot-games{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}#spots-root #spot-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:0 0 16px}#spots-root .spot-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;width:100%}
+#spots-root #spot-views{display:flex;flex-wrap:wrap;gap:10px;border:0;padding:0 0 14px;margin:0 0 8px}
+#spots-root .spot-view-group{background:#0a2420;border:1px solid #2c4c46;border-radius:12px;padding:6px;gap:6px}
+#spots-root .spot-view-group>span{display:block;width:100%;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7f9e9a;font-weight:750;padding:2px 8px 4px}
+#spots-root .spot-view-group button{min-height:40px;border-radius:999px;padding:8px 14px;transition:background .15s,border-color .15s,color .15s}
+#spots-root .spot-controls label{font-size:12px;font-weight:700;color:#a8c4bf;gap:6px}
+#spots-root .spot-controls input,#spots-root .spot-controls select{min-height:44px;border-radius:10px;background:#113d36;border:1px solid #3a675c;color:#eefaf5}
+#spots-root .spot-reset{min-height:44px}
 #spots-root label{display:flex;flex-direction:column;gap:5px;font-size:11px;color:var(--vs)}#spots-root select,#spots-root input[type=search]{min-height:40px;padding:8px 10px;border-radius:4px;border:1px solid var(--vl);background:#0e1c1f;color:var(--vt);font:inherit}
 #spots-root .spot-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:0 0 12px}#spots-root .spot-heading h2{margin:0;font-size:18px;font-weight:700}#spots-root .spot-heading p{margin:4px 0 0;color:var(--vs);font-size:13px}#spots-root #spot-count{color:var(--vs);font-size:12px;white-space:nowrap}
 #spots-root .spot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}#spots-root .spot-card{background:var(--vb);border:1px solid var(--vl);border-radius:6px;padding:16px;box-shadow:0 2px 8px #00000012}#spots-root .spot-empty{border:1px dashed var(--vl);border-radius:6px;padding:28px;color:var(--vs);text-align:center}
 #spots-root .spot-method{margin-top:18px;color:var(--vs);font-size:12px}#spots-root footer{display:none}
 @media(min-width:768px){body.spots-on.sl-open{padding-left:206px}}
-@media(max-width:600px){body.spots-on .w{padding:12px}#spots-root .vz-heading{flex-direction:column;gap:8px}#spots-root .vz-heading h2{font-size:21px}#spots-root #spot-views button{flex:1 1 auto;padding:9px 11px;font-size:12px}#spots-root .spot-heading{flex-direction:column;align-items:start}}</style>`;
+@media(max-width:600px){body.spots-on .w{padding:12px}#spots-root .vz-heading{flex-direction:column;gap:8px}#spots-root .vz-heading h2{font-size:21px}#spots-root #spot-views button{flex:1 1 auto;padding:10px 12px;font-size:13px;min-height:44px}#spots-root .spot-heading{flex-direction:column;align-items:start}}</style>`;
 
 function parse(){const h=location.hash.slice(1);if(h==='spots')return {on:true,view:null};const m=/^spots\/([\w-]+)$/.exec(h);if(m&&VIEWS.includes(m[1]))return {on:true,view:m[1]};return {on:false,view:null}}
 let root=null,booted=false;
@@ -36,7 +43,7 @@ function loadSpots(){return new Promise((resolve,reject)=>{
  if(window.SpotCore&&window.SpotsApp)return resolve();
  const need=[];
  if(!window.SpotCore)need.push('spots-core.js?v=1109hub1');
- if(!document.querySelector('link[href*="spots.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='spots.css?v=1109hub1';document.head.appendChild(l)}
+ if(!document.querySelector('link[href*="spots.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='spots.css?v=1109hub3';document.head.appendChild(l)}
  if(!window.SpotsApp)need.push('spots.js?v=1109hub1');
  let left=need.length;if(!left)return resolve();
  need.forEach(src=>{const s=document.createElement('script');s.src=src;s.onload=()=>{if(--left===0)resolve()};s.onerror=()=>reject(Error('Spots assets unavailable'));document.head.appendChild(s)});

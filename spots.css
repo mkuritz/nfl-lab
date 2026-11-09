@@ -2,9 +2,62 @@ body.spots{margin:0;background:#082724;color:#eefaf5;font:15px/1.5 system-ui,san
 
 .spot-more{display:block;margin:20px auto;min-width:230px}.spot-chart rect[role=button]{cursor:pointer}.spot-chart rect[role=button]:hover,.spot-chart rect[role=button]:focus{stroke:#f7fbd4;stroke-width:2}
 
-/* Hub integrate v2 content polish */
+
+/* Hub integrate v2 · Soccer-standard modern controls */
+body.spots,body.spots-on{color-scheme:dark}
+body.spots button,body.spots input,body.spots select,
+body.spots-on #spots-root button,body.spots-on #spots-root input,body.spots-on #spots-root select{
+  appearance:none;-webkit-appearance:none;font:inherit;color:#eefaf5;background:#113d36;
+  border:1px solid #3a675c;border-radius:999px;min-height:44px;padding:10px 16px;
+  transition:background .15s,border-color .15s,color .15s,box-shadow .15s}
+body.spots button:hover,body.spots-on #spots-root button:hover{border-color:#7de4c3;color:#e7fff6}
+body.spots button:active,body.spots-on #spots-root button:active{transform:translateY(0.5px)}
+body.spots select,body.spots-on #spots-root select{
+  border-radius:10px;padding-right:36px;background:#113d36 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239dbfbb' d='M1 1l5 5 5-5'/%3E%3C/svg%3E") right 14px center/12px no-repeat;
+  box-shadow:inset 0 1px 0 #ffffff08}
+body.spots input,body.spots-on #spots-root input{border-radius:10px;box-shadow:inset 0 1px 0 #ffffff08}
+body.spots input::placeholder{color:#8eaaa6}
+#spot-views,.spot-view-group{gap:8px}
+.spot-view-group{align-items:center}
+.spot-view-group>span{width:auto;min-width:72px;font-size:11px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:#7f9e9a}
+.spot-view-group{background:#0a2420;border:1px solid #2c4c46;border-radius:12px;padding:6px;display:inline-flex;flex-wrap:wrap}
+.spot-view-group button{border-radius:999px;min-height:40px;padding:8px 14px;background:transparent;border-color:transparent;color:#b7d0cb;font-weight:650}
+.spot-view-group button:hover{background:#143631;border-color:transparent}
+body.spots button[aria-pressed=true],body.spots-on #spots-root button[aria-pressed=true],
+.spot-view-group button[aria-pressed=true]{
+  background:#32c9b5;color:#06241e;border-color:#32c9b5;font-weight:800;box-shadow:0 1px 6px #0005}
+#spot-games button.spot-game,#spot-games button{
+  border-radius:12px;background:#0f2c27;border:1px solid #355950;min-height:48px;padding:10px 14px;color:#d5ebe5}
+#spot-games button[aria-pressed=true]{background:#176269;border-color:#32c9b5;color:#e6fffa}
+.spot-controls{background:#0d221f;border:1px solid #2c4c46;border-radius:14px;padding:14px 16px;gap:12px;align-items:end}
+.spot-controls label{display:grid;gap:6px;font-size:12px;font-weight:700;color:#a8c4bf}
+.spot-controls label>span,.spot-controls label{color:#a8c4bf}
+.spot-controls input,.spot-controls select{min-width:min(240px,70vw);width:100%}
+.spot-reset{background:#174e40!important;border-color:#2f7a68!important;color:#b5ffe4!important;font-weight:750;border-radius:999px!important}
+.spot-reset:hover{border-color:#7de4c3!important}
+.spot-more-ctl{position:relative;align-self:end}
+.spot-more-ctl>summary{
+  list-style:none;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;
+  padding:0 14px;border-radius:999px;border:1px solid #2c4c46;background:transparent;color:#9db1b3;font-size:13px;font-weight:650}
+.spot-more-ctl>summary::-webkit-details-marker{display:none}
+.spot-more-ctl>summary:hover{border-color:#4a736a;color:#d5ebe5}
+.spot-more-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:30;display:grid;gap:6px;min-width:180px;
+  padding:10px;background:#0d1f1c;border:1px solid #2c4c46;border-radius:12px;box-shadow:0 12px 28px #0008}
+.spot-ghost{width:100%;justify-content:center;background:#113d36!important;border-radius:10px!important;font-size:13px;font-weight:650;color:#c5ddd4!important}
 .spot-miss{margin:8px 0 0;color:#9db1b3;font-size:12px;line-height:1.45}
 .spot-lock-compact{min-height:auto;padding:12px 14px;opacity:.7}
-.spot-lock-strip{grid-column:1/-1;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;border:1px dashed #2a4444;border-radius:6px;background:#0d1b1e;color:#a8bcbc;font-size:13px}
+.spot-lock-strip{grid-column:1/-1;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;border:1px dashed #2a4444;border-radius:10px;background:#0d1b1e;color:#a8bcbc;font-size:13px}
 .spot-lock-strip small{color:#7f9696}
 body.spots-on .spot-card.spot-lock{display:none}
+.spot-more{display:block;margin:20px auto;min-width:230px;border-radius:999px!important}
+.spot-player,.spot-team{border-radius:8px!important}
+@media(max-width:640px){
+  .spot-view-group{width:100%}
+  .spot-view-group button{flex:1 1 auto;min-height:44px}
+  #spot-games button{min-height:48px}
+  .spot-controls{gap:10px}
+  .spot-controls label{flex:1 1 140px}
+  .spot-reset,.spot-more-ctl>summary{width:100%;justify-content:center}
+  .spot-more-ctl{width:100%}
+  .spot-more-menu{left:0;right:0}
+}
