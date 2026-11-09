@@ -1,0 +1,163 @@
+{
+  "base_commit": "41f91648",
+  "preview_only": true,
+  "source_updated": {
+    "players": "2026-11-07T02:50Z",
+    "games": "2026-11-07T02:50Z"
+  },
+  "source_timezone": "stored timestamps carry their source zones; UI converts to America/New_York ET",
+  "input_sha256": {
+    "data/v2.json": "6d2e305ef417b4628df3a0f91befb3326c192563f1b4107163fe0b6ee189d83f",
+    "data/nfl.json": "aaee8d8950b14b8256a339b66bfa9c9c60ff096401c92acf2de48c5b88b79e9a",
+    "data/nfl_dvp.json": "4bd85dacf1aea8995c5ef4103885cb456d1d65fa65b2c4137368b68e7a924063"
+  },
+  "coverage": {
+    "rows": 507,
+    "players": 167,
+    "upcoming_games": 14,
+    "rejected_noncurrent_or_invalid_rows": 56,
+    "red_zone": "Not supplied: unverified partial rz fields are not published",
+    "line_history": "Opening/current timestamps not verified: no movement claims",
+    "line_provenance": "Native reference lines; no supplied bookmaker provenance for non-TD lines"
+  },
+  "view_counts_default_paid": {
+    "td-wrte": 97,
+    "td-rb": 34,
+    "line-te": 22,
+    "line-wr": 48,
+    "line-rb": 31,
+    "line-qb": 25,
+    "roles": 45,
+    "matchups": 14,
+    "soft": 28
+  },
+  "examples": [
+    {
+      "name": "Bijan Robinson",
+      "id": "4430807",
+      "native": true,
+      "team": "ATL",
+      "opponent": "CIN",
+      "game": "401873038",
+      "market": "Rushing Yards",
+      "line": 93.5,
+      "estimate": 0.278,
+      "price": null,
+      "book": null,
+      "highlighted": false,
+      "observed_games": 8,
+      "mean": 97.5,
+      "over_push_under": [
+        2,
+        0,
+        6
+      ],
+      "weeks": [
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "Drake London",
+      "id": "4426502",
+      "native": true,
+      "team": "ATL",
+      "opponent": "CIN",
+      "game": "401873038",
+      "market": "Receiving Yards",
+      "line": 81.5,
+      "estimate": 0.333,
+      "price": null,
+      "book": null,
+      "highlighted": false,
+      "observed_games": 8,
+      "mean": 78.0,
+      "over_push_under": [
+        3,
+        0,
+        5
+      ],
+      "weeks": [
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "Patrick Mahomes",
+      "id": "3139477",
+      "native": true,
+      "team": "KC",
+      "opponent": "NYJ",
+      "game": "401873045",
+      "market": "Passing Yards",
+      "line": 244.5,
+      "estimate": 0.529,
+      "price": null,
+      "book": null,
+      "highlighted": false,
+      "observed_games": 7,
+      "mean": 256.42857142857144,
+      "over_push_under": [
+        4,
+        0,
+        3
+      ],
+      "weeks": [
+        8,
+        7,
+        6,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "name": "Bijan Robinson",
+      "id": "4430807",
+      "native": true,
+      "team": "ATL",
+      "opponent": "CIN",
+      "game": "401873038",
+      "market": "Anytime TD",
+      "line": 0.5,
+      "estimate": 0.5775,
+      "price": -185,
+      "book": "Book A",
+      "highlighted": false
+    }
+  ],
+  "tests": {
+    "spots_dom_contract_assertions": 86,
+    "builder_test_cases": 5,
+    "existing_nfl_visual_assertions": 61,
+    "existing_low_hurdles_gate": "PASS anonymous1+285locked; free member2; paid unchanged",
+    "propintel_freshness": "PASS"
+  },
+  "security": {
+    "aikido_scanned_files": 9,
+    "issues": []
+  },
+  "reference_recovery": {
+    "exact_filenames_found": 0,
+    "recent_parent_jpgs_visually_reviewed": 29,
+    "requested_designs_recovered": 0,
+    "full_prior_dispatch": "Not available in current context; transcript search returned no record; durable memory confirms nine-view single-area scope only",
+    "visual_fidelity": "unverified",
+    "supported_troubleshooting": "https://docs.x.ai/grok-bot/troubleshooting#an-attachment-cannot-be-read"
+  },
+  "browser_qa": "not performed; no browser/local-port workaround",
+  "publication": "none; no push/deploy/workflow/schedule mutation"
+}

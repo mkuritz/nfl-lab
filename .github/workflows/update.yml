@@ -57,6 +57,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 6
         run: pip install -q pandas pyarrow && python3 scripts/build_h2h.py
+      - name: Spots preview snapshot (offline from native Hub data)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python3 scripts/build_spots_preview.py --max-age-minutes 4320
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet && exit 0
