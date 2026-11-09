@@ -3,7 +3,7 @@
 const finite=x=>typeof x==='number'&&Number.isFinite(x);
 const seasonAt=now=>{const d=new Date(now);return d.getUTCFullYear()-(d.getUTCMonth()<2?1:0)};
 function current(D,N,V,now=Date.now()){
- if(D?.schema!==1||D.max_age_minutes!==90||D.season!==seasonAt(now)||N?.season!==D.season||N.week!==D.week||V?.week!==D.week)return false;
+ if(D?.schema!==1||!Number.isFinite(D.max_age_minutes)||D.max_age_minutes<=0||D.max_age_minutes>10080||D.season!==seasonAt(now)||N?.season!==D.season||N.week!==D.week||V?.week!==D.week)return false;
  return [['games',N],['players',V]].every(([key,src])=>{const ts=Date.parse(src.updated);return Number.isFinite(ts)&&src.updated===D.source_updated[key]&&now-ts>=0&&now-ts<=D.max_age_minutes*60000});
 }
 function gameCurrent(g,N,now=Date.now()){const n=N.games?.find(x=>String(x.id)===g.id);return !!n&&n.state==='pre'&&n.date===g.time&&n.away?.abbr===g.away&&n.home?.abbr===g.home&&Date.parse(g.time)>now&&Date.parse(g.time)<now+7*86400000}

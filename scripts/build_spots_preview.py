@@ -5,7 +5,7 @@ from pathlib import Path
 
 MARKETS = {'TE':['Receiving Yards','Receptions'], 'WR':['Receiving Yards','Receptions'], 'RB':['Rushing Yards','Carries','Receiving Yards','Receptions','Rushing Plus Receiving Yards'], 'QB':['Passing Yards','Pass Completions','Passing Attempts','Rushing Yards']}
 FIELDS={'Receiving Yards':['receiving_yards'],'Receptions':['receptions'],'Rushing Yards':['rushing_yards'],'Carries':['carries'],'Passing Yards':['passing_yards'],'Pass Completions':['completions'],'Passing Attempts':['attempts'],'Rushing Plus Receiving Yards':['rushing_yards','receiving_yards'],'Anytime TD':['rushing_tds','receiving_tds']}
-AGE = 90 * 60
+DEFAULT_AGE_MIN = 90
 
 def number(x): return isinstance(x,(int,float)) and not isinstance(x,bool) and math.isfinite(x)
 def stamp(x):
@@ -13,12 +13,12 @@ def stamp(x):
     d=datetime.fromisoformat(x.replace('Z','+00:00'))
     if d.tzinfo is None: raise ValueError('Timestamp requires timezone')
     return d.timestamp()
-def normalize(v,n,profiles,dvp,now):
+def normalize(v,n,profiles,dvp,now,max_age_minutes=DEFAULT_AGE_MIN):
     season = datetime.fromtimestamp(now,timezone.utc).year - (datetime.fromtimestamp(now,timezone.utc).month < 3)
     if n.get('season')!=season or not isinstance(n.get('week'),int) or n['week']!=v.get('week'):raise ValueError('Season/week mismatch')
     for src in [v,n]:
         age=now-stamp(src.get('updated'))
-        if age < 0 or age > AGE: raise ValueError('Source snapshot future/stale')
+        if age < 0 or age > max_age_minutes * 60: raise ValueError('Source snapshot future/stale')
     games=[];seen=set()
     for g in n.get('games',[]):
         if g.get('state')!='pre':continue
@@ -67,12 +67,12 @@ def normalize(v,n,profiles,dvp,now):
                 if not isinstance(x,dict):continue
                 metrics={k:x[k] for k in ['yds','rec','td'] if number(x.get(k)) and x[k]>=0}
                 if metrics:allowances.append({'team':t,'position':pos,'games':entry.get('g'),'metrics':metrics})
-    return {'schema':1,'season':season,'week':n['week'],'source_updated':{'players':v['updated'],'games':n['updated']},'max_age_minutes':AGE//60,'dvp_updated':dvp.get('updated'),'games':games,'rows':rows,'roles':roles,'allowances':allowances,'coverage':{'rows':len(rows),'players':len(roles),'upcoming_games':len(games),'rejected_noncurrent_or_invalid_rows':rejected,'red_zone':'Not supplied: unverified partial rz fields are not published','line_history':'Opening/current timestamps not verified: no movement claims','line_provenance':'Native reference lines; no supplied bookmaker provenance for non-TD lines'},'rights':'Existing native snapshots only. No new external imports; retain existing data-credits.html attribution.'}
+    return {'schema':1,'season':season,'week':n['week'],'source_updated':{'players':v['updated'],'games':n['updated']},'max_age_minutes':max_age_minutes,'dvp_updated':dvp.get('updated'),'games':games,'rows':rows,'roles':roles,'allowances':allowances,'coverage':{'rows':len(rows),'players':len(roles),'upcoming_games':len(games),'rejected_noncurrent_or_invalid_rows':rejected,'red_zone':'Not supplied: unverified partial rz fields are not published','line_history':'Opening/current timestamps not verified: no movement claims','line_provenance':'Native reference lines; no supplied bookmaker provenance for non-TD lines'},'rights':'Existing native snapshots only. No new external imports; retain existing data-credits.html attribution.'}
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--root',default=str(Path(__file__).resolve().parents[1]));a=parser.parse_args();root=Path(a.root);read=lambda f:json.loads((root/f).read_text());v=read('data/v2.json');n=read('data/nfl.json')
+    parser=argparse.ArgumentParser();parser.add_argument('--root',default=str(Path(__file__).resolve().parents[1]));parser.add_argument('--max-age-minutes',type=int,default=DEFAULT_AGE_MIN);a=parser.parse_args();root=Path(a.root);read=lambda f:json.loads((root/f).read_text());v=read('data/v2.json');n=read('data/nfl.json')
     ids={str(r.get('aid','')) for r in v.get('rows',[]) if str(r.get('aid','')).isascii() and str(r.get('aid','')).isdigit()};profiles={i:read('data/players/'+i+'.json') for i in ids if (root/'data/players'/ (i+'.json')).is_file()}
-    data=normalize(v,n,profiles,read('data/nfl_dvp.json'),datetime.now(timezone.utc).timestamp());data['input_sha256']={f:hashlib.sha256((root/f).read_bytes()).hexdigest() for f in ['data/v2.json','data/nfl.json','data/nfl_dvp.json']}
+    data=normalize(v,n,profiles,read('data/nfl_dvp.json'),datetime.now(timezone.utc).timestamp(),max_age_minutes=a.max_age_minutes);data['input_sha256']={f:hashlib.sha256((root/f).read_bytes()).hexdigest() for f in ['data/v2.json','data/nfl.json','data/nfl_dvp.json']}
     out=root/'data/spots_preview.json'
     if out.exists():
         old=json.loads(out.read_text())
