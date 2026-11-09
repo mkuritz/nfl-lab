@@ -31,6 +31,39 @@
    "added": "2026-11-09",
    "note": "Vrabel: will not play Week 10 (knee). ESPN still Doubtful \u2014 overlay upgrades severity so NE OL rating reflects the miss. Walter Rouse expected to start.",
    "espn_id": "4362890"
+  },
+  {
+   "name": "Dion Dawkins",
+   "team": "BUF",
+   "pos": "T",
+   "status": "Out",
+   "cap_w": 1.0,
+   "unconfirmed": false,
+   "added": "2026-11-09",
+   "note": "Official Week 9 MNF inactive vs MIN (LT).",
+   "espn_id": "3051324"
+  },
+  {
+   "name": "Alec Anderson",
+   "team": "BUF",
+   "pos": "G",
+   "status": "Out",
+   "cap_w": 1.0,
+   "unconfirmed": false,
+   "added": "2026-11-09",
+   "note": "Official Week 9 MNF inactive vs MIN (LG).",
+   "espn_id": "4367203"
+  },
+  {
+   "name": "Greg Gaines",
+   "team": "BUF",
+   "pos": "DT",
+   "status": "Out",
+   "cap_w": 1.0,
+   "unconfirmed": false,
+   "added": "2026-11-09",
+   "note": "Official Week 9 MNF inactive vs MIN (DT).",
+   "espn_id": "3127294"
   }
  ]
 }
