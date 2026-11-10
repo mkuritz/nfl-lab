@@ -80,4 +80,4 @@ document.addEventListener("click",e=>{
   location.href=`props.html?game=${encodeURIComponent(row.dataset.fgame)}&cat=${encodeURIComponent(row.dataset.fcat||"pass")}`;
  }
 });
-</script><script src="track-history.js?v=1110a"></script><script>(async()=>{const m=document.getElementById("trk-mount");if(!m||!window.NFLTrack)return;const TU="https://betlab.sportslabshq.com/data/nfl_card_track.json";let T=null;for(const u of [TU,"data/nfl_card_track.json"]){try{const r=await fetch(u+"?t="+Date.now());if(r.ok){T=await r.json();break}}catch(e){}}if(T&&T.weeks)NFLTrack.mount(m,T)})();</script></body></html>
+</script><script src="track-history.js?v=1110b"></script><script>(async()=>{const m=document.getElementById("trk-mount");if(!m||!window.NFLTrack)return;const TU="https://betlab.sportslabshq.com/data/nfl_card_track.json";let T=null;try{const r=await fetch(TU+"?t="+Date.now());if(r.ok)T=await r.json()}catch(e){}if(T&&T.weeks)NFLTrack.mount(m,T)})();</script></body></html>
