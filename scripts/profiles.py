@@ -84,8 +84,8 @@ KEEP = ["completions", "attempts", "passing_yards", "passing_tds", "passing_inte
         "receiving_yards_after_catch", "target_share", "air_yards_share", "receiving_epa", "def_tackles_solo", "def_tackle_assists", "def_tackles_for_loss",
         "def_sacks", "def_qb_hits", "def_interceptions", "def_pass_defended", "def_fumbles_forced", "fg_made", "fg_att", "fg_long", "pat_made", "pat_att", "fantasy_points_ppr"]
 # Live Sleeper + trade overrides for mid-season trades & practice-squad/active promotions
-TRADE_OV = {"2971282": "SF", "3129308": "SEA", "4361196": "IND", "4685970": "IND", "4838270": "IND", "4371336": "IND", "4689989": "IND", "3929641": "SF", "4362135": "FA", "3115383": "JAX", "3919512": "JAX", "2578570": "BAL"}
-TRADE_POS = {"2971282": "DT", "3129308": "G", "4361196": "CB", "4685970": "CB", "4838270": "G", "4371336": "CB", "4689989": "CB", "3929641": "DT", "4362135": "G", "3115383": "DT", "3919512": "S", "2578570": "QB"}
+TRADE_OV = {"2971282": "SF", "3129308": "SEA", "4361196": "IND", "4685970": "IND", "4838270": "IND", "4371336": "IND", "4689989": "IND", "3929641": "SF", "4362135": "FA", "3115383": "JAX", "3919512": "JAX", "2578570": "BAL", "4381558": "JAX", "4036444": "BAL", "4243220": "ATL"}
+TRADE_POS = {"2971282": "DT", "3129308": "G", "4361196": "CB", "4685970": "CB", "4838270": "G", "4371336": "CB", "4689989": "CB", "3929641": "DT", "4362135": "G", "3115383": "DT", "3919512": "S", "2578570": "QB", "4381558": "DT", "4036444": "C", "4243220": "G"}
 sl_team, sl_name, sl_pos = {}, {}, {}
 try:
     for _sp in (js("https://api.sleeper.app/v1/players/nfl") or {}).values():

@@ -81,11 +81,40 @@ if _js and 'CHI' in A and 'TEN' in A:
   for _k in ('dsk','dqh','dstuff'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]=max(0,A['TEN'][_k]-_js[_k])
   for _k in ('dpepa','drepa'): A['CHI'][_k]+=_js[_k]; A['TEN'][_k]-=_js[_k]; A['CHI']['depa']+=_js[_k]; A['TEN']['depa']-=_js[_k]
 # JAX DL upgraded / NO DL downgraded: Jaguars acquired DT Davon Godchaux from NO (Nov 9, 2026).
-# Uses Godchaux's actual 2026 play-by-play involvement, moved NO -> JAX. (Jordan Davis remains PHI; rumor only.)
+# Uses Godchaux's actual 2026 play-by-play involvement, moved NO -> JAX.
 _dg=_player_trench(sc,'NO','D.Godchaux')
 if _dg and 'JAX' in A and 'NO' in A:
   for _k in ('dsk','dqh','dstuff'): A['JAX'][_k]+=_dg[_k]; A['NO'][_k]=max(0,A['NO'][_k]-_dg[_k])
   for _k in ('dpepa','drepa'): A['JAX'][_k]+=_dg[_k]; A['NO'][_k]-=_dg[_k]; A['JAX']['depa']+=_dg[_k]; A['NO']['depa']-=_dg[_k]
+# Deadline trades confirmed Nov 9-10, 2026 (NFL.com, ESPN, theScore, PFT trackers):
+# - JAX DL upgraded / PHI DL downgraded: Jaguars acquired DT Jordan Davis from PHI (Nov 9) for a 2027 1st + 2029 2nd.
+#   Matched by gsis id (00-0037073) because the "J.Davis" name tag is shared by several defenders.
+def _player_trench_id(sc_,team,gid):
+  cols=[c for c in sc_.columns if c.endswith('_player_id') and any(k in c for k in ('sack','qb_hit','tackle'))]
+  if not cols: return None
+  g=sc_[sc_.defteam==team]; has=lambda cs:g[cs].eq(gid).any(axis=1)
+  skm=has([c for c in cols if 'sack' in c])&(g.ispass==1); qhm=has([c for c in cols if 'qb_hit' in c])&(g.ispass==1)
+  stm=has(cols)&(g.isrun==1)&(g.yards_gained<=0)
+  return dict(dsk=int(skm.sum()),dqh=int(qhm.sum()),dstuff=int(stm.sum()),dpepa=float(g[skm|qhm].epa.sum()),drepa=float(g[stm].epa.sum()))
+_jd=_player_trench_id(sc,'PHI','00-0037073')
+if _jd and 'JAX' in A and 'PHI' in A:
+  for _k in ('dsk','dqh','dstuff'): A['JAX'][_k]+=_jd[_k]; A['PHI'][_k]=max(0,A['PHI'][_k]-_jd[_k])
+  for _k in ('dpepa','drepa'): A['JAX'][_k]+=_jd[_k]; A['PHI'][_k]-=_jd[_k]; A['JAX']['depa']+=_jd[_k]; A['PHI']['depa']-=_jd[_k]
+# - BAL OL upgraded / ATL OL downgraded: Ravens acquired C Ryan Neuzil from ATL for G Andrew Vorhees + 2028 6th (Nov 10).
+#   Same line-spot math as trench_avail (recent 4-game offensive snap share / 5 x 0.5 replacement gap); a lineman under
+#   40% recent snaps (Vorhees) is not a regular starter and moves nothing. Losing team gets +L, acquiring team -L.
+def _ol_trade_L(raw,name,team):
+  try: sn_=pd.read_parquet(raw+'/snap_2026.parquet'); sn_=sn_[sn_.game_type=='REG']
+  except Exception: return 0.0
+  g=sn_[(sn_.player==name)&(sn_.team==team)].sort_values('week').tail(4); sh=float(g.offense_pct.mean()) if len(g) else 0.0
+  return round(sh/5*0.5,3) if sh>=0.4 else 0.0
+def _ol_shift(a_,L):
+  a_['sk']*=1+L; a_['qh']*=1+L; a_['stuff']*=1+L; a_['aly']*=1-L/2; a_['repa']-=0.10*L*a_['rn']
+OL_TRADES=[('Ryan Neuzil','ATL','BAL'),('Andrew Vorhees','BAL','ATL')]
+OL_MOVE={}
+for _n,_fr,_to in OL_TRADES:
+  _L=_ol_trade_L(RAW,_n,_fr); OL_MOVE[_n]=_L
+  if _L and _fr in A and _to in A: _ol_shift(A[_fr],_L); _ol_shift(A[_to],-_L)
 # Availability: current OL/DL injuries/inactives (scripts/v2/trench_avail.py)
 import sys;sys.path.insert(0,os.path.dirname(__file__));import trench_avail
 AV=trench_avail.apply(A,sc,RAW)
@@ -159,6 +188,8 @@ for r in ol:
   elif r['t']=='IND' and 'left guard' in r['gap']:
     r['gap']['left guard'][1]=-0.085
     r['note']='Traded 8x Pro Bowl LG Quenton Nelson to SEA (rookie Jalen Farmer steps in at LG)'
+  if r['t']=='BAL': r['note']=((r.get('note')+' · ') if r.get('note') else '')+'Acquired C Ryan Neuzil from ATL (Nov 10); sent G Andrew Vorhees to ATL'
+  elif r['t']=='ATL': r['note']=((r.get('note')+' · ') if r.get('note') else '')+'Traded starting C Ryan Neuzil to BAL (Nov 10); acquired G Andrew Vorhees'
 # DL table
 dl=[]
 for t in teams:
@@ -175,7 +206,8 @@ for r in dl:
   elif r['t']=='IND': r['note']='Traded All-Pro DT DeForest Buckner to SF; placed CB Cam Taylor-Britt on IR (DE Arden Key on IR)'
   elif r['t']=='CHI': r['note']='Acquired All-Pro DT Jeffery Simmons from TEN (4.0 sk, 9 QBH in 2026); pairs with DE Montez Sweat'
   elif r['t']=='TEN': r['note']='Traded All-Pro DT Jeffery Simmons to CHI; Solomon Thomas & John Franklin-Myers rotate at DT'
-  elif r['t']=='JAX': r['note']='Acquired DT Davon Godchaux from NO (Nov 9); DaVon Hamilton on IR (knee)'
+  elif r['t']=='JAX': r['note']='Acquired DTs Jordan Davis from PHI and Davon Godchaux from NO (Nov 9); DaVon Hamilton on IR (knee)'
+  elif r['t']=='PHI': r['note']='Traded DT Jordan Davis to JAX (Nov 9)'
   elif r['t']=='NO': r['note']='Traded DT Davon Godchaux to JAX (Nov 9)'
 def _av(t,k):
   L=[x for x in (AV.get(t) or {}).get(k,[])]
@@ -196,5 +228,8 @@ trades=[
 _dlp={r['t']:r for r in dl}
 trades.insert(0,{'date':'2026-10-29','player':'Jeffery Simmons','pos':'DT','from':'TEN','to':'CHI','comp':'2027 & 2028 1st-round picks + 2027 4th-round pick (CHI also gets a 2028 5th)','impact':f"CHI DL upgrade (Pass rush {_dlp['CHI']['pr']}, Run defense {_dlp['CHI']['rd']}, DL {_dlp['CHI']['dl']} pct); TEN DL downgraded (Pass rush {_dlp['TEN']['pr']}, Run defense {_dlp['TEN']['rd']}, DL {_dlp['TEN']['dl']} pct)"})
 trades.insert(0,{'date':'2026-11-09','player':'Davon Godchaux','pos':'DT','from':'NO','to':'JAX','comp':'2028 conditional 6th-round pick','impact':f"JAX DL upgrade (Pass rush {_dlp['JAX']['pr']}, Run defense {_dlp['JAX']['rd']}, DL {_dlp['JAX']['dl']} pct); NO DL downgraded (Pass rush {_dlp['NO']['pr']}, Run defense {_dlp['NO']['rd']}, DL {_dlp['NO']['dl']} pct)"})
+_olp={r['t']:r for r in ol}
+trades.insert(0,{'date':'2026-11-09','player':'Jordan Davis','pos':'DT','from':'PHI','to':'JAX','comp':'2027 1st-round pick + 2029 2nd-round pick','impact':f"JAX DL upgrade (Pass rush {_dlp['JAX']['pr']}, Run defense {_dlp['JAX']['rd']}, DL {_dlp['JAX']['dl']} pct); PHI DL downgraded (Pass rush {_dlp['PHI']['pr']}, Run defense {_dlp['PHI']['rd']}, DL {_dlp['PHI']['dl']} pct)"})
+trades.insert(0,{'date':'2026-11-10','player':'Ryan Neuzil','pos':'C','from':'ATL','to':'BAL','comp':'G Andrew Vorhees + 2028 6th-round pick to ATL','impact':f"BAL OL upgrade (Pass block {_olp['BAL']['pb']}, Run block {_olp['BAL']['rb']}, OL {_olp['BAL']['ol']} pct); ATL OL downgraded (Pass block {_olp['ATL']['pb']}, Run block {_olp['ATL']['rb']}, OL {_olp['ATL']['ol']} pct)"})
 json.dump({'season':y,'thru':out['maxw'][y],'power':pr,'units':U,'ol':ol,'dl':dl,'trades':trades,'div':DIV},open('data/teams_v2.json','w'))
 print(pr[:3],ol[0])
