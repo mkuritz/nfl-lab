@@ -90,14 +90,13 @@ class GodchauxTrench(unittest.TestCase):
         self.assertIn('"3115383": "JAX"', text)  # Godchaux
         self.assertIn('"3919512": "JAX"', text)  # Bates
         self.assertIn('"2578570": "BAL"', text)  # Brissett
-        # Davis must NOT be forced to JAX
-        self.assertNotIn('"4381558": "JAX"', text)
+        # Davis was confirmed traded PHI->JAX later on Nov 9 (see test_deadline_trench_1110.py)
+        self.assertIn('"4381558": "JAX"', text)
 
     def test_analytics_has_godchaux_block(self):
         text = (ROOT / "scripts" / "v2" / "analytics.py").read_text()
         self.assertIn("D.Godchaux", text)
         self.assertIn("Davon Godchaux", text)
-        self.assertIn("Jordan Davis remains PHI", text)
         self.assertIn("'from':'NO','to':'JAX'", text.replace(" ", ""))
 
     def test_hamilton_overlay(self):
