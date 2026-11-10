@@ -48,19 +48,32 @@ def apply(A,sc,raw):
       href=next((l['href'] for l in a.get('links',[]) if '/id/' in l.get('href','')),'')
       eid=href.split('/id/')[1].split('/')[0] if '/id/' in href else None
       nm=a.get('displayName'); rec=dict(n=nm,pos=pos,st=i.get('status'),w=w)
+      # players.csv sometimes has espn_id but NaN pfr_id/gsis_id; bool(nan) is True so the
+      # old `if pid` / `if not gid` gates skipped the name fallback and zeroed real starters
+      # (e.g. BUF LG Alec Anderson, ~98% offense snaps). Treat NaN/blank as missing.
+      def _id_ok(x):
+        if x is None: return False
+        try:
+          if pd.isna(x): return False
+        except Exception:
+          pass
+        return str(x).strip() not in ('', 'nan', 'None', '<NA>')
       if pos in OL_POS:
         if sn is None: continue
-        pid=e2p.get(eid); g=sn[(sn.pfr_player_id==pid)] if pid else sn[(sn.player==nm)&(sn.team==tm)]
+        pid=e2p.get(eid)
+        g=sn[(sn.pfr_player_id==pid)] if _id_ok(pid) else sn.iloc[0:0]
+        if len(g)==0:  # missing/stale pfr id -> name+team (regular & recent starters)
+          g=sn[(sn.player==nm)&(sn.team==tm)]
         g=g.sort_values('week').tail(4); share=float(g.offense_pct.mean()) if len(g) else 0
         if share<0.4: continue   # not a regular starter -> no unit change
         L=w*share/5*0.5; rec.update(share=round(share,2),loss=round(L,3)); out.setdefault(tm,{'ol':[],'dl':[],'L':0})
         out[tm]['ol'].append(rec); out[tm]['L']+=L
       else:
         gid=e2g.get(eid)
-        if not gid and nm and 'display_name' in pl.columns:
+        if not _id_ok(gid) and nm and 'display_name' in pl.columns:
           hit=pl[pl.display_name==nm]
           if len(hit): gid=str(hit.gsis_id.dropna().iloc[0]) if hit.gsis_id.notna().any() else None
-        if not gid: continue
+        if not _id_ok(gid): continue
         m=lambda ks:sc[[c for c in idc if any(k in c for k in ks)]].eq(gid).any(axis=1)
         skm=m(('sack',))&(sc.ispass==1); qhm=m(('qb_hit',))&(sc.ispass==1); stm=m(('tackle','sack'))&(sc.isrun==1)&(sc.yards_gained<=0)
         k=w*0.5; c=dict(dsk=k*skm.sum(),dqh=k*qhm.sum(),dstuff=k*stm.sum(),dpepa=k*float(sc[skm|qhm].epa.sum()),drepa=k*float(sc[stm].epa.sum()))
