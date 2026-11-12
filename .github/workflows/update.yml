@@ -61,6 +61,15 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: python3 scripts/build_spots_preview.py --max-age-minutes 4320
+      - name: Opportunity Board + Unit Board data (usage shares, rank movement, unit impact; display only)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: |
+          python3 -m pip install -q --user --break-system-packages numpy
+          python3 scripts/build_opportunity_history.py || echo "build_opportunity_history skipped"
+          python3 scripts/build_unit_board.py || echo "build_unit_board skipped"
+          python3 scripts/build_usage_board.py || echo "build_usage_board skipped"
+          python3 scripts/build_unit_impact.py || echo "build_unit_impact skipped"
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet && exit 0

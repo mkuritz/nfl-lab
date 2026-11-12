@@ -1,0 +1,55 @@
+/* Opportunity Board + Unit Board usage visuals. Extends preview.css; same theme tokens. */
+.ub-card{scroll-margin-top:12px}
+.ub-jump{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}.ub-jump a{border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:13px;text-decoration:none;color:var(--txt);background:var(--panel2)}
+.ub-controls{display:flex;gap:10px 14px;flex-wrap:wrap;align-items:end;margin:10px 0}.ub-controls .pv-control{min-width:170px;flex:0 1 240px}
+.ub-chips{display:flex;gap:6px;flex-wrap:wrap}.ub-chips button{border-radius:99px;padding:8px 14px;min-height:40px;font-size:14px;color:var(--txt);background:var(--panel2);border:1px solid var(--line)}
+.ub-chips button.on{background:var(--acc);color:#05251c;font-weight:800;border-color:var(--acc)}
+.ub-tl{display:flex;gap:5px;flex-wrap:wrap;align-items:stretch;margin:6px 0 12px}.ub-tl-l{align-self:center;font-size:12px;color:var(--mut);margin-right:4px}
+.ub-tl-c{display:flex;flex-direction:column;align-items:center;min-width:54px;padding:3px 6px;border-radius:8px;border:1px solid var(--line);font-size:11px;line-height:1.25}.ub-tl-c b{color:var(--mut);font-weight:700}.ub-tl-c i{font-style:normal;font-weight:700}
+.ub-tl-c.q0{background:#14473b;border-color:#2c8a73}.ub-tl-c.q1{background:#4a3a14;border-color:#a98230}.ub-tl-c.q2{background:#3a2552;border-color:#8059b5}.ub-tl-c.q3{background:#4a1f2a;border-color:#b0495d}
+.ub-two{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);gap:14px;align-items:start;margin-top:12px}
+.ub-tablewrap{background:#0a201d;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ub-table{white-space:normal}.ub-table th{padding:12px 10px;font-size:12px;letter-spacing:.08em;text-transform:uppercase}.ub-table td{padding:10px;font-size:16px;font-variant-numeric:tabular-nums;vertical-align:middle}
+.ub-table th:not(:first-child),.ub-table td:not(:first-child){text-align:center}
+.ub-pl b,.ub-selbtn{font-size:16px;font-weight:700;display:block}.ub-pl small{display:block;color:var(--mut);font-size:12px}
+.ub-selbtn{border:0;background:transparent;padding:0;text-align:left;color:var(--txt);min-height:0}.ub-selbtn:hover{color:var(--acc)}
+.ub-row{cursor:pointer}.ub-row.sel{background:#143a4a;box-shadow:inset 3px 0 #62b6ff}.ub-row:hover{background:#12342f}.ub-row.sel:hover{background:#143a4a}
+.ub-sh b{font-size:17px;color:#cfe9df}.ub-sh b.hi{color:#7de48f}.ub-tr,.ub-vs{display:block;font-size:11px;font-weight:700}.ub-tr.up,.ub-vs.up,.up{color:#7de48f}.ub-tr.dn,.ub-vs.dn,.dn{color:#ff8f8f}
+.ub-call{background:#0a201d;border:1px solid var(--line);border-radius:14px;padding:16px}
+.ub-big{display:flex;gap:14px;align-items:center}.ub-big .num{font-size:clamp(54px,9vw,84px);font-weight:900;line-height:1;letter-spacing:-.03em}
+.ub-big .cap{display:flex;flex-direction:column;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;line-height:1.35}.ub-big .cap span{color:var(--mut)}
+.ub-bar{width:100%;height:8px;display:block;margin:10px 0 6px}.ub-bar-bg{fill:#1e3a35}.ub-bar-fg{fill:#62b6ff}.ub-bar.big{height:10px}
+.ub-qbcmp{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}.ub-qbcmp h3{margin:0 0 6px;font-size:13px;color:var(--mut);font-weight:700}
+.ub-qbrow{display:grid;grid-template-columns:1fr auto;column-gap:10px;padding:5px 6px;border-radius:8px;font-size:13px}.ub-qbrow .ub-bar,.ub-qbrow>span:last-child{grid-column:1/-1}.ub-qbrow .ub-bar{height:5px;margin:3px 0 0}.ub-qbrow.on{background:#143a4a}.ub-qbrow .v{font-variant-numeric:tabular-nums;font-weight:700}
+.ub-more{margin:12px 0}
+/* rank movement rows */
+.ub-sum{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:8px 0 12px}
+.ub-mlist{display:flex;flex-direction:column;gap:8px}
+.ub-mrow{background:#0a201d;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.ub-mtop{display:grid;grid-template-columns:44px minmax(0,1.4fr) auto auto;gap:12px;align-items:center}
+.ub-av{width:44px;height:44px;border-radius:50%;object-fit:cover;background:#173d36;border:2px solid #2c8a73}.ub-av.off{visibility:hidden}
+.ub-mname{display:flex;flex-direction:column;min-width:0}.ub-pname{font-weight:800;font-size:16px;text-align:left;text-decoration:none;color:var(--txt);min-height:0}.ub-mname small{color:var(--mut);font-size:12px}
+.ub-mrk{font-size:14px;color:var(--mut);white-space:nowrap}.ub-mrk .t{color:var(--txt);font-weight:800}.ub-mrk .ar{margin:0 6px}
+.ub-badge{min-width:62px;text-align:center;padding:5px 10px;border-radius:8px;font-weight:900;font-size:14px;font-variant-numeric:tabular-nums}
+.ub-badge.up{background:#7de48f;color:#06301a}.ub-badge.dn{background:#ef5b5b;color:#2b0505}.ub-badge.eq{background:#294a43;color:#cfe9df}.ub-badge.new{background:#62b6ff;color:#06263d}
+.ub-mmid{display:grid;grid-template-columns:minmax(120px,1fr) auto;gap:12px;align-items:center;margin-top:6px}.ub-axis{width:100%;height:12px;display:block}.ub-mv.up{fill:#7de48f}.ub-mv.dn{fill:#ef5b5b}.ub-mv.new{fill:#62b6ff}
+.ub-stat{font-size:12px;color:var(--mut);white-space:nowrap}
+.ub-why{margin-top:6px;border-top:1px dashed var(--line);padding-top:6px}.ub-why summary{cursor:pointer;color:var(--acc);font-weight:700;font-size:13px}.ub-why ul{margin:8px 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.ub-why .tag{display:inline-block;min-width:92px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:#06301a;background:#7de4c3;border-radius:6px;padding:1px 7px;margin-right:6px}
+.ub-spark{width:min(100%,260px);height:auto;display:block}
+@media(max-width:800px){.ub-two{grid-template-columns:1fr}.ub-table td{font-size:15px;padding:9px 6px}.ub-table th{padding:10px 6px;font-size:11px}.ub-big .cap{font-size:11px}.ub-controls .pv-control{flex:1 1 100%}}
+@media(max-width:600px){.ub-mtop{grid-template-columns:44px minmax(0,1fr) auto}.ub-mrk{grid-column:2/3;grid-row:2}.ub-badge{grid-column:3;grid-row:1/3;align-self:center}.ub-mtop .ub-mrk{font-size:13px}.ub-mmid{grid-template-columns:1fr}.ub-stat{white-space:normal}.ub-why .tag{display:block;width:max-content;margin-bottom:2px}.ub-chips button{padding:8px 11px;font-size:13px}}
+/* Unit Board · Matchup Impact */
+.ui-games{margin:8px 0 6px}.ui-head .ui-hrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.ui-hnum{display:flex;align-items:baseline;gap:8px}.ui-hnum .num{font-size:clamp(56px,10vw,92px);font-weight:900;line-height:1;letter-spacing:-.03em}.ui-hnum .u{font-size:18px;font-weight:800;letter-spacing:.14em;color:var(--mut)}
+.ui-hcap{display:flex;flex-direction:column;gap:3px;min-width:240px;flex:1}.ui-hcap b{font-size:15px;letter-spacing:.12em;text-transform:uppercase}.ui-hcap span{font-size:15px}
+.ui-tugrow{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin:12px 0 4px}.ui-tug{width:100%;height:14px;display:block}
+.ui-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.ui-line{padding:10px 0;border-top:1px solid var(--line)}.ui-lh{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.ui-lab{font-size:13px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.ui-val{font-size:26px;font-variant-numeric:tabular-nums}.ui-val small{font-size:12px;color:var(--mut);font-weight:600}
+.ui-note{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:2px}
+.ui-rk{font-size:12px;font-weight:800;border-radius:6px;padding:2px 8px}.ui-rk.good{background:#7de48f;color:#06301a}.ui-rk.mid{background:#294a43;color:#cfe9df}.ui-rk.bad{background:#ef5b5b;color:#2b0505}
+.ui-srow{display:grid;grid-template-columns:90px minmax(120px,1fr) 96px 110px;gap:10px;align-items:center;width:100%;text-align:left;border-radius:10px;margin-bottom:6px;min-height:48px;background:#0a201d}.ui-srow.on{border-color:var(--acc);background:#143a4a}
+.ui-sg{font-weight:800}.ui-sv{font-weight:800;font-variant-numeric:tabular-nums}.ui-sl{font-size:12px}
+.ui-method table{white-space:normal}
+@media(max-width:600px){.ui-srow{grid-template-columns:1fr auto;row-gap:2px}.ui-srow .ub-axis{grid-column:1/-1;order:3}.ui-sl{grid-column:1/-1;order:4}.ui-val{font-size:23px}.ui-grid{grid-template-columns:minmax(0,1fr)}}

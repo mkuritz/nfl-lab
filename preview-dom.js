@@ -1,14 +1,15 @@
 /* Safe preview primitives: never parse data as HTML. */
 (function(){'use strict';
 const NS='http://www.w3.org/2000/svg';
-const HTML=new Set('div span p h1 h2 h3 h4 a button label input select option table thead tbody tr th td section header footer nav main dialog pre strong small details summary ul li br'.split(' '));
+const HTML=new Set('div span p h1 h2 h3 h4 a button label input select option table thead tbody tr th td section header footer nav main dialog pre strong small details summary ul li br img b i'.split(' '));
 const SVG=new Set('svg g rect circle line path text title polyline'.split(' '));
-const ATTR=new Set('id class role aria-label aria-current aria-modal tabindex type value min max step placeholder href viewBox x y x1 x2 y1 y2 cx cy r rx width height fill fill-opacity stroke stroke-width stroke-dasharray d points text-anchor preserveAspectRatio'.split(' '));
+const ATTR=new Set('id class role aria-label aria-current aria-modal aria-pressed tabindex type value min max step placeholder href viewBox x y x1 x2 y1 y2 cx cy r rx width height fill fill-opacity stroke stroke-width stroke-dasharray d points text-anchor preserveAspectRatio alt loading title'.split(' '));
 function node(tag,attrs,...children){
  if(!HTML.has(tag)&&!SVG.has(tag))throw Error('Disallowed element');
  const n=SVG.has(tag)?document.createElementNS(NS,tag):document.createElement(tag);
  for(const [key,val] of Object.entries(attrs||{})){
-  if(key==='click'||key==='change'||key==='input'){if(typeof val==='function')n.addEventListener(key,val);continue}
+  if(key==='src'){if(tag!=='img'||!/^https:\/\/a\.espncdn\.com\/i\/headshots\/nfl\/players\/full\/\d+\.png$/.test(String(val)))throw Error('Unsafe image');n.setAttribute('src',String(val));continue}
+  if(key==='click'||key==='change'||key==='input'||key==='error'){if(typeof val==='function')n.addEventListener(key,val);continue}
   if(!ATTR.has(key))throw Error('Disallowed attribute '+key);
   if(val==null)continue;
   if(key==='href'){
@@ -55,7 +56,9 @@ const DATA_READERS=Object.freeze({
 'data/pindex.json':()=>fetch('data/pindex.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'}),
 'data/v2.json':()=>fetch('data/v2.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'}),
 'data/unit_board.json':()=>fetch('data/unit_board.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'}),
-'data/opportunity_history.json':()=>fetch('data/opportunity_history.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'})
+'data/opportunity_history.json':()=>fetch('data/opportunity_history.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'}),
+'data/usage_board.json':()=>fetch('data/usage_board.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'}),
+'data/unit_impact.json':()=>fetch('data/unit_impact.json',{mode:'same-origin',credentials:'same-origin',redirect:'error'})
 });
 async function json(path){
  if(!Object.hasOwn(DATA_READERS,path))throw Error('Unsupported display data file');
