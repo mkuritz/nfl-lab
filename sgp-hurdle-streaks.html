@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><script src="https://sportslabshq.com/sl/ds.js?v=1"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#0b1220">
+<title>Same Game Hurdle Streak Bundle · NFL Hub · Sports Labs</title>
+<link rel="icon" href="favicon.ico?v=1106qa4" type="image/x-icon" sizes="16x16 32x32 64x64">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="v2.css?v=1029b">
+<script src="https://sportslabshq.com/sl/sl-sports.js?v=2"></script>
+<script src="navcfg-v2.js?v=1115sgp3"></script>
+<script src="tailcard.js?v=1"></script>
+<script src="matchup-analyzer.js?v=4"></script>
+<script src="status-labels.js?v=2"></script>
+<script src="rb-expected.js?v=1"></script>
+<script src="v2.js?v=1115sgp3"></script>
+<script src="https://sportslabshq.com/sl/sl.js?v=13" defer></script>
+<script src="https://betlab.sportslabshq.com/football-live.js?v=4"></script>
+<script src="injlive.js?v=3"></script>
+<script src="/sl-neutral.js?v=2" defer></script>
+<style>
+.sgp-ctrls{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:8px 0 4px}
+.sgp-ctrls button{background:var(--panel2,#141a30);border:1px solid var(--line);color:var(--mut);border-radius:999px;padding:5px 12px;font-weight:700;cursor:pointer}
+.sgp-ctrls button.on{border-color:var(--acc);color:var(--acc)}
+.sgp-leg{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;justify-content:space-between;border:1px solid #ffffff14;border-radius:10px;background:#ffffff06;padding:8px 10px;margin-top:6px}
+.sgp-leg .n{font-weight:800;cursor:pointer;color:inherit;text-decoration:none}
+.sgp-leg .n:hover{color:var(--acc);text-decoration:underline}
+.sgp-pill{font-size:10px;font-weight:800;border-radius:5px;padding:1px 6px;background:#53e3a622;color:#8ee04a}
+.sgp-parlay{border:1px solid #53e3a633;border-radius:12px;padding:10px 12px;margin:8px 0 10px;background:#53e3a60c}
+.sgp-parlay h3{margin:0 0 6px;font-size:14px;color:var(--txt)}
+.sgp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:8px}
+@media(max-width:640px){.sgp-leg{gap:4px}}
+</style></head><body><div class="w">
+<header><a class="logo" href="./">🏈 NFL <b>Hub</b></a><span class="mut sm">Same Game Hurdle Streak Bundle</span></header>
+<div class="card">
+  <h2>Same Game Hurdle Streak Bundle <span class="mut sm" id="meta"></span></h2>
+  <div class="mut sm">Season view. For each player and stat on this week’s slate, this is the <b>highest</b> hurdle he has cleared at the selected season rate — not the lowest. Default is 100% (every game played). Out, Doubtful, and IR players are left off. Click a name for the profile, pre-set to that hurdle, with season bars and this week’s matchup.</div>
+  <div class="sgp-ctrls" id="thr" role="group" aria-label="Season clear-rate threshold"></div>
+  <div class="sgp-ctrls" id="view" role="group" aria-label="View">
+    <button type="button" data-view="game" class="on">By game</button>
+    <button type="button" data-view="player">By player</button>
+  </div>
+</div>
+<div id="secs"><div class="card"><div class="mut">Loading…</div></div></div>
+<footer>Sports Labs. Historical clear rates, not betting advice. Combined parlay rates assume independent legs and they are not. 21+.</footer>
+<p class="sm mut" style="max-width:1280px;margin:16px auto;padding:0 16px">Historical-count attribution: nflverse contributors, CC BY 4.0; filtered and aggregated. <a href="data-credits.html">Data credit and license</a>.</p>
+</div>
+<script src="navcfg.js?v=1115sgp"></script>
+<script src="side.js"></script>
+<script src="status-labels.js?v=2"></script>
+<script src="nflteam.js?v=5"></script>
+<script src="nflprofile.js?v=5"></script>
+<script>
+(function(){
+var E=window.NFLV2?NFLV2.E:function(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+var am=function(a){return a==null?"":(a>0?"+":"")+a};
+var D=null, thr=100, view="game";
+function fullLeg(leg){
+  if(!leg||!D)return leg;
+  if(leg.narrative&&leg.games_log)return leg;
+  var pack=D.by_threshold[String(thr)], found=null;
+  ((pack&&pack.games)||[]).forEach(function(g){(g.legs||[]).forEach(function(x){if(x.aid==leg.aid&&x.market==leg.market&&Number(x.line)==Number(leg.line))found=x;});});
+  return found||leg;
+}
+function openLeg(leg){
+  leg=fullLeg(leg);
+  if(!window.NFLV2||!NFLV2.open||!leg)return;
+  NFLV2.open(leg.aid,null,leg.market,{
+    line:leg.line, hits:leg.hits, games:leg.games, tab:"hr",
+    narrative:leg.narrative, upcoming:leg.upcoming, games_log:leg.games_log
+  });
+}
+function nameBtn(leg){
+  return '<a class="n" href="#" data-sgp="1">'+E(leg.player)+'</a>';
+}
+function linePx(leg){
+  var px=leg.price!=null?(am(leg.price)+(leg.book?' <span class="mut sm">'+E(leg.book)+'</span>':'')):'<span class="mut sm">No listed price at this rung</span>';
+  return px;
+}
+function legRow(leg){
+  return '<div class="sgp-leg" data-aid="'+E(leg.aid)+'"><div>'+nameBtn(leg)+' <span class="mut sm">'+E(leg.pos||"")+' '+E(leg.team||"")+' · '+E(leg.opp||leg.oa||"")+'</span>'+(leg.status?' <span class="mut sm">'+E(leg.status)+'</span>':'')+'<div class="sm"><b>'+E(leg.floor_label)+'</b> · Over '+leg.line+' '+E(leg.market)+'</div></div><div style="text-align:right"><span class="sgp-pill">'+leg.hits+'/'+leg.games+' · '+leg.rate_pct+'%</span>'+(leg.streak>1?' <span class="sgp-pill">'+leg.streak+' straight</span>':'')+'<div class="sm mut">'+linePx(leg)+'</div></div></div>';
+}
+function bind(el){
+  el.querySelectorAll("[data-sgp]").forEach(function(a){
+    a.addEventListener("click",function(e){
+      e.preventDefault();
+      var box=a.closest("[data-leg]");
+      var leg=box&&box._leg;
+      if(!leg){
+        var id=a.closest(".sgp-leg, .sgp-parlay tr, [data-aid]");
+      }
+      var node=a.closest(".sgp-wrap");
+      if(node&&node._leg) openLeg(node._leg);
+    });
+  });
+  el.querySelectorAll(".sgp-wrap").forEach(function(){});
+}
+function parlayBox(g){
+  var p=g.parlay; if(!p) return '<div class="mut sm" style="margin-top:8px">Not enough qualifying legs for a 2-leg bundle at this threshold.</div>';
+  var rows=p.legs.map(function(leg,i){return '<div class="sgp-wrap" data-i="'+i+'">'+legRow(leg)+'</div>';}).join("");
+  return '<div class="sgp-parlay"><h3>Same-game bundle · '+p.n_legs+' legs</h3>'+
+    '<div class="sm">Combined historical clear rate <b>'+p.combined_pct+'%</b> <span class="mut">(product of each leg’s season rate — not independent)</span></div>'+
+    '<div class="sm mut" style="margin:4px 0 8px">'+E(p.price_note)+(p.parlay_price!=null?' Listed straight-leg price: <b>'+am(p.parlay_price)+'</b>'+(p.books&&p.books.length?' ('+p.books.map(E).join(", ")+')':'')+'.':'')+'</div>'+
+    rows+'</div>';
+}
+function draw(){
+  if(!D)return;
+  var pack=D.by_threshold[String(thr)];
+  document.getElementById("meta").textContent="Week "+D.week+" · "+(pack?pack.n_legs:0)+" legs · updated "+(D.built_et||"");
+  var html="";
+  if(!pack){document.getElementById("secs").innerHTML='<div class="card"><div class="mut">No data at this threshold.</div></div>';return;}
+  if(view==="game"){
+    html=pack.games.map(function(g){
+      var body=parlayBox(g)+'<div class="mut sm" style="margin:10px 0 4px">All qualifying legs this game ('+g.n_qualify+')</div>'+g.legs.map(function(leg){return '<div class="sgp-wrap">'+legRow(leg)+'</div>';}).join("");
+      return '<div class="card"><h2>'+E(g.label)+' <span class="mut sm">'+E(g.time_et||"")+'</span></h2>'+body+'</div>';
+    }).join("");
+  }else{
+    html=pack.players.map(function(pl){
+      return '<div class="card"><h2>'+E(pl.player)+' <span class="mut sm">'+E(pl.pos||"")+' '+E(pl.team||"")+' · '+E(pl.opp||"")+' · '+E(pl.time_et||"")+'</span></h2>'+
+        pl.legs.map(function(leg){return '<div class="sgp-wrap">'+legRow(leg)+'</div>';}).join("")+'</div>';
+    }).join("");
+  }
+  var secs=document.getElementById("secs");
+  secs.innerHTML=html||'<div class="card"><div class="mut">Nobody cleared the threshold on this slate.</div></div>';
+  // attach legs and clicks
+  var list=view==="game"?pack.games.reduce(function(A,g){return A.concat((g.parlay&&g.parlay.legs||[]).concat(g.legs))},[]):pack.players.reduce(function(A,p){return A.concat(p.legs)},[]);
+  var wraps=secs.querySelectorAll(".sgp-wrap");
+  // Walk in document order: for game view, parlay legs first then all legs.
+  var k=0;
+  pack[view==="game"?"games":"players"].forEach(function(block){
+    if(view==="game"&&block.parlay){
+      block.parlay.legs.forEach(function(leg){var n=wraps[k++]; if(n){n._leg=leg;}});
+    }
+    (block.legs||[]).forEach(function(leg){var n=wraps[k++]; if(n){n._leg=leg;}});
+  });
+  secs.querySelectorAll("[data-sgp]").forEach(function(a){
+    a.addEventListener("click",function(e){e.preventDefault();var n=a.closest(".sgp-wrap"); if(n&&n._leg) openLeg(n._leg);});
+  });
+}
+function ctrls(){
+  var th=document.getElementById("thr");
+  th.innerHTML='<span class="mut sm">Season clear rate</span>'+(D.thresholds||[100,90,80,75]).map(function(t){return '<button type="button" data-thr="'+t+'" class="'+(t===thr?"on":"")+'">'+t+'%</button>';}).join("");
+  th.querySelectorAll("button").forEach(function(b){b.onclick=function(){thr=+b.dataset.thr; ctrls(); draw();};});
+  document.getElementById("view").querySelectorAll("button").forEach(function(b){
+    b.classList.toggle("on", b.dataset.view===view);
+    b.onclick=function(){view=b.dataset.view; document.getElementById("view").querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b)}); draw();};
+  });
+}
+fetch("data/sgp_hurdle_streaks.json?t="+Date.now()).then(function(r){return r.json()}).then(function(j){
+  D=j; thr=j.default_threshold||100; ctrls(); draw();
+}).catch(function(){document.getElementById("secs").innerHTML='<div class="card"><div class="mut">Could not load the hurdle-streak board.</div></div>'});
+})();
+</script>
+</body></html>
