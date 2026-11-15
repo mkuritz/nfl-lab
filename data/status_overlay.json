@@ -1,15 +1,114 @@
 {
-  "updated": "2026-11-15T21:36:10Z",
-  "updated_et": "Nov 15, 2026 \u00b7 4:36 PM ET",
+  "updated": "2026-11-15T21:47:19Z",
+  "updated_et": "Nov 15, 2026 \u00b7 4:47 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-16T03:36:10Z",
+  "expires": "2026-11-16T03:47:19Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
     "nfl_unconfirmed_reports",
     "hub_player_status"
   ],
-  "players": [],
-  "by_aid": {},
-  "by_name": {}
+  "players": [
+    {
+      "aid": "4429059",
+      "player": "Woody Marks",
+      "team": "HOU",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Marks (concussion) has been downgraded to out for the remainder of Sunday's game against the Browns. Prior to his exit from the contest, Marks carried 12 times for 50 yards and caught his only target for 15 yards. With David Montgomery (gro",
+      "as_of": "2026-11-15T20:25:00Z",
+      "expires": "2026-11-16T02:25:00Z",
+      "p_inactive": 0.38
+    },
+    {
+      "aid": "15864",
+      "player": "Geno Smith",
+      "team": "NYJ",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Smith (ankle) has been ruled out for the remainder of Sunday's game against the Bills. After previously exiting the contest and then clearing the NFL's concussion protocol, Smith is now done for the day with an ankle issue after completing",
+      "as_of": "2026-11-15T20:55:00Z",
+      "expires": "2026-11-16T02:55:00Z",
+      "p_inactive": 0.35
+    }
+  ],
+  "by_aid": {
+    "4429059": {
+      "aid": "4429059",
+      "player": "Woody Marks",
+      "team": "HOU",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Marks (concussion) has been downgraded to out for the remainder of Sunday's game against the Browns. Prior to his exit from the contest, Marks carried 12 times for 50 yards and caught his only target for 15 yards. With David Montgomery (gro",
+      "as_of": "2026-11-15T20:25:00Z",
+      "expires": "2026-11-16T02:25:00Z",
+      "p_inactive": 0.38
+    },
+    "15864": {
+      "aid": "15864",
+      "player": "Geno Smith",
+      "team": "NYJ",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Smith (ankle) has been ruled out for the remainder of Sunday's game against the Bills. After previously exiting the contest and then clearing the NFL's concussion protocol, Smith is now done for the day with an ankle issue after completing",
+      "as_of": "2026-11-15T20:55:00Z",
+      "expires": "2026-11-16T02:55:00Z",
+      "p_inactive": 0.35
+    }
+  },
+  "by_name": {
+    "woody marks": {
+      "aid": "4429059",
+      "player": "Woody Marks",
+      "team": "HOU",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Marks (concussion) has been downgraded to out for the remainder of Sunday's game against the Browns. Prior to his exit from the contest, Marks carried 12 times for 50 yards and caught his only target for 15 yards. With David Montgomery (gro",
+      "as_of": "2026-11-15T20:25:00Z",
+      "expires": "2026-11-16T02:25:00Z",
+      "p_inactive": 0.38
+    },
+    "geno smith": {
+      "aid": "15864",
+      "player": "Geno Smith",
+      "team": "NYJ",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Smith (ankle) has been ruled out for the remainder of Sunday's game against the Bills. After previously exiting the contest and then clearing the NFL's concussion protocol, Smith is now done for the day with an ankle issue after completing",
+      "as_of": "2026-11-15T20:55:00Z",
+      "expires": "2026-11-16T02:55:00Z",
+      "p_inactive": 0.35
+    }
+  }
 }
