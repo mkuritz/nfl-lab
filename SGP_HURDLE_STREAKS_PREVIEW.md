@@ -1,6 +1,6 @@
-# Same Game Hurdle Streak Bundle — preview (not live)
+# Same Game Hurdle Streak Bundle
 
-Branch: `preview/nfl-over-streaks-1115`. Display-only. Nothing merged or published to the public Hub.
+Approved live on the NFL Hub Nov 15, 2026 (t2167s8538). Display-only tab. Builder runs in the existing NFL Hub data workflow after the v2 slate (no new schedule).
 
 ## What already existed
 - **NFL Hub left nav** already has High Hurdles (smash / plus-money, model + review) and Low Hurdles (active streaks over the *published main* line, adjustable alt floors). Those tabs are unchanged.

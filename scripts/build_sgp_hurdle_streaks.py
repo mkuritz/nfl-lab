@@ -27,13 +27,15 @@ MIN_GAMES = 6
 DEFAULT_THRESHOLD = 100
 
 # Optional already-built price sidecar (never required; never written back).
+# Hub CI does not mount Bet Lab; v2 published lines + standard increments still work.
 PRICE_SIDECARS = [
+    DATA / "prop_prices.json",
     Path("/workspace/bet-lab-engine/data/prop_prices.json"),
     Path("/workspace/bet-lab/data/prop_prices.json"),
 ]
 INJURY_ROOTS = [
-    Path("/workspace/bet-lab-engine/data"),
     DATA,
+    Path("/workspace/bet-lab-engine/data"),
 ]
 
 MARKETS = {

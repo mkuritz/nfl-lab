@@ -50,6 +50,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         run: python3 -m pip install -q --user --break-system-packages pandas pyarrow numpy && bash scripts/v2/run.sh
+      - name: Same Game Hurdle Streak Bundle (display only; highest season clears)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python3 scripts/build_sgp_hurdle_streaks.py || echo "sgp hurdle streaks skipped"
       - name: Matchup Board (display only)
         continue-on-error: true
         run: python3 scripts/matchups.py
