@@ -13,9 +13,9 @@ class TestRBExpected(unittest.TestCase):
     def test_henry_whiteboard_math(self):
         h = self.d["players"]["3043078"]
         self.assertEqual(h["name"], "Derrick Henry")
-        self.assertEqual(h["opp"], "JAX")
+        self.assertTrue(h["opp"])   # weekly opponent (was hard-coded to the Week 9 JAX game)
         self.assertIn("att ×", h["formula"]); self.assertTrue(abs(h["avg_att"] * h["opp_ypc"] - h["expected"]) < 0.15)
-        # board Yds/car for JAX
+        # board Yds/car for this week's opponent
         row = [r for r in self.m["cats"]["rush"]["best"] if r["aid"] == "3043078"][0]
         ypc = [c[1] for c in row["cols"] if c[0] == "Yds/car"][0]
         self.assertEqual(h["opp_ypc"], ypc)

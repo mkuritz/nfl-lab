@@ -1,4 +1,4 @@
-/* Player prop intel on NFL Hub player profiles. Data: data/prop_intel.json (built by props/tools/prop_intel.py). Fits both the v2 sheet (#v2s) and the classic profile (#nfpd). */
+/* Player prop intel on NFL Hub player profiles. Data: data/prop_intel.json (built by props/tools/prop_intel.py; unpublished Nov 19 until a fresh weekly import, so the box stays hidden). Fits both the v2 sheet (#v2s) and the classic profile (#nfpd). */
 (function(){if(window.__pi)return;window.__pi=1;
 var D=null,AID=null;
 
@@ -36,7 +36,7 @@ function css(){if(document.getElementById("pi-css"))return;var s=document.create
 function tick(){var p,box;
  function place(host,id,anchor){if(!host||!id)return;css();p=D&&D.players&&D.players[id];var available=intelAvailable(p),key=JSON.stringify([available,available?p:null,D&&D.week]);
  box=host.querySelector(".pi-box");if(!box){box=document.createElement("div");box.className="pi-box";anchor?host.insertBefore(box,anchor):host.appendChild(box)}
- if(box.__piKey!==key){box.__piKey=key;box.replaceChildren(available?card(p):UNAVAILABLE());}}
+ if(box.__piKey!==key){box.__piKey=key;if(available){box.style.display="";box.replaceChildren(card(p));}else{box.style.display="none";box.replaceChildren();}}}
  var sh=document.querySelector("#v2s .sh");if(sh&&AID)place(sh,AID,sh.querySelector(".tabs"));
  var nf=document.getElementById("nfpd"),m=/#player=(\d+)/.exec(location.hash),id=m?m[1]:AID;
  if(nf&&nf.querySelector(".hd"))place(nf,id,nf.querySelector(".hd").nextSibling);

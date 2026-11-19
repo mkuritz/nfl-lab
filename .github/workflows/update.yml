@@ -57,6 +57,10 @@ jobs:
       - name: Matchup Board (display only)
         continue-on-error: true
         run: python3 scripts/matchups.py
+      - name: RB expected rush yards (display only; Hub logs + Matchup Board, no paid odds)
+        continue-on-error: true
+        timeout-minutes: 2
+        run: python3 scripts/build_rb_expected_rush.py
       - name: Head-to-Head Prop Advantage (every game on the slate; display only)
         continue-on-error: true
         timeout-minutes: 6
