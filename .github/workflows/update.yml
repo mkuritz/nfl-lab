@@ -78,6 +78,10 @@ jobs:
           python3 scripts/build_unit_board.py || echo "build_unit_board skipped"
           python3 scripts/build_usage_board.py || echo "build_usage_board skipped"
           python3 scripts/build_unit_impact.py || echo "build_unit_impact skipped"
+      - name: Strengths & Weaknesses field map (zone splits, pass rush; display only, free public files)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: python3 -m pip install -q --user --break-system-packages pandas pyarrow && python3 scripts/build_strengths_weaknesses.py || echo "strengths_weaknesses skipped"
       - run: |
           git config user.name "sports-labs-bot"; git config user.email "actions@users.noreply.github.com"
           python3 scripts/srcscrub.py data; git add data; git diff --cached --quiet && exit 0
