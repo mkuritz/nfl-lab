@@ -1,8 +1,8 @@
 {
-  "updated": "2026-11-26T23:26:16Z",
-  "updated_et": "Nov 26, 2026 \u00b7 6:26 PM ET",
+  "updated": "2026-11-26T23:36:34Z",
+  "updated_et": "Nov 26, 2026 \u00b7 6:36 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-27T05:26:16Z",
+  "expires": "2026-11-27T05:36:34Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
@@ -10,6 +10,70 @@
     "hub_player_status"
   ],
   "players": [
+    {
+      "aid": "3043078",
+      "player": "Derrick Henry",
+      "team": "BAL",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Henry (concussion) was listed as a full participant in Thursday's practice.",
+      "as_of": "2026-11-26T21:50:00Z",
+      "expires": "2026-11-27T03:50:00Z",
+      "p_inactive": 0.38
+    },
+    {
+      "aid": "4685472",
+      "player": "Tetairoa McMillan",
+      "team": "CAR",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "McMillan (foot) was listed as a DNP on Thursday's practice estimate, per reports.",
+      "as_of": "2026-11-26T21:26:00Z",
+      "expires": "2026-11-27T03:26:00Z",
+      "p_inactive": 0.52
+    },
+    {
+      "aid": "4832800",
+      "player": "Denzel Boston",
+      "team": "CLE",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Boston (quadriceps) was listed as a non-participant on Thursday's practice estimate",
+      "as_of": "2026-11-26T22:31:00Z",
+      "expires": "2026-11-27T04:31:00Z",
+      "p_inactive": 0.38
+    },
+    {
+      "aid": "3123076",
+      "player": "David Njoku",
+      "team": "LAC",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Njoku (shoulder) was listed as a non-participant in Thursday's practice.",
+      "as_of": "2026-11-26T21:33:00Z",
+      "expires": "2026-11-27T03:33:00Z",
+      "p_inactive": 0.38
+    },
     {
       "aid": "4038941",
       "player": "Justin Herbert",
@@ -21,13 +85,109 @@
       "watch": true,
       "unconfirmed": false,
       "confirmed": false,
-      "note": "Herbert (concussion) didn't participate during the portion of Thursday's practice open to the media, per reports.",
+      "note": "Herbert (concussion) was officially deemed a non-participant  in Thursday's practice.",
       "as_of": "2026-11-26T21:00:00Z",
       "expires": "2026-11-27T03:00:00Z",
-      "p_inactive": 0.52
+      "p_inactive": 0.38
+    },
+    {
+      "aid": "4723820",
+      "player": "Omar Cooper Jr.",
+      "team": "NYJ",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Cooper (ankle/groin) was listed as a  non-participant in practice Thursday.",
+      "as_of": "2026-11-26T20:43:00Z",
+      "expires": "2026-11-27T02:43:00Z",
+      "p_inactive": 0.38
+    },
+    {
+      "aid": "4361741",
+      "player": "Brock Purdy",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Purdy (ankle) was listed as a non-participant on Thursday's injury report, per reports.",
+      "as_of": "2026-11-26T22:01:00Z",
+      "expires": "2026-11-27T04:01:00Z",
+      "p_inactive": 0.35
     }
   ],
   "by_aid": {
+    "3043078": {
+      "aid": "3043078",
+      "player": "Derrick Henry",
+      "team": "BAL",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Henry (concussion) was listed as a full participant in Thursday's practice.",
+      "as_of": "2026-11-26T21:50:00Z",
+      "expires": "2026-11-27T03:50:00Z",
+      "p_inactive": 0.38
+    },
+    "4685472": {
+      "aid": "4685472",
+      "player": "Tetairoa McMillan",
+      "team": "CAR",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "McMillan (foot) was listed as a DNP on Thursday's practice estimate, per reports.",
+      "as_of": "2026-11-26T21:26:00Z",
+      "expires": "2026-11-27T03:26:00Z",
+      "p_inactive": 0.52
+    },
+    "4832800": {
+      "aid": "4832800",
+      "player": "Denzel Boston",
+      "team": "CLE",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Boston (quadriceps) was listed as a non-participant on Thursday's practice estimate",
+      "as_of": "2026-11-26T22:31:00Z",
+      "expires": "2026-11-27T04:31:00Z",
+      "p_inactive": 0.38
+    },
+    "3123076": {
+      "aid": "3123076",
+      "player": "David Njoku",
+      "team": "LAC",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Njoku (shoulder) was listed as a non-participant in Thursday's practice.",
+      "as_of": "2026-11-26T21:33:00Z",
+      "expires": "2026-11-27T03:33:00Z",
+      "p_inactive": 0.38
+    },
     "4038941": {
       "aid": "4038941",
       "player": "Justin Herbert",
@@ -39,13 +199,109 @@
       "watch": true,
       "unconfirmed": false,
       "confirmed": false,
-      "note": "Herbert (concussion) didn't participate during the portion of Thursday's practice open to the media, per reports.",
+      "note": "Herbert (concussion) was officially deemed a non-participant  in Thursday's practice.",
       "as_of": "2026-11-26T21:00:00Z",
       "expires": "2026-11-27T03:00:00Z",
-      "p_inactive": 0.52
+      "p_inactive": 0.38
+    },
+    "4723820": {
+      "aid": "4723820",
+      "player": "Omar Cooper Jr.",
+      "team": "NYJ",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Cooper (ankle/groin) was listed as a  non-participant in practice Thursday.",
+      "as_of": "2026-11-26T20:43:00Z",
+      "expires": "2026-11-27T02:43:00Z",
+      "p_inactive": 0.38
+    },
+    "4361741": {
+      "aid": "4361741",
+      "player": "Brock Purdy",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Purdy (ankle) was listed as a non-participant on Thursday's injury report, per reports.",
+      "as_of": "2026-11-26T22:01:00Z",
+      "expires": "2026-11-27T04:01:00Z",
+      "p_inactive": 0.35
     }
   },
   "by_name": {
+    "derrick henry": {
+      "aid": "3043078",
+      "player": "Derrick Henry",
+      "team": "BAL",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Henry (concussion) was listed as a full participant in Thursday's practice.",
+      "as_of": "2026-11-26T21:50:00Z",
+      "expires": "2026-11-27T03:50:00Z",
+      "p_inactive": 0.38
+    },
+    "tetairoa mcmillan": {
+      "aid": "4685472",
+      "player": "Tetairoa McMillan",
+      "team": "CAR",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "McMillan (foot) was listed as a DNP on Thursday's practice estimate, per reports.",
+      "as_of": "2026-11-26T21:26:00Z",
+      "expires": "2026-11-27T03:26:00Z",
+      "p_inactive": 0.52
+    },
+    "denzel boston": {
+      "aid": "4832800",
+      "player": "Denzel Boston",
+      "team": "CLE",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Boston (quadriceps) was listed as a non-participant on Thursday's practice estimate",
+      "as_of": "2026-11-26T22:31:00Z",
+      "expires": "2026-11-27T04:31:00Z",
+      "p_inactive": 0.38
+    },
+    "david njoku": {
+      "aid": "3123076",
+      "player": "David Njoku",
+      "team": "LAC",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Njoku (shoulder) was listed as a non-participant in Thursday's practice.",
+      "as_of": "2026-11-26T21:33:00Z",
+      "expires": "2026-11-27T03:33:00Z",
+      "p_inactive": 0.38
+    },
     "justin herbert": {
       "aid": "4038941",
       "player": "Justin Herbert",
@@ -57,10 +313,42 @@
       "watch": true,
       "unconfirmed": false,
       "confirmed": false,
-      "note": "Herbert (concussion) didn't participate during the portion of Thursday's practice open to the media, per reports.",
+      "note": "Herbert (concussion) was officially deemed a non-participant  in Thursday's practice.",
       "as_of": "2026-11-26T21:00:00Z",
       "expires": "2026-11-27T03:00:00Z",
-      "p_inactive": 0.52
+      "p_inactive": 0.38
+    },
+    "omar cooper jr.": {
+      "aid": "4723820",
+      "player": "Omar Cooper Jr.",
+      "team": "NYJ",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Cooper (ankle/groin) was listed as a  non-participant in practice Thursday.",
+      "as_of": "2026-11-26T20:43:00Z",
+      "expires": "2026-11-27T02:43:00Z",
+      "p_inactive": 0.38
+    },
+    "brock purdy": {
+      "aid": "4361741",
+      "player": "Brock Purdy",
+      "team": "SF",
+      "status": "Questionable",
+      "tags": [
+        "Watch"
+      ],
+      "watch": true,
+      "unconfirmed": false,
+      "confirmed": false,
+      "note": "Purdy (ankle) was listed as a non-participant on Thursday's injury report, per reports.",
+      "as_of": "2026-11-26T22:01:00Z",
+      "expires": "2026-11-27T04:01:00Z",
+      "p_inactive": 0.35
     }
   }
 }
