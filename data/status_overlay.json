@@ -1,66 +1,15 @@
 {
-  "updated": "2026-11-27T04:26:32Z",
-  "updated_et": "Nov 26, 2026 \u00b7 11:26 PM ET",
+  "updated": "2026-11-27T04:34:00Z",
+  "updated_et": "Nov 26, 2026 \u00b7 11:34 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-27T10:26:32Z",
+  "expires": "2026-11-27T10:34:00Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
     "nfl_unconfirmed_reports",
     "hub_player_status"
   ],
-  "players": [
-    {
-      "aid": "4832800",
-      "player": "Denzel Boston",
-      "team": "CLE",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": false,
-      "confirmed": false,
-      "note": "Boston (quadriceps) was listed as a non-participant on Thursday's practice estimate",
-      "as_of": "2026-11-26T22:31:00Z",
-      "expires": "2026-11-27T04:31:00Z",
-      "p_inactive": 0.38
-    }
-  ],
-  "by_aid": {
-    "4832800": {
-      "aid": "4832800",
-      "player": "Denzel Boston",
-      "team": "CLE",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": false,
-      "confirmed": false,
-      "note": "Boston (quadriceps) was listed as a non-participant on Thursday's practice estimate",
-      "as_of": "2026-11-26T22:31:00Z",
-      "expires": "2026-11-27T04:31:00Z",
-      "p_inactive": 0.38
-    }
-  },
-  "by_name": {
-    "denzel boston": {
-      "aid": "4832800",
-      "player": "Denzel Boston",
-      "team": "CLE",
-      "status": "Questionable",
-      "tags": [
-        "Watch"
-      ],
-      "watch": true,
-      "unconfirmed": false,
-      "confirmed": false,
-      "note": "Boston (quadriceps) was listed as a non-participant on Thursday's practice estimate",
-      "as_of": "2026-11-26T22:31:00Z",
-      "expires": "2026-11-27T04:31:00Z",
-      "p_inactive": 0.38
-    }
-  }
+  "players": [],
+  "by_aid": {},
+  "by_name": {}
 }
