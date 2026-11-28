@@ -38,7 +38,7 @@ function render(){const G0=(D.games||[]).slice().sort((x,y)=>x.date<y.date?-1:1)
  $("news").innerHTML=(D.news||[]).map(n=>`<div class="nw"><a href="${esc(n.u)}" target="_blank" rel="noopener">${esc(noBooks(n.t))}</a><div class="mut sm">${et(n.d)}</div></div>`).join("")||'<div class="mut">No headlines.</div>';
  if(CFG.renderExtra)CFG.renderExtra(EX)}
 (async()=>{const [ex,tiers,txt]=await Promise.all([CFG.loadExtra?CFG.loadExtra():{},j(BL+"data/edge_tiers.json",{}),fetch(BL+"data/edge_log.jsonl?t="+Date.now()).then(r=>r.ok?r.text():"").catch(()=>"")]);EX=ex||{};
- const now=Date.now();REC=txt.split("\n").filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(p=>p&&(tiers[p.id]||{}).tier==="recommended"&&new Date(p.start||0)>now-24*3600e3);load()})();
+ const now=Date.now();REC=txt.split("\n").filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(p=>p&&["recommended","highlighted"].includes((tiers[p.id]||{}).tier)&&new Date(p.start||0)>now-24*3600e3);load()})();
 /* Live layer: scores re-checked every 60s while any game is live or about to start (else every 10 min); headlines every 5 min, de-duplicated, ET times. Also overlays the shared 5-min live_stats feed (same path Soccer Hub uses) so a stale published nfl.json / CDN snapshot cannot leave in-progress games at 0-0. Public score/news feeds only; no pick is ever rewritten here. */
 (function(){const P="https://sl-scheduler.kuritzmike.workers.dev/nfl/live?f=";let lastS=0,lastN=0,lastLS=0,busy=false;
  const fresh=u=>fetch(P+u+"&_="+Math.floor(Date.now()/30000)).then(r=>r.ok?r.json():null).catch(()=>null);
