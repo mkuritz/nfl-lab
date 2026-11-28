@@ -1,102 +1,15 @@
 {
-  "updated": "2026-11-28T04:16:14Z",
-  "updated_et": "Nov 27, 2026 \u00b7 11:16 PM ET",
+  "updated": "2026-11-28T04:51:43Z",
+  "updated_et": "Nov 27, 2026 \u00b7 11:51 PM ET",
   "ttl_hours": 6,
-  "expires": "2026-11-28T10:16:14Z",
+  "expires": "2026-11-28T10:51:43Z",
   "note": "Display-only status overlay. Auto-built each NFL Hub data run. Official confirmed statuses override unconfirmed labels. Client hides labels when this file or a row is older than 6 hours.",
   "sources": [
     "early_injury_adjust",
     "nfl_unconfirmed_reports",
     "hub_player_status"
   ],
-  "players": [
-    {
-      "aid": "4038941",
-      "player": "Justin Herbert",
-      "team": "LAC",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "At 1-9, the Chargers have zero incentive to rush Herbert back to the field at this stage. His next chance to see game action thus is slated to arrive Sunday, Dec. 6, against the Buccaneers. In Herbet's absence this weekend, reporters relay that DJ Uiagalelei is slated to start at",
-      "as_of": "2026-11-27T22:24:00Z",
-      "expires": "2026-11-28T04:24:00Z",
-      "p_inactive": 0.38
-    },
-    {
-      "aid": "4361741",
-      "player": "Brock Purdy",
-      "team": "SF",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Purdy wasn't able to practice during Week 12 prep due to an ankle injury, which will sideline him for the first time this season. In place of Purdy, Mac Jones will earn the spot start Sunday, while the former's next chance to suit up is Sunday, Nov. 6, at the Giants. Shanahan add",
-      "as_of": "2026-11-27T22:25:00Z",
-      "expires": "2026-11-28T04:25:00Z",
-      "p_inactive": 0.35
-    }
-  ],
-  "by_aid": {
-    "4038941": {
-      "aid": "4038941",
-      "player": "Justin Herbert",
-      "team": "LAC",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "At 1-9, the Chargers have zero incentive to rush Herbert back to the field at this stage. His next chance to see game action thus is slated to arrive Sunday, Dec. 6, against the Buccaneers. In Herbet's absence this weekend, reporters relay that DJ Uiagalelei is slated to start at",
-      "as_of": "2026-11-27T22:24:00Z",
-      "expires": "2026-11-28T04:24:00Z",
-      "p_inactive": 0.38
-    },
-    "4361741": {
-      "aid": "4361741",
-      "player": "Brock Purdy",
-      "team": "SF",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Purdy wasn't able to practice during Week 12 prep due to an ankle injury, which will sideline him for the first time this season. In place of Purdy, Mac Jones will earn the spot start Sunday, while the former's next chance to suit up is Sunday, Nov. 6, at the Giants. Shanahan add",
-      "as_of": "2026-11-27T22:25:00Z",
-      "expires": "2026-11-28T04:25:00Z",
-      "p_inactive": 0.35
-    }
-  },
-  "by_name": {
-    "justin herbert": {
-      "aid": "4038941",
-      "player": "Justin Herbert",
-      "team": "LAC",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "At 1-9, the Chargers have zero incentive to rush Herbert back to the field at this stage. His next chance to see game action thus is slated to arrive Sunday, Dec. 6, against the Buccaneers. In Herbet's absence this weekend, reporters relay that DJ Uiagalelei is slated to start at",
-      "as_of": "2026-11-27T22:24:00Z",
-      "expires": "2026-11-28T04:24:00Z",
-      "p_inactive": 0.38
-    },
-    "brock purdy": {
-      "aid": "4361741",
-      "player": "Brock Purdy",
-      "team": "SF",
-      "status": "Out",
-      "tags": [],
-      "watch": false,
-      "unconfirmed": false,
-      "confirmed": true,
-      "note": "Purdy wasn't able to practice during Week 12 prep due to an ankle injury, which will sideline him for the first time this season. In place of Purdy, Mac Jones will earn the spot start Sunday, while the former's next chance to suit up is Sunday, Nov. 6, at the Giants. Shanahan add",
-      "as_of": "2026-11-27T22:25:00Z",
-      "expires": "2026-11-28T04:25:00Z",
-      "p_inactive": 0.35
-    }
-  }
+  "players": [],
+  "by_aid": {},
+  "by_name": {}
 }
